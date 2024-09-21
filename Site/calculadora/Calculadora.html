@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Financeira</title>
+</head>
+<body style="background-color: bisque;">
+    <center>
+   <h1>Simulação de benefício</h1>
+   
+   <h2>Informe a quantidade de vinho que é produzido anualmente (em litros):</h2>
+   <input type="number" id="producao">
+
+   <h2>Informe a quantidade de vinho que é desperdiçado anualmente (em litros):</h2>
+   <input type="number" id="desperdicio">
+
+   <h2>Informe o preço que é cobrado por garrafa (750ml)</h2>
+   <input type="number" id="preco">
+
+   <br>
+   <br>
+   <button onclick="simularPerda()">Simular perda anual</button>
+   <br>
+   <br>
+   <div id="vamoLa"></div>
+</center>
+</body>
+</html>
+
+<script>
+    function simularPerda(){
+        var p = Number(producao.value)
+        var d = Number(desperdicio.value)
+        var pr = Number(preco.value)
+
+        var rendimentoAnual = p / 0.75 * pr
+        var desperdicioAnual = d / 0.75 * pr 
+        var diferencaRendimento = rendimentoAnual - desperdicioAnual
+        var prejuizo = rendimentoAnual - diferencaRendimento
+        var pctPrejuizo = prejuizo * 0.97
+
+        vamoLa.innerHTML = 
+        `Com base nos estudos da Chr. Hansen, 5 a 10% da produção de vinho perdem seu valor todos os anos, 
+        <br>
+        devido a desvios que surgem durante a fermentação alcoólica.
+        <br> 
+        Isso significa que, para uma vinícola, 5 a 10% de sua produção não será vendida ao preço ideal.
+
+        <br><br>
+
+        De <b>${rendimentoAnual.toLocaleString("pt-BR",{style: 'currency', currency: 'BRL'})}</b> que deveria estar rendendo anualmente, 
+        <br>
+        sua vinícola está rendendo <b>${diferencaRendimento.toLocaleString("pt-BR",{style: 'currency', currency: 'BRL'})}</b> ...
+        <br>
+        Prejuízo de <b>${prejuizo.toLocaleString("pt-BR",{style: 'currency', currency: 'BRL'})}</b>.
+        <br><br>
+        Com um sistema de monitoramento de temperatura e gases, permitirá um maior controle no processo de fermentação,
+        <br>
+        te poupando de perdas e colocando dinheiro no seu bolso!
+        <br><br>
+        Usando o nosso projeto você conseguirá salvar o seu prejuízo em até <b>${pctPrejuizo.toLocaleString("pt-BR",{style: 'currency', currency: 'BRL'})}</b>, 
+        <br>
+        que seria aproximadamente 97% do total do prejuízo!!`
+    }
+</script>
