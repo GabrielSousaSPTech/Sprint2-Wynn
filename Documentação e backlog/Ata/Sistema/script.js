@@ -9,7 +9,10 @@ function adicionarTema(){
 const tema = input_tema.value;
 const texto = input_texto.value;
 
-temas.innerHTML += `<p id="tema_${index1}"> • <strong>${tema}</strong>: ${texto} <button class="botao_apagar" onclick="apagarTema(${index1})">x</button></p></p>`  
+temas.innerHTML += `<p id="tema_${index1}">
+    <span> • <strong>${tema}</strong>: ${texto}</span>
+    <button class="botao_apagar" onclick="apagarTema(${index1})">x</button>
+</p>`  
 
 index1++
 }
@@ -27,7 +30,10 @@ function adicionarTarefa(){
     const dataTarefa =  input_data_tarefa.value;
     const integrante = input_integrante.value;
 
-    tarefas.innerHTML += `<p id="tarefa_${index2}">${tarefa} | ${dataTarefa.split('-').reverse().join('-')} | ${integrante} <button class="botao_apagar" onclick="apagarLinha(${index2})">x</button></p>`
+    tarefas.innerHTML += `<p id="tarefa_${index2}" class="tarefa">
+        <span>${tarefa} | ${dataTarefa.split('-').reverse().join('-')} | ${integrante} </span>
+        <button class="botao_apagar" onclick="apagarLinha(${index2})">x</button>
+    </p>`
 
     index2++
 }
