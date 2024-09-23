@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ata de Reunião</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <main>
         <header>
@@ -16,16 +18,16 @@
         <h2>Wynn - Monitoramento de vinho</h2>
         <hr>
         <h3>Data: <input id="input_data" type="date"><button onclick="mostrarData()">Data</button></h3>
-        
+
         <section>
             <h3>Integrantes:</h3>
             <p>
-                <span>Andrei  <input type="checkbox" class="checkbox"></span> |
-                <span>Kaique  <input type="checkbox" class="checkbox"></span> |
-                <span>Pedro  <input type="checkbox" class="checkbox"></span> |
-                <span>Giovanni  <input type="checkbox" class="checkbox"></span> |
-                <span>Luigi  <input type="checkbox" class="checkbox"></span> |
-                <span>Gabriel  <input type="checkbox" class="checkbox"></span>
+                <span>Andrei <input type="checkbox" class="checkbox"></span> |
+                <span>Mikki <input type="checkbox" class="checkbox"></span> |
+                <span>Pedro <input type="checkbox" class="checkbox"></span> |
+                <span>Giovanni <input type="checkbox" class="checkbox"></span> |
+                <span>Luigi <input type="checkbox" class="checkbox"></span> |
+                <span>Gabriel <input type="checkbox" class="checkbox"></span>
             </p>
         </section>
 
@@ -33,36 +35,37 @@
 
         <div id="temas">
 
-        <h3>Tema: <input id="input_tema" type="text"></h3>
-        
-        <div id="text_area">
-            <textarea id="input_texto" rows="2" cols="60" placeholder="Temas abordados"></textarea>
-            <button onclick="adicionarTema()">Adicionar</button>
-        </div>
+            <h3>Tema: <input id="input_tema" type="text"></h3>
+
+            <div id="text_area">
+                <textarea id="input_texto" rows="2" cols="60" placeholder="Temas abordados"></textarea>
+                <button onclick="adicionarTema()">Adicionar</button>
+            </div>
 
         </div>
         <hr>
         <div id="tarefas">
-        <p>
-            <input id="input_tarefa" type="text" placeholder="O que será feito?"> | 
-            <input id="input_data_tarefa" type="date"> | 
+            <p>
+                <input id="input_tarefa" type="text" placeholder="O que será feito?"> |
+                <input id="input_data_tarefa" type="date"> |
 
-            <select name="" id="input_integrante">
-                <option value="Andrei">Andrei</option>
-                <option value="Kaique">Kaique</option>
-                <option value="Pedro">Pedro</option>
-                <option value="Giovanni">Giovanni</option>
-                <option value="Luigi">Luigi</option>
-                <option value="Gabriel">Gabriel</option>
-            </select> |
-            
-            <button onclick="adicionarTarefa()">Adicionar</button>
-        </p> 
-        <hr>
-</div>
+                <select name="" id="input_integrante">
+                    <option value="Andrei">Andrei</option>
+                    <option value="Kaique">Kaique</option>
+                    <option value="Pedro">Pedro</option>
+                    <option value="Giovanni">Giovanni</option>
+                    <option value="Luigi">Luigi</option>
+                    <option value="Gabriel">Gabriel</option>
+                </select> |
+
+                <button onclick="adicionarTarefa()">Adicionar</button>
+            </p>
+            <hr>
+        </div>
 
     </main>
-    
+
 </body>
+
 </html>
 <script src="script.js"></script>
