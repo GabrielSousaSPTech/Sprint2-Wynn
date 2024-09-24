@@ -1,20 +1,20 @@
-function mostrarData(){
+function mostrarData() {
     const data = input_data.value;
     mostrar_data.innerHTML = `<h2>${data.split('-').reverse().join('-')}</h2>`
 }
 
 var index1 = 1;
 
-function adicionarTema(){
-const tema = input_tema.value;
-const texto = input_texto.value;
+function adicionarTema() {
+    const tema = input_tema.value;
+    const texto = input_texto.value;
 
-temas.innerHTML += `<p id="tema_${index1}">
+    temas.innerHTML += `<p id="tema_${index1}">
     <span> • <strong>${tema}</strong>: ${texto}</span>
     <button class="botao_apagar" onclick="apagarTema(${index1})">x</button>
-</p>`  
+</p>`
 
-index1++
+    index1++
 }
 
 function apagarTema(n) {
@@ -25,9 +25,9 @@ function apagarTema(n) {
 
 var index2 = 1;
 
-function adicionarTarefa(){
+function adicionarTarefa() {
     const tarefa = input_tarefa.value;
-    const dataTarefa =  input_data_tarefa.value;
+    const dataTarefa = input_data_tarefa.value;
     const integrante = input_integrante.value;
 
     tarefas.innerHTML += `<p id="tarefa_${index2}" class="tarefa">
