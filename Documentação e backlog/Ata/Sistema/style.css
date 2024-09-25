@@ -46,7 +46,13 @@ input.checkbox:checked {
 }
 
 .botao_apagar {
-    margin-left: 10%;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    font-size: 0.7em;
+
+    text-align: center;
+    vertical-align: middle;
 }
 
 
@@ -69,6 +75,7 @@ main > * {
 
     div#mostrar_data > h2 {
         font-weight: 600;
+        font-size: 1.8em;
     }
 
     /* Subtítulo */
@@ -103,7 +110,7 @@ main > * {
     
 
     /* DIV #TEMAS */
-    #alinhamento {
+    #text_area {
         display: flex;
         align-items: flex-end;
         gap: 10px;
@@ -111,16 +118,19 @@ main > * {
         padding: 10px 0;
     }
 
-    #temas > hr {
-        background-color: black;
-        padding: 0;
-    }
-
     #temas input, textarea {
         color: black;
     }
 
-    #temas > p {
+    #temas > p, .tarefa {
+        display: flex;
+        justify-content: space-between;
+        
+        gap: 10px;
+
+        margin-top: 0.1em;
+        margin-bottom: 0.1em;
+
         word-break: break-all;
     }
 
