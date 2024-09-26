@@ -44,13 +44,14 @@ function apagarLinha(n) {
     linha.innerHTML = "";
 }
 
-var PO = input_PO.value;
-var scrumMaster = input_scrum_master.value;
+
 
 function adicionarPO() {
+    const PO = input_PO.value;
     mostrar_PO.innerHTML = `Project Onwer: <strong>${PO}</strong>`;
 }
 
 function adicionarScrumMaster() {
+    const scrumMaster = input_scrum_master.value;
     mostrar_Scrum_Master.innerHTML = `Scrum Master: <strong>${scrumMaster}</strong>`;
 }
