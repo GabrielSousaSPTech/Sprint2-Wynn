@@ -43,3 +43,14 @@ function apagarLinha(n) {
     const linha = document.getElementById(`tarefa_${n}`);
     linha.innerHTML = "";
 }
+
+var PO = input_PO.value;
+var scrumMaster = input_scrum_master.value;
+
+function adicionarPO() {
+    mostrar_PO.innerHTML = `Project Onwer: <strong>${PO}</strong>`;
+}
+
+function adicionarScrumMaster() {
+    mostrar_Scrum_Master.innerHTML = `Scrum Master: <strong>${scrumMaster}</strong>`;
+}
