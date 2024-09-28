@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Italiana&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Mina:wght@400;700&display=swap');
 * {
     margin: 0;
 }
@@ -99,8 +99,12 @@ header nav li {
     height: 100%;
 }
 
-.containerFormulario {
+#containerFormulario {
     display: flex;
+}
+
+
+#containerFormulario, #containerFormularioResposta {
     justify-content: space-evenly;
     align-items: center; 
     flex-direction: column;
@@ -109,8 +113,50 @@ header nav li {
     background-color: rgba(0, 0, 0, 0.64);
     color: white;
 }
+#containerFormularioResposta {
+    display: none;
+    justify-content: space-evenly;
+}
+#containerFormularioResposta p {
+    width: 70%;
+    text-align: justify;
+    font-size: 15px;
+    color: #D9D9D9;
+    font-family: 'Mina';
+    
+}
 
-.containerFormulario h1 {
+#containerFormularioResposta p span {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#containerFormularioResposta h2 {
+    font-family: 'Mina';
+}
+
+#containerFormularioResposta span {
+    font-family: 'Mina';
+    font-size: 12px;
+    cursor: pointer;
+}
+#containerFormularioResposta img {
+    align-self: flex-end;
+    padding-inline: 30px;
+
+}
+
+.containerBotaoFormularioResposta {
+    display: flex; 
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%; 
+}
+
+
+
+#containerFormulario h1 {
     text-align: center;
     margin: 15px 0 15px 0; 
     font-size: 03em;
@@ -130,7 +176,7 @@ header nav li {
 .containerInput input {
     width: 80%;
     height: 2.5rem;
-    color: #8F8F8F;
+    color: #666464;
     font-size: 1.4rem;
     border-radius: 6px;
     padding-inline: 6px;
@@ -143,9 +189,22 @@ header nav li {
 .btnFormulario {
     height: 25%;
     width: 15%;
+}
+
+
+.btnFormulario, .btnFormularioResposta {
+    
     padding: 10px;
     border-radius: 10px;
     background-color: #FEFEFE;
     font-weight: bold;
     font-size: 1.5rem;
+}
+.btnFormularioResposta {
+    width: 50%;
+    padding: 10px;
+    font-family: 'Mina';
+    text-decoration: none;
+    color: #000;
+    text-align: center;
 }

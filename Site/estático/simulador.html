@@ -21,22 +21,22 @@
         
         <section class="sectionFormulario">
 
-            <div class="containerFormulario">
+            <div id="containerFormulario">
                 
                 <h1>Simulador</h1>
                 
                 <div class="containerInput">
                     <p>Quantidade de vinho produzido anualmente:</p>
-                    <input type="number" id="producao" placeholder="Vinho produzido (em litros)">
+                    <input type="number" id="producao" placeholder="Vinho produzido (em litros)" required>
                 </div>
                 <div class="containerInput">
-                    <p>Quantidade de vinho produzido anualmente:</p>    
-                    <input type="number" id="desperdicio" placeholder="Vinho desperdiçado (em litros)">
+                    <p>Quantidade de vinho desperdicado anualmente:</p>    
+                    <input type="number" id="desperdicio" placeholder="Vinho desperdiçado (em litros)" required>
                 </div>
                 
                 <div class="containerInput">    
-                    <p>Preço cobrado por garrafa:</p>
-                    <input type="number" id="preco" placeholder="Preço cobrado (R$/750 ml)">
+                    <p>Preço cobrado por garrafa (750ml):</p>
+                    <input type="number" id="preco" placeholder="Preço cobrado (R$/750 ml)" required>
                 </div>
                 
                 <br>
@@ -46,44 +46,14 @@
                 <br>
                 <div id="vamoLa"></div>
             </div>
+
+            <div id="containerFormularioResposta">
+                
+                
+            </div>
         </section>
     </section>
 </body>
 </html>
-    
-    <script>
-        function simularPerda(){
-            var p = Number(producao.value)
-            var d = Number(desperdicio.value)
-            var pr = Number(preco.value)
-            
-            var rendimentoAnual = p / 0.75 * pr
-            var desperdicioAnual = d / 0.75 * pr 
-        var diferencaRendimento = rendimentoAnual - desperdicioAnual
-        var prejuizo = rendimentoAnual - diferencaRendimento
-        var pctPrejuizo = prejuizo * 0.97
 
-        vamoLa.innerHTML = 
-        `Com base nos estudos da Chr. Hansen, 5 a 10% da produção de vinho perdem seu valor todos os anos, 
-        <br>
-        devido a desvios que surgem durante a fermentação alcoólica.
-        <br> 
-        Isso significa que, para uma vinícola, 5 a 10% de sua produção não será vendida ao preço ideal.
-
-        <br><br>
-
-        De <b>${rendimentoAnual.toLocaleString("pt-BR",{style: 'currency', currency: 'BRL'})}</b> que deveria estar rendendo anualmente, 
-        <br>
-        sua vinícola está rendendo <b>${diferencaRendimento.toLocaleString("pt-BR",{style: 'currency', currency: 'BRL'})}</b> ...
-        <br>
-        Prejuízo de <b>${prejuizo.toLocaleString("pt-BR",{style: 'currency', currency: 'BRL'})}</b>.
-        <br><br>
-        Com um sistema de monitoramento de temperatura e gases, permitirá um maior controle no processo de fermentação,
-        <br>
-        te poupando de perdas e colocando dinheiro no seu bolso!
-        <br><br>
-        Usando o nosso projeto você conseguirá salvar o seu prejuízo em até <b>${pctPrejuizo.toLocaleString("pt-BR",{style: 'currency', currency: 'BRL'})}</b>, 
-        <br>
-        que seria aproximadamente 97% do total do prejuízo!!`
-    }
-</script>
+<script src="./JS/index.js"></script>
