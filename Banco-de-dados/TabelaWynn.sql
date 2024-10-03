@@ -1,7 +1,6 @@
 CREATE DATABASE dbWynn;
 USE dbWynn;
 
-
 CREATE TABLE tbEmpresa (
 	idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
     nomeEmpresa VARCHAR (80) NOT NULL,
@@ -27,16 +26,16 @@ VALUES
 
 
 CREATE TABLE tbFuncionarioEmpresa (
-idFuncionarioEmpresa INT PRIMARY KEY AUTO_INCREMENT,
-nomeFuncionarioEmpresa VARCHAR (100) NOT NULL,
-idEmpresa INT NOT NULL,
-dataNascFuncionarioEmpresa DATE,
-foneFuncionarioEmpresa VARCHAR (14),
-emailFuncionarioEmpresa VARCHAR (70) NOT NULL,
-senhaFuncionarioEmpresa VARCHAR(45) NOT NULL,
-cargoFuncionarioEmpresa VARCHAR (45)
+	idFuncionarioEmpresa INT PRIMARY KEY AUTO_INCREMENT,
+    nomeFuncionarioEmpresa VARCHAR (100) NOT NULL,
+    idEmpresa INT NOT NULL,
+    dataNascFuncionarioEmpresa DATE,
+    foneFuncionarioEmpresa VARCHAR (14),
+    emailFuncionarioEmpresa VARCHAR (70) NOT NULL,
+    senhaFuncionarioEmpresa VARCHAR(45) NOT NULL,
+    cargoFuncionarioEmpresa VARCHAR (45),
+    CONSTRAINT fkFuncionarioEmpresa_Empresa FOREIGN KEY (idEmpresa) REFERENCES tbEmpresa(idEmpresa)
 );
-
 
 INSERT INTO tbFuncionarioEmpresa (nomeFuncionarioEmpresa, idEmpresa, dataNascFuncionarioEmpresa, foneFuncionarioEmpresa, emailFuncionarioEmpresa, senhaFuncionarioEmpresa, cargoFuncionarioEmpresa) 
 VALUES 
@@ -44,7 +43,7 @@ VALUES
 ('Lucas Aielo', 2, '1990-07-22', '11988776655', 'lucas.aielo@gmail.com', '1234', 'Enólogo'), 
 ('Gabriel Sousa', 1, '1992-10-09', '11922334455', 'gabriel.sousa@gmail.com', '1234', 'Enólogo'), 
 ('Ana Paula', 1, '1988-12-01', '11933445566', 'ana.paula@gmail.com', '1234', 'Vendedora'), 
-('Carlos Lima', 1, '1991-03-16', '11999887766', 'carlos.lima@gmail.com', '1234', 'Assistente de Produção'), 
+('Carlos Lima', 1, '1991-03-16', '11999887766', 'carlos.lima@gmail.com', '1234', 'Assistente de Produção'),
 ('Fernanda Santos', 1, '1989-11-30', '11977665544', 'fernanda.santos@gmail.com', '1234', 'Assistente Administrativa'), 
 ('João Pereira', 2, '1986-08-14', '11956543211', 'joao.pereira@gmail.com', '1234', 'Vendedor'), 
 ('Renata Figueira', 2, '1993-09-18', '11933442255', 'renata.figueira@gmail.com', '1234', 'Assistente Administrativa'), 
@@ -63,7 +62,7 @@ VALUES
 CREATE TABLE tbMicroControlador (
 	idMicroControlador INT PRIMARY KEY AUTO_INCREMENT,
     situacaoMicroControlador VARCHAR (45),
-     CONSTRAINT chk_situacaoMicroControlador CHECK (situacaoMicroControlador IN('Ativo', 'Inativo'))
+    CONSTRAINT chk_situacaoMicroControlador CHECK (situacaoMicroControlador IN('Ativo', 'Inativo'))
 );
 
 INSERT INTO tbMicroControlador (situacaoMicroControlador) 
@@ -72,30 +71,33 @@ VALUES
 ('Ativo'), 
 ('Ativo'), 
 ('Ativo'), 
-('Ativo'), 
+('Ativo'),
 ('Ativo'), 
 ('Ativo'), 
 ('Ativo'), 
 ('Ativo'), 
 ('Ativo');
 
+-- Colocar uma tabela com os tipos de vinho
+-- Campo para configurar a temperatura e gás desejada 
 
-CREATE TABLE tbControleTonel (
-	idControleTonel INT PRIMARY KEY AUTO_INCREMENT,
-    idEmpresa INT,
-    idMicroControlador INT,
+CREATE TABLE tbControleTanque (
+	idControleTanque INT PRIMARY KEY AUTO_INCREMENT,
+    idEmpresa INT NOT NULL,
+    idMicroControlador INT NOT NULL,
     medidaTotalMQ2 FLOAT NOT NULL,
-    medidaTotalLM35 FLOAT NOT NULL
+    medidaTotalLM35 FLOAT NOT NULL,
+    CONSTRAINT fkControleTanque_Empresa FOREIGN KEY (idEmpresa) REFERENCES tbEmpresa(idEmpresa),
+    CONSTRAINT fkControleTanque_MicroControlador FOREIGN KEY (idMicroControlador) REFERENCES tbMicroControlador(idMicroControlador)
 );
 
-
-INSERT INTO tbControleTonel (idEmpresa, idMicroControlador, medidaTotalMQ2, medidaTotalLM35) 
+INSERT INTO tbControleTanque (idEmpresa, idMicroControlador, medidaTotalMQ2, medidaTotalLM35) 
 VALUES 
 (1, 1, 23.5, 28.3), 
 (1, 2, 25.7, 29.1), 
 (2, 3, 50.2, 30.6), 
 (2, 4, 49.8, 31.2), 
-(3, 5, 48.1, 27.4), 
+(3, 5, 48.1, 27.4),
 (3, 6, 47.6, 28.0), 
 (4, 7, 52.3, 29.5), 
 (4, 8, 53.1, 30.0), 
@@ -103,25 +105,23 @@ VALUES
 (5, 10, 46.4, 27.2);
 
 
-
-
 CREATE TABLE tbSensor (
-    idSensor INT PRIMARY KEY AUTO_INCREMENT,
-    idControleTonel INT,
+	idSensor INT PRIMARY KEY AUTO_INCREMENT,
+    idControleTanque INT NOT NULL,
     tipoSensor VARCHAR (45),
     statusSensor VARCHAR (45),
     CONSTRAINT chk_statusSensor CHECK (statusSensor IN('Ativo', 'Inativo')),
-    CONSTRAINT chk_tipoSensor CHECK (tipoSensor IN('MQ2', 'LM35'))
+    CONSTRAINT chk_tipoSensor CHECK (tipoSensor IN('MQ2', 'LM35')),
+    CONSTRAINT fkSensor_ControleTanque FOREIGN KEY (idControleTanque) REFERENCES tbControleTanque(idControleTanque)
 );
 
-
-INSERT INTO tbSensor (idControleTonel, tipoSensor, statusSensor) 
+INSERT INTO tbSensor (idControleTanque, tipoSensor, statusSensor) 
 VALUES 
 (1, 'MQ2', 'Ativo'), 
 (1, 'LM35', 'Ativo'), 
 (2, 'MQ2', 'Ativo'), 
 (2, 'LM35', 'Ativo'), 
-(3, 'MQ2', 'Ativo'), 
+(3, 'MQ2', 'Ativo'),
 (3, 'LM35', 'Ativo'), 
 (4, 'MQ2', 'Ativo'), 
 (4, 'LM35', 'Ativo'), 
@@ -139,22 +139,21 @@ VALUES
 (10, 'LM35', 'Ativo');
 
 
-
 CREATE TABLE tbMedidaSensor (
 	idMedidaSensor INT PRIMARY KEY AUTO_INCREMENT,
-    idSensor INT,
+    idSensor INT NOT NULL,
     medidaSensor FLOAT NOT NULL,
-    dataHoraSensor DATETIME
+    dataHoraSensor DATETIME NOT NULL,
+    CONSTRAINT fkMedidaSensor_Sensor FOREIGN KEY (idSensor) REFERENCES tbSensor(idSensor)
 );
-
 
 INSERT INTO tbMedidaSensor (idSensor, medidaSensor, dataHoraSensor) 
 VALUES 
-(1, 23.5, now()), 
-(2, 28.3, now()), 
-(3, 50.2, now()), 
-(4, 30.6, now()), 
-(5, 48.1, now()), 
+(1, 23.5, NOW()), 
+(2, 28.3, NOW()), 
+(3, 50.2, NOW()), 
+(4, 30.6, NOW()), 
+(5, 48.1, NOW()),
 (6, 27.4, now()), 
 (7, 52.3, now()), 
 (8, 29.5, now()), 
@@ -171,8 +170,37 @@ VALUES
 (19, 25.7, now()), 
 (20, 29.1, now());
 
+-- Fazer o JOIN na mão 
+-- Esse era apenas um teste para saber se a conexão deu certo
 
-
+SELECT 
+    e.idEmpresa, 
+    e.nomeEmpresa, 
+    e.cnpjEmpresa, 
+    f.nomeFuncionarioEmpresa, 
+    f.emailFuncionarioEmpresa, 
+    f.cargoFuncionarioEmpresa, 
+    mc.idMicroControlador, 
+    mc.situacaoMicroControlador, 
+    ct.medidaTotalMQ2, 
+    ct.medidaTotalLM35, 
+    s.idSensor, 
+    s.tipoSensor, 
+    s.statusSensor, 
+    ms.medidaSensor, 
+    ms.dataHoraSensor
+FROM 
+    tbEmpresa e
+JOIN 
+    tbFuncionarioEmpresa f ON e.idEmpresa = f.idEmpresa
+JOIN 
+    tbControleTanque ct ON e.idEmpresa = ct.idEmpresa
+JOIN 
+    tbMicroControlador mc ON ct.idMicroControlador = mc.idMicroControlador
+JOIN 
+    tbSensor s ON ct.idControleTanque = s.idControleTanque
+JOIN 
+    tbMedidaSensor ms ON s.idSensor = ms.idSensor;
     
 
 SELECT * FROM tbEmpresa;
