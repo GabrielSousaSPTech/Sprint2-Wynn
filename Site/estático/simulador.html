@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,38 +8,40 @@
     <link rel="stylesheet" href="assets/styles/style.css">
     <style>
 
-        
+
     </style>
 </head>
+
 <body style="background: url('assets/imgs/fundo-barris-vinho.jpg'); overflow: hidden;">
     <section class="section">
         <header style="width: 100%; background-color: transparent;">
             <div class="containerHeader">
-                <a class="linkHome" href="index.html" rel="prev"><img class="icon" src="assets/icons/pngegg.png" alt=""></a>
+                <a class="linkHome" href="index.html" rel="prev"><img class="icon" src="assets/icons/pngegg.png"
+                        alt=""></a>
                 <img class="logoWynn" src="assets/imgs/logoWynn.png" alt="">
             </div>
         </header>
-        
+
         <section class="sectionFormulario">
 
             <div id="containerFormulario">
-                
+
                 <h1>Simulador</h1>
-                
+
                 <div class="containerInput">
                     <p>Quantidade de vinho produzido anualmente:</p>
                     <input type="number" id="producao" placeholder="Vinho produzido (em litros)" required>
                 </div>
                 <div class="containerInput">
-                    <p>Quantidade de vinho desperdicado anualmente:</p>    
+                    <p>Quantidade de vinho desperdicado anualmente:</p>
                     <input type="number" id="desperdicio" placeholder="Vinho desperdiçado (em litros)" required>
                 </div>
-                
-                <div class="containerInput">    
+
+                <div class="containerInput">
                     <p>Preço cobrado por garrafa (750ml):</p>
                     <input type="number" id="preco" placeholder="Preço cobrado (R$/750 ml)" required>
                 </div>
-                
+
                 <br>
                 <br>
                 <button class="btnFormulario" onclick="simularPerda()">Simular</button>
@@ -48,12 +51,14 @@
             </div>
 
             <div id="containerFormularioResposta">
-                
-                
+
+
             </div>
         </section>
+
     </section>
 </body>
+
 </html>
 
 <script src="./JS/index.js"></script>
