@@ -37,7 +37,7 @@ void loop() {
   // Exibindo valores no Monitor Serial
 
   // Valores mínimos e máximos 
-  Serial.print("Min_Gás:");
+/*   Serial.print("Min_Gás:");
   Serial.print(35);
   Serial.print(" ");
   Serial.print("Max_Gás:");
@@ -48,16 +48,15 @@ void loop() {
   Serial.print(" ");
   Serial.print("Max_Temperatura:");
   Serial.print(30);
-  Serial.print(" ");
+  Serial.print(" "); */
 
   // Valores dos Sensores
-  Serial.print("Temperatura:");
+ /*  Serial.print("Temperatura:"); */
+  Serial.print(porcentagem_gas);
+  Serial.print(";");
   Serial.println(temperaturaCelsius);
-  Serial.print(" ");
-  Serial.print("Gás:");
-  Serial.println(porcentagem_gas);
+ /*  Serial.print("Gás:"); */
   
   // Determinando o tempo do loop
-  delay(500); 
+  delay(10000); 
 }
-
