@@ -704,3 +704,57 @@ canvas {
 }
 
 /* Fim da Dashboard */
+
+.btnLogin {
+    font-size: 2.5rem;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+}
+
+#containerLogin .campo {
+    width: 50rem;
+    display: flex;
+    flex-direction: column;
+
+}
+
+#containerLogin {
+    width: 85rem;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 3rem 4rem;
+    gap: 2rem;
+}
+
+#containerLogin input {
+    width: 100%;
+    font-size: 2rem;
+}
+
+#containerLogin h1 {
+    font-size: 6rem;
+
+}
+
+#containerLogin h2 {
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+#containerLogin p {
+    font-size: 2rem;
+   
+}
+
+#containerLogin .campo p {
+    align-self: flex-start;
+    
+}
+
+#containerLogin a {
+    font-weight: bold;
+}
