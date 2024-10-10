@@ -682,6 +682,17 @@ footer li {
     height: .3rem;
 }
 
+.icon-line-1.change-menu {
+    transform-origin: left;
+    transform: rotate(40deg);
+}
+
+.icon-line-3.change-menu {
+    transform-origin: right;
+    transform: rotate(-40deg) translateY(-2rem);
+}
+
+
 .icon-line-2.change-menu {
     width: 0;
     height: 0;
