@@ -634,16 +634,22 @@ footer li {
     align-items: center;
 }
 
+.header-dashboard {
+    width: 100%;
+    height: 10%;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
 .container-dashboard {
     width: 100%;
-    height: 90%;
+    height: 88.5%;
 }
 
 .dashboard {
-    width: 90%;
-    height: 95%;
+    width: 100%;
+    height: 100%;
     background-color: rgba(128, 0, 49, 0.8);
-    border-radius: 2rem;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -664,7 +670,7 @@ footer li {
 }
 
 .elemento {
-    background-color: rgb(174, 174, 174);
+    background-color: rgb(245, 245, 245);
     border-radius: 2rem;
 }
 
@@ -680,6 +686,57 @@ footer li {
 .elemento-duplo {
     height: 45%;
     width: 100%;
+
+}
+
+.caixa {
+    height: 100%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.caixa select {
+    outline: none;
+    height: 3rem;
+    width: 12rem;
+    font-size: 2rem;
+    text-align: center;
+    border-radius: 2rem;
+    margin-top: 1rem;
+}
+
+.caixa-input-radio {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+}
+
+.formatacao {
+    flex-direction: column;
+    font-family: monospace;
+    text-align: justify;
+}
+
+.formatacao p {
+    color: black;
+    font-size: 1.6rem;
+    font-weight: bolder;
+}
+
+.formatacao h2 {
+    color: black;
+    font-size: 3rem;
+    font-weight: bolder;
+    margin-top: 1rem;
+}
+
+.formatacao h3 {
+    color: darkred;
+    font-size: 4rem;
+    font-weight: bolder;
+    margin-top: 1rem;
 }
 
 .elemento-estreito {
@@ -701,6 +758,15 @@ canvas {
     height: 100%;
     width: 100%;
     margin: 0 auto;
+}
+
+#tanques-ativos {
+    font-size: 6rem;
+}
+
+#tanques-ativos span {
+    font-size: 10rem;
+    color: darkred;
 }
 
 /* Fim da Dashboard */
@@ -747,12 +813,12 @@ canvas {
 
 #containerLogin p {
     font-size: 2rem;
-   
+
 }
 
 #containerLogin .campo p {
     align-self: flex-start;
-    
+
 }
 
 #containerLogin a {
