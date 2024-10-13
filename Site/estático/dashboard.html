@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DashBoard</title>
-    <link rel="stylesheet" href="assets/styles/style.css">
+    <link rel="stylesheet" href="./assets/styles/style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
 
@@ -15,12 +15,32 @@
 
 <body>
     <section id="banner">
+        <div id="h-menu" class="hanburger-menu">
+            <div class="menu-icon" onclick="mostrarMenu()">
+                <div id="line-1" class="icon-line icon-line-1"></div>
+                <div id="line-2" class="icon-line icon-line-2"></div>
+                <div id="line-3" class="icon-line icon-line-3"></div>
+            </div>
+            <div class="menu-box">
+                <h2>MENU</h2>
+                <div class="menu-item">Cadastrar Usuário</div>
+                <div class="menu-item">Editar Usuário</div>
+                <div class="menu-item">Deletar Usuário</div>
+                <div class="menu-item">Cadastrar Tanque</div>
+                <div class="menu-item">Editar Tanque</div>
+                <div class="menu-item">Deletar Tanque</div>
+                <div class="menu-item">Config. Temperatura</div>
+                <div class="menu-item">Config. CO2</div>
+            </div>
+        </div>
         <header class="header-dashboard">
             <a href="index.html"><img class="logoWynn" src="assets/imgs/logoWynn.png" alt=""></a>
         </header>
         <div class="container-dashboard center">
             <div class="dashboard">
-                <div class="titulo-dashboard"></div>
+                <div class="titulo-dashboard center">
+                    <h1>PAINEL DE CONTROLE</h1>
+                </div>
                 <div class="linha-dashboard">
                     <div class="elemento-duplo-caixa">
                         <div class="elemento-duplo elemento">
@@ -32,7 +52,7 @@
                         </div>
                     </div>
                     <div class="elemento-estreito elemento center formatacao">
-                        <div class="caixa">
+                        <!--  <div class="caixa">
                             <p>Como quer visualizar seu painel de controle?</p>
                             <div>
                                 <div class="caixa-input-radio">
@@ -58,20 +78,29 @@
                                 </select>
                             </div>
 
-                        </div>
+                        </div> -->
+                        <h2 id="tempo-fermentacao">TEMPO DE FERMENTAÇÃO</h2>
+                        <p id="tanques"><span>16</span>h</p>
                     </div>
                     <div class="elemento-estreito elemento center formatacao">
-                        <h2>Tanques Ativos</h2>
-                        <p id="tanques-ativos"><span>10/</span>22</p>
+                        <h2>TANQUE</h2>
+                        <p id="tanques"><span>01/</span>10</p>
+                        <h2 id="tinto">TINTO</h2>
                     </div>
                     <div class="elemento-largo elemento">
                         <canvas id="grafico3" class="center"></canvas>
                     </div>
                 </div>
                 <div class="linha-dashboard">
+                    <div class="elemento-estreito elemento center formatacao">
+                        <h2>STATUS</h2>
+                        <p id="status-ok"><span>OK</span></p>
+                        <h2>TANQUE-01</h2>
+                    </div>
                     <div class="elemento-largo-grande elemento">
                         <canvas id="grafico1" class="center"></canvas>
                     </div>
+
                     <div class="elemento-largo-grande elemento">
                         <canvas id="grafico2" class="center"></canvas>
                     </div>
