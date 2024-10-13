@@ -791,6 +791,7 @@ footer li {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .elemento {
@@ -866,6 +867,7 @@ footer li {
 .elemento-estreito {
     height: 90%;
     width: 18%;
+    font-weight: bolder;
 }
 
 .elemento-largo {
@@ -884,13 +886,27 @@ canvas {
     margin: 0 auto;
 }
 
-#tanques-ativos {
+#tanques {
     font-size: 6rem;
 }
 
-#tanques-ativos span {
+#tanques span {
     font-size: 10rem;
     color: darkred;
+}
+
+#tinto {
+    color: darkred;
+    font-weight: bolder;
+}
+
+#status-ok span {
+    font-size: 10rem;
+    color: green;
+}
+
+#tempo-fermentacao {
+    text-align: center;
 }
 
 /* Fim da Dashboard */
