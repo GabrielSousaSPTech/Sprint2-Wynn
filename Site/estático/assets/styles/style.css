@@ -2,8 +2,66 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Mina:wght@400;700&display=swap');
 
-html {
-    font-size: 62.5%;
+@media (min-width:701px) {
+    html {
+        font-size: 62.5%;
+    }
+}
+
+@media (max-width:700px) {
+    html {
+        font-size: 50%;
+    }
+    
+    header {
+        padding: 0 2rem;
+    }
+
+    header div.container {
+        flex-direction: row;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    header .container img.logoWynn#home {
+        order: -1;
+    }
+
+    main article#sobre-nos {
+        height: fit-content;
+    }
+
+    main article div.container div#imagem {
+        height: 37.5rem;
+        margin-top: 2rem;
+
+        order: -1;
+    }
+
+    .container {
+        flex-direction: column;
+    }
+    
+    section#missao {
+        padding: 5rem 0;
+        height: fit-content;
+    }
+    
+    section#missao .container {
+        align-items: center;
+        gap: 5rem;
+    }
+
+    section#missao div.card {
+        width: 90%;
+        max-width: 40rem;
+    }
+}
+
+@media (max-width:500px) {
+    html {
+        font-size: 40%;
+    }
 }
 
 a,
@@ -26,6 +84,9 @@ body {
 }
 
 header {
+    box-sizing: border-box;
+
+    height: 7rem;
     padding-top: .3rem;
     padding-bottom: .8rem;
 
@@ -81,6 +142,28 @@ header nav ul {
 
 header nav li {
     font-size: 2.7rem;
+}
+
+@media (max-width:400px) {
+    header > .container {
+        justify-content: flex-end;
+        gap: 1.3rem;
+    }
+
+    .logoWynn#home {
+        position: absolute;
+        left: 1%;
+        top: 0.5%;
+    }
+
+    header nav {
+        width: 15rem;
+    }
+
+    nav > ul > li {
+        font-size: 2.5rem;
+    }
+
 }
 
 #banner {
@@ -191,12 +274,12 @@ main article .container {
     gap: 2rem;
 }
 
-.container #sobre-nos {
-    min-width: 30%;
-    max-width: 70%;
+#caixa-texto {
+    width: 70%;
 }
 
-#sobre-nos h2 {
+
+#caixa-texto h2 {
     width: fit-content;
     height: 7rem;
 
@@ -205,7 +288,7 @@ main article .container {
     border-bottom: .2rem solid black;
 }
 
-#sobre-nos p {
+#caixa-texto p {
     font: 2rem Playfair;
     margin: 2rem 0;
 }
@@ -303,6 +386,20 @@ aside#contato .card {
 
     background-color: black;
     color: white;
+}
+
+@media (max-width:768px) {
+    aside#contato {
+        justify-content: center;
+    }
+
+    aside#contato div.card {
+        margin: 0;
+    }
+
+    aside#contato button {
+        align-self: center;
+    }
 }
 
 
