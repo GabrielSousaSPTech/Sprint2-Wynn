@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DashBoard</title>
+    <link rel="stylesheet" href="assets/styles/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+
+
+    </style>
+</head>
+
+<body>
+    <section id="banner">
+        <header class="header-dashboard">
+            <a href="index.html"><img class="logoWynn" src="assets/imgs/logoWynn.png" alt=""></a>
+        </header>
+        <div class="container-dashboard center">
+            <div class="dashboard">
+                <div class="titulo-dashboard"></div>
+                <div class="linha-dashboard">
+                    <div class="elemento-duplo-caixa">
+                        <div class="elemento-duplo elemento">
+                            <canvas id="grafico4" class="center"></canvas>
+                        </div>
+                        <div class="elemento-duplo elemento center formatacao">
+                            <p>Última Medição de Temperatura</p>
+                            <h3>28°</h3>
+                        </div>
+                    </div>
+                    <div class="elemento-estreito elemento center formatacao">
+                        <div class="caixa">
+                            <p>Como quer visualizar seu painel de controle?</p>
+                            <div>
+                                <div class="caixa-input-radio">
+                                    <p>Geral: </p><input type="radio" name="controle" value="1">
+                                </div>
+                                <div class="caixa-input-radio">
+                                    <p>Individual: </p><input type="radio" name="controle" value="2" checked>
+                                </div>
+                            </div>
+                            <div>
+                                <p>Tipo de Vinho</p>
+                                <select name="" id="">
+                                    <option value="">Tinto I</option>
+                                    <option value="">Tinto II</option>
+                                    <option value="">Tinto III</option>
+                                    <option value="">Tinto IV</option>
+                                    <option value="">Tinto V</option>
+                                    <option value="">Branco I</option>
+                                    <option value="">Branco II</option>
+                                    <option value="">Branco III</option>
+                                    <option value="">Frisante I</option>
+                                    <option value="">Frisante II</option>
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="elemento-estreito elemento center formatacao">
+                        <h2>Tanques Ativos</h2>
+                        <p id="tanques-ativos"><span>10/</span>22</p>
+                    </div>
+                    <div class="elemento-largo elemento">
+                        <canvas id="grafico3" class="center"></canvas>
+                    </div>
+                </div>
+                <div class="linha-dashboard">
+                    <div class="elemento-largo-grande elemento">
+                        <canvas id="grafico1" class="center"></canvas>
+                    </div>
+                    <div class="elemento-largo-grande elemento">
+                        <canvas id="grafico2" class="center"></canvas>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </section>
+
+    </section>
+</body>
+
+</html>
+
+<script src="./JS/index.js"></script>

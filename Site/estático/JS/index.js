@@ -35,3 +35,111 @@ function simulacaoNovamente() {
     desperdicio.value = ""
     preco.value = ""
 }
+
+// Chart Js
+
+const ctx1 = document.getElementById('grafico1');
+
+new Chart(ctx1, {
+    type: 'line',
+    data: {
+        labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+        datasets: [{
+            label: 'Temperatura',
+            data: [27.5, 28.5, 30.2, 29.3, 28.7, 29.6],
+            borderWidth: 3
+        },
+        {
+            label: 'Limite Máximo',
+            data: [35, 35, 35, 35, 35, 35],
+            borderWidth: 1
+        },
+        {
+            label: 'Limite Mínimo',
+            data: [24, 24, 24, 24, 24, 24],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: false
+            }
+        }
+    }
+});
+
+const ctx2 = document.getElementById('grafico2');
+
+new Chart(ctx2, {
+    type: 'line',
+    data: {
+        labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+        datasets: [{
+            label: 'CO2',
+            data: [80, 82, 79, 76, 74, 72],
+            borderWidth: 3
+        },
+        {
+            label: 'Média',
+            data: [77, 77, 77, 77, 77, 77],
+            borderWidth: 1
+        }
+        ]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: false
+            }
+        }
+    }
+});
+
+const ctx3 = document.getElementById('grafico3');
+
+new Chart(ctx3, {
+    type: 'bar',
+    data: {
+        labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+        datasets: [{
+            label: 'Temperatura',
+            data: [27.5, 28.5, 30.2, 29.3, 28.7, 29.6],
+            borderWidth: 1
+        },
+        {
+            label: 'CO2',
+            data: [80, 82, 79, 76, 74, 72],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: false
+            }
+        }
+    }
+});
+
+const ctx4 = document.getElementById('grafico4');
+
+new Chart(ctx4, {
+    type: 'doughnut',
+    data: {
+        labels: ['CO2', 'outros',],
+        datasets: [{
+            label: 'CO2',
+            data: [72, 28],
+            borderWidth: 1,
+            cutout: '70%',
+            circumference: 180,
+            rotation: 270
+        }]
+    },
+    options: {
+        aspectRatio: 2
+    }
+
+});
+

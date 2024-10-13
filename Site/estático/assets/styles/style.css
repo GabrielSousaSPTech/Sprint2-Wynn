@@ -324,7 +324,7 @@ main section {
 
 main section .container {
     align-items: flex-start;
-    
+
 }
 
 section#missao .card {
@@ -650,80 +650,282 @@ footer li {
     text-align: center;
 }
 
-@media (max-width:1500px){
+@media (max-width:1500px) {
+
     #containerFormulario,
-#containerFormularioResposta {
-    width: 90rem;
-    height: 70rem;
+    #containerFormularioResposta {
+        width: 90rem;
+        height: 70rem;
+    }
+
+    .containerInput input {
+        font-size: 3rem;
+    }
+
+    .containerInput p {
+        font-size: 3rem;
+    }
+
+    .btnFormulario {
+        height: 10rem;
+        width: 18rem;
+        font-size: 2.5rem;
+    }
 }
 
-.containerInput input {
-    font-size: 3rem;
-}
+@media (max-width:600px) {
 
-.containerInput p {
-    font-size: 3rem;
-}
-
-.btnFormulario {
-    height: 10rem;
-    width: 18rem;
-    font-size: 2.5rem;
-}
-}
-@media (max-width:600px){
     #containerFormulario,
-#containerFormularioResposta {
-    width: 40rem;
-    height: 60rem;
-}
-#containerFormularioResposta {
-    height: 50rem;
+    #containerFormularioResposta {
+        width: 40rem;
+        height: 60rem;
+    }
+
+    #containerFormularioResposta {
+        height: 50rem;
+    }
+
+    .containerInput input {
+        font-size: 1.5rem;
+    }
+
+    .containerInput p {
+        font-size: 1.5rem;
+    }
+
+    .btnFormulario {
+        height: 08rem;
+        width: 12rem;
+    }
+
+
+    #containerFormularioResposta p {
+        width: 70%;
+        text-align: justify;
+        font-size: 1.2rem;
+        color: #D9D9D9;
+        font-family: 'Mina';
+
+    }
+
+    #containerFormularioResposta p span {
+        font-weight: bold;
+        font-size: 1.8rem;
+    }
+
+    #containerFormularioResposta h2 {
+        font-family: 'Mina';
+        font-size: 1.8rem;
+    }
+
+    #containerFormularioResposta span {
+        font-family: 'Mina';
+        font-size: 1.2rem;
+        cursor: pointer;
+        margin-top: .5rem;
+    }
+
+    #containerFormularioResposta img {
+        align-self: flex-end;
+        padding-inline: 3rem;
+
+    }
 }
 
-.containerInput input {
-    font-size: 1.5rem;
+/* Inicio da Dashboard */
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.containerInput p {
-    font-size: 1.5rem;
+.header-dashboard {
+    width: 100%;
+    height: 10%;
+    background-color: rgba(0, 0, 0, 0.9);
 }
 
-.btnFormulario {
-    height: 08rem;
+.container-dashboard {
+    width: 100%;
+    height: 88.5%;
+}
+
+.dashboard {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(128, 0, 49, 0.8);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.titulo-dashboard {
+    width: 100%;
+    height: 10%;
+}
+
+.linha-dashboard {
+    width: 95%;
+    height: 45%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.elemento {
+    background-color: rgb(245, 245, 245);
+    border-radius: 2rem;
+}
+
+.elemento-duplo-caixa {
+    height: 90%;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.elemento-duplo {
+    height: 45%;
+    width: 100%;
+
+}
+
+.caixa {
+    height: 100%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.caixa select {
+    outline: none;
+    height: 3rem;
     width: 12rem;
+    font-size: 2rem;
+    text-align: center;
+    border-radius: 2rem;
+    margin-top: 1rem;
 }
 
+.caixa-input-radio {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+}
 
-#containerFormularioResposta p {
-    width: 70%;
+.formatacao {
+    flex-direction: column;
+    font-family: monospace;
     text-align: justify;
-    font-size: 1.2rem;
-    color: #D9D9D9;
-    font-family: 'Mina';
+}
+
+.formatacao p {
+    color: black;
+    font-size: 1.6rem;
+    font-weight: bolder;
+}
+
+.formatacao h2 {
+    color: black;
+    font-size: 3rem;
+    font-weight: bolder;
+    margin-top: 1rem;
+}
+
+.formatacao h3 {
+    color: darkred;
+    font-size: 4rem;
+    font-weight: bolder;
+    margin-top: 1rem;
+}
+
+.elemento-estreito {
+    height: 90%;
+    width: 18%;
+}
+
+.elemento-largo {
+    height: 90%;
+    width: 40%;
+}
+
+.elemento-largo-grande {
+    height: 90%;
+    width: 48%;
+}
+
+canvas {
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+}
+
+#tanques-ativos {
+    font-size: 6rem;
+}
+
+#tanques-ativos span {
+    font-size: 10rem;
+    color: darkred;
+}
+
+/* Fim da Dashboard */
+
+.btnLogin {
+    font-size: 2.5rem;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+}
+
+#containerLogin .campo {
+    width: 50rem;
+    display: flex;
+    flex-direction: column;
 
 }
 
-#containerFormularioResposta p span {
+#containerLogin {
+    width: 85rem;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 3rem 4rem;
+    gap: 2rem;
+}
+
+#containerLogin input {
+    width: 100%;
+    font-size: 2rem;
+}
+
+#containerLogin h1 {
+    font-size: 6rem;
+
+}
+
+#containerLogin h2 {
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+#containerLogin p {
+    font-size: 2rem;
+
+}
+
+#containerLogin .campo p {
+    align-self: flex-start;
+
+}
+
+#containerLogin a {
     font-weight: bold;
-    font-size: 1.8rem;
-}
-
-#containerFormularioResposta h2 {
-    font-family: 'Mina';
-    font-size: 1.8rem;
-}
-
-#containerFormularioResposta span {
-    font-family: 'Mina';
-    font-size: 1.2rem;
-    cursor: pointer;
-    margin-top: .5rem;
-}
-
-#containerFormularioResposta img {
-    align-self: flex-end;
-    padding-inline: 3rem;
-
-}
 }
