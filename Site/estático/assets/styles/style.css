@@ -853,6 +853,21 @@ footer li {
     background-color: darkred;
 }
 
+.item-logout {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    margin-top: 20rem;
+}
+
+.item-logout img {
+    width: 2rem;
+}
+.item-logout span {
+    font-size: 2rem; 
+    font-weight: 600;
+}
+
 #banner-Dashboard {
     min-height: 100vh;
     background: scroll url(../imgs/fundo-barris-vinho.jpg) center center no-repeat;
@@ -1074,7 +1089,7 @@ canvas {
     display: flex;
 }
 
-.campo span #senhaLogin {
+.campo span #senha {
     width: 100%;
     font-size: 2rem;
     border: none;

@@ -1,22 +1,29 @@
-function mostrarSenhaLogin(){
 
-    if(senhaLogin.type == 'password') {
-        showHideSenha.src = './assets/icons/olho-fechado.png'
-        senhaLogin.type = 'text'
-    } else {
-        showHideSenha.src = './assets/icons/olho-aberto.png'
-        senhaLogin.type = 'password'
-
-    }
-}
-
-function checarCredenciais(){
+function checarCredenciais() {
     const email = emailLogin.value
     const senha = senhaLogin.value
 
-    if(email == 'sptech' && senha == 'urubu100'){
-        window.location.href = './dashboard.html'
-    }else {
-        respostaVerificacao.innerText = 'Usuário ou senha inválido(s)'
+    const verificacaoEmail = email == 'sptech@sptech';
+    const verificacaoSenha = senha == 'urubu100'
+    var fraseErroDeLogin = ''
+    var isEmail = false
+    for (var indiceEmail = 0; indiceEmail < email.length; indiceEmail++) {
+        if (email[indiceEmail] == '@') {
+            isEmail = true
+            indiceEmail = email.length-1
+        }
     }
+        if(isEmail){
+
+            if (verificacaoEmail && verificacaoSenha) {
+                
+                window.location.href = './dashboard.html'
+            } else {
+                    fraseErroDeLogin = 'Usuário ou senha inválido(s)'
+                }
+        }else{
+            fraseErroDeLogin = 'Digite um E-mail'
+        }
+
+    respostaVerificacao.innerText = fraseErroDeLogin
 }
