@@ -33,17 +33,20 @@
 
                 <div class="campo">
                     <p>Email:</p>
-                    <input type="text" required>
+                    <input id="emailLogin" type="text" required>
                 </div>
                 <div class="campo">
                     <p>Senha:</p>
-                    <input type="password" required>
+                    <span>
+                        <input type="password" id="senhaLogin" required>
+                        <button onclick="mostrarSenhaLogin()"><img id="showHideSenha" style="width: 3rem;" src="./assets/icons/olho-aberto.png" alt=""></button>
+                    </span>
                 </div>
-
-                <a href="dashboard.html"><button class="btnLogin">Entrar</button></a>
+                <span id="respostaVerificacao"></span>
+                <button class="btnLogin" onclick="checarCredenciais()">Entrar</button>
 
                 <p>Não tem uma conta ? <a href="cadastro.html">Cadastre-se</a></p>
-
+                
                 <div id="vamoLa"></div>
             </div>
 
@@ -57,4 +60,5 @@
 
 </html>
 
+<script src="./JS/login.js"></script>
 <script src="./JS/index.js"></script>

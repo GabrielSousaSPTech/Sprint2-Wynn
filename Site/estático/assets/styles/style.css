@@ -1057,8 +1057,33 @@ canvas {
 }
 
 #containerLogin input {
+    font-size: 2rem;
+    border: none;
+}
+.campo span {
+    display: flex;
+}
+
+ .campo span #senhaLogin{
     width: 100%;
     font-size: 2rem;
+    border: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.campo span  {
+    border: 1px solid #FEFEFE;
+border-radius: 0.4rem;
+}
+.campo span button:focus {
+    transform: none; /* Remove transformações */
+    box-shadow: none; /* Remove qualquer sombra */
+}
+
+#respostaVerificacao{
+    font-size: 2rem;
+    font-weight: bold;
+    color: red;
 }
 
 #containerLogin h1 {
