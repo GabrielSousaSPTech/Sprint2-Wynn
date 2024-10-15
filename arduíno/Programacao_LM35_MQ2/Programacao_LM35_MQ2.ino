@@ -36,26 +36,10 @@ void loop() {
 
   // Exibindo valores no Monitor Serial
 
-  // Valores mínimos e máximos 
-/*   Serial.print("Min_Gás:");
-  Serial.print(35);
-  Serial.print(" ");
-  Serial.print("Max_Gás:");
-  Serial.print(80);
-  Serial.print(" ");
-  Serial.print("Min_Temperatura:");
-  Serial.print(12);
-  Serial.print(" ");
-  Serial.print("Max_Temperatura:");
-  Serial.print(30);
-  Serial.print(" "); */
-
-  // Valores dos Sensores
- /*  Serial.print("Temperatura:"); */
   Serial.print(porcentagem_gas);
   Serial.print(";");
   Serial.println(temperaturaCelsius);
- /*  Serial.print("Gás:"); */
+
   
   // Determinando o tempo do loop
   delay(10000); 
