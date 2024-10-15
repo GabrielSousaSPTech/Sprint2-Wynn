@@ -672,6 +672,7 @@ footer li {
         width: 18rem;
         font-size: 2.5rem;
     }
+
 }
 
 @media (max-width:600px) {
@@ -737,10 +738,10 @@ footer li {
 
 .hanburger-menu {
     position: absolute;
-    top: 0;
+    top: 2vh;
     left: -25rem;
     width: 32rem;
-    height: 100%;
+    height: 100vh;
     z-index: 100;
     display: flex;
     flex-direction: row-reverse;
@@ -854,17 +855,18 @@ footer li {
 }
 
 .item-logout {
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: 20rem;
 }
 
 .item-logout img {
     width: 2rem;
 }
+
 .item-logout span {
-    font-size: 2rem; 
+    font-size: 2rem;
     font-weight: 600;
 }
 
@@ -884,7 +886,7 @@ footer li {
 
 .header-dashboard {
     width: 100%;
-    height: 8rem;
+    height: 10vh;
     background-color: rgba(0, 0, 0, 0.9);
 }
 
@@ -895,11 +897,11 @@ footer li {
 
 .dashboard {
     width: 100%;
-    min-height: 72rem;
+    min-height: 90vh;
     background-color: rgba(128, 0, 49, 0.8);
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -908,20 +910,21 @@ footer li {
     height: 10%;
     font-size: 2rem;
     font-weight: bolder;
-    margin: 2rem 0;
+    margin: 3rem 0;
 }
 
 .linha-dashboard {
     width: 95%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
 }
 
 .elemento {
-    background-color: rgb(245, 245, 245);
-    border-radius: 2rem;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: .1rem .1rem 1rem .1rem black;
 }
 
 .elemento-duplo-caixa {
@@ -931,7 +934,7 @@ footer li {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 3rem;
+    margin: 0 1rem 3rem;
 }
 
 .elemento-duplo {
@@ -994,19 +997,20 @@ footer li {
     height: 28rem;
     width: 30rem;
     font-weight: bolder;
-    margin-bottom: 3rem;
+    margin: 0 1rem 3rem;
 }
 
 .elemento-largo {
     height: 28rem;
     width: 62.5rem;
-    margin-bottom: 3rem;
+    margin: 0 1rem 3rem;
 }
 
 .elemento-largo-grande {
     height: 28rem;
     width: 62.5rem;
-    margin-bottom: 3rem;
+
+    margin: 0 1rem 3rem;
 }
 
 canvas {
@@ -1051,6 +1055,117 @@ canvas {
     color: green;
 }
 
+/* Responsividade */
+@media (max-width: 1689px) {
+    .elemento-largo-grande {
+        height: 44rem;
+        width: 95rem;
+    }
+
+}
+
+@media (max-width: 1015px) {
+    .elemento-largo-grande {
+        height: 28rem;
+        width: 62.5rem;
+    }
+
+    #dashboard_alerta {
+        order: -1;
+    }
+
+}
+
+@media (max-width: 538px) {
+    .elemento-estreito {
+        height: 26rem;
+        width: 27rem;
+        font-size: 5rem;
+    }
+
+    .elemento-duplo-caixa {
+        height: 26rem;
+        width: 27rem;
+    }
+
+    .caixa-input-radio {
+        width: 90%;
+    }
+
+}
+
+@media (max-width: 500px) {
+    .elemento-estreito {
+        height: 28rem;
+        width: 29rem;
+        font-size: 5rem;
+    }
+
+    .elemento-duplo-caixa {
+        height: 28rem;
+        width: 30rem;
+    }
+
+}
+
+@media (max-width: 430px) {
+
+    .elemento-estreito {
+        height: 28rem;
+        width: 28rem;
+        margin: 0 0.5rem 3rem;
+    }
+
+    .elemento-duplo-caixa {
+        height: 28rem;
+        width: 30rem;
+        margin: 0 0.5rem 3rem;
+    }
+
+}
+
+
+@media (max-width: 404px) {
+
+    .elemento-estreito {
+        height: 28rem;
+        width: 26rem;
+    }
+
+    .elemento-duplo-caixa {
+        height: 28rem;
+        width: 28rem;
+    }
+
+}
+
+@media (max-width: 377px) {
+
+    .elemento-estreito {
+        height: 28rem;
+        width: 25rem;
+    }
+
+    .elemento-duplo-caixa {
+        height: 28rem;
+        width: 26rem;
+    }
+
+}
+
+@media (max-width: 356px) {
+
+    .elemento-estreito {
+        height: 30rem;
+        width: 24rem;
+    }
+
+    .elemento-duplo-caixa {
+        height: 30rem;
+        width: 24rem;
+    }
+
+}
 
 
 /* Fim da Dashboard */
