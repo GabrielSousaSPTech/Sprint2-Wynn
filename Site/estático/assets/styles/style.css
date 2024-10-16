@@ -941,6 +941,8 @@ footer li {
     height: 45%;
     width: 100%;
     font-family: monospace;
+    box-sizing: border-box;
+    padding: 1rem;
 }
 
 .caixa {
@@ -1032,7 +1034,7 @@ canvas {
 }
 
 #tanques span {
-    font-size: 6rem;
+    font-size: 5rem;
     color: darkred;
 }
 

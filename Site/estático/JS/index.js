@@ -125,24 +125,44 @@ new Chart(ctx3, {
 
 const ctx4 = document.getElementById('grafico4');
 
-new Chart(ctx4, {
-    type: 'doughnut',
-    data: {
-        labels: ['CO2', 'outros',],
-        datasets: [{
-            label: 'CO2',
-            data: [72, 28],
-            borderWidth: 1,
-            cutout: '70%',
-            circumference: 180,
-            rotation: 270
-        }]
+const data = {
+    /* labels: ['CO2', 'Outros'], */
+    datasets: [{
+        data: [72, 28],
+        borderWidth: 1,
+        cutout: '70%',
+        circumference: 200,
+        rotation: 260,
     },
+    ]
+};
+
+
+const doughnutLabel = {
+    id: 'doughnutLabel',
+    beforeDatasetsDraw(chart, args, pluginOptions) {
+        const { ctx, data } = chart;
+        ctx.save();
+        const xCoor = chart.getDatasetMeta(0).data[0].x;
+        const yCoor = chart.getDatasetMeta(0).data[0].y;
+        ctx.font = 'bold 4rem sans-serif';
+        ctx.fillStyle = 'darkred';
+        ctx.textAlign = 'center';
+        ctx.textBaseLine = 'middle';
+        ctx.fillText(data.datasets[0].data[0], xCoor, yCoor);
+    }
+}
+// config 
+const config = {
+    type: 'doughnut',
+    data,
     options: {
         aspectRatio: 2
-    }
+    },
+    plugins: [doughnutLabel]
+};
 
-});
+new Chart(ctx4, config);
 
 // H-Menu
 const hamburgerMenu = document.getElementById('h-menu');
