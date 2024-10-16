@@ -738,7 +738,7 @@ footer li {
 
 .hanburger-menu {
     position: absolute;
-    top: 2vh;
+    top: 1.5%;
     left: -25rem;
     width: 32rem;
     height: 100vh;
@@ -871,7 +871,7 @@ footer li {
 }
 
 #banner-Dashboard {
-    min-height: 100vh;
+    min-height: 102vh;
     background: scroll url(../imgs/fundo-barris-vinho.jpg) center center no-repeat;
     background-size: cover;
     font-family: Italiana;
@@ -897,7 +897,7 @@ footer li {
 
 .dashboard {
     width: 100%;
-    min-height: 90vh;
+    min-height: 92vh;
     background-color: rgba(128, 0, 49, 0.8);
     display: flex;
     flex-direction: column;
@@ -1064,7 +1064,7 @@ canvas {
 
 }
 
-@media (max-width: 1015px) {
+@media (max-width: 1024px) {
     .elemento-largo-grande {
         height: 28rem;
         width: 62.5rem;
