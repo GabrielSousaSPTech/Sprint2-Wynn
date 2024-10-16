@@ -25,33 +25,40 @@
                 
                 <h1>Cadastro</h1>
                 <hr>
-                <h2>Seja bem-vindo(a)! <br>
-                Realize o cadastro para ter acesso aos nossos serviços.</h2>
+                <h2> Complete seu cadastro </h2>
                 
                 <div class="campo">
-                    <p>Nome:</p>
+                    <p>CNPJ:</p>
                     <input type="text" required>
                 </div>
                 <div class="campo">
-                    <p>E-mail:</p>    
+                    <p>Rua/Logradouro:</p>    
                     <input type="text" required>
                 </div>
                 
                 <div class="campo">    
-                    <p>Senha:</p>
-                    <input type="password" id="senhaCadastro" required>
+                    <p>Bairro:</p>
+                    <input type="text" required>
                 </div>
 
                 <div class="campo">    
-                    <p>Confirmar Senha:</p>
-                    <input type="password" id="senhaCadastro" required>
+                    <p>Cidade:</p>
+                    <input type="text" required>
+                </div>
+
+                <div class="campo">    
+                    <p>UF:</p>
+                    <input type="text" required>
+                </div>
+
+                <div class="campo">    
+                    <p>Complemento:</p>
+                    <input type="text" required>
                 </div>
                 
                 
                 
-                <button class="btnLogin" id="continuarCadastro" >Cadastrar</button>
-                
-                <p>Já tem uma conta? <a href="login.html">Login</a></p>
+                <button class="btnLogin" id="finalizarCadastro" >Finalizar Cadastro</button>
                 
                 
                 <div id="vamoLa"></div>
@@ -69,7 +76,7 @@
 <script src="./JS/index.js"></script>
 
 <script>
-    document.getElementById("continuarCadastro").onclick = function() {
-        window.location.href = './complementoCadastro.html'
+    document.getElementById("finalizarCadastro").onclick = function() {
+        window.location.href = './dashboard.html'
     }
 </script>
