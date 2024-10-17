@@ -898,7 +898,8 @@ footer li {
 .dashboard {
     width: 100%;
     min-height: 92vh;
-    background-color: rgba(128, 0, 49, 0.8);
+    /* background-color: rgba(78, 0, 30, 0.9); */
+    background-color: rgba(0, 0, 0, 0.7);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -923,7 +924,7 @@ footer li {
 
 .elemento {
     background-color: white;
-    border-radius: 1rem;
+    border-radius: .5rem;
     box-shadow: .1rem .1rem 1rem .1rem black;
 }
 
