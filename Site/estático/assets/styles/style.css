@@ -1067,7 +1067,7 @@ canvas {
 
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1015px) {
     .elemento-largo-grande {
         height: 28rem;
         width: 62.5rem;
@@ -1082,6 +1082,38 @@ canvas {
 @media (max-width: 538px) {
     .elemento-estreito {
         height: 26rem;
+        width: 29rem;
+        font-size: 5rem;
+    }
+
+    .elemento-duplo-caixa {
+        height: 26rem;
+        width: 29rem;
+    }
+
+    .caixa-input-radio {
+        width: 90%;
+    }
+
+}
+
+@media (max-width: 522px) {
+    .elemento-estreito {
+        height: 26rem;
+        width: 28rem;
+        font-size: 5rem;
+    }
+
+    .elemento-duplo-caixa {
+        height: 26rem;
+        width: 28rem;
+    }
+
+}
+
+@media (max-width: 505px) {
+    .elemento-estreito {
+        height: 26rem;
         width: 27rem;
         font-size: 5rem;
     }
@@ -1089,10 +1121,6 @@ canvas {
     .elemento-duplo-caixa {
         height: 26rem;
         width: 27rem;
-    }
-
-    .caixa-input-radio {
-        width: 90%;
     }
 
 }
@@ -1106,7 +1134,7 @@ canvas {
 
     .elemento-duplo-caixa {
         height: 28rem;
-        width: 30rem;
+        width: 29rem;
     }
 
 }
@@ -1121,7 +1149,7 @@ canvas {
 
     .elemento-duplo-caixa {
         height: 28rem;
-        width: 30rem;
+        width: 28rem;
         margin: 0 0.5rem 3rem;
     }
 
@@ -1132,12 +1160,12 @@ canvas {
 
     .elemento-estreito {
         height: 28rem;
-        width: 26rem;
+        width: 27rem;
     }
 
     .elemento-duplo-caixa {
         height: 28rem;
-        width: 28rem;
+        width: 27rem;
     }
 
 }
@@ -1156,7 +1184,7 @@ canvas {
 
 }
 
-@media (max-width: 356px) {
+@media (max-width: 363px) {
 
     .elemento-estreito {
         height: 30rem;
