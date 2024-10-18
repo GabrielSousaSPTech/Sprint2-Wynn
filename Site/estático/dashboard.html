@@ -53,25 +53,21 @@
                             <p>Como quer visualizar seu painel de controle?</p>
                             <div>
                                 <div class="caixa-input-radio">
-                                    <p>Geral: </p><input type="radio" name="controle" value="1">
+                                    <p>Geral: </p><input type="radio" name="controle" value="1" id="geral-tipo-vinho"
+                                        onclick="mudarDashboardGeral()" checked>
                                 </div>
                                 <div class="caixa-input-radio">
-                                    <p>Individual: </p><input type="radio" name="controle" value="2" checked>
+                                    <p>Individual: </p><input type="radio" name="controle" value="2"
+                                        id="individual-tipo-vinho" onclick="mudarDashboardIndividual()">
                                 </div>
                             </div>
-                            <div>
-                                <p>Escolher Tanque</p>
-                                <select name="" id="">
-                                    <option value="">I - Tinto</option>
-                                    <option value="">II - Tinto</option>
-                                    <option value="">III - Tinto</option>
-                                    <option value="">IV - Tinto</option>
-                                    <option value="">V - Rose</option>
-                                    <option value="">VI - Rose</option>
-                                    <option value="">VII - Branco</option>
-                                    <option value="">VIII - Branco</option>
-                                    <option value="">IX - Frisante</option>
-                                    <option value="">X - Frisante</option>
+                            <div id="select-tipo-vinho">
+                                <p>Escolher Tipo de Vinho</p>
+                                <select id="select-tipo" onchange="mudarTipoVinho()">
+                                    <option value=" tinto">Tinto</option>
+                                    <option value="rose">Rose</option>
+                                    <option value="branco">branco</option>
+                                    <option value="frisante">Frisante</option>
                                 </select>
                             </div>
 
@@ -79,10 +75,15 @@
 
                     </div>
                     <div class="elemento-duplo-caixa">
-                        <div class="elemento-duplo elemento">
-                            <canvas id="grafico4" class="center"></canvas>
-                        </div>
                         <div class="elemento-duplo elemento center formatacao">
+                            <p style="text-align: center">
+                                CO2 (%)
+                            </p>
+                            <div id="display_CO2">
+                                <canvas id="grafico4" class="center"></canvas>
+                            </div>
+                        </div>
+                        <div class="elemento-duplo elemento center formatacao" id="display_temperatura">
                             <p style="text-align: center;">Temperatura</p>
                             <h3>28°</h3>
                         </div>
@@ -90,29 +91,29 @@
 
                     <div class="elemento-duplo-caixa">
                         <div class="elemento-duplo elemento">
-                            <h2 id="tanque">TANQUE</h2>
-                            <p id="tanques"><span>01/</span>10</p>
-                            <h2 id="tinto">TINTO</h2>
+                            <h2 id="h2tanque">TANQUES</h2>
+                            <p id="tanques"><span>1-4</span></p>
+                            <h2 id="h2tipo">TINTO</h2>
                         </div>
                         <div class="elemento-duplo elemento center formatacao">
-                            <h2 id="tempo-fermentacao">TEMPO DE FERMENTAÇÃO</h2>
-                            <p id="tanques"><span>16</span>h</p>
+                            <h2 id="tempo-fermentacao-h2">TEMPO DE FERMENTAÇÃO</h2>
+                            <p id="tempo-fermentacao"><span>16</span>h</p>
                         </div>
                     </div>
-                    <div class="elemento-largo elemento">
+                    <div class="elemento-largo elemento" id="display_grafico_duplo">
                         <canvas id="grafico3" class="center"></canvas>
                     </div>
 
                     <div id="dashboard_alerta" class="elemento-estreito elemento center formatacao">
                         <h2>STATUS</h2>
                         <p id="status-ok"><span>OK</span></p>
-                        <h2>TANQUE-01</h2>
+                        <h2 id="status-h2">TIPO-TINTO</h2>
                     </div>
-                    <div class="elemento-largo-grande elemento">
+                    <div class="elemento-largo-grande elemento" id="display_grafico_temp">
                         <canvas id="grafico1" class="center"></canvas>
                     </div>
 
-                    <div class="elemento-largo-grande elemento">
+                    <div class="elemento-largo-grande elemento" id="display_grafico_co2">
                         <canvas id="grafico2" class="center"></canvas>
                     </div>
                 </div>

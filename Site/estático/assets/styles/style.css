@@ -1022,7 +1022,12 @@ canvas {
     margin: 0 auto;
 }
 
-#tanque {
+#display_CO2 {
+    height: 80%;
+    width: 100%;
+}
+
+#h2tanque {
     text-align: center;
     font-size: 2.2rem;
     color: black;
@@ -1039,17 +1044,28 @@ canvas {
     color: darkred;
 }
 
-#tinto {
+#h2tipo {
     color: darkred;
     font-weight: bolder;
     text-align: center;
     font-size: 2.2rem;
 }
 
-#tempo-fermentacao {
+#tempo-fermentacao-h2 {
     text-align: center;
     font-size: 2.2rem;
     font-weight: bolder;
+}
+
+#tempo-fermentacao {
+    font-size: 2rem;
+    text-align: center;
+    color: black;
+}
+
+#tempo-fermentacao span {
+    font-size: 5rem;
+    color: darkred;
 }
 
 
