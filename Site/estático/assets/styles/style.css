@@ -97,6 +97,23 @@ header {
     background-color: rgba(0, 0, 0, 0.7);
 }
 
+.fundo-escuro {
+    background-color: rgba(0, 0, 0, 0.6); 
+    height: 100%;
+    width: 100%;
+}
+
+
+/* caso precise trocar o fundo das outras áreas
+
+aside#contato > div.fundo-escuro {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+    
+aside > div.fundo-escuro, footer > div.fundo-escuro {
+    background-color: rgba(0, 0, 0, 0.4);
+} */
+
 .container {
     width: 90%;
     max-width: 100rem;
@@ -197,19 +214,20 @@ header nav li {
     font-size: 3.8rem;
 }
 
-aside#mini-banner {
-    height: fit-content;
-    padding: 4rem 0;
+aside#mini-banner, aside > div.fundo-escuro {
+    height: 19rem;
 
     display: flex;
     align-items: center;
     justify-content: center;
+}
 
+aside#mini-banner {
     background: url(../imgs/fundo-vinicola.jpg) center center black;
     background-size: cover;
 }
 
-#mini-banner div {
+#mini-banner div#caixa-simulador {
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
@@ -362,13 +380,16 @@ main section hr {
     margin-top: 8rem;
 }
 
-aside#contato {
+aside#contato, aside#contato > div.fundo-escuro {
     height: 70rem;
 
     display: flex;
     justify-content: flex-end;
     align-items: center;
 
+}
+
+aside#contato {
     background: url(../imgs/fundo-loja-vinho.jpg) white center center;
     background-size: cover;
 }
@@ -465,20 +486,22 @@ section#info-empresa {
     white-space: nowrap;
 }
 
-footer {
+footer, footer > div.fundo-escuro {
     height: 30rem;
-
-    background: url(../imgs/fundo-vinicola.jpg) rgb(19, 19, 19) center center no-repeat;
-    background-size: cover;
-    color: white;
 
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+footer {
+    background: url(../imgs/fundo-vinicola.jpg) rgb(19, 19, 19) center center no-repeat;
+    background-size: cover;
+    color: white;
+}
 
-footer div {
+
+footer div#nav-footer {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -501,6 +524,10 @@ footer ul {
 
 footer li {
     font-size: 2.9rem;
+}
+
+footer p {
+    font-size: 1.5rem;
 }
 
 /* Início do Simulador */

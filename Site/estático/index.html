@@ -10,35 +10,38 @@
 
 <body>
     <section id="banner">
-        <header>
-            <div class="container">
-                <img class="logoWynn" id="home" src="./assets/imgs/logoWynn.png" alt="">
-                <nav>
-                    <ul>
-                        <li><a href="#sobre-nos">Sobre</a></li>
-                        <li><a href="#missao">Missão</a></li>
-                    </ul>
-                </nav>
-                <nav id="dois">
-                    <ul>
-                        <li><a href="#contato">Contato</a></li>
-                        <li><a href="login.html">Login</a></li>
-                    </ul>
-                </nav>
+        <div class="fundo-escuro">
+            <header>
+                <div class="container">
+                    <img class="logoWynn" id="home" src="./assets/imgs/logoWynn.png" alt="">
+                    <nav>
+                        <ul>
+                            <li><a href="#sobre-nos">Sobre</a></li>
+                            <li><a href="#missao">Missão</a></li>
+                        </ul>
+                    </nav>
+                    <nav id="dois">
+                        <ul>
+                            <li><a href="#contato">Contato</a></li>
+                            <li><a href="login.html">Login</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+            <div id="slogan">
+                <img class="logoWynn" src="./assets/imgs/logoWynn.png" alt="Logo da empresa">
+                <hr>
+                <p>Why not a Wynn for your life?</p>
             </div>
-        </header>
-
-        <div id="slogan">
-            <img class="logoWynn" src="./assets/imgs/logoWynn.png" alt="Logo da empresa">
-            <hr>
-            <p>Why not a Wynn for your life?</p>
         </div>
     </section>
     <aside id="mini-banner">
-        <div>
-            <hr>
-            <a href="simulador.html" rel="next"><button>Simulador Financeiro</button></a>
-            <hr>
+        <div class="fundo-escuro">
+            <div id="caixa-simulador">
+                <hr>
+                <a href="simulador.html" rel="next"><button>Simulador Financeiro</button></a>
+                <hr>
+            </div>
         </div>
     </aside>
     <main>
@@ -86,32 +89,29 @@
         </section>
     </main>
     <aside id="contato">
-        <div class="card">
-            <h2>Entre em contato</h2>
-
-            <div id="layout">
-                <div class="campo">
-                    <p>Nome</p>
-                    <input placeholder="Seu nome">
+        <div class="fundo-escuro">
+            <div class="card">
+                <h2>Entre em contato</h2>
+                <div id="layout">
+                    <div class="campo">
+                        <p>Nome</p>
+                        <input placeholder="Seu nome">
+                    </div>
+                    <div class="campo">
+                        <p>Telefone</p>
+                        <input placeholder="(11) 91234-9123">
+                    </div>
                 </div>
-
                 <div class="campo">
-                    <p>Telefone</p>
-                    <input placeholder="(11) 91234-9123">
+                    <p>E-mail</p>
+                    <input type="email" placeholder="contato@email.com">
                 </div>
+                <div class="campo">
+                    <p>Mensagem</p>
+                    <textarea placeholder="Como podemos ajudar?"></textarea>
+                </div>
+                <button>Enviar Mensagem</button>
             </div>
-
-            <div class="campo">
-                <p>E-mail</p>
-                <input type="email" placeholder="contato@email.com">
-            </div>
-
-            <div class="campo">
-                <p>Mensagem</p>
-                <textarea placeholder="Como podemos ajudar?"></textarea>
-            </div>
-
-            <button>Enviar Mensagem</button>
         </div>
 
     </aside>
@@ -136,23 +136,21 @@
 
     </section>
     <footer>
-        <div>
-            <img src="./assets/imgs/logoWynn.png" alt="Logo da empresa" class="logoWynn">
-
-            <hr>
-
-            <nav>
-                <ul>
-                    <li><a href="#sobre-nos">Sobre</a></li>
-                    <li><a href="#missao">Missão</a></li>
-                    <li><a href="simulador.html">Simulador</a></li>
-                    <li><a href="login.html">Login</a></li>
-                </ul>
-            </nav>
-
-            <hr>
-
-            <p><strong></strong>Copyright &copy; WYNN</strong> | Todos os direitos reservados.</p>
+        <div class="fundo-escuro">
+            <div id="nav-footer">
+                <img src="./assets/imgs/logoWynn.png" alt="Logo da empresa" class="logoWynn">
+                <hr>
+                <nav>
+                    <ul>
+                        <li><a href="#sobre-nos">Sobre</a></li>
+                        <li><a href="#missao">Missão</a></li>
+                        <li><a href="simulador.html">Simulador</a></li>
+                        <li><a href="login.html">Login</a></li>
+                    </ul>
+                </nav>
+                <hr>
+                <p><strong></strong>Copyright &copy; WYNN</strong> | Todos os direitos reservados.</p>
+            </div>
         </div>
     </footer>
 </body>
