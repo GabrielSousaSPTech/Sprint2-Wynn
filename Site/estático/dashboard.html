@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DashBoard</title>
     <link rel="stylesheet" href="./assets/styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
 
@@ -80,12 +81,18 @@
                                 CO2 (%)
                             </p>
                             <div id="display_CO2">
-                                <canvas id="grafico4" class="center"></canvas>
+                                <canvas id="display_co2_tinto" class="center"></canvas>
                             </div>
                         </div>
-                        <div class="elemento-duplo elemento center formatacao" id="display_temperatura">
+                        <div class="elemento-duplo elemento center formatacao">
                             <p style="text-align: center;">Temperatura</p>
-                            <h3>28°</h3>
+                            <div id="display_temperatura">
+                                <h3>
+                                    <span class="minima_temperatura">25,3°<i class="fa-solid fa-arrow-down"></i></span>
+                                    28,3°
+                                    <span class="maxima_temperatura">30,2°<i class="fa-solid fa-arrow-up"></i></span>
+                                </h3>
+                            </div>
                         </div>
                     </div>
 
@@ -97,11 +104,13 @@
                         </div>
                         <div class="elemento-duplo elemento center formatacao">
                             <h2 id="tempo-fermentacao-h2">TEMPO DE FERMENTAÇÃO</h2>
-                            <p id="tempo-fermentacao"><span>16</span>h</p>
+                            <p id="tempo-fermentacao">
+                                <span>30</span>h<span>|23</span>h<span>|18</span>h<span>|30</span>h
+                            </p>
                         </div>
                     </div>
                     <div class="elemento-largo elemento" id="display_grafico_duplo">
-                        <canvas id="grafico3" class="center"></canvas>
+                        <canvas id="chart_temp_co2_tinto" class="center"></canvas>
                     </div>
 
                     <div id="dashboard_alerta" class="elemento-estreito elemento center formatacao">
@@ -110,11 +119,11 @@
                         <h2 id="status-h2">TIPO-TINTO</h2>
                     </div>
                     <div class="elemento-largo-grande elemento" id="display_grafico_temp">
-                        <canvas id="grafico1" class="center"></canvas>
+                        <canvas id="chart_temp_tinto" class="center"></canvas>
                     </div>
 
                     <div class="elemento-largo-grande elemento" id="display_grafico_co2">
-                        <canvas id="grafico2" class="center"></canvas>
+                        <canvas id="chart_co2_tinto" class="center"></canvas>
                     </div>
                 </div>
 

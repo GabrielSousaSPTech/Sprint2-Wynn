@@ -105,18 +105,30 @@ function mudarTipoVinho() {
         divTanques.innerHTML = `<span>5-6`;
         h2Tipo.innerText = "ROSE";
         statush2.innerText = "TIPO-ROSE";
+        displayTempFermentacao.innerHTML = `
+        <span>14</span>h<span>|20</span>h
+        `
     } else if (tipoVinho == "branco") {
         divTanques.innerHTML = `<span>7-8`;
         h2Tipo.innerText = "BRANCO";
         statush2.innerText = "TIPO-BRANCO";
+        displayTempFermentacao.innerHTML = `
+        <span>10</span>h<span>|08</span>h
+        `
     } else if (tipoVinho == "frisante") {
         divTanques.innerHTML = `<span>9-10`;
         h2Tipo.innerText = "FRISANTE";
         statush2.innerText = "TIPO-FRISANTE";
+        displayTempFermentacao.innerHTML = `
+        <span>06</span>h<span>|12</span>h
+        `
     } else {
         divTanques.innerHTML = `<span>1-4`;
         h2Tipo.innerText = "TINTO";
         statush2.innerText = "TIPO-TINTO";
+        displayTempFermentacao.innerHTML = `
+        <span>30</span>h<span>|23</span>h<span>|18</span>h<span>|30</span>h
+        `
     }
 
 }
@@ -183,20 +195,35 @@ function mudarTanque() {
 }
 // Chart Js
 
-const ctx1 = document.getElementById('grafico1');
+const chartTempTinto = document.getElementById('chart_temp_tinto');
 
-new Chart(ctx1, {
+new Chart(chartTempTinto, {
     type: 'line',
     data: {
         labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
         datasets: [{
-            label: 'Temperatura',
+            label: 'Tanque-1',
             data: [27.5, 28.5, 30.2, 29.3, 28.7, 29.6],
-            borderWidth: 3
+            borderWidth: 2
+        },
+        {
+            label: 'Tanque-2',
+            data: [26.2, 26.5, 27.2, 26.3, 28.7, 27.6],
+            borderWidth: 2
+        },
+        {
+            label: 'Tanque-3',
+            data: [28.5, 27.8, 27.2, 28.6, 28.7, 27.4],
+            borderWidth: 2
+        },
+        {
+            label: 'Tanque-4',
+            data: [25.9, 26.0, 25.4, 25.3, 26.7, 28.8],
+            borderWidth: 2
         },
         {
             label: 'Limite Máximo',
-            data: [35, 35, 35, 35, 35, 35],
+            data: [32, 32, 32, 32, 32, 32],
             borderWidth: 1
         },
         {
@@ -214,21 +241,31 @@ new Chart(ctx1, {
     }
 });
 
-const ctx2 = document.getElementById('grafico2');
+const chartCO2Tinto = document.getElementById('chart_co2_tinto');
 
-new Chart(ctx2, {
+new Chart(chartCO2Tinto, {
     type: 'line',
     data: {
         labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
         datasets: [{
-            label: 'CO2',
-            data: [80, 82, 79, 76, 74, 72],
-            borderWidth: 3
+            label: 'Tanque-1',
+            data: [70, 70, 69, 68, 66, 65],
+            borderWidth: 2
         },
         {
-            label: 'Média',
-            data: [77, 77, 77, 77, 77, 77],
-            borderWidth: 1
+            label: 'Tanque-2',
+            data: [80, 82, 79, 79, 78, 78],
+            borderWidth: 2
+        },
+        {
+            label: 'Tanque-3',
+            data: [90, 88, 90, 89, 91, 90],
+            borderWidth: 2
+        },
+        {
+            label: 'Tanque-4',
+            data: [72, 71, 70, 69, 67, 66],
+            borderWidth: 2
         }
         ]
     },
@@ -241,21 +278,51 @@ new Chart(ctx2, {
     }
 });
 
-const ctx3 = document.getElementById('grafico3');
+const chartTempCO2Tinto = document.getElementById('chart_temp_co2_tinto');
 
-new Chart(ctx3, {
+new Chart(chartTempCO2Tinto, {
     type: 'bar',
     data: {
         labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
         datasets: [{
-            label: 'Temperatura',
+            label: 'Temp-1',
             data: [27.5, 28.5, 30.2, 29.3, 28.7, 29.6],
-            borderWidth: 1
+            borderWidth: 2
         },
         {
-            label: 'CO2',
-            data: [80, 82, 79, 76, 74, 72],
-            borderWidth: 1
+            label: 'CO2-1',
+            data: [70, 70, 69, 68, 66, 65],
+            borderWidth: 2
+        },
+        {
+            label: 'Temp-2',
+            data: [26.2, 26.5, 27.2, 26.3, 28.7, 27.6],
+            borderWidth: 2
+        },
+        {
+            label: 'CO2-2',
+            data: [80, 82, 79, 79, 78, 78],
+            borderWidth: 2
+        },
+        {
+            label: 'Temp-3',
+            data: [28.5, 27.8, 27.2, 28.6, 28.7, 27.4],
+            borderWidth: 2
+        },
+        {
+            label: 'CO2-3',
+            data: [90, 88, 90, 89, 91, 90],
+            borderWidth: 2
+        },
+        {
+            label: 'Temp-4',
+            data: [25.9, 26.0, 25.4, 25.3, 26.7, 28.8],
+            borderWidth: 2
+        },
+        {
+            label: 'CO2-4',
+            data: [72, 71, 70, 69, 67, 66],
+            borderWidth: 2
         }]
     },
     options: {
@@ -267,12 +334,12 @@ new Chart(ctx3, {
     }
 });
 
-const ctx4 = document.getElementById('grafico4');
+const displayCO2tinto = document.getElementById('display_co2_tinto');
 
 const data = {
     /* labels: ['CO2', 'Outros'], */
     datasets: [{
-        data: [72, 28],
+        data: [62, 38],
         borderWidth: 1,
         cutout: '70%',
         circumference: 200,
@@ -306,7 +373,7 @@ const config = {
     plugins: [doughnutLabel]
 };
 
-new Chart(ctx4, config);
+new Chart(displayCO2tinto, config);
 
 // H-Menu
 const hamburgerMenu = document.getElementById('h-menu');

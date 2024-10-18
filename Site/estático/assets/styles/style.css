@@ -98,7 +98,7 @@ header {
 }
 
 .fundo-escuro {
-    background-color: rgba(0, 0, 0, 0.6); 
+    background-color: rgba(0, 0, 0, 0.6);
     height: 100%;
     width: 100%;
 }
@@ -214,7 +214,8 @@ header nav li {
     font-size: 3.8rem;
 }
 
-aside#mini-banner, aside > div.fundo-escuro {
+aside#mini-banner,
+aside>div.fundo-escuro {
     height: 19rem;
 
     display: flex;
@@ -380,7 +381,8 @@ main section hr {
     margin-top: 8rem;
 }
 
-aside#contato, aside#contato > div.fundo-escuro {
+aside#contato,
+aside#contato>div.fundo-escuro {
     height: 70rem;
 
     display: flex;
@@ -486,7 +488,8 @@ section#info-empresa {
     white-space: nowrap;
 }
 
-footer, footer > div.fundo-escuro {
+footer,
+footer>div.fundo-escuro {
     height: 30rem;
 
     display: flex;
@@ -1049,6 +1052,20 @@ canvas {
     margin: 0 auto;
 }
 
+#display_temperatura h3 {
+    font-size: 3rem;
+}
+
+.minima_temperatura {
+    font-size: 1.6rem;
+    color: blue;
+}
+
+.maxima_temperatura {
+    font-size: 1.6rem;
+    color: red;
+}
+
 #display_CO2 {
     height: 80%;
     width: 100%;
@@ -1080,18 +1097,19 @@ canvas {
 
 #tempo-fermentacao-h2 {
     text-align: center;
-    font-size: 2.2rem;
+    font-size: 2rem;
     font-weight: bolder;
 }
 
 #tempo-fermentacao {
-    font-size: 2rem;
+    font-size: 1.6rem;
     text-align: center;
     color: black;
+    margin: 1.5rem 0;
 }
 
 #tempo-fermentacao span {
-    font-size: 5rem;
+    font-size: 3.5rem;
     color: darkred;
 }
 
