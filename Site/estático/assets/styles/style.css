@@ -29,6 +29,7 @@
 
     main article#sobre-nos {
         height: fit-content;
+        padding: 5rem 0;
     }
 
     main article div.container div#imagem {
@@ -53,8 +54,7 @@
     }
 
     section#missao div.card {
-        width: 90%;
-        max-width: 40rem;
+        width: 35rem;
     }
 }
 
@@ -412,7 +412,7 @@ aside#contato .card {
 }
 
 @media (max-width:768px) {
-    aside#contato {
+    aside#contato, aside#contato > div.fundo-escuro {
         justify-content: center;
     }
 
