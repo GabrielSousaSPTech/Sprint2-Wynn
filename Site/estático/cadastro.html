@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,69 +8,92 @@
     <link rel="stylesheet" href="../estático/assets/styles/style.css">
     <style>
 
-        
+
     </style>
 </head>
+
 <body style="background: url('../estático/assets/imgs/fundo-barris-vinho.jpg'); overflow: hidden;">
     <section class="section">
         <header style="width: 100%; background-color: transparent;">
             <div class="containerHeader">
-                <a class="linkHome" href="../estático/index.html"><img class="icon" src="../estático/assets/icons/pngegg.png" alt=""></a>
+                <a class="linkHome" href="../estático/index.html"><img class="icon"
+                        src="../estático/assets/icons/pngegg.png" alt=""></a>
                 <img class="logoWynn" src="../estático/assets/imgs/logoWynn.png" alt="">
             </div>
         </header>
-        
+
         <section class="sectionFormulario">
 
             <div id="containerLogin">
-                
+
                 <h1>Cadastro</h1>
                 <hr>
                 <h2>Seja bem-vindo(a)! <br>
-                Realize o cadastro para ter acesso aos nossos serviços.</h2>
-                
-                <div class="campo">
-                    <p>Nome:</p>
-                    <input type="text" required>
-                </div>
-                <div class="campo">
-                    <p>E-mail:</p>    
-                    <input type="text" required>
-                </div>
-                
-                <div class="campo">    
-                    <p>Senha:</p>
-                    <input type="password" id="senhaCadastro" required>
+                    Realize o cadastro para ter acesso aos nossos serviços.</h2>
+
+                <div class="formCampos">
+
+                    <div>
+                        <div class="campo">
+                            <p>Nome:</p>
+                            <input type="text" required>
+                        </div>
+                        <div class="campo">
+                            <p>CNPJ:</p>
+                            <input type="text" required>
+                        </div>
+                        <div class="campo">
+                            <p>E-mail:</p>
+                            <input type="text" required>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="campo">
+                            <p>Senha:</p>
+                            <span>
+                                <input type="password" id="senha" required>
+                                <button onclick="mostrarSenha()"><img id="showHideSenha" style="width: 3rem;"
+                                        src="./assets/icons/olho-aberto.png" alt=""></button>
+                            </span>
+                        </div>
+                        <div class="campo">
+                            <p>Confirmar Senha:</p>
+                            <span>
+                                <input type="password" id="senha" required>
+                                <button onclick="mostrarSenha()"><img id="showHideSenha" style="width: 3rem;"
+                                        src="./assets/icons/olho-aberto.png" alt=""></button>
+                            </span>
+                        </div>
+
+                    </div>
                 </div>
 
-                <div class="campo">    
-                    <p>Confirmar Senha:</p>
-                    <input type="password" id="senhaCadastro" required>
-                </div>
-                
-                
-                
-                <button class="btnLogin" id="continuarCadastro" >Cadastrar</button>
-                
+
+
+                <button class="btnLogin" id="continuarCadastro">Cadastrar</button>
+
                 <p>Já tem uma conta? <a href="login.html">Login</a></p>
-                
-                
+
+
                 <div id="vamoLa"></div>
             </div>
 
             <div id="containerFormularioResposta">
-                
-                
+
+
             </div>
         </section>
     </section>
 </body>
+
 </html>
 
-<script src="./JS/index.js"></script>
+
+<script src="./JS/mostrarSenha.js"></script>
 
 <script>
-    document.getElementById("continuarCadastro").onclick = function() {
+    document.getElementById("continuarCadastro").onclick = function () {
         window.location.href = './complementoCadastro.html'
     }
 </script>

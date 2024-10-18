@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,76 +8,98 @@
     <link rel="stylesheet" href="../estático/assets/styles/style.css">
     <style>
 
-        
+
     </style>
 </head>
+
 <body style="background: url('../estático/assets/imgs/fundo-barris-vinho.jpg'); overflow: hidden;">
     <section class="section">
         <header style="width: 100%; background-color: transparent;">
             <div class="containerHeader">
-                <a class="linkHome" href="../estático/index.html"><img class="icon" src="../estático/assets/icons/pngegg.png" alt=""></a>
+                <a class="linkHome" href="../estático/index.html"><img class="icon"
+                        src="../estático/assets/icons/pngegg.png" alt=""></a>
                 <img class="logoWynn" src="../estático/assets/imgs/logoWynn.png" alt="">
             </div>
         </header>
-        
+
         <section class="sectionFormulario">
 
             <div id="containerLogin">
-                
+
                 <h1>Cadastro</h1>
                 <hr>
                 <h2> Complete seu cadastro </h2>
-                
-                <div class="campo">
-                    <p>CNPJ:</p>
-                    <input type="text" required>
-                </div>
-                <div class="campo">
-                    <p>Rua/Logradouro:</p>    
-                    <input type="text" required>
-                </div>
-                
-                <div class="campo">    
-                    <p>Bairro:</p>
-                    <input type="text" required>
+
+                <div class="formCampos">
+
+                    <div>
+
+                        <div class="campo">
+                            <p>CEP:</p>
+                            <input type="text" required>
+                        </div>
+
+                        <div class="campo">
+                            <p>Rua/Logradouro:</p>
+                            <input type="text" required>
+                        </div>
+
+                        <div class="campo">
+                            <p>Número:</p>
+                            <input type="text" required>
+                        </div>
+
+                        <div class="campo">
+                            <p>Complemento:</p>
+                            <input type="text" required>
+                        </div>
+
+                        
+
+                    </div>
+
+                    <div>
+
+                        <div class="campo">
+                            <p>Bairro:</p>
+                            <input type="text" required>
+                        </div>
+
+                        <div class="campo">
+                            <p>Cidade:</p>
+                            <input type="text" required>
+                        </div>
+
+                        <div class="campo">
+                            <p>UF:</p>
+                            <input type="text" required>
+                        </div>
+
+                    </div>
                 </div>
 
-                <div class="campo">    
-                    <p>Cidade:</p>
-                    <input type="text" required>
-                </div>
 
-                <div class="campo">    
-                    <p>UF:</p>
-                    <input type="text" required>
-                </div>
 
-                <div class="campo">    
-                    <p>Complemento:</p>
-                    <input type="text" required>
-                </div>
-                
-                
-                
-                <button class="btnLogin" id="finalizarCadastro" >Finalizar Cadastro</button>
-                
-                
+                <button class="btnLogin" id="finalizarCadastro">Finalizar Cadastro</button>
+
+
                 <div id="vamoLa"></div>
             </div>
 
             <div id="containerFormularioResposta">
-                
-                
+
+
             </div>
         </section>
     </section>
 </body>
+
 </html>
 
 <script src="./JS/index.js"></script>
 
 <script>
-    document.getElementById("finalizarCadastro").onclick = function() {
+    document.getElementById("finalizarCadastro").onclick = function () {
         window.location.href = './dashboard.html'
     }
 </script>

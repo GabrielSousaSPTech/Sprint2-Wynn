@@ -31,22 +31,26 @@
                 <h2>Seja bem-vindo(a)! <br>
                     Realize o login para ter acesso aos nossos serviços de forma completa.</h2>
 
-                <div class="campo">
-                    <p>Email:</p>
-                    <input id="emailLogin" type="text" required>
+                <div id="camposLogin">
+                    <div class="campo">
+                        <p>Email:</p>
+                        <input id="emailLogin" type="text" required>
+                    </div>
+                    <div class="campo">
+                        <p>Senha:</p>
+                        <span>
+                            <input type="password" id="senha" required>
+                            <button onclick="mostrarSenha()"><img id="showHideSenha" style="width: 3rem;"
+                                    src="./assets/icons/olho-aberto.png" alt=""></button>
+                        </span>
+                    </div>
                 </div>
-                <div class="campo">
-                    <p>Senha:</p>
-                    <span>
-                        <input type="password" id="senha" required>
-                        <button onclick="mostrarSenha()"><img id="showHideSenha" style="width: 3rem;" src="./assets/icons/olho-aberto.png" alt=""></button>
-                    </span>
-                </div>
+
                 <span id="respostaVerificacao"></span>
                 <button class="btnLogin" onclick="checarCredenciais()">Entrar</button>
 
                 <p>Não tem uma conta ? <a href="cadastro.html">Cadastre-se</a></p>
-                
+
                 <div id="vamoLa"></div>
             </div>
 
