@@ -116,6 +116,9 @@ function mudarTipoVinho() {
         </h3>
         `
         mostrarGraficosTempRose();
+        mostrarGraficosCO2Rose();
+        mostrarGraficosTempCO2Rose();
+        atualizarGraficoCO2(71, 29);
     } else if (tipoVinho == "branco") {
         divTanques.innerHTML = `<span>7-8`;
         h2Tipo.innerText = "BRANCO";
@@ -123,6 +126,17 @@ function mudarTipoVinho() {
         displayTempFermentacao.innerHTML = `
         <span>10</span>h<span>|08</span>h
         `
+        displayTemperatura.innerHTML = `
+        <h3>
+            <span class="minima_temperatura">12,8°<i class="fa-solid fa-arrow-down"></i></span>
+            15,1°
+            <span class="maxima_temperatura">17,4°<i class="fa-solid fa-arrow-up"></i></span>
+        </h3>
+        `
+        mostrarGraficosTempBranco();
+        mostrarGraficosCO2Branco();
+        mostrarGraficosTempCO2Branco();
+        atualizarGraficoCO2(85, 15);
     } else if (tipoVinho == "frisante") {
         divTanques.innerHTML = `<span>9-10`;
         h2Tipo.innerText = "FRISANTE";
@@ -130,6 +144,17 @@ function mudarTipoVinho() {
         displayTempFermentacao.innerHTML = `
         <span>06</span>h<span>|12</span>h
         `
+        displayTemperatura.innerHTML = `
+        <h3>
+            <span class="minima_temperatura">12,5°<i class="fa-solid fa-arrow-down"></i></span>
+            12,8°
+            <span class="maxima_temperatura">14,5°<i class="fa-solid fa-arrow-up"></i></span>
+        </h3>
+        `
+        mostrarGraficosTempFrisante();
+        mostrarGraficosCO2Frisante();
+        mostrarGraficosTempCO2Frisante();
+        atualizarGraficoCO2(92, 8);
     } else {
         divTanques.innerHTML = `<span>1-4`;
         h2Tipo.innerText = "TINTO";
@@ -147,6 +172,7 @@ function mudarTipoVinho() {
         mostrarGraficosTempTinto();
         mostrarGraficosCO2Tinto();
         mostrarGraficosTempCO2Tinto();
+        atualizarGraficoCO2(65, 35);
     }
 
 }
@@ -179,10 +205,11 @@ function mudarTanque() {
             27,6°
             <span class="maxima_temperatura">28,7°<i class="fa-solid fa-arrow-up"></i></span>
         </h3>
-    `
+        `
         mostrarGraficoTemp('tanque2');
         mostrarGraficoCO2('tanque2');
         mostrarGraficoTempCO2('tanque2');
+        atualizarGraficoCO2(78, 22);
     } else if (nTanque == "3") {
         divTanques.innerHTML = `<span>03/</span>10`;
         h2Tipo.innerText = "TINTO";
@@ -194,10 +221,11 @@ function mudarTanque() {
             27,4°
             <span class="maxima_temperatura">28,7°<i class="fa-solid fa-arrow-up"></i></span>
         </h3>
-    `
+        `
         mostrarGraficoTemp('tanque3');
         mostrarGraficoCO2('tanque3');
         mostrarGraficoTempCO2('tanque3');
+        atualizarGraficoCO2(90, 10);
     } else if (nTanque == "4") {
         divTanques.innerHTML = `<span>04/</span>10`;
         h2Tipo.innerText = "TINTO";
@@ -209,71 +237,123 @@ function mudarTanque() {
             28,8°
             <span class="maxima_temperatura">28,8°<i class="fa-solid fa-arrow-up"></i></span>
         </h3>
-    `
+        `
         mostrarGraficoTemp('tanque4');
         mostrarGraficoCO2('tanque4');
         mostrarGraficoTempCO2('tanque4');
+        atualizarGraficoCO2(66, 34);
     } else if (nTanque == "5") {
         divTanques.innerHTML = `<span>05/</span>10`;
         h2Tipo.innerText = "ROSE";
         statush2.innerText = "TANQUE-05";
         displayTempFermentacao.innerHTML = `<span>14</span>h`;
         displayTemperatura.innerHTML = `
-                                <h3>
-                                    <span class="minima_temperatura">18,9°<i class="fa-solid fa-arrow-down"></i></span>
-                                    22,5°
-                                    <span class="maxima_temperatura">23,1°<i class="fa-solid fa-arrow-up"></i></span>
-                                </h3>
+        <h3>
+            <span class="minima_temperatura">18,9°<i class="fa-solid fa-arrow-down"></i></span>
+            22,5°
+            <span class="maxima_temperatura">23,1°<i class="fa-solid fa-arrow-up"></i></span>
+        </h3>
         `
         mostrarGraficoTemp('tanque5');
+        mostrarGraficoCO2('tanque5');
+        mostrarGraficoTempCO2('tanque5');
+        atualizarGraficoCO2(71, 29);
     } else if (nTanque == "6") {
         divTanques.innerHTML = `<span>06/</span>10`;
         h2Tipo.innerText = "ROSE";
         statush2.innerText = "TANQUE-06";
         displayTempFermentacao.innerHTML = `<span>20</span>h`;
         displayTemperatura.innerHTML = `
-                                <h3>
-                                    <span class="minima_temperatura">19,8°<i class="fa-solid fa-arrow-down"></i></span>
-                                    23,9°
-                                    <span class="maxima_temperatura">24,0°<i class="fa-solid fa-arrow-up"></i></span>
-                                </h3>
+        <h3>
+            <span class="minima_temperatura">19,8°<i class="fa-solid fa-arrow-down"></i></span>
+            23,9°
+            <span class="maxima_temperatura">24,0°<i class="fa-solid fa-arrow-up"></i></span>
+            </h3>
         `
         mostrarGraficoTemp('tanque6');
+        mostrarGraficoCO2('tanque6');
+        mostrarGraficoTempCO2('tanque6');
+        atualizarGraficoCO2(67, 33);
     } else if (nTanque == "7") {
         divTanques.innerHTML = `<span>07/</span>10`;
         h2Tipo.innerText = "BRANCO";
         statush2.innerText = "TANQUE-07";
         displayTempFermentacao.innerHTML = `<span>10</span>h`;
+        displayTemperatura.innerHTML = `
+        <h3>
+            <span class="minima_temperatura">12,8°<i class="fa-solid fa-arrow-down"></i></span>
+            12,8°
+            <span class="maxima_temperatura">17,4°<i class="fa-solid fa-arrow-up"></i></span>
+        </h3>
+        `
+        mostrarGraficoTemp('tanque7');
+        mostrarGraficoCO2('tanque7');
+        mostrarGraficoTempCO2('tanque7');
+        atualizarGraficoCO2(85, 15);
     } else if (nTanque == "8") {
         divTanques.innerHTML = `<span>08/</span>10`;
         h2Tipo.innerText = "BRANCO";
         statush2.innerText = "TANQUE-08";
         displayTempFermentacao.innerHTML = `<span>08</span>h`;
+        displayTemperatura.innerHTML = `
+        <h3>
+            <span class="minima_temperatura">12,9°<i class="fa-solid fa-arrow-down"></i></span>
+            12,9°
+            <span class="maxima_temperatura">17,1°<i class="fa-solid fa-arrow-up"></i></span>
+        </h3>
+        `
+        mostrarGraficoTemp('tanque8');
+        mostrarGraficoCO2('tanque8');
+        mostrarGraficoTempCO2('tanque8');
+        atualizarGraficoCO2(87, 13);
     } else if (nTanque == "9") {
         divTanques.innerHTML = `<span>09/</span>10`;
         h2Tipo.innerText = "FRISANTE";
         statush2.innerText = "TANQUE-09";
         displayTempFermentacao.innerHTML = `<span>06</span>h`;
+        displayTemperatura.innerHTML = `
+        <h3>
+            <span class="minima_temperatura">12,9°<i class="fa-solid fa-arrow-down"></i></span>
+            13,0°
+            <span class="maxima_temperatura">14,5°<i class="fa-solid fa-arrow-up"></i></span>
+        </h3>
+        `
+        mostrarGraficoTemp('tanque9');
+        mostrarGraficoCO2('tanque9');
+        mostrarGraficoTempCO2('tanque9');
+        atualizarGraficoCO2(92, 8);
     } else if (nTanque == "10") {
         divTanques.innerHTML = `<span>10/</span>10`;
         h2Tipo.innerText = "FRISANTE";
         statush2.innerText = "TANQUE-10";
         displayTempFermentacao.innerHTML = `<span>12</span>h`;
+        displayTemperatura.innerHTML = `
+        <h3>
+            <span class="minima_temperatura">12,5°<i class="fa-solid fa-arrow-down"></i></span>
+            12,7°
+            <span class="maxima_temperatura">14,4°<i class="fa-solid fa-arrow-up"></i></span>
+        </h3>
+        `
+        mostrarGraficoTemp('tanque10');
+        mostrarGraficoCO2('tanque10');
+        mostrarGraficoTempCO2('tanque10');
+        atualizarGraficoCO2(93, 7);
     } else {
         divTanques.innerHTML = `<span>01/</span>10`;
         h2Tipo.innerText = "TINTO";
         statush2.innerText = "TANQUE-01";
         displayTempFermentacao.innerHTML = `<span>30</span>h`;
         displayTemperatura.innerHTML = `
-                                <h3>
-                                    <span class="minima_temperatura">27,5°<i class="fa-solid fa-arrow-down"></i></span>
-                                    29,6°
-                                    <span class="maxima_temperatura">30,2°<i class="fa-solid fa-arrow-up"></i></span>
-                                </h3>
+        <h3>
+            <span class="minima_temperatura">27,5°<i class="fa-solid fa-arrow-down"></i></span>
+            29,6°
+            <span class="maxima_temperatura">30,2°<i class="fa-solid fa-arrow-up"></i></span>
+        </h3>
         `
         mostrarGraficoTemp('tanque1');
         mostrarGraficoCO2('tanque1');
         mostrarGraficoTempCO2('tanque1');
+        atualizarGraficoCO2(65, 35);
     }
 
 }
@@ -376,6 +456,46 @@ function mostrarGraficoTemp(tanque) {
                 ]
             };
             break;
+        case 'tanque7':
+            data = {
+                labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+                datasets: [
+                    { label: 'Tanque-7', data: [13.5, 14.7, 15.3, 16.2, 17.1, 12.9], borderWidth: 2 },
+                    { label: 'Limite Máximo', data: [18, 18, 18, 18, 18, 18], borderWidth: 1 },
+                    { label: 'Limite Mínimo', data: [12, 12, 12, 12, 12, 12], borderWidth: 1 }
+                ]
+            };
+            break;
+        case 'tanque8':
+            data = {
+                labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+                datasets: [
+                    { label: 'Tanque-8', data: [16.8, 14.3, 13.9, 15.6, 17.4, 12.8], borderWidth: 2 },
+                    { label: 'Limite Máximo', data: [18, 18, 18, 18, 18, 18], borderWidth: 1 },
+                    { label: 'Limite Mínimo', data: [12, 12, 12, 12, 12, 12], borderWidth: 1 }
+                ]
+            };
+            break;
+        case 'tanque9':
+            data = {
+                labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+                datasets: [
+                    { label: 'Tanque-9', data: [13.0, 14.2, 14.5, 13.5, 12.9, 13.0], borderWidth: 2 },
+                    { label: 'Limite Máximo', data: [15, 15, 15, 15, 15, 15], borderWidth: 1 },
+                    { label: 'Limite Mínimo', data: [12, 12, 12, 12, 12, 12], borderWidth: 1 }
+                ]
+            };
+            break;
+        case 'tanque10':
+            data = {
+                labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+                datasets: [
+                    { label: 'Tanque-10', data: [12.5, 13.8, 14.1, 13.2, 14.4, 12.7], borderWidth: 2 },
+                    { label: 'Limite Máximo', data: [15, 15, 15, 15, 15, 15], borderWidth: 1 },
+                    { label: 'Limite Mínimo', data: [12, 12, 12, 12, 12, 12], borderWidth: 1 }
+                ]
+            };
+            break;
     }
     criarGraficoTemp(data);
 }
@@ -403,6 +523,32 @@ function mostrarGraficosTempRose() {
             { label: 'Tanque-6', data: [24.0, 19.8, 20.5, 21.2, 22.7, 23.9], borderWidth: 2 },
             { label: 'Limite Máximo', data: [25, 25, 25, 25, 25, 25], borderWidth: 1 },
             { label: 'Limite Mínimo', data: [18, 18, 18, 18, 18, 18], borderWidth: 1 }
+        ]
+    }
+    criarGraficoTemp(data);
+}
+
+function mostrarGraficosTempBranco() {
+    var data = {
+        labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+        datasets: [
+            { label: 'Tanque-7', data: [13.5, 14.7, 15.3, 16.2, 17.1, 12.9], borderWidth: 2 },
+            { label: 'Tanque-8', data: [16.8, 14.3, 13.9, 15.6, 17.4, 12.8], borderWidth: 2 },
+            { label: 'Limite Máximo', data: [18, 18, 18, 18, 18, 18], borderWidth: 1 },
+            { label: 'Limite Mínimo', data: [12, 12, 12, 12, 12, 12], borderWidth: 1 }
+        ]
+    }
+    criarGraficoTemp(data);
+}
+
+function mostrarGraficosTempFrisante() {
+    var data = {
+        labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+        datasets: [
+            { label: 'Tanque-9', data: [13.0, 14.2, 14.5, 13.5, 12.9, 13.0], borderWidth: 2 },
+            { label: 'Tanque-10', data: [12.5, 13.8, 14.1, 13.2, 14.4, 12.7], borderWidth: 2 },
+            { label: 'Limite Máximo', data: [15, 15, 15, 15, 15, 15], borderWidth: 1 },
+            { label: 'Limite Mínimo', data: [12, 12, 12, 12, 12, 12], borderWidth: 1 }
         ]
     }
     criarGraficoTemp(data);
@@ -478,6 +624,54 @@ function mostrarGraficoCO2(tanque) {
                 ]
             };
             break;
+        case 'tanque5':
+            data = {
+                labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+                datasets: [
+                    { label: 'Tanque-5', data: [75, 76, 74, 73, 70, 71], borderWidth: 2 }
+                ]
+            };
+            break;
+        case 'tanque6':
+            data = {
+                labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+                datasets: [
+                    { label: 'Tanque-6', data: [70, 68, 68, 67, 70, 67], borderWidth: 2 }
+                ]
+            };
+            break;
+        case 'tanque7':
+            data = {
+                labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+                datasets: [
+                    { label: 'Tanque-7', data: [88, 89, 90, 91, 92, 85], borderWidth: 2 }
+                ]
+            };
+            break;
+        case 'tanque8':
+            data = {
+                labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+                datasets: [
+                    { label: 'Tanque-8', data: [87, 89, 88, 90, 91, 87], borderWidth: 2 }
+                ]
+            };
+            break;
+        case 'tanque9':
+            data = {
+                labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+                datasets: [
+                    { label: 'Tanque-9', data: [92, 91, 93, 92, 91, 92], borderWidth: 2 }
+                ]
+            };
+            break;
+        case 'tanque10':
+            data = {
+                labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+                datasets: [
+                    { label: 'Tanque-10', data: [94, 93, 93, 94, 92, 93], borderWidth: 2 }
+                ]
+            };
+            break;
     }
     criarGraficoCO2(data);
 }
@@ -490,6 +684,39 @@ function mostrarGraficosCO2Tinto() {
             { label: 'Tanque-2', data: [80, 82, 79, 79, 78, 78], borderWidth: 2 },
             { label: 'Tanque-3', data: [90, 88, 90, 89, 91, 90], borderWidth: 2 },
             { label: 'Tanque-4', data: [72, 71, 70, 69, 67, 66], borderWidth: 2 }
+        ]
+    };
+    criarGraficoCO2(data);
+}
+
+function mostrarGraficosCO2Rose() {
+    var data = {
+        labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+        datasets: [
+            { label: 'Tanque-5', data: [75, 76, 74, 73, 70, 71], borderWidth: 2 },
+            { label: 'Tanque-6', data: [70, 68, 68, 67, 70, 67], borderWidth: 2 }
+        ]
+    };
+    criarGraficoCO2(data);
+}
+
+function mostrarGraficosCO2Branco() {
+    var data = {
+        labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+        datasets: [
+            { label: 'Tanque-7', data: [88, 89, 90, 91, 92, 85], borderWidth: 2 },
+            { label: 'Tanque-8', data: [87, 89, 88, 90, 91, 87], borderWidth: 2 }
+        ]
+    };
+    criarGraficoCO2(data);
+}
+
+function mostrarGraficosCO2Frisante() {
+    var data = {
+        labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+        datasets: [
+            { label: 'Tanque-9', data: [92, 91, 93, 92, 91, 92], borderWidth: 2 },
+            { label: 'Tanque-10', data: [94, 93, 93, 94, 92, 93], borderWidth: 2 }
         ]
     };
     criarGraficoCO2(data);
@@ -566,6 +793,60 @@ function mostrarGraficoTempCO2(tanque) {
                 ]
             };
             break;
+        case 'tanque5':
+            data = {
+                labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+                datasets: [
+                    { label: 'Temp-5', data: [19.3, 20.7, 21.4, 23.1, 18.9, 22.5], borderWidth: 2 },
+                    { label: 'CO2-5', data: [75, 76, 74, 73, 70, 71], borderWidth: 2 }
+                ]
+            };
+            break;
+        case 'tanque6':
+            data = {
+                labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+                datasets: [
+                    { label: 'Temp-6', data: [24.0, 19.8, 20.5, 21.2, 22.7, 23.9], borderWidth: 2 },
+                    { label: 'CO2-6', data: [70, 68, 68, 67, 70, 67], borderWidth: 2 }
+                ]
+            };
+            break;
+        case 'tanque7':
+            data = {
+                labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+                datasets: [
+                    { label: 'Temp-7', data: [13.5, 14.7, 15.3, 16.2, 17.1, 12.9], borderWidth: 2 },
+                    { label: 'CO2-7', data: [88, 89, 90, 91, 92, 85], borderWidth: 2 }
+                ]
+            };
+            break;
+        case 'tanque8':
+            data = {
+                labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+                datasets: [
+                    { label: 'Temp-8', data: [16.8, 14.3, 13.9, 15.6, 17.4, 12.8], borderWidth: 2 },
+                    { label: 'CO2-8', data: [87, 89, 88, 90, 91, 87], borderWidth: 2 }
+                ]
+            };
+            break;
+        case 'tanque9':
+            data = {
+                labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+                datasets: [
+                    { label: 'Temp-9', data: [13.0, 14.2, 14.5, 13.5, 12.9, 13.0], borderWidth: 2 },
+                    { label: 'CO2-9', data: [92, 91, 93, 92, 91, 92], borderWidth: 2 }
+                ]
+            };
+            break;
+        case 'tanque10':
+            data = {
+                labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+                datasets: [
+                    { label: 'Temp-10', data: [12.5, 13.8, 14.1, 13.2, 14.4, 12.7], borderWidth: 2 },
+                    { label: 'CO2-10', data: [94, 93, 93, 94, 92, 93], borderWidth: 2 }
+                ]
+            };
+            break;
     }
     criarGraficoTempCO2(data);
 }
@@ -587,22 +868,58 @@ function mostrarGraficosTempCO2Tinto() {
     criarGraficoTempCO2(data);
 }
 
+function mostrarGraficosTempCO2Rose() {
+    var data = {
+        labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+        datasets: [
+            { label: 'Temp-5', data: [19.3, 20.7, 21.4, 23.1, 18.9, 22.5], borderWidth: 2 },
+            { label: 'CO2-5', data: [75, 76, 74, 73, 70, 71], borderWidth: 2 },
+            { label: 'Temp-6', data: [24.0, 19.8, 20.5, 21.2, 22.7, 23.9], borderWidth: 2 },
+            { label: 'CO2-6', data: [70, 68, 68, 67, 70, 67], borderWidth: 2 }
+        ]
+    };
+    criarGraficoTempCO2(data);
+}
+
+function mostrarGraficosTempCO2Branco() {
+    var data = {
+        labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+        datasets: [
+            { label: 'Temp-7', data: [13.5, 14.7, 15.3, 16.2, 17.1, 12.9], borderWidth: 2 },
+            { label: 'CO2-7', data: [88, 89, 90, 91, 92, 85], borderWidth: 2 },
+            { label: 'Temp-8', data: [16.8, 14.3, 13.9, 15.6, 17.4, 12.8], borderWidth: 2 },
+            { label: 'CO2-8', data: [87, 89, 88, 90, 91, 87], borderWidth: 2 }
+        ]
+    };
+    criarGraficoTempCO2(data);
+}
+
+function mostrarGraficosTempCO2Frisante() {
+    var data = {
+        labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+        datasets: [
+            { label: 'Temp-9', data: [13.0, 14.2, 14.5, 13.5, 12.9, 13.0], borderWidth: 2 },
+            { label: 'CO2-9', data: [92, 91, 93, 92, 91, 92], borderWidth: 2 },
+            { label: 'Temp-10', data: [12.5, 13.8, 14.1, 13.2, 14.4, 12.7], borderWidth: 2 },
+            { label: 'CO2-10', data: [94, 93, 93, 94, 92, 93], borderWidth: 2 }
+        ]
+    };
+    criarGraficoTempCO2(data);
+}
+
 mostrarGraficosTempCO2Tinto()
 
-const displayCO2tinto = document.getElementById('display_co2_tinto');
+const displayCO2 = document.getElementById('grafico_co2').getContext('2d');
 
 const data = {
-    /* labels: ['CO2', 'Outros'], */
     datasets: [{
-        data: [62, 38],
+        data: [65, 35],
         borderWidth: 1,
         cutout: '70%',
         circumference: 200,
         rotation: 260,
-    },
-    ]
+    }]
 };
-
 
 const doughnutLabel = {
     id: 'doughnutLabel',
@@ -614,11 +931,11 @@ const doughnutLabel = {
         ctx.font = 'bold 4rem sans-serif';
         ctx.fillStyle = 'darkred';
         ctx.textAlign = 'center';
-        ctx.textBaseLine = 'middle';
+        ctx.textBaseline = 'middle';
         ctx.fillText(data.datasets[0].data[0], xCoor, yCoor);
     }
-}
-// config 
+};
+
 const config = {
     type: 'doughnut',
     data,
@@ -628,7 +945,13 @@ const config = {
     plugins: [doughnutLabel]
 };
 
-new Chart(displayCO2tinto, config);
+const chartCO2Doughnut = new Chart(displayCO2, config);
+
+function atualizarGraficoCO2(valor1, valor2) {
+    chartCO2Doughnut.data.datasets[0].data = [valor1, valor2];
+    chartCO2Doughnut.update();
+}
+
 
 // H-Menu
 const hamburgerMenu = document.getElementById('h-menu');
