@@ -22,7 +22,7 @@ const serial = async (
             host: 'localhost',
             user: 'insert_user',
             password: 'Urubu100!',
-            database: 'wynn',
+            database: 'dbWynn',
             port: 3307
         }
     ).promise();
@@ -63,7 +63,7 @@ const serial = async (
 
             // este insert irá inserir os dados na tabela "medida"
             await poolBancoDados.execute(
-                'INSERT INTO sensor (co2, temperatura) VALUES (?, ?)',
+                'INSERT INTO tbmedidasensor (co2, temperatura) VALUES (?, ?)',
                 [sensorMQ2, sensorLM35]
             );
             console.log("valores inseridos no banco: ", sensorMQ2 + ", " + sensorLM35);
