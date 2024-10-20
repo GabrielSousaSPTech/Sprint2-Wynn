@@ -1,0 +1,1395 @@
+@import url('https://fonts.googleapis.com/css2?family=Italiana&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mina:wght@400;700&display=swap');
+
+@media (min-width:701px) {
+    html {
+        font-size: 62.5%;
+    }
+}
+
+@media (max-width:700px) {
+    html {
+        font-size: 50%;
+    }
+
+    header {
+        padding: 0 2rem;
+    }
+
+    header div.container {
+        flex-direction: row;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    header .container img.logoWynn#home {
+        order: -1;
+    }
+
+    main article#sobre-nos {
+        height: fit-content;
+        padding: 5rem 0;
+    }
+
+    main article div.container div#imagem {
+        height: 37.5rem;
+        margin-top: 2rem;
+
+        order: -1;
+    }
+
+    .container {
+        flex-direction: column;
+    }
+
+    section#missao {
+        padding: 5rem 0;
+        height: fit-content;
+    }
+
+    section#missao .container {
+        align-items: center;
+        gap: 5rem;
+    }
+
+    section#missao div.card {
+        width: 35rem;
+    }
+}
+
+@media (max-width:500px) {
+    html {
+        font-size: 40%;
+    }
+}
+
+a,
+header a:visited {
+    color: inherit;
+    text-decoration: none;
+}
+
+li:active {
+    transition: 70ms;
+    transform: scale(0.95);
+}
+
+* {
+    margin: 0;
+}
+
+body {
+    font-family: Playfair;
+}
+
+header {
+    box-sizing: border-box;
+
+    height: 7rem;
+    padding-top: .3rem;
+    padding-bottom: .8rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.fundo-escuro {
+    background-color: rgba(0, 0, 0, 0.6);
+    height: 100%;
+    width: 100%;
+}
+
+
+/* caso precise trocar o fundo das outras áreas
+
+aside#contato > div.fundo-escuro {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+    
+aside > div.fundo-escuro, footer > div.fundo-escuro {
+    background-color: rgba(0, 0, 0, 0.4);
+} */
+
+.container {
+    width: 90%;
+    max-width: 100rem;
+    height: fit-content;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+header .container {
+    max-width: 75rem;
+}
+
+.logoWynn {
+    width: 21.5rem;
+}
+
+.logoWynn#home {
+    order: 1;
+}
+
+header nav {
+    width: 90%;
+    max-width: 21rem;
+}
+
+header nav#dois {
+    order: 2;
+}
+
+header nav ul {
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    justify-content: space-between;
+    gap: 1.1em;
+
+    list-style: none;
+}
+
+header nav li {
+    font-size: 2.7rem;
+}
+
+@media (max-width:400px) {
+    header>.container {
+        justify-content: flex-end;
+        gap: 1.3rem;
+    }
+
+    .logoWynn#home {
+        position: absolute;
+        left: 1%;
+        top: 0.5%;
+    }
+
+    header nav {
+        width: 15rem;
+    }
+
+    nav>ul>li {
+        font-size: 2.5rem;
+    }
+
+}
+
+#banner {
+    height: 100vh;
+
+    background: scroll url(../imgs/fundo-barris-vinho.jpg) center center no-repeat;
+    background-size: cover;
+
+    font-family: Italiana;
+    color: white;
+}
+
+#slogan {
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+#slogan hr {
+    width: 330px;
+}
+
+#slogan p {
+    font-size: 3.8rem;
+}
+
+aside#mini-banner,
+aside>div.fundo-escuro {
+    height: 19rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+aside#mini-banner {
+    background: url(../imgs/fundo-vinicola.jpg) center center black;
+    background-size: cover;
+}
+
+#mini-banner div#caixa-simulador {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+#mini-banner hr {
+    width: 100%;
+}
+
+button {
+    width: fit-content;
+
+    border: 0;
+
+    font-family: Playfair;
+
+    font-weight: 600;
+    text-transform: uppercase;
+
+    background-color: white;
+
+    transition: 500ms;
+}
+
+button:hover {
+    cursor: pointer;
+
+    transition: 400ms;
+    box-shadow: inset 0 0 0 .2rem rgba(0, 0, 0, 0.7);
+
+    font-weight: 800;
+}
+
+button:active {
+    transition: 70ms;
+    transform: scale(0.97);
+}
+
+#mini-banner button {
+    padding: .6rem 2rem;
+    border-radius: .7rem;
+
+    font-size: 3rem;
+}
+
+hr {
+    width: 55%;
+    max-width: 90rem;
+}
+
+main article {
+    height: 60rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+main article .container {
+    gap: 2rem;
+}
+
+#caixa-texto {
+    width: 70%;
+}
+
+
+#caixa-texto h2 {
+    width: fit-content;
+    height: 7rem;
+
+    font-size: 6.4rem;
+    font-weight: 500;
+    border-bottom: .2rem solid black;
+}
+
+#caixa-texto p {
+    font: 2rem Playfair;
+    margin: 2rem 0;
+}
+
+main article #imagem {
+    width: 25rem;
+    height: 100%;
+    border-radius: 1rem;
+
+    background: center center url(../imgs/sobre-nos-wine-shop.jpg);
+    background-size: cover;
+}
+
+main article hr {
+    margin-top: 6rem;
+
+    padding: 0.5px;
+    color: black;
+}
+
+main section {
+    width: 100%;
+    height: 57rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: black;
+    color: white;
+}
+
+main section .container {
+    align-items: flex-start;
+
+}
+
+section#missao .card {
+    width: 25rem;
+    text-align: center;
+}
+
+section#missao .card h3 {
+    font-size: 2.5rem;
+}
+
+.icone {
+    width: 8.5rem;
+}
+
+section#missao .card img {
+    padding: 1rem;
+    border-radius: 1rem;
+    margin: 1.5rem 0;
+
+    background-color: rgb(26, 26, 26);
+}
+
+section#missao .card p {
+    padding: 1rem 0;
+    border: .1rem solid white;
+    border-left: 0;
+    border-right: 0;
+
+    font-size: 2.2rem;
+    text-align: justify;
+}
+
+main section hr {
+    margin-top: 8rem;
+}
+
+aside#contato,
+aside#contato>div.fundo-escuro {
+    height: 70rem;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+}
+
+aside#contato {
+    background: url(../imgs/fundo-loja-vinho.jpg) white center center;
+    background-size: cover;
+}
+
+aside#contato .card {
+    width: fit-content;
+    padding: 2rem;
+    margin-right: 5%;
+
+    border-radius: 1.5rem;
+
+    display: flex;
+    flex-direction: column;
+
+
+    background-color: black;
+    color: white;
+}
+
+@media (max-width:768px) {
+
+    aside#contato,
+    aside#contato>div.fundo-escuro {
+        justify-content: center;
+    }
+
+    aside#contato div.card {
+        margin: 0;
+    }
+
+    aside#contato button {
+        align-self: center;
+    }
+}
+
+
+#contato h2 {
+    font-size: 3.2rem;
+}
+
+#contato p {
+    font-size: 2rem;
+}
+
+
+#contato .card #layout {
+    display: flex;
+    gap: 5px;
+}
+
+#contato .campo {
+    display: flex;
+    flex-direction: column;
+
+    margin: 1rem 0;
+}
+
+.campo input,
+#contato textarea {
+    padding: 1rem .5rem;
+    border-radius: .4rem;
+}
+
+.campo input[placeholder],
+textarea[placeholder] {
+    font-family: 'Mina';
+    font-size: 1.6rem;
+}
+
+#contato button {
+    padding: .5rem;
+    border-radius: .5rem;
+    font-size: 2rem;
+}
+
+section#info-empresa {
+    padding: 5rem 0;
+
+    display: flex;
+    justify-content: center;
+
+    background-color: black;
+    color: white;
+}
+
+#info-empresa .container {
+    text-align: center;
+}
+
+#info-empresa p {
+    width: 100%;
+    height: 100%;
+
+    font-size: 2.2rem;
+    font-family: 'Mina';
+    white-space: nowrap;
+}
+
+footer,
+footer>div.fundo-escuro {
+    height: 30rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer {
+    background: url(../imgs/fundo-vinicola.jpg) rgb(19, 19, 19) center center no-repeat;
+    background-size: cover;
+    color: white;
+}
+
+
+footer div#nav-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+footer hr {
+    width: 40rem;
+}
+
+footer ul {
+    width: 47rem;
+
+    padding: 0;
+    list-style: none;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+footer li {
+    font-size: 2.9rem;
+}
+
+footer p {
+    font-size: 1.5rem;
+}
+
+/* Início do Simulador */
+.section {
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+
+.icon {
+    width: 6.4rem;
+    height: 6.4em;
+}
+
+#marcaDagua {
+    display: flex;
+    align-self: flex-end;
+    padding: 1.5rem;
+}
+
+.sectionFormulario {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+#containerFormulario {
+    display: flex;
+}
+
+
+#containerFormulario,
+#containerFormularioResposta {
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    width: 52vw;
+    height: 55vh;
+    background-color: rgba(0, 0, 0, 0.64);
+    color: white;
+}
+
+#containerFormularioResposta {
+    display: none;
+    justify-content: space-around;
+
+}
+
+#containerFormularioResposta p {
+    width: 70%;
+    text-align: justify;
+    font-size: 1.6rem;
+    color: #D9D9D9;
+    font-family: 'Mina';
+
+}
+
+#containerFormularioResposta p span {
+    font-weight: bold;
+    font-size: 1.8rem;
+}
+
+#containerFormularioResposta h2 {
+    font-family: 'Mina';
+    font-size: 3rem;
+}
+
+#containerFormularioResposta span {
+    font-family: 'Mina';
+    font-size: 2rem;
+    cursor: pointer;
+    margin-top: .5rem;
+}
+
+#containerFormularioResposta img {
+    align-self: flex-end;
+    padding-inline: 3rem;
+
+}
+
+.containerBotaoFormularioResposta {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+}
+
+
+
+#containerFormulario h1 {
+    text-align: center;
+    margin: 1.5rem 0 1.5rem 0;
+    font-size: 4rem;
+}
+
+.containerInput {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+    height: 50%;
+
+
+}
+
+.containerInput input {
+    width: 100%;
+    height: 4rem;
+    color: #666464;
+    font-size: 2.2rem;
+    border-radius: 6px;
+    padding-inline: 6px;
+}
+
+.containerInput p {
+    font-size: 2.2rem;
+}
+
+.btnFormulario {
+    height: 12rem;
+    width: 15rem;
+}
+
+
+.btnFormulario,
+.btnFormularioResposta {
+
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: #FEFEFE;
+    font-weight: bold;
+    font-size: 2.5rem;
+}
+
+.btnFormularioResposta {
+    width: 50%;
+    padding: 1rem;
+    font-family: 'Mina';
+    text-decoration: none;
+    color: #000;
+    text-align: center;
+}
+
+@media (max-width:1500px) {
+
+    #containerFormulario,
+    #containerFormularioResposta {
+        width: 90rem;
+        height: 70rem;
+    }
+
+    .containerInput input {
+        font-size: 3rem;
+    }
+
+    .containerInput p {
+        font-size: 3rem;
+    }
+
+    .btnFormulario {
+        height: 10rem;
+        width: 18rem;
+        font-size: 2.5rem;
+    }
+
+}
+
+@media (max-width:600px) {
+
+    #containerFormulario,
+    #containerFormularioResposta {
+        width: 40rem;
+        height: 60rem;
+    }
+
+    #containerFormularioResposta {
+        height: 50rem;
+    }
+
+    .containerInput input {
+        font-size: 1.5rem;
+    }
+
+    .containerInput p {
+        font-size: 1.5rem;
+    }
+
+    .btnFormulario {
+        height: 08rem;
+        width: 12rem;
+    }
+
+
+    #containerFormularioResposta p {
+        width: 70%;
+        text-align: justify;
+        font-size: 1.2rem;
+        color: #D9D9D9;
+        font-family: 'Mina';
+
+    }
+
+    #containerFormularioResposta p span {
+        font-weight: bold;
+        font-size: 1.8rem;
+    }
+
+    #containerFormularioResposta h2 {
+        font-family: 'Mina';
+        font-size: 1.8rem;
+    }
+
+    #containerFormularioResposta span {
+        font-family: 'Mina';
+        font-size: 1.2rem;
+        cursor: pointer;
+        margin-top: .5rem;
+    }
+
+    #containerFormularioResposta img {
+        align-self: flex-end;
+        padding-inline: 3rem;
+
+    }
+}
+
+/* Inicio da Dashboard */
+
+.hanburger-menu {
+    position: absolute;
+    top: 1.5%;
+    left: -25rem;
+    width: 32rem;
+    height: 100vh;
+    z-index: 100;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    transition: left 1s ease;
+}
+
+.hanburger-menu.change-menu {
+    left: 0;
+}
+
+.menu-icon {
+    position: relative;
+    width: 5rem;
+    height: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: black;
+    border: solid white 0.2rem;
+    margin: 1.5rem 0 0 2rem;
+    cursor: pointer;
+}
+
+.icon-line {
+    background-color: white;
+    margin: .3rem 0;
+    border-radius: 1rem;
+}
+
+.icon-line-1 {
+    width: 3rem;
+    height: .3rem;
+    transition: all 1s ease;
+}
+
+.icon-line-2 {
+    width: 3rem;
+    height: .3rem;
+    transition: all 1s ease;
+}
+
+.icon-line-3 {
+    width: 3rem;
+    height: .3rem;
+    transition: all 1s ease;
+}
+
+.icon-line-1.change-menu {
+    position: absolute;
+    top: 1rem;
+    left: 1.3rem;
+    transform-origin: left;
+    transform: rotate(45deg);
+}
+
+.icon-line-3.change-menu {
+    position: absolute;
+    top: 1rem;
+    left: .5rem;
+    transform-origin: right;
+    transform: rotate(-45deg);
+}
+
+
+.icon-line-2.change-menu {
+    width: 0;
+    height: 0;
+}
+
+.menu-box {
+    box-sizing: border-box;
+    height: 100%;
+    width: 25rem;
+    background-color: black;
+    text-align: center;
+    padding: 1rem;
+}
+
+.menu-box h2 {
+    font-size: 3rem;
+    margin: 2rem;
+}
+
+.menu-item {
+    width: 100%;
+    height: 5rem;
+    border: solid white .1rem;
+    color: white;
+    font-size: 2rem;
+    font-family: monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: .5rem 0;
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+}
+
+.menu-item:hover {
+    color: darkred;
+    background-color: white;
+}
+
+.menu-item:active {
+    color: white;
+    background-color: darkred;
+}
+
+.item-logout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20rem;
+}
+
+.item-logout img {
+    width: 2rem;
+}
+
+.item-logout span {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+#banner-Dashboard {
+    min-height: 102vh;
+    background: scroll url(../imgs/fundo-barris-vinho.jpg) center center no-repeat;
+    background-size: cover;
+    font-family: Italiana;
+    color: white;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-dashboard {
+    width: 100%;
+    height: 10vh;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.container-dashboard {
+    width: 100%;
+    min-height: 90%;
+}
+
+.dashboard {
+    width: 100%;
+    min-height: 92vh;
+    /* background-color: rgba(78, 0, 30, 0.9); */
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.titulo-dashboard {
+    width: 100%;
+    height: 10%;
+    font-size: 2rem;
+    font-weight: bolder;
+    margin: 3rem 0;
+}
+
+.linha-dashboard {
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.elemento {
+    background-color: white;
+    border-radius: .5rem;
+    box-shadow: .1rem .1rem 1rem .1rem black;
+}
+
+.elemento-duplo-caixa {
+    height: 30rem;
+    width: 30rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 1rem 3rem;
+}
+
+.elemento-duplo {
+    height: 45%;
+    width: 100%;
+    font-family: monospace;
+    box-sizing: border-box;
+    padding: 1rem;
+}
+
+.caixa {
+    height: 100%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.caixa select {
+    outline: none;
+    height: 3rem;
+    width: 14rem;
+    font-size: 2rem;
+    text-align: center;
+    border-radius: 2rem;
+    margin-top: 1rem;
+}
+
+.caixa-input-radio {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+}
+
+.formatacao {
+    flex-direction: column;
+    font-family: monospace;
+    text-align: justify;
+}
+
+.formatacao p {
+    color: black;
+    font-size: 1.6rem;
+    font-weight: bolder;
+}
+
+.formatacao h2 {
+    color: black;
+    font-size: 3rem;
+    font-weight: bolder;
+    margin-top: 1rem;
+}
+
+.formatacao h3 {
+    color: darkred;
+    font-size: 4rem;
+    font-weight: bolder;
+    margin-top: 1rem;
+}
+
+.elemento-estreito {
+    height: 30rem;
+    width: 30rem;
+    font-weight: bolder;
+    margin: 0 1rem 3rem;
+}
+
+.elemento-largo {
+    height: 30rem;
+    width: 62.5rem;
+    margin: 0 1rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.elemento-largo-grande {
+    height: 30rem;
+    width: 62.5rem;
+    margin: 0 1rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.titulo_grafico {
+    color: black;
+    text-align: center;
+}
+
+#display_grafico_duplo {
+    height: 90%;
+    width: 100%;
+}
+
+#display_grafico_temp {
+    height: 90%;
+    width: 100%;
+}
+
+#display_grafico_co2 {
+    height: 90%;
+    width: 100%;
+}
+
+canvas {
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+}
+
+#display_temperatura h3 {
+    font-size: 3.5rem;
+    /* color: green; */
+}
+
+.minima_temperatura {
+    font-size: 1.6rem;
+    color: blue;
+}
+
+.maxima_temperatura {
+    font-size: 1.6rem;
+    color: red;
+}
+
+#display_CO2 {
+    height: 80%;
+    width: 100%;
+}
+
+#h2tanque {
+    text-align: center;
+    font-size: 2.2rem;
+    color: black;
+}
+
+#tanques {
+    font-size: 2rem;
+    text-align: center;
+    color: black;
+}
+
+#tanques span {
+    font-size: 5rem;
+    color: darkred;
+}
+
+#h2tipo {
+    color: darkred;
+    font-weight: bolder;
+    text-align: center;
+    font-size: 2.2rem;
+}
+
+#tempo-fermentacao-h2 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bolder;
+}
+
+#tempo-fermentacao {
+    font-size: 1.6rem;
+    text-align: center;
+    color: black;
+    margin: 1.5rem 0;
+}
+
+#tempo-fermentacao span {
+    font-size: 3.5rem;
+    color: darkred;
+}
+
+
+#status-ok span {
+    font-size: 10rem;
+    color: green;
+}
+
+/* Responsividade */
+@media (max-width: 1689px) {
+    .elemento-largo-grande {
+        height: 44rem;
+        width: 95rem;
+    }
+
+}
+
+@media (max-width: 1015px) {
+    .elemento-largo-grande {
+        height: 28rem;
+        width: 62.5rem;
+    }
+
+    #dashboard_alerta {
+        order: -1;
+    }
+
+}
+
+@media (max-width: 538px) {
+    .elemento-estreito {
+        height: 26rem;
+        width: 29rem;
+        font-size: 5rem;
+    }
+
+    .elemento-duplo-caixa {
+        height: 26rem;
+        width: 29rem;
+    }
+
+    .caixa-input-radio {
+        width: 90%;
+    }
+
+}
+
+@media (max-width: 522px) {
+    .elemento-estreito {
+        height: 26rem;
+        width: 28rem;
+        font-size: 5rem;
+    }
+
+    .elemento-duplo-caixa {
+        height: 26rem;
+        width: 28rem;
+    }
+
+}
+
+@media (max-width: 505px) {
+    .elemento-estreito {
+        height: 26rem;
+        width: 27rem;
+        font-size: 5rem;
+    }
+
+    .elemento-duplo-caixa {
+        height: 26rem;
+        width: 27rem;
+    }
+
+}
+
+@media (max-width: 500px) {
+    .elemento-estreito {
+        height: 28rem;
+        width: 29rem;
+        font-size: 5rem;
+    }
+
+    .elemento-duplo-caixa {
+        height: 28rem;
+        width: 29rem;
+    }
+
+}
+
+@media (max-width: 430px) {
+
+    .elemento-estreito {
+        height: 28rem;
+        width: 28rem;
+        margin: 0 0.5rem 3rem;
+    }
+
+    .elemento-duplo-caixa {
+        height: 28rem;
+        width: 28rem;
+        margin: 0 0.5rem 3rem;
+    }
+
+}
+
+
+@media (max-width: 404px) {
+
+    .elemento-estreito {
+        height: 28rem;
+        width: 27rem;
+    }
+
+    .elemento-duplo-caixa {
+        height: 28rem;
+        width: 27rem;
+    }
+
+}
+
+@media (max-width: 377px) {
+
+    .elemento-estreito {
+        height: 28rem;
+        width: 25rem;
+    }
+
+    .elemento-duplo-caixa {
+        height: 28rem;
+        width: 26rem;
+    }
+
+}
+
+@media (max-width: 363px) {
+
+    .elemento-estreito {
+        height: 30rem;
+        width: 24rem;
+    }
+
+    .elemento-duplo-caixa {
+        height: 30rem;
+        width: 24rem;
+    }
+
+}
+
+
+/* Fim da Dashboard */
+
+.btnLogin {
+    font-size: 2.5rem;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+}
+
+#containerLogin .campo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+#containerLogin {
+    width: 85rem;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 3rem 4rem;
+    gap: 2rem;
+}
+
+#containerLogin input {
+    font-size: 2rem;
+    border: none;
+}
+
+.campo span {
+    display: flex;
+}
+
+.campo span #senha {
+    width: 100%;
+    font-size: 2rem;
+    border: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.campo span {
+    border: 1px solid #FEFEFE;
+    border-radius: 0.4rem;
+}
+
+.campo span button:focus {
+    transform: none;
+    /* Remove transformações */
+    box-shadow: none;
+    /* Remove qualquer sombra */
+}
+
+#respostaVerificacao {
+    font-size: 2rem;
+    font-weight: bold;
+    color: red;
+}
+
+#containerLogin h1 {
+    font-size: 6rem;
+
+}
+
+#containerLogin h2 {
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+#containerLogin p {
+    font-size: 2rem;
+
+}
+
+#containerLogin .campo p {
+    align-self: flex-start;
+
+}
+
+#containerLogin a {
+    font-weight: bold;
+}
+
+.formCampos {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 5%;
+}
+
+.formCampos>div {
+    width: 100%;
+    gap: 0.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+#camposLogin {
+    width: 60%;
+}

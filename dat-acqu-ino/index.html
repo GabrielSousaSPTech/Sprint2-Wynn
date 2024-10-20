@@ -4,6 +4,7 @@
 <head>
     <title>Graphics</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="./assets/styles/style.css">
 </head>
 
 <style>
@@ -11,16 +12,38 @@
 </style>
 
 <body>
-
-    <h1>Monitoramento da Fermentação - Wynn</h1>
-    <div style="display: flex;">
-        <div style="width: 50%;">
-            <canvas id="sensorAnalogico"></canvas>
+    <section id="banner">
+        <div class="fundo-escuro">
+            <header>
+                <div class="container">
+                    <img class="logoWynn" id="home" src="./assets/imgs/logoWynn.png" alt="">
+                    <nav>
+                        <ul>
+                            <li><a href="#sobre-nos">Sobre</a></li>
+                            <li><a href="#missao">Missão</a></li>
+                        </ul>
+                    </nav>
+                    <nav id="dois">
+                        <ul>
+                            <li><a href="#contato">Contato</a></li>
+                            <li><a href="login.html">Login</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+            <div id="slogan">
+                <h1>Monitoramento da Fermentação - Wynn</h1>
+                <div style="display: flex;">
+                    <div style="width: 50%;">
+                        <canvas id="sensorAnalogico"></canvas>
+                    </div>
+                    <div style="width: 50%;">
+                        <canvas id="sensorDigital"></canvas>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div style="width: 50%;">
-            <canvas id="sensorDigital"></canvas>
-        </div>
-    </div>
+    </section>
 
     <script>
         var sensorAnalogico = new Chart(document.getElementById('sensorAnalogico').getContext('2d'), {
@@ -89,7 +112,7 @@
 
                     var ultimaPaginacao = paginacao[endpoint];
                     paginacao[endpoint] = valores.length;
-                    valores = valores.slice(ultimaPaacao);gin
+                    valores = valores.slice(ultimaPaacao); gin
 
                     valores.forEach((valor) => {
                         if (grafico.data.labels.length == 10 && grafico.data.datasets[0].data.length == 10) {
