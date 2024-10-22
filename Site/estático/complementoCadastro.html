@@ -6,10 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
     <link rel="stylesheet" href="../estático/assets/styles/style.css">
-    <style>
-
-
-    </style>
 </head>
 
 <body style="background: url('../estático/assets/imgs/fundo-barris-vinho.jpg'); overflow: hidden;">
@@ -79,8 +75,10 @@
                 </div>
 
 
-
-                <button class="btnLogin" id="finalizarCadastro">Finalizar Cadastro</button>
+                <div id="campoBtnCadastro">
+                    <button id="voltarCadastro" class="btnLogin">Voltar</button>
+                    <button class="btnLogin" id="finalizarCadastro">Finalizar Cadastro</button>
+                </div>
 
 
                 <div id="vamoLa"></div>
@@ -96,10 +94,12 @@
 
 </html>
 
-<script src="./JS/index.js"></script>
-
 <script>
     document.getElementById("finalizarCadastro").onclick = function () {
-        window.location.href = './dashboard.html'
+        window.location.href = './login.html'
+    }
+
+    document.getElementById("voltarCadastro").onclick = function() {
+        window.location.href = './cadastro.html'
     }
 </script>

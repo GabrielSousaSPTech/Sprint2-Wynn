@@ -1393,3 +1393,10 @@ canvas {
 #camposLogin {
     width: 60%;
 }
+
+#campoBtnCadastro {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+}
