@@ -28,7 +28,7 @@ function simularPerda() {
         <p>Com um sistema de monitoramento de temperatura e gases, permitirá a você um maior controle no processo de fermentação, te auxiliando em uma maior padronização do seu vinho!</p>
         
         <div class="containerBotaoFormularioResposta">
-        <a href="./index.html" class="btnFormularioResposta">Entre em contato com Nossa equipe!</a>
+        <a href="./index.html#contato" class="btnFormularioResposta">Entre em contato com Nossa equipe!</a>
         <span onclick = "simulacaoNovamente()">Simular Novamente</span>
         <img class="icon" src="./assets/icons/iconVinho 2.png" alt="">
         </div>
