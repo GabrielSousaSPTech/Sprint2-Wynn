@@ -1,10 +1,10 @@
 
 function checarCredenciais() {
     const email = emailLogin.value
-    const senhaLogin = senha.value
+    const senha = senhaLogin.value
 
     const verificacaoEmail = email == 'sptech@sptech';
-    const verificacaoSenha = senhaLogin == 'urubu100'
+    const verificacaoSenha = senha == 'urubu100'
     var fraseErroDeLogin = ''
     var isEmail = false
     for (var indiceEmail = 0; indiceEmail < email.length; indiceEmail++) {

@@ -1326,7 +1326,7 @@ canvas {
     display: flex;
 }
 
-.campo span #senha {
+.campo span .senha {
     width: 100%;
     font-size: 2rem;
     border: none;
