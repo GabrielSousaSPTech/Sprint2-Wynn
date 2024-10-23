@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Italiana&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Forum&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Mina:wght@400;700&display=swap');
 
@@ -98,7 +98,7 @@ header {
 }
 
 .fundo-escuro {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.2);
     height: 100%;
     width: 100%;
 }
@@ -189,7 +189,7 @@ header nav li {
     background: scroll url(../imgs/fundo-barris-vinho.jpg) center center no-repeat;
     background-size: cover;
 
-    font-family: Italiana;
+    font-family: Forum;
     color: white;
 }
 
@@ -905,7 +905,7 @@ footer p {
     min-height: 102vh;
     background: scroll url(../imgs/fundo-barris-vinho.jpg) center center no-repeat;
     background-size: cover;
-    font-family: Italiana;
+    font-family: Forum;
     color: white;
 }
 
