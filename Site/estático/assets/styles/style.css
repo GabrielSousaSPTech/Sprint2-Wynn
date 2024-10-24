@@ -1294,15 +1294,18 @@ canvas {
     padding: 1rem 2rem;
     border-radius: 1rem;
 }
+#containerEndereco {
+    display: none;
+}
 
-#containerLogin .campo {
+.containerFormularioCadastroLogin .campo {
     width: 100%;
     display: flex;
     flex-direction: column;
 
 }
 
-#containerLogin {
+.containerFormularioCadastroLogin {
     width: 85rem;
     background-color: rgba(0, 0, 0, 0.6);
     display: flex;
@@ -1314,7 +1317,7 @@ canvas {
     gap: 2rem;
 }
 
-#containerLogin input {
+.containerFormularioCadastroLogin input {
     font-size: 2rem;
     border: none;
 }
@@ -1349,27 +1352,27 @@ canvas {
     color: red;
 }
 
-#containerLogin h1 {
+.containerFormularioCadastroLogin h1 {
     font-size: 6rem;
 
 }
 
-#containerLogin h2 {
+.containerFormularioCadastroLogin h2 {
     font-size: 2.5rem;
     text-align: center;
 }
 
-#containerLogin p {
+.containerFormularioCadastroLogin p {
     font-size: 2rem;
 
 }
 
-#containerLogin .campo p {
+.containerFormularioCadastroLogin .campo p {
     align-self: flex-start;
 
 }
 
-#containerLogin a {
+.containerFormularioCadastroLogin a {
     font-weight: bold;
 }
 
