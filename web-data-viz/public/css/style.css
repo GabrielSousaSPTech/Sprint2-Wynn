@@ -186,7 +186,7 @@ header nav li {
 #banner {
     height: 100vh;
 
-    background: scroll url(../imgs/fundo-barris-vinho.jpg) center center no-repeat;
+    background: scroll url(../assets/imgs/fundo-barris-vinho.jpg) center center no-repeat;
     background-size: cover;
 
     font-family: Forum;
@@ -224,7 +224,7 @@ aside>div.fundo-escuro {
 }
 
 aside#mini-banner {
-    background: url(../imgs/fundo-vinicola.jpg) center center black;
+    background: url(../assets/imgs/fundo-vinicola.jpg) center center black;
     background-size: cover;
 }
 
@@ -317,7 +317,7 @@ main article #imagem {
     height: 100%;
     border-radius: 1rem;
 
-    background: center center url(../imgs/sobre-nos-wine-shop.jpg);
+    background: center center url(../assets/imgs/sobre-nos-wine-shop.jpg);
     background-size: cover;
 }
 
@@ -392,7 +392,7 @@ aside#contato>div.fundo-escuro {
 }
 
 aside#contato {
-    background: url(../imgs/fundo-loja-vinho.jpg) white center center;
+    background: url(../assets/imgs/fundo-loja-vinho.jpg) white center center;
     background-size: cover;
 }
 
@@ -500,7 +500,7 @@ footer>div.fundo-escuro {
 }
 
 footer {
-    background: url(../imgs/fundo-vinicola.jpg) rgb(19, 19, 19) center center no-repeat;
+    background: url(../assets/imgs/fundo-vinicola.jpg) rgb(19, 19, 19) center center no-repeat;
     background-size: cover;
     color: white;
 }
@@ -903,7 +903,7 @@ footer p {
 
 #banner-Dashboard {
     min-height: 102vh;
-    background: scroll url(../imgs/fundo-barris-vinho.jpg) center center no-repeat;
+    background: scroll url(../assets/imgs/fundo-barris-vinho.jpg) center center no-repeat;
     background-size: cover;
     font-family: Forum;
     color: white;

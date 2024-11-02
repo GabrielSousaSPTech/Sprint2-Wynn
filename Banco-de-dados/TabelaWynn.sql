@@ -1,11 +1,13 @@
 CREATE DATABASE dbWynn;
 USE dbWynn;
 
+
 CREATE TABLE tbEmpresa (
 	idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
     nomeEmpresa VARCHAR (80) NOT NULL,
     cnpjEmpresa CHAR (19) NOT NULL,
 	emailEmpresa VARCHAR (70) NOT NULL,
+    senhaEmpresa VARCHAR(50) NOT NULL,
     telEmpresa VARCHAR(14) NOT NULL,
     cepLogradouroEmpresa VARCHAR (80) NOT NULL,
     logradouroEmpresa VARCHAR (80),
@@ -16,13 +18,13 @@ CREATE TABLE tbEmpresa (
     compLogradouroEmpresa VARCHAR (150)
 );
 
-INSERT INTO tbEmpresa (nomeEmpresa, cnpjEmpresa, emailEmpresa, telEmpresa, cepLogradouroEmpresa, logradouroEmpresa, bairroLogradouroEmpresa, cidadeLogradouroEmpresa, ufLogradouroEmpresa, numLogradouroEmpresa, compLogradouroEmpresa) 
+INSERT INTO tbEmpresa (nomeEmpresa, cnpjEmpresa, emailEmpresa, senhaEmpresa, telEmpresa, cepLogradouroEmpresa, logradouroEmpresa, bairroLogradouroEmpresa, cidadeLogradouroEmpresa, ufLogradouroEmpresa, numLogradouroEmpresa, compLogradouroEmpresa) 
 VALUES 
-('Vinícola Campestre', '98.521.909/0002-70', 'vinicolaCampestre@gmail.com', '114940028922', '95205000', 'BR-116 KM 30', 'Bairro Passo da Porteira', 'Vacaria', 'RS', '1410', default), 
-('Vinícola Abreu Garcia', '10.327.131/0001-31', 'abreuGarcia@gmail.com', '114988888888', '88580000', 'Fazenda Nova Dela Costa', 'Alto Travessão', 'Campo Belo do Sul', 'SC', default, 'Sem número'), 
-('Vinícola Aurora', '88.777.134/0001-19', 'auroraVinhos@gmail.com', '114972222222', '95700000', 'Rua Olavo Bilac', 'Centro', 'Bento Gonçalves', 'RS', '500', default), 
-('Vinícola Salton', '88.110.431/0001-02', 'saltonVinhos@outlook.com', '114977777777', '95180000', 'Estrada Salton', 'Tuiuty', 'Bento Gonçalves', 'RS', '1500', default), 
-('Vinícola Miolo', '89.627.234/0001-56', 'mioloVinhos@outlook.com', '114966666666', '95700000', 'RS-444 KM 21', 'Vale dos Vinhedos', 'Bento Gonçalves', 'RS', default, 'Sem número');
+('Vinícola Campestre', '98.521.909/0002-70', 'vinicolaCampestre@gmail.com','123', '114940028922', '95205000', 'BR-116 KM 30', 'Bairro Passo da Porteira', 'Vacaria', 'RS', '1410', default), 
+('Vinícola Abreu Garcia', '10.327.131/0001-31', 'abreuGarcia@gmail.com','123', '114988888888', '88580000', 'Fazenda Nova Dela Costa', 'Alto Travessão', 'Campo Belo do Sul', 'SC', default, 'Sem número'), 
+('Vinícola Aurora', '88.777.134/0001-19', 'auroraVinhos@gmail.com','123', '114972222222', '95700000', 'Rua Olavo Bilac', 'Centro', 'Bento Gonçalves', 'RS', '500', default), 
+('Vinícola Salton', '88.110.431/0001-02', 'saltonVinhos@outlook.com','123', '114977777777', '95180000', 'Estrada Salton', 'Tuiuty', 'Bento Gonçalves', 'RS', '1500', default), 
+('Vinícola Miolo', '89.627.234/0001-56', 'mioloVinhos@outlook.com','123', '114966666666', '95700000', 'RS-444 KM 21', 'Vale dos Vinhedos', 'Bento Gonçalves', 'RS', default, 'Sem número');
 
 
 CREATE TABLE tbFuncionarioEmpresa (
@@ -84,6 +86,7 @@ VALUES
 CREATE TABLE tbControleTanque (
 	idControleTanque INT PRIMARY KEY AUTO_INCREMENT,
     idEmpresa INT NOT NULL,
+    tipoVinho VARCHAR(45) NOT NULL,
     idMicroControlador INT NOT NULL,
     medidaTotalMQ2 FLOAT NOT NULL,
     medidaTotalLM35 FLOAT NOT NULL,
@@ -91,18 +94,20 @@ CREATE TABLE tbControleTanque (
     CONSTRAINT fkControleTanque_MicroControlador FOREIGN KEY (idMicroControlador) REFERENCES tbMicroControlador(idMicroControlador)
 );
 
-INSERT INTO tbControleTanque (idEmpresa, idMicroControlador, medidaTotalMQ2, medidaTotalLM35) 
+
+
+INSERT INTO tbControleTanque (idEmpresa, tipoVinho, idMicroControlador, medidaTotalMQ2, medidaTotalLM35) 
 VALUES 
-(1, 1, 23.5, 28.3), 
-(1, 2, 25.7, 29.1), 
-(2, 3, 50.2, 30.6), 
-(2, 4, 49.8, 31.2), 
-(3, 5, 48.1, 27.4),
-(3, 6, 47.6, 28.0), 
-(4, 7, 52.3, 29.5), 
-(4, 8, 53.1, 30.0), 
-(5, 9, 45.9, 26.8), 
-(5, 10, 46.4, 27.2);
+(1, 'Tinto', 1, 23.5, 28.3), 
+(1, 'Branco', 2, 25.7, 29.1), 
+(2, 'Tinto', 3, 50.2, 30.6), 
+(2, 'Branco', 4, 49.8, 31.2), 
+(3, 'Tinto', 5, 48.1, 27.4),
+(3, 'Branco', 6, 47.6, 28.0), 
+(4, 'Tinto', 7, 52.3, 29.5), 
+(4, 'Branco', 8, 53.1, 30.0), 
+(5, 'Tinto', 9, 45.9, 26.8), 
+(5, 'Branco', 10, 46.4, 27.2);
 
 
 CREATE TABLE tbSensor (
@@ -202,11 +207,19 @@ JOIN
 JOIN 
     tbMedidaSensor ms ON s.idSensor = ms.idSensor;
     
-
+SELECT tanque.idControleTanque AS Id,
+		empresa.nomeEmpresa AS Empresa,
+        tanque.tipoVinho AS 'Tipo de Vinho',
+        microControlador.situacaoMicroControlador AS 'Status do Micro Controlador',
+        tanque.medidaTotalLM35 AS Temperatura,
+        tanque.medidaTotalMQ2 AS 'Concentração de CO2'
+        FROM tbControleTanque as tanque
+JOIN tbEmpresa AS empresa ON tanque.idEmpresa = empresa.idEmpresa
+JOIN tbmicrocontrolador AS microControlador ON tanque.idMicroControlador = microControlador.idMicroControlador;
 SELECT * FROM tbEmpresa;
 SELECT * FROM tbFuncionarioEmpresa;
 SELECT * FROM tbMicroControlador;
-SELECT * FROM tbControleTonel;
+SELECT * FROM tbControleTanque;
 SELECT * FROM tbSensor;
 SELECT * FROM tbMedidaSensor;
 
