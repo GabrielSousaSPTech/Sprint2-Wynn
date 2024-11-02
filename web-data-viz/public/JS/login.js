@@ -42,7 +42,7 @@ function checarCredenciais() {
                             
                             setTimeout(function () {
                                 
-                                window.location = "./dashboard/cards.html";
+                                window.location = "./dashboard/dashboard.html";
                             }, 1000); // apenas para exibir o loading
             
                         });

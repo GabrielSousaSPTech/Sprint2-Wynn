@@ -1,212 +1,162 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
 
-  <title>AquaTech | Cadastro</title>
 
-  <script src="./js/sessao.js"></script>
-
-  <link rel="stylesheet" href="./css/estilo.css" />
-  <link rel="icon" href="./assets/icon/favicon2.ico" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
+    </style>
 </head>
 
-<body onload="listar()">
-  <!--header inicio-->
-  <div class="header">
-    <div class="container">
-      <h1 class="titulo">AquaTech</h1>
-      <ul class="navbar">
-        <li>
-          <a href="index.html">Inicial</a>
-        </li>
-        <li>
-          <a href="simulador.html">Simulador</a>
-        </li>
-        <li>|</li>
-        <li>
-          <a href="login.html">Login</a>
-        </li>
-        <li class="agora">
-          <a href="#">Cadastro</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <!--header fim-->
+<body style="background: url('./assets/imgs/fundo-barris-vinho.jpg'); overflow: hidden; background-size: cover;">
+    <section class="section fundo-escuro">
+        <header style="width: 100%; background-color: transparent;">
+            <div class="containerHeader">
+                <a href="./index.html"><img class="logoWynn" src="./assets/imgs/logoWynn.png" alt=""></a>
+            </div>
+        </header>
 
-  <div class="login">
-    <div class="alerta_erro">
-      <div class="card_erro" id="cardErro">
-        <span id="mensagem_erro"></span>
-      </div>
-    </div>
-    <div class="container">
-      <div class="card card-cadastro">
-        <h2>Bem-vindo!</h2>
-        <div class="formulario">
-          <!--
-                         Para inserir mais um campo, copie uma das inputs abaixo.
-                         Assim que inserir vá para o script abaixo.
-                     -->
-          <div class="campo">
-            <span>Código de ativação:</span>
-            <input id="codigo_input" type="text" placeholder="Insira aqui seu código" />
-          </div>
-          <div class="campo">
-            <span>Nome:</span>
-            <input id="nome_input" type="text" placeholder="Seu nome" />
-          </div>
-          <div class="campo">
-            <span>E-mail:</span>
-            <input id="email_input" type="text" placeholder="meuemail@provedor.com" />
-          </div>
-          <div class="campo">
-            <span>Senha:</span>
-            <input id="senha_input" type="password" placeholder="******" />
-          </div>
-          <div class="campo">
-            <span>Confirmação da Senha:</span>
-            <input id="confirmacao_senha_input" type="password" placeholder="******" />
-          </div>
-          <button class="botao" onclick="cadastrar()">Cadastrar</button>
-        </div>
-        <div id="div_aguardar" class="loading-div">
-          <img src="./assets/circle-loading.gif" id="loading-gif" />
-        </div>
+        <section class="sectionFormulario">
 
-        <div id="div_erros_login"></div>
-      </div>
-    </div>
-  </div>
+            <div class="containerFormularioCadastroLogin" id="containerCadastro">
 
-  <!--footer inicio-->
-  <div class="footer">
-    <div class="container">
-      <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023</h4>
-      <span class="version">v1.0.0</span>
-    </div>
-  </div>
-  <!--footer fim-->
+                <h1>Cadastro</h1>
+                <hr>
+                <h2>Seja bem-vindo(a)! <br>
+                    Realize o cadastro para ter acesso aos nossos serviços.</h2>
+
+                <div class="formCampos">
+
+                    <div>
+                        <div class="campo">
+                            <p>Nome:</p>
+                            <input type="text" id="input_nome_empresa" required>
+                        </div>
+                        <div class="campo">
+                            <p>CNPJ:</p>
+                            <input type="text" id="input_cnpj_empresa" required>
+                        </div>
+                        <div class="campo">
+                            <p>E-mail:</p>
+                            <input type="text" id="input_email_empresa" required>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="campo">
+                            <p>Senha:</p>
+                            <span>
+                                <input type="password" id="input_senha_cadastro_empresa"  class="senha">
+                                <button onclick="mostrarSenha(this)">
+                                    <img class="showHideSenha" style="width: 3rem;"src="./assets/icons/olho-aberto.png" alt="">
+                                </button>
+                            </span>
+                        </div>
+                        <div class="campo">
+                            <p>Confirmar Senha:</p>
+                            <span>
+                                <input type="password" id="input_confirmar_senha_cadastro_empresa" class="senha" required>
+                                <button onclick="mostrarSenha(this)">
+                                    <img class="showHideSenha" style="width: 3rem;"src="./assets/icons/olho-aberto.png" alt="">
+                                </button>
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                
+                <button class="btnLogin" id="continuarCadastro" onclick="continuarCadastro()">Continuar Cadastro</button>
+                
+                <p>Já tem uma conta? <a href="login.html">Login</a></p>
+                
+                <div id="erroDeCadastro"></div>
+                
+            </div>
+            
+            <div class="containerFormularioCadastroLogin" id="containerEndereco">
+                <h1>Cadastro</h1>
+                <hr>
+                <h2> Complete seu cadastro </h2>
+                <div id="erroDeCadastroEndereco"></div>
+                
+                <div class="formCampos">
+                    
+                    <div>
+                        
+                        <div class="campo">
+                            <p>CEP:</p>
+                            <input id="input_cep" type="text">
+                        </div>
+                        
+                        <div class="campo">
+                            <p>Rua/Logradouro:</p>
+                            <input id="input_logradouro" type="text">
+                        </div>
+                        
+                        <div class="campo">
+                            <p>Número:</p>
+                            <input id="input_num_logradouro" type="text">
+                        </div>
+                        
+                        <div class="campo">
+                            <p>Complemento:</p>
+                            <input id="input_complemento" type="text">
+                        </div>
+
+                        
+                        
+                    </div>
+                    
+                    <div>
+                        
+                        <div class="campo">
+                            <p>Bairro:</p>
+                            <input id="input_bairro" type="text">
+                        </div>
+                        
+                        <div class="campo">
+                            <p>Cidade:</p>
+                            <input id="input_cidade" type="text">
+                        </div>
+                        
+                        <div class="campo">
+                            <p>UF:</p>
+                            <input id="input_uf" type="text">
+                        </div>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="campoBtnCadastro">
+                    <button id="voltarCadastro" class="btnLogin" onclick="navegarPeloCadastro()">Voltar</button>
+                    <button class="btnLogin" id="finalizarCadastro" onclick="cadastrarEmpresa()">Finalizar Cadastro</button>
+                </div>
+                
+
+
+
+            </div>
+        </section>
+    </section>
 </body>
 
 </html>
 
+
+<script src="./JS/mostrarSenha.js"></script>
+<script src="./JS/cadastro.js"></script>
 <script>
-
-  // Array para armazenar empresas cadastradas para validação de código de ativação 
-  let listaEmpresasCadastradas = [];
-
-  function cadastrar() {
-    // aguardar();
-
-    //Recupere o valor da nova input pelo nome do id
-    // Agora vá para o método fetch logo abaixo
-    var nomeVar = nome_input.value;
-    var emailVar = email_input.value;
-    var senhaVar = senha_input.value;
-    var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    var codigoVar = codigo_input.value;
-    var idEmpresaVincular
-
-    // Verificando se há algum campo em branco
-    if (
-      nomeVar == "" ||
-      emailVar == "" ||
-      senhaVar == "" ||
-      confirmacaoSenhaVar == "" ||
-      codigoVar == ""
-    ) {
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
-
-      finalizarAguardar();
-      return false;
-    } else {
-      setInterval(sumirMensagem, 5000);
+    function navegarPeloCadastro(){
+        
+            containerCadastro.style.display = 'flex'
+            containerEndereco.style.display = 'none'
+        
     }
-
-    // Verificando se o código de ativação é de alguma empresa cadastrada
-    for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
-      if (listaEmpresasCadastradas[i].codigo_ativacao == codigoVar) {
-        idEmpresaVincular = listaEmpresasCadastradas[i].id
-        console.log("Código de ativação válido.");
-        break;
-      } else {
-        cardErro.style.display = "block";
-        mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
-        finalizarAguardar();
-      }
-    }
-
-    // Enviando o valor da nova input
-    fetch("/usuarios/cadastrar", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
-        nomeServer: nomeVar,
-        emailServer: emailVar,
-        senhaServer: senhaVar,
-        idEmpresaVincularServer: idEmpresaVincular
-      }),
-    })
-      .then(function (resposta) {
-        console.log("resposta: ", resposta);
-
-        if (resposta.ok) {
-          cardErro.style.display = "block";
-
-          mensagem_erro.innerHTML =
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-          setTimeout(() => {
-            window.location = "login.html";
-          }, "2000");
-
-          limparFormulario();
-          finalizarAguardar();
-        } else {
-          throw "Houve um erro ao tentar realizar o cadastro!";
-        }
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-        finalizarAguardar();
-      });
-
-    return false;
-  }
-
-  // Listando empresas cadastradas 
-  function listar() {
-    fetch("/empresas/listar", {
-      method: "GET",
-    })
-      .then(function (resposta) {
-        resposta.json().then((empresas) => {
-          empresas.forEach((empresa) => {
-            listaEmpresasCadastradas.push(empresa);
-
-            console.log("listaEmpresasCadastradas")
-            console.log(listaEmpresasCadastradas[0].codigo_ativacao)
-          });
-        });
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-      });
-  }
-
-  function sumirMensagem() {
-    cardErro.style.display = "none";
-  }
 </script>
