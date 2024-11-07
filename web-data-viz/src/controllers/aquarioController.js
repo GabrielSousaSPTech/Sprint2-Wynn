@@ -1,3 +1,6 @@
+
+                                          // ANALISAR A NECESSIDADE DO ''aquarioController.js'' PARA O NOSSO PROJETO
+
 var aquarioModel = require("../models/aquarioModel");
 
 function buscarAquariosPorEmpresa(req, res) {

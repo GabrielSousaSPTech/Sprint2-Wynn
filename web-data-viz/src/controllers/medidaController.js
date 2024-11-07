@@ -1,3 +1,6 @@
+
+                                // ANALISAR A NECESSIDADE DO ''medidaController.js'' PARA O NOSSO PROJETO
+
 var medidaModel = require("../models/medidaModel");
 
 function buscarUltimasMedidas(req, res) {
