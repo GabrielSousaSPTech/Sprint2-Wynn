@@ -724,9 +724,9 @@ function mostrarGraficosCO2Frisante() {
 
 mostrarGraficosCO2Tinto();
 
+/*
 var chartTempCO2 = document.getElementById('chart_temp_co2').getContext('2d');
 var currentChartTempCO2;
-
 function criarGraficoTempCO2(data) {
     if (currentChartTempCO2) {
         currentChartTempCO2.destroy();
@@ -850,8 +850,8 @@ function mostrarGraficoTempCO2(tanque) {
     }
     criarGraficoTempCO2(data);
 }
-
-function mostrarGraficosTempCO2Tinto() {
+ */
+/* function mostrarGraficosTempCO2Tinto() {
     var data = {
         labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
         datasets: [
@@ -907,7 +907,7 @@ function mostrarGraficosTempCO2Frisante() {
     criarGraficoTempCO2(data);
 }
 
-mostrarGraficosTempCO2Tinto()
+mostrarGraficosTempCO2Tinto() */
 
 const displayCO2 = document.getElementById('grafico_co2').getContext('2d');
 

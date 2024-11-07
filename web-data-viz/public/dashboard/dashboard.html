@@ -51,11 +51,11 @@
                             <div>
                                 <div class="caixa-input-radio">
                                     <p>Geral: </p><input type="radio" name="controle" value="1" id="geral-tipo-vinho"
-                                    onclick="mudarDashboardGeral()" checked>
+                                        onclick="mudarDashboardGeral()" checked>
                                 </div>
                                 <div class="caixa-input-radio">
                                     <p>Individual: </p><input type="radio" name="controle" value="2"
-                                    id="individual-tipo-vinho" onclick="mudarDashboardIndividual()">
+                                        id="individual-tipo-vinho" onclick="mudarDashboardIndividual()">
                                 </div>
                             </div>
                             <div id="select-tipo-vinho">
@@ -67,9 +67,9 @@
                                     <option value="frisante">Frisante</option>
                                 </select>
                             </div>
-                            
+
                         </div>
-                        
+
                     </div>
                     <div class="elemento-duplo-caixa">
                         <div class="elemento-duplo elemento center formatacao">
@@ -91,7 +91,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="elemento-duplo-caixa">
                         <div class="elemento-duplo elemento">
                             <h2 id="h2tanque">TANQUES</h2>
@@ -105,13 +105,13 @@
                             </p>
                         </div>
                     </div>
-                    <div class="elemento-largo elemento">
+                    <!-- <div class="elemento-largo elemento">
                         <h2 class="titulo_grafico">Temperatura - CO2</h2>
                         <div id="display_grafico_duplo">
                             <canvas id="chart_temp_co2" class="center"></canvas>
                         </div>
-                    </div>
-                    
+                    </div> -->
+
                     <div id="dashboard_alerta" class="elemento-estreito elemento center formatacao">
                         <h2>STATUS</h2>
                         <p id="status-ok"><span>OK</span></p>
@@ -123,7 +123,7 @@
                             <canvas id="chart_temp" class="center"></canvas>
                         </div>
                     </div>
-                    
+
                     <div class="elemento-largo-grande elemento">
                         <h2 class="titulo_grafico">co2</h2>
                         <div id="display_grafico_co2">
@@ -131,14 +131,56 @@
                         </div>
                     </div>
                 </div>
-                
+            </div>
+            <div class="listaTanques">
+                <div id="tanque-01" class="iconeTanque selected_tank">
+                    <img src="../assets/icons/fermentacao (ok).png" alt="">
+                    <p>T-01</p>
+                </div>
+                <div id="tanque-02" class="iconeTanque">
+                    <img src="../assets/icons/fermentacao (ok).png" alt="">
+                    <p>T-02</p>
+                </div>
+                <div id="tanque-03" class="iconeTanque">
+                    <img src="../assets/icons/fermentacao (ok).png" alt="">
+                    <p>T-03</p>
+                </div>
+                <div id="tanque-04" class="iconeTanque">
+                    <img src="../assets/icons/fermentacao (acima).png" alt="">
+                    <p>T-04</p>
+                </div>
+                <div id="tanque-05" class="iconeTanque">
+                    <img src="../assets/icons/fermentacao (critico).png" alt="">
+                    <p>T-05</p>
+                </div>
+                <div id="tanque-06" class="iconeTanque">
+                    <img src="../assets/icons/fermentacao (abaixo).png" alt="">
+                    <p>T-06</p>
+                </div>
+                <div id="tanque-07" class="iconeTanque">
+                    <img src="../assets/icons/fermentacao (congelado).png" alt="">
+                    <p>T-07</p>
+                </div>
+                <div id="tanque-08" class="iconeTanque">
+                    <img src="../assets/icons/fermentacao (ok).png" alt="">
+                    <p>T-08</p>
+                </div>
+                <div id="tanque-09" class="iconeTanque">
+                    <img src="../assets/icons/fermentacao (ok).png" alt="">
+                    <p>T-09</p>
+                </div>
+                <div id="tanque-10" class="iconeTanque">
+                    <img src="../assets/icons/fermentacao (ok).png" alt="">
+                    <p>T-10</p>
+                </div>
             </div>
         </div>
-        
-        
+
     </section>
-    
-</section>
+
+    </section>
+
+
 </body>
 
 </html>
