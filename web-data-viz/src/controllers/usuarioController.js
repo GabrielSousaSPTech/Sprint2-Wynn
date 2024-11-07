@@ -1,3 +1,6 @@
+
+                            // ANALISAR A NECESSIDADE DO ''usuarioController.js'' PARA O NOSSO PROJETO
+
 var usuarioModel = require("../models/usuarioModel");
 var aquarioModel = require("../models/aquarioModel");
 
