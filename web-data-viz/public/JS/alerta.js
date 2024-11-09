@@ -1,5 +1,9 @@
 var alertas = [];
 
+
+                                      // ANALISAR A NECESSIDADE DO ''alerta.js'' PARA O NOSSO PROJETO
+
+
 function obterdados(idAquario) {
     fetch(`/medidas/tempo-real/${idAquario}`)
         .then(resposta => {

@@ -1,0 +1,26 @@
+ATIVIDADE DE FUNÇÕES MATEMÁTIVAS
+
+
+
+[Grupo] 
+   - ID (PK)
+   - Nome do Grupo
+   - Descrição do Projeto
+
+[Aluno] 
+   - RA (PK)
+   - Nome do Aluno
+   - E-mail do Aluno
+   - ID_Grupo (FK)
+
+[Professor] 
+   - ID (PK)
+   - Nome do Professor
+   - Disciplina
+
+[Avaliação]
+   - ID_Avaliação (PK)
+   - Data e Horário de Início da Avaliação
+   - Nota Atribuída
+   - ID_Grupo (FK)
+   - ID_Professor (FK)

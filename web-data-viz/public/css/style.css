@@ -940,7 +940,9 @@ footer p {
     height: 10%;
     font-size: 2rem;
     font-weight: bolder;
-    margin: 3rem 0;
+    margin: 3rem auto;
+    display: flex;
+    justify-content: center;
 }
 
 .linha-dashboard {
@@ -1146,6 +1148,47 @@ canvas {
     color: green;
 }
 
+.listaTanques {
+    position: absolute;
+    top: 22rem;
+    left: 5rem;
+    width: 24rem;
+    height: 64rem;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.iconeTanque {
+    padding: .2rem;
+    border-radius: .5rem;
+    width: 8rem;
+    height: 8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 1rem;
+}
+
+.iconeTanque p {
+    font-size: 2rem;
+}
+
+.iconeTanque img {
+    aspect-ratio: 1;
+    width: 6rem;
+    border-radius: 10rem;
+    padding: .2rem;
+}
+
+.selected_tank {
+    border: solid .2rem rgba(255, 255, 255, .6);
+}
+
 /* Responsividade */
 @media (max-width: 1689px) {
     .elemento-largo-grande {
@@ -1294,6 +1337,7 @@ canvas {
     padding: 1rem 2rem;
     border-radius: 1rem;
 }
+
 #containerEndereco {
     display: none;
 }

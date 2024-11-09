@@ -208,7 +208,7 @@ function mudarTanque() {
         `
         mostrarGraficoTemp('tanque2');
         mostrarGraficoCO2('tanque2');
-        mostrarGraficoTempCO2('tanque2');
+        /*  mostrarGraficoTempCO2('tanque2'); */
         atualizarGraficoCO2(78, 22);
     } else if (nTanque == "3") {
         divTanques.innerHTML = `<span>03/</span>10`;
@@ -224,7 +224,7 @@ function mudarTanque() {
         `
         mostrarGraficoTemp('tanque3');
         mostrarGraficoCO2('tanque3');
-        mostrarGraficoTempCO2('tanque3');
+        /* mostrarGraficoTempCO2('tanque3'); */
         atualizarGraficoCO2(90, 10);
     } else if (nTanque == "4") {
         divTanques.innerHTML = `<span>04/</span>10`;
@@ -240,7 +240,7 @@ function mudarTanque() {
         `
         mostrarGraficoTemp('tanque4');
         mostrarGraficoCO2('tanque4');
-        mostrarGraficoTempCO2('tanque4');
+        /* mostrarGraficoTempCO2('tanque4'); */
         atualizarGraficoCO2(66, 34);
     } else if (nTanque == "5") {
         divTanques.innerHTML = `<span>05/</span>10`;
@@ -256,7 +256,7 @@ function mudarTanque() {
         `
         mostrarGraficoTemp('tanque5');
         mostrarGraficoCO2('tanque5');
-        mostrarGraficoTempCO2('tanque5');
+        /* mostrarGraficoTempCO2('tanque5'); */
         atualizarGraficoCO2(71, 29);
     } else if (nTanque == "6") {
         divTanques.innerHTML = `<span>06/</span>10`;
@@ -272,7 +272,7 @@ function mudarTanque() {
         `
         mostrarGraficoTemp('tanque6');
         mostrarGraficoCO2('tanque6');
-        mostrarGraficoTempCO2('tanque6');
+        /* mostrarGraficoTempCO2('tanque6'); */
         atualizarGraficoCO2(67, 33);
     } else if (nTanque == "7") {
         divTanques.innerHTML = `<span>07/</span>10`;
@@ -288,7 +288,7 @@ function mudarTanque() {
         `
         mostrarGraficoTemp('tanque7');
         mostrarGraficoCO2('tanque7');
-        mostrarGraficoTempCO2('tanque7');
+        /* mostrarGraficoTempCO2('tanque7'); */
         atualizarGraficoCO2(85, 15);
     } else if (nTanque == "8") {
         divTanques.innerHTML = `<span>08/</span>10`;
@@ -304,7 +304,7 @@ function mudarTanque() {
         `
         mostrarGraficoTemp('tanque8');
         mostrarGraficoCO2('tanque8');
-        mostrarGraficoTempCO2('tanque8');
+        /* mostrarGraficoTempCO2('tanque8'); */
         atualizarGraficoCO2(87, 13);
     } else if (nTanque == "9") {
         divTanques.innerHTML = `<span>09/</span>10`;
@@ -320,7 +320,7 @@ function mudarTanque() {
         `
         mostrarGraficoTemp('tanque9');
         mostrarGraficoCO2('tanque9');
-        mostrarGraficoTempCO2('tanque9');
+        /* mostrarGraficoTempCO2('tanque9'); */
         atualizarGraficoCO2(92, 8);
     } else if (nTanque == "10") {
         divTanques.innerHTML = `<span>10/</span>10`;
@@ -336,24 +336,29 @@ function mudarTanque() {
         `
         mostrarGraficoTemp('tanque10');
         mostrarGraficoCO2('tanque10');
-        mostrarGraficoTempCO2('tanque10');
+        /*  mostrarGraficoTempCO2('tanque10'); */
         atualizarGraficoCO2(93, 7);
     } else {
+        var tempAtualTanque_01 = tempTanque_01[tempTanque_01.length - 1];
+        var CO2AtualTanque_01 = CO2Tanque_01[CO2Tanque_01.length - 1];
+        var maiorTempRegistradaTanque_01 = retornarMaiorTemperatura(tempTanque_01);
+        var menorTempRegistradaTanque_01 = retornarMenorTemperatura(tempTanque_01);
+
         divTanques.innerHTML = `<span>01/</span>10`;
         h2Tipo.innerText = "TINTO";
         statush2.innerText = "TANQUE-01";
         displayTempFermentacao.innerHTML = `<span>30</span>h`;
         displayTemperatura.innerHTML = `
         <h3>
-            <span class="minima_temperatura">27,5°<i class="fa-solid fa-arrow-down"></i></span>
-            29,6°
-            <span class="maxima_temperatura">30,2°<i class="fa-solid fa-arrow-up"></i></span>
+            <span id="temperatura_minima" class="minima_temperatura">${menorTempRegistradaTanque_01}<i class="fa-solid fa-arrow-down"></i></span>
+            ${tempAtualTanque_01}
+            <span id="temperatura_maxima" class="maxima_temperatura">${maiorTempRegistradaTanque_01}<i class="fa-solid fa-arrow-up"></i></span>
         </h3>
         `
         mostrarGraficoTemp('tanque1');
         mostrarGraficoCO2('tanque1');
-        mostrarGraficoTempCO2('tanque1');
-        atualizarGraficoCO2(65, 35);
+        /* mostrarGraficoTempCO2('tanque1'); */
+        atualizarGraficoCO2(CO2AtualTanque_01, 100 - CO2AtualTanque_01);
     }
 
 }
@@ -393,16 +398,90 @@ function criarGraficoTemp(data) {
     });
 }
 
+setInterval(() => {
+    var medidaAleatoriaTemp = (Math.random() * 15) + 20;
+    tempTanque_01.shift();
+    tempTanque_01.push(medidaAleatoriaTemp.toFixed(1));
+
+    var medidaAleatoriaCO2 = (Math.random() * 15) + 60;
+    CO2Tanque_01.shift();
+    CO2Tanque_01.push(medidaAleatoriaCO2.toFixed(1));
+
+    limiteTempAltaTanque_Tinto.shift();
+    limiteTempAltaTanque_Tinto.push(30);
+
+    limiteTempCriticaAltaTanque_Tinto.shift();
+    limiteTempCriticaAltaTanque_Tinto.push(32);
+
+    limiteTempBaixaTanque_Tinto.shift();
+    limiteTempBaixaTanque_Tinto.push(24);
+
+    limiteTempCriticaBaixaTanque_Tinto.shift();
+    limiteTempCriticaBaixaTanque_Tinto.push(22);
+
+    let agora = new Date();
+    let horas = agora.getHours();
+    let minutos = agora.getMinutes();
+
+    var horarioAtual = `${horas}:${minutos}`;
+
+    horarioMedicaoTanque_01.shift();
+    horarioMedicaoTanque_01.push(horarioAtual);
+
+    mudarTanque()
+}, 3000);
+
+//Paremetros de aviso
+var limiteTempAltaTanque_Tinto = [30, 30, 30, 30, 30, 30];
+var limiteTempCriticaAltaTanque_Tinto = [32, 32, 32, 32, 32, 32];
+var limiteTempBaixaTanque_Tinto = [24, 24, 24, 24, 24, 24];
+var limiteTempCriticaBaixaTanque_Tinto = [22, 22, 22, 22, 22, 22];
+
+var horarioMedicaoTanque_01 = ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00']
+var tempTanque_01 = [27.5, 22.5, 34.2, 29.3, 28.7, 30.6];
+var CO2Tanque_01 = [70, 70, 69, 68, 66, 61];
+
+
+function retornarMaiorTemperatura(listaTemperaturas = []) {
+    var tempMaxima = document.getElementById("temperatura_maxima").innerText;
+
+    tempMaxima = tempMaxima.replace(",", ".");
+    tempMaxima = tempMaxima.replace("°", "");
+
+    var maiorTemp = Number(tempMaxima);
+
+    for (let i = 1; i < listaTemperaturas.length; i++) {
+        if (maiorTemp < listaTemperaturas[i]) maiorTemp = listaTemperaturas[i];
+    }
+    return maiorTemp;
+}
+
+function retornarMenorTemperatura(listaTemperaturas = []) {
+    var tempMinima = document.getElementById("temperatura_minima").innerText;
+
+    tempMinima = tempMinima.replace(",", ".");
+    tempMinima = tempMinima.replace("°", "");
+
+    var menorTemp = tempMinima;
+    for (let i = 1; i < listaTemperaturas.length; i++) {
+        if (menorTemp > listaTemperaturas[i]) menorTemp = listaTemperaturas[i];
+    }
+    return menorTemp;
+}
+
+
 function mostrarGraficoTemp(tanque) {
     var data;
     switch (tanque) {
         case 'tanque1':
             data = {
-                labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+                labels: horarioMedicaoTanque_01,
                 datasets: [
-                    { label: 'Tanque-1', data: [27.5, 28.5, 30.2, 29.3, 28.7, 29.6], borderWidth: 2 },
-                    { label: 'Limite Máximo', data: [32, 32, 32, 32, 32, 32], borderWidth: 1 },
-                    { label: 'Limite Mínimo', data: [24, 24, 24, 24, 24, 24], borderWidth: 1 }
+                    { label: 'Tanque-1', data: tempTanque_01, borderWidth: 2 },
+                    { label: 'Crítico Máximo', data: limiteTempCriticaAltaTanque_Tinto, borderWidth: 1 },
+                    { label: 'Atenção Máximo', data: limiteTempAltaTanque_Tinto, borderWidth: 1 },
+                    { label: 'Crítico Mínimo', data: limiteTempCriticaBaixaTanque_Tinto, borderWidth: 1 },
+                    { label: 'Atenção Mínimo', data: limiteTempBaixaTanque_Tinto, borderWidth: 1 }
                 ]
             };
             break;
@@ -594,9 +673,9 @@ function mostrarGraficoCO2(tanque) {
     switch (tanque) {
         case 'tanque1':
             data = {
-                labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+                labels: horarioMedicaoTanque_01,
                 datasets: [
-                    { label: 'Tanque-1', data: [70, 70, 69, 68, 66, 65], borderWidth: 2 }
+                    { label: 'Tanque-1', data: CO2Tanque_01, borderWidth: 2 }
                 ]
             };
             break;
@@ -724,9 +803,9 @@ function mostrarGraficosCO2Frisante() {
 
 mostrarGraficosCO2Tinto();
 
+/*
 var chartTempCO2 = document.getElementById('chart_temp_co2').getContext('2d');
 var currentChartTempCO2;
-
 function criarGraficoTempCO2(data) {
     if (currentChartTempCO2) {
         currentChartTempCO2.destroy();
@@ -850,8 +929,8 @@ function mostrarGraficoTempCO2(tanque) {
     }
     criarGraficoTempCO2(data);
 }
-
-function mostrarGraficosTempCO2Tinto() {
+ */
+/* function mostrarGraficosTempCO2Tinto() {
     var data = {
         labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
         datasets: [
@@ -907,7 +986,7 @@ function mostrarGraficosTempCO2Frisante() {
     criarGraficoTempCO2(data);
 }
 
-mostrarGraficosTempCO2Tinto()
+mostrarGraficosTempCO2Tinto() */
 
 const displayCO2 = document.getElementById('grafico_co2').getContext('2d');
 
