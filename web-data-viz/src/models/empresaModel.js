@@ -7,7 +7,7 @@ function buscarPorId(id) {
 }
 
 function listar() {
-  var instrucaoSql = `SELECT id, razao_social, cnpj, codigo_ativacao FROM empresa`;
+  var instrucaoSql = `SELECT idEmpresa, nomeEmpresa, cnpjEmpresa, chaveAtivacaoEmpresa FROM tbEmpresa`;
 
   return database.executar(instrucaoSql);
 }
@@ -18,8 +18,11 @@ function buscarPorCnpj(cnpj) {
   return database.executar(instrucaoSql);
 }
 
-function cadastrar(razaoSocial, cnpj) {
-  var instrucaoSql = `INSERT INTO empresa (razao_social, cnpj) VALUES ('${razaoSocial}', '${cnpj}')`;
+function cadastrar(nome, cnpj, email, senha, chaveAtivacao, telefone, cep, logradouro, bairro, cidade, uf, numLog, complemento, autorizacao) {
+  var instrucaoSql = `INSERT INTO tbEmpresa 
+  (nomeEmpresa, cnpjEmpresa, emailEmpresa, senhaEmpresa, chaveAtivacaoEmpresa, telEmpresa, cepLogradouroEmpresa, logradouroEmpresa, bairroLogradouroEmpresa, cidadeLogradouroEmpresa, ufLogradouroEmpresa, numLogradouroEmpresa, compLogradouroEmpresa, autorizacaoEmpresa) 
+  VALUES ('${nome}',  '${cnpj}', '${email}', '${senha}', '${chaveAtivacao}', '${telefone}', '${cep}', '${logradouro}', '${bairro}', '${cidade}', 
+  '${uf}', '${numLog}', '${complemento}', ${autorizacao})`;
 
   return database.executar(instrucaoSql);
 }

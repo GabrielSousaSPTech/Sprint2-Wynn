@@ -6,8 +6,9 @@ CREATE TABLE tbEmpresa (
 	idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
     nomeEmpresa VARCHAR (80) NOT NULL,
     cnpjEmpresa CHAR (19) NOT NULL,
-	emailEmpresa VARCHAR (70) NOT NULL,
+	emailEmpresa VARCHAR (70) NOT NULL UNIQUE,
     senhaEmpresa VARCHAR(50) NOT NULL,
+    chaveAtivacaoEmpresa CHAR(8) NOT NULL UNIQUE,
     telEmpresa VARCHAR(14) NOT NULL,
     cepLogradouroEmpresa VARCHAR (80) NOT NULL,
     logradouroEmpresa VARCHAR (80),
@@ -18,13 +19,19 @@ CREATE TABLE tbEmpresa (
     compLogradouroEmpresa VARCHAR (150)
 );
 
-INSERT INTO tbEmpresa (nomeEmpresa, cnpjEmpresa, emailEmpresa, senhaEmpresa, telEmpresa, cepLogradouroEmpresa, logradouroEmpresa, bairroLogradouroEmpresa, cidadeLogradouroEmpresa, ufLogradouroEmpresa, numLogradouroEmpresa, compLogradouroEmpresa) 
+
+
+INSERT INTO tbEmpresa (nomeEmpresa, cnpjEmpresa, emailEmpresa, senhaEmpresa, chaveAtivacaoEmpresa, telEmpresa, cepLogradouroEmpresa, logradouroEmpresa, bairroLogradouroEmpresa, cidadeLogradouroEmpresa, ufLogradouroEmpresa, numLogradouroEmpresa, compLogradouroEmpresa) 
 VALUES 
-('Vinícola Campestre', '98.521.909/0002-70', 'vinicolaCampestre@gmail.com','123', '114940028922', '95205000', 'BR-116 KM 30', 'Bairro Passo da Porteira', 'Vacaria', 'RS', '1410', default), 
-('Vinícola Abreu Garcia', '10.327.131/0001-31', 'abreuGarcia@gmail.com','123', '114988888888', '88580000', 'Fazenda Nova Dela Costa', 'Alto Travessão', 'Campo Belo do Sul', 'SC', default, 'Sem número'), 
-('Vinícola Aurora', '88.777.134/0001-19', 'auroraVinhos@gmail.com','123', '114972222222', '95700000', 'Rua Olavo Bilac', 'Centro', 'Bento Gonçalves', 'RS', '500', default), 
-('Vinícola Salton', '88.110.431/0001-02', 'saltonVinhos@outlook.com','123', '114977777777', '95180000', 'Estrada Salton', 'Tuiuty', 'Bento Gonçalves', 'RS', '1500', default), 
-('Vinícola Miolo', '89.627.234/0001-56', 'mioloVinhos@outlook.com','123', '114966666666', '95700000', 'RS-444 KM 21', 'Vale dos Vinhedos', 'Bento Gonçalves', 'RS', default, 'Sem número');
+('Vinícola SPTech', '98.521.909/0002-70', 'vinicolaSPTech@gmail.com','123','3ED7OP89', '114940028922', '95205000', 'BR-116 KM 30', 'Rua Haddock Lobo', 'Paulista', 'SP', '1410', default),
+('Vinícola Campestre', '98.521.909/0002-70', 'vinicolaCampestre@gmail.com','123','6O55N1P2', '114940028922', '95205000', 'BR-116 KM 30', 'Bairro Passo da Porteira', 'Vacaria', 'RS', '1410', default), 
+('Vinícola Abreu Garcia', '10.327.131/0001-31', 'abreuGarcia@gmail.com','123','4Q6K4LPA', '114988888888', '88580000', 'Fazenda Nova Dela Costa', 'Alto Travessão', 'Campo Belo do Sul', 'SC', default, 'Sem número'), 
+('Vinícola Aurora', '88.777.134/0001-19', 'auroraVinhos@gmail.com','123','7NXZ8799', '114972222222', '95700000', 'Rua Olavo Bilac', 'Centro', 'Bento Gonçalves', 'RS', '500', default), 
+('Vinícola Salton', '88.110.431/0001-02', 'saltonVinhos@outlook.com','123','11AL88PP', '114977777777', '95180000', 'Estrada Salton', 'Tuiuty', 'Bento Gonçalves', 'RS', '1500', default), 
+('Vinícola Miolo', '89.627.234/0001-56', 'mioloVinhos@outlook.com','123','24LL66YQ', '114966666666', '95700000', 'RS-444 KM 21', 'Vale dos Vinhedos', 'Bento Gonçalves', 'RS', default, 'Sem número');
+
+
+
 
 
 CREATE TABLE tbFuncionarioEmpresa (
@@ -33,32 +40,16 @@ CREATE TABLE tbFuncionarioEmpresa (
     idEmpresa INT NOT NULL,
     dataNascFuncionarioEmpresa DATE,
     foneFuncionarioEmpresa VARCHAR (14),
-    emailFuncionarioEmpresa VARCHAR (70) NOT NULL,
+    emailFuncionarioEmpresa VARCHAR (70) NOT NULL UNIQUE,
     senhaFuncionarioEmpresa VARCHAR(45) NOT NULL,
-    cargoFuncionarioEmpresa VARCHAR (45),
     CONSTRAINT fkFuncionarioEmpresa_Empresa FOREIGN KEY (idEmpresa) REFERENCES tbEmpresa(idEmpresa)
 );
 
-INSERT INTO tbFuncionarioEmpresa (nomeFuncionarioEmpresa, idEmpresa, dataNascFuncionarioEmpresa, foneFuncionarioEmpresa, emailFuncionarioEmpresa, senhaFuncionarioEmpresa, cargoFuncionarioEmpresa) 
+INSERT INTO tbFuncionarioEmpresa (nomeFuncionarioEmpresa, idEmpresa, dataNascFuncionarioEmpresa, foneFuncionarioEmpresa, emailFuncionarioEmpresa, senhaFuncionarioEmpresa) 
 VALUES 
-('Macari Marcelino', 1, '1985-05-15', '11956789012', 'macari.marcelino@gmail.com', '1234', 'Gerente'), 
-('Lucas Aielo', 2, '1990-07-22', '11988776655', 'lucas.aielo@gmail.com', '1234', 'Enólogo'), 
-('Gabriel Sousa', 1, '1992-10-09', '11922334455', 'gabriel.sousa@gmail.com', '1234', 'Enólogo'), 
-('Ana Paula', 1, '1988-12-01', '11933445566', 'ana.paula@gmail.com', '1234', 'Vendedora'), 
-('Carlos Lima', 1, '1991-03-16', '11999887766', 'carlos.lima@gmail.com', '1234', 'Assistente de Produção'),
-('Fernanda Santos', 1, '1989-11-30', '11977665544', 'fernanda.santos@gmail.com', '1234', 'Assistente Administrativa'), 
-('João Pereira', 2, '1986-08-14', '11956543211', 'joao.pereira@gmail.com', '1234', 'Vendedor'), 
-('Renata Figueira', 2, '1993-09-18', '11933442255', 'renata.figueira@gmail.com', '1234', 'Assistente Administrativa'), 
-('Patrícia Costa', 2, '1994-02-20', '11944556677', 'patricia.costa@gmail.com', '1234', 'Auxiliar de Produção'), 
-('Marcelo Dias', 3, '1984-06-25', '11966554433', 'marcelo.dias@gmail.com', '1234', 'Gerente'), 
-('Cláudia Medeiros', 3, '1987-04-10', '11977889900', 'claudia.medeiros@gmail.com', '1234', 'Vendedora'), 
-('Rodrigo Alves', 3, '1992-01-12', '11988990011', 'rodrigo.alves@gmail.com', '1234', 'Enólogo'), 
-('Mariana Martins', 4, '1985-11-23', '11933445577', 'mariana.martins@gmail.com', '1234', 'Assistente Administrativa'), 
-('Eduardo Oliveira', 4, '1990-07-08', '11999887788', 'eduardo.oliveira@gmail.com', '1234', 'Auxiliar de Produção'), 
-('Sofia Barros', 4, '1992-10-29', '11977665511', 'sofia.barros@gmail.com', '1234', 'Auxiliar de Produção'),
-('Fernanda Lima', 5, '1991-05-17', '11999998888', 'fernanda.lima@gmail.com', '1234', 'Gerente de Projeto'), 
-('Carlos Oliveira', 5, '1988-12-03', '11988887777', 'carlos.oliveira@gmail.com', '1234', 'Analista de Sistemas'), 
-('Juliana Santos', 5, '1995-03-21', '11977776666', 'juliana.santos@gmail.com', '1234', 'Designer Gráfico');
+
+('Gabriel Sousa', 1, '1992-10-09', '11922334455', 'gabriel.sousa@gmail.com', '1234');
+
 
 
 CREATE TABLE tbMicroControlador (
@@ -83,6 +74,25 @@ VALUES
 -- Colocar uma tabela com os tipos de vinho
 -- Campo para configurar a temperatura e gás desejada 
 
+CREATE TABLE tbTipoVinho(
+idTipoVinho INT PRIMARY KEY AUTO_INCREMENT,
+nomeVinho VARCHAR(45),
+MetricaTemperaturaPerigoMaximo FLOAT,
+MetricaTemperaturaPerigoMinimo FLOAT,
+MetricaTemperaturaCriticoMinimo FLOAT,
+MetricaTemperaturaCriticoMaximo FLOAT,
+MetricaCO2PerigoMinimo FLOAT,
+MetricaCO2PerigoMaximo FLOAT,
+MetricaCO2CriticoMinimo FLOAT,
+MetricaCO2CriticoMaximo FLOAT 
+);
+INSERT INTO tbTipoVinho (nomeVinho, MetricaTemperaturaPerigoMaximo, MetricaTemperaturaPerigoMinimo, MetricaTemperaturaCriticoMinimo, MetricaTemperaturaCriticoMaximo, MetricaCO2PerigoMinimo, MetricaCO2PerigoMaximo, MetricaCO2CriticoMinimo, MetricaCO2CriticoMaximo) 
+VALUES 
+('Vinho Tinto', 30.0 , 8.0, 5.0, 32.0, 40.0, 55.0, 35.0, 60.0),
+('Vinho Branco', 26.0, 9.0, 6.0, 28.0, 38.0, 50.0, 30.0, 55.0);
+
+
+
 CREATE TABLE tbControleTanque (
 	idControleTanque INT PRIMARY KEY AUTO_INCREMENT,
     idEmpresa INT NOT NULL,
@@ -98,16 +108,16 @@ CREATE TABLE tbControleTanque (
 
 INSERT INTO tbControleTanque (idEmpresa, tipoVinho, idMicroControlador, medidaTotalMQ2, medidaTotalLM35) 
 VALUES 
-(1, 'Tinto', 1, 23.5, 28.3), 
-(1, 'Branco', 2, 25.7, 29.1), 
-(2, 'Tinto', 3, 50.2, 30.6), 
-(2, 'Branco', 4, 49.8, 31.2), 
-(3, 'Tinto', 5, 48.1, 27.4),
-(3, 'Branco', 6, 47.6, 28.0), 
-(4, 'Tinto', 7, 52.3, 29.5), 
-(4, 'Branco', 8, 53.1, 30.0), 
-(5, 'Tinto', 9, 45.9, 26.8), 
-(5, 'Branco', 10, 46.4, 27.2);
+(1, 1, 1, 23.5, 28.3), 
+(1, 2, 2, 25.7, 29.1), 
+(2, 1, 3, 50.2, 30.6), 
+(2, 2, 4, 49.8, 31.2), 
+(3, 1, 5, 48.1, 27.4),
+(3, 2, 6, 47.6, 28.0), 
+(4, 1, 7, 52.3, 29.5), 
+(4, 2, 8, 53.1, 30.0), 
+(5, 1, 9, 45.9, 26.8), 
+(5, 2, 10, 46.4, 27.2);
 
 
 CREATE TABLE tbSensor (
@@ -174,6 +184,8 @@ VALUES
 (18, 31.2, now()), 
 (19, 25.7, now()), 
 (20, 29.1, now());
+
+
 
 -- Fazer o JOIN na mão 
 -- Esse era apenas um teste para saber se a conexão deu certo

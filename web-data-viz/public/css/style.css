@@ -1298,6 +1298,10 @@ canvas {
     display: none;
 }
 
+#containerCadastro {
+    display: none;
+}
+
 .containerFormularioCadastroLogin .campo {
     width: 100%;
     display: flex;
