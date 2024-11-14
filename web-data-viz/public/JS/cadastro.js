@@ -68,7 +68,7 @@ function cadastrarEmpresa(){
     const complemento = input_complemento.value;
     const bairro = input_bairro.value;
     const cidade = input_cidade.value;
-    const uf = input_uf.value; 
+    const uf = select_uf.value; 
     const empresaAutorizada = false
     var fraseDeSaida = ''
     var isEmail = false
