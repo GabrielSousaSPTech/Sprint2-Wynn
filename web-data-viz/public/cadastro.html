@@ -12,7 +12,8 @@
     </style>
 </head>
 
-<body style="background: url('./assets/imgs/fundo-barris-vinho.jpg'); overflow: hidden; background-size: cover;" onload="listar()">
+<body style="background: url('./assets/imgs/fundo-barris-vinho.jpg'); overflow: hidden; background-size: cover;"
+    onload="listar()">
     <section class="section fundo-escuro">
         <header style="width: 100%; background-color: transparent;">
             <button onclick="escolherTipoCadastro('empresa')">Empresa</button>
@@ -35,18 +36,24 @@
 
                     <div>
                         <div class="campo">
-                            <p>Nome:</p>
+                            <p>Nome da empresa:</p>
                             <input type="text" id="input_nome_empresa" required>
                         </div>
-                        <div class="campo">
+
+                        <div class="campo tamanho-padrao">
                             <p>CNPJ:</p>
                             <input type="text" id="input_cnpj_empresa" required>
                         </div>
+                    </div>
+
+
+                    <div>
                         <div class="campo">
                             <p>E-mail:</p>
                             <input type="text" id="input_email_empresa" required>
                         </div>
-                        <div class="campo">
+
+                        <div class="campo tamanho-padrao">
                             <p>Telefone:</p>
                             <input type="text" id="input_telefone_empresa" required>
                         </div>
@@ -56,18 +63,22 @@
                         <div class="campo">
                             <p>Senha:</p>
                             <span>
-                                <input type="password" id="input_senha_cadastro_empresa"  class="senha">
+                                <input type="password" id="input_senha_cadastro_empresa" class="senha">
                                 <button onclick="mostrarSenha(this)">
-                                    <img class="showHideSenha" style="width: 3rem;"src="./assets/icons/olho-aberto.png" alt="">
+                                    <img class="showHideSenha" style="width: 3rem;" src="./assets/icons/olho-aberto.png"
+                                        alt="">
                                 </button>
                             </span>
                         </div>
+
                         <div class="campo">
                             <p>Confirmar Senha:</p>
                             <span>
-                                <input type="password" id="input_confirmar_senha_cadastro_empresa" class="senha" required>
+                                <input type="password" id="input_confirmar_senha_cadastro_empresa" class="senha"
+                                    required>
                                 <button onclick="mostrarSenha(this)">
-                                    <img class="showHideSenha" style="width: 3rem;"src="./assets/icons/olho-aberto.png" alt="">
+                                    <img class="showHideSenha" style="width: 3rem;" src="./assets/icons/olho-aberto.png"
+                                        alt="">
                                 </button>
                             </span>
                         </div>
@@ -76,75 +87,108 @@
                 </div>
 
 
-                
-                <button class="btnLogin" id="continuarCadastro" onclick="continuarCadastro()">Continuar Cadastro</button>
-                
+
+                <button class="btnLogin" id="continuarCadastro" onclick="continuarCadastro()">Continuar
+                    Cadastro</button>
+
                 <p>Já tem uma conta? <a href="login.html">Login</a></p>
-                
+
                 <div id="erroDeCadastro"></div>
-                
+
             </div>
-            
+
             <div class="containerFormularioCadastroLogin" id="containerEndereco">
                 <h1>Cadastro</h1>
                 <hr>
                 <h2> Complete seu cadastro </h2>
                 <div id="erroDeCadastroEndereco"></div>
-                
+
                 <div class="formCampos">
-                    
+
                     <div>
-                        
-                        <div class="campo">
+
+                        <div class="campo tamanho-padrao">
                             <p>CEP:</p>
                             <input id="input_cep" type="text">
                         </div>
-                        
+
                         <div class="campo">
                             <p>Rua/Logradouro:</p>
                             <input id="input_logradouro" type="text">
                         </div>
-                        
-                        <div class="campo">
+
+                        <div class="campo tamanho-padrao">
                             <p>Número:</p>
                             <input id="input_num_logradouro" type="text">
                         </div>
-                        
+
+                    </div>
+
+                    <div>
+
                         <div class="campo">
                             <p>Complemento:</p>
                             <input id="input_complemento" type="text">
                         </div>
 
-                        
-                        
                     </div>
-                    
+
                     <div>
-                        
+
                         <div class="campo">
                             <p>Bairro:</p>
                             <input id="input_bairro" type="text">
                         </div>
-                        
+
                         <div class="campo">
                             <p>Cidade:</p>
                             <input id="input_cidade" type="text">
                         </div>
-                        
-                        <div class="campo">
+
+                        <div class="campo tamanho-padrao">
                             <p>UF:</p>
-                            <input id="input_uf" type="text">
+                            <select id="select_estado" class="">
+                                <option value=""></option>
+                                <option value="AC">AC</option>
+                                <option value="AL">AL</option>
+                                <option value="AP">AP</option>
+                                <option value="AM">AM</option>
+                                <option value="BA">BA</option>
+                                <option value="CE">CE</option>
+                                <option value="DF">DF</option>
+                                <option value="ES">ES</option>
+                                <option value="GO">GO</option>
+                                <option value="MA">MA</option>
+                                <option value="MT">MT</option>
+                                <option value="MS">MS</option>
+                                <option value="MG">MG</option>
+                                <option value="PA">PA</option>
+                                <option value="PB">PB</option>
+                                <option value="PR">PR</option>
+                                <option value="PE">PE</option>
+                                <option value="PI">PI</option>
+                                <option value="RJ">RJ</option>
+                                <option value="RN">RN</option>
+                                <option value="RS">RS</option>
+                                <option value="RO">RO</option>
+                                <option value="RR">RR</option>
+                                <option value="SC">SC</option>
+                                <option value="SP">SP</option>
+                                <option value="SE">SE</option>
+                                <option value="TO">TO</option>
+                              </select>
                         </div>
-                        
+
                     </div>
                 </div>
 
-                
+
                 <div id="campoBtnCadastro">
                     <button id="voltarCadastro" class="btnLogin" onclick="navegarPeloCadastro()">Voltar</button>
-                    <button class="btnLogin" id="finalizarCadastro" onclick="cadastrarEmpresa()">Finalizar Cadastro</button>
+                    <button class="btnLogin" id="finalizarCadastro" onclick="cadastrarEmpresa()">Finalizar
+                        Cadastro</button>
                 </div>
-                
+
 
 
 
@@ -164,40 +208,49 @@
                             <p>Nome:</p>
                             <input type="text" id="input_nome_funcionario" required>
                         </div>
-                        <div class="campo">
-                            <p>Chave de Ativação:</p>
-                            <input type="text" id="input_chave_ativacao_funcionario" required>
-                        </div>
-                        <div class="campo">
+
+                        <div class="campo tamanho-padrao">
                             <p>Data de Nascimento:</p>
                             <input type="date" id="input_data_nascimento_funcionario" required>
                         </div>
-                        <div class="campo">
-                            <p>Telefone:</p>
-                            <input type="text" id="input_telefone_funcionario" required>
-                        </div>
+                    </div>
+                    
+                    <div>
                         <div class="campo">
                             <p>E-mail:</p>
                             <input type="text" id="input_email_funcionario" required>
                         </div>
+
+                        <div class="campo tamanho-padrao">
+                            <p>Telefone:</p>
+                            <input type="text" id="input_telefone_funcionario" required>
+                        </div>
                     </div>
 
                     <div>
+                        <div class="campo tamanho-padrao">
+                            <p>Chave de Ativação:</p>
+                            <input type="text" id="input_chave_ativacao_funcionario" required>
+                        </div>
+
                         <div class="campo">
                             <p>Senha:</p>
                             <span>
-                                <input type="password" id="input_senha_cadastro_funcionario"  class="senha">
+                                <input type="password" id="input_senha_cadastro_funcionario" class="senha">
                                 <button onclick="mostrarSenha(this)">
-                                    <img class="showHideSenha" style="width: 3rem;"src="./assets/icons/olho-aberto.png" alt="">
+                                    <img class="showHideSenha" style="width: 3rem;" src="./assets/icons/olho-aberto.png"
+                                        alt="">
                                 </button>
                             </span>
                         </div>
                         <div class="campo">
                             <p>Confirmar Senha:</p>
                             <span>
-                                <input type="password" id="input_confirmar_senha_cadastro_funcionario" class="senha" required>
+                                <input type="password" id="input_confirmar_senha_cadastro_funcionario" class="senha"
+                                    required>
                                 <button onclick="mostrarSenha(this)">
-                                    <img class="showHideSenha" style="width: 3rem;"src="./assets/icons/olho-aberto.png" alt="">
+                                    <img class="showHideSenha" style="width: 3rem;" src="./assets/icons/olho-aberto.png"
+                                        alt="">
                                 </button>
                             </span>
                         </div>
@@ -206,13 +259,13 @@
                 </div>
 
 
-                
+
                 <button class="btnLogin" id="continuarCadastro" onclick="cadastrarFuncionario()">Cadastrar</button>
-                
+
                 <p>Já tem uma conta? <a href="login.html">Login</a></p>
-                
+
                 <div id="erroDeCadastro"></div>
-                
+
             </div>
         </section>
     </section>
@@ -224,12 +277,12 @@
 <script src="./JS/mostrarSenha.js"></script>
 <script src="./JS/cadastro.js"></script>
 <script>
-    function navegarPeloCadastro(){
-            containerCadastro.style.display = 'flex'
-            containerEndereco.style.display = 'none'
-        }
-        function escolherTipoCadastro(tipoCadastro) {
-            if(tipoCadastro == 'empresa'){
+    function navegarPeloCadastro() {
+        containerCadastro.style.display = 'flex'
+        containerEndereco.style.display = 'none'
+    }
+    function escolherTipoCadastro(tipoCadastro) {
+        if (tipoCadastro == 'empresa') {
             containerCadastro.style.display = 'flex'
             containerCadastroFuncionario.style.display = 'none'
         } else {

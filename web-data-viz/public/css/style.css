@@ -450,6 +450,7 @@ aside#contato .card {
 }
 
 .campo input,
+.campo select,
 #contato textarea {
     padding: 1rem .5rem;
     border-radius: .4rem;
@@ -1348,9 +1349,10 @@ canvas {
 
 .containerFormularioCadastroLogin .campo {
     width: 100%;
+    height: 100%;
+
     display: flex;
     flex-direction: column;
-
 }
 
 .containerFormularioCadastroLogin {
@@ -1365,7 +1367,9 @@ canvas {
     gap: 2rem;
 }
 
-.containerFormularioCadastroLogin input {
+.containerFormularioCadastroLogin input,  .containerFormularioCadastroLogin select{
+    height: 100%;
+
     font-size: 2rem;
     border: none;
 }
@@ -1425,18 +1429,26 @@ canvas {
 }
 
 .formCampos {
+    width: 75%;
+
     display: flex;
-    width: 100%;
+    flex-direction: column;
     justify-content: space-between;
-    gap: 5%;
+    gap: 1.5rem;
 }
 
 .formCampos>div {
     width: 100%;
-    gap: 0.5rem;
+
     display: flex;
-    flex-direction: column;
+    gap: 0.8rem;
 }
+
+.campo.tamanho-padrao {
+    width: 30%;
+}
+
+
 
 #camposLogin {
     width: 60%;
