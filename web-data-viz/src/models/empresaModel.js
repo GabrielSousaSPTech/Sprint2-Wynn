@@ -18,13 +18,24 @@ function buscarPorCnpj(cnpj) {
   return database.executar(instrucaoSql);
 }
 
-function cadastrar(nome, cnpj, email, senha, chaveAtivacao, telefone, cep, logradouro, bairro, cidade, uf, numLog, complemento, autorizacao) {
-  var instrucaoSql = `INSERT INTO tbEmpresa 
-  (nomeEmpresa, cnpjEmpresa, emailEmpresa, senhaEmpresa, chaveAtivacaoEmpresa, telEmpresa, cepLogradouroEmpresa, logradouroEmpresa, bairroLogradouroEmpresa, cidadeLogradouroEmpresa, ufLogradouroEmpresa, numLogradouroEmpresa, compLogradouroEmpresa, autorizacaoEmpresa) 
-  VALUES ('${nome}',  '${cnpj}', '${email}', '${senha}', '${chaveAtivacao}', '${telefone}', '${cep}', '${logradouro}', '${bairro}', '${cidade}', 
-  '${uf}', '${numLog}', '${complemento}', ${autorizacao})`;
+async function cadastrar(nome, cnpj, email, senha, chaveAtivacao, telefone, autorizacao, cep, logradouro, bairro, cidade, uf, numLog, complemento) {
 
-  return database.executar(instrucaoSql);
+  var instrucaoSql = `INSERT INTO tbEmpresa 
+  (nomeEmpresa, cnpjEmpresa, emailEmpresa, senhaEmpresa, chaveAtivacaoEmpresa, telEmpresa, autorizacaoEmpresa) 
+  VALUES ('${nome}',  '${cnpj}', '${email}', '${senha}', '${chaveAtivacao}', '${telefone}', ${autorizacao});`;
+
+
+  var resultadoQuery = await database.executar(instrucaoSql)
+
+  var resultadoCadastroEndereco = await cadastrarEndereco(resultadoQuery.insertId, cep, logradouro, bairro, cidade, uf, numLog, complemento)
+  return resultadoQuery, resultadoCadastroEndereco;
+}
+
+async function cadastrarEndereco(fkEmpresa, cep, logradouro, bairro, cidade, uf, numLog, complemento) {
+  var instrucaoSql = `INSERT Endereco (fkEmpresa, cep, logradouro, bairro, cidade, uf, numero, complemento)
+                      VALUES ('${fkEmpresa}', '${cep}', '${logradouro}', '${bairro}', '${cidade}', '${uf}', '${numLog}', '${complemento}')`
+
+  return database.executar(instrucaoSql)
 }
 
 module.exports = { buscarPorCnpj, buscarPorId, cadastrar, listar };

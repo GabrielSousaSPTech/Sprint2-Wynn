@@ -38,22 +38,21 @@ function cadastrar(req, res) {
   var complementoEmpresa = req.body.complementoEmpresaServer
   var autorizacaoEmpresa = req.body.autorizacaoEmpresaServer
 
-empresaModel.cadastrar(nomeEmpresa, cnpjEmpresa, emailEmpresa, 
-  senhaEmpresa, chaveAtivacaoEmpresa, telefoneEmpresa, cepEmpresa, logEmpresa, bairroEmpresa, cidadeEmpresa, ufEmpresa, numLogEmpresa, complementoEmpresa, autorizacaoEmpresa)
-  .then (
-    function(resultado) {
-      res.json(resultado);
-    }
-  ).catch (
-    function (erro) {
-      console.log(erro);
-      console.log(
-        "\nHouve um erro ao realizar o cadastro da empresa! Erro: ",
-        erro.sqlMessage
-    );
-    res.status(500).json(erro.sqlMessage);
-    }
-  )
+  empresaModel.cadastrar(nomeEmpresa, cnpjEmpresa, emailEmpresa, senhaEmpresa, chaveAtivacaoEmpresa, telefoneEmpresa, autorizacaoEmpresa, cepEmpresa, logEmpresa, bairroEmpresa, cidadeEmpresa, ufEmpresa, numLogEmpresa, complementoEmpresa)
+    .then(
+      function (resultado) {
+        res.json(resultado);
+      }
+    ).catch(
+      function (erro) {
+        console.log(erro);
+        console.log(
+          "\nHouve um erro ao realizar o cadastro da empresa! Erro: ",
+          erro.sqlMessage
+        );
+        res.status(500).json(erro.sqlMessage);
+      }
+    )
 
 }
 module.exports = {
