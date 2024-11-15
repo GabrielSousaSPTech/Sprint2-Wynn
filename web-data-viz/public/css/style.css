@@ -83,6 +83,10 @@ body {
     font-family: Playfair;
 }
 
+header#index {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
 header {
     box-sizing: border-box;
 
@@ -94,25 +98,8 @@ header {
     justify-content: center;
     align-items: center;
 
-    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
 }
-
-.fundo-escuro {
-    background-color: rgba(0, 0, 0, 0.2);
-    height: 100%;
-    width: 100%;
-}
-
-
-/* caso precise trocar o fundo das outras áreas
-
-aside#contato > div.fundo-escuro {
-    background-color: rgba(0, 0, 0, 0.4);
-}
-    
-aside > div.fundo-escuro, footer > div.fundo-escuro {
-    background-color: rgba(0, 0, 0, 0.4);
-} */
 
 .container {
     width: 90%;
@@ -177,20 +164,23 @@ header nav li {
         width: 15rem;
     }
 
-    nav>ul>li {
+    nav li {
         font-size: 2.5rem;
     }
 
 }
 
-#banner {
+.fundo-escuro {
+    background-color: rgba(0, 0, 0, 0.2);
+    height: 100%;
+    width: 100%;
+}
+
+.banner {
     height: 100vh;
 
-    background: scroll url(../assets/imgs/fundo-barris-vinho.jpg) center center no-repeat;
+    background: url(../assets/imgs/fundo-barris-vinho.jpg) center center;
     background-size: cover;
-
-    font-family: Forum;
-    color: white;
 }
 
 #slogan {
@@ -204,6 +194,8 @@ header nav li {
     align-items: center;
 
     text-align: center;
+    font-family: Forum;
+    color: white;
 }
 
 #slogan hr {
@@ -1356,6 +1348,8 @@ canvas {
 }
 
 .containerFormularioCadastroLogin {
+    position: relative;
+
     background-color: rgba(0, 0, 0, 0.6);
     display: flex;
     flex-direction: column;
@@ -1458,4 +1452,127 @@ canvas {
 
     display: flex;
     justify-content: space-between;
+}
+
+/* Dashboard - Telas de tabelas */
+
+body#banner_tabela {
+    background-image: url(../assets/imgs/fundo-barris-vinho.jpg);
+    background-size: cover;
+}
+
+section#section_tabela {
+    width: 100%;
+    height: 97vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div#caixa_tabela {
+    width: 90%;
+    max-width: 130rem;
+    padding: 3.5rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+
+    font-size: 2.5rem;
+    color: white;
+
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+div#titulo_caixa {
+    align-self: flex-start;
+}
+
+.tabela-lista {
+    width: 90%;
+    font-size: 2.7rem;
+    border-spacing: 0 1rem;
+}
+
+.tabela-lista th {
+    text-align: left;
+}
+
+.tabela-lista thead th {
+    font-size: 2rem;
+}
+
+.titulo-cabecalho {
+    border-bottom: .1rem solid white;
+}
+
+th#cabecalho_status {
+    width: 8rem;
+    text-align: right;
+}
+
+tbody tr:nth-child(2n) {
+    background-color: rgba(43, 43, 43, 0.356);
+}
+
+.tabela-lista .celula-numero {
+    width: 3.5rem;
+    font-weight: normal;
+}
+
+.celula-status {
+    text-align: right;
+}
+
+.celula-status span {
+    padding: 0 .7rem;
+    border-radius: 1rem;
+}
+
+.celula-status.ativo span {
+    background-color: #631e51;
+}
+
+.celula-status.inativo span {
+    color: lightgrey;
+    background-color: #3b0c2f;
+}
+
+.tabela-icone {
+    width: 1rem;
+    padding-left: 1rem;
+    text-align: right;
+}
+
+/* Fim telas de tabela */
+
+#caixa_operacoes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+button.operacao {
+    width: 21rem;
+    height: 30rem;
+
+    padding: 1rem;
+    border-radius: 1rem;
+
+    display: flex;
+    align-items: flex-end;
+
+    font-size: 2rem;
+}
+
+.bg-img-cover {
+    background-size: cover;
+}
+
+.formBotoes {
+    display: flex;
+    gap: 1rem;
 }

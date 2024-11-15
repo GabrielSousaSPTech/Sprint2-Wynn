@@ -14,7 +14,7 @@
 
 <body style="background: url('../assets/imgs/fundo-barris-vinho.jpg'); overflow: hidden; background-size: cover;">
     <section class="section fundo-escuro">
-        <header style="width: 100%; background-color: transparent;">
+        <header>
             <div class="containerHeader">
                 <a href="./index.html"><img class="logoWynn" src="./assets/imgs/logoWynn.png" alt=""></a>
             </div>
@@ -22,12 +22,32 @@
 
         <section class="sectionFormulario">
 
-            <div class="containerFormularioCadastroLogin" id="containerLogin">
+            <div id="div_operacoes" class="containerFormularioCadastroLogin" style="display: flex;">
 
                 <h1>Login</h1>
                 <hr>
+                <h2>Selecione a operação desejada.</h2>
+
+                <div id="caixa_operacoes">
+                    <button class="operacao bg-img-cover" onclick="navegarPeloLogin('continuar')" style="background-image: ;">
+                        Funcionário
+                    </button>
+                    <button class="operacao" onclick="navegarPeloLogin('continuar')" style="background-image: ;">
+                        Empresa
+                    </button>
+                    <button class="operacao" onclick="navegarPeloLogin('continuar')" style="background-image: ;">
+                        Administrador
+                    </button>
+                </div>
+
+                <p>Não tem uma conta? <a href="login.html">Login</a></p>
+
+            </div>
+
+            <div class="containerFormularioCadastroLogin" id="containerLogin" style="display: none;">
+
                 <h2>Seja bem-vindo(a)! <br>
-                    Realize o login para ter acesso aos nossos serviços de forma completa.</h2>
+                    Realize o login para ter acesso aos nossos serviços.</h2>
 
                 <div id="camposLogin">
                     <div class="campo">
@@ -46,7 +66,15 @@
                 </div>
 
                 <span id="respostaVerificacao"></span>
-                <button class="btnLogin" onclick="checarCredenciais()">Entrar</button>
+
+                <div class="formBotoes">
+                    <button class="btnLogin" onclick="checarCredenciais()">
+                        Entrar
+                    </button>
+                    <button class="btnLogin" onclick="navegarPeloLogin()">
+                        Voltar
+                    </button>
+                </div>
 
                 <p>Não tem uma conta ? <a href="cadastro.html">Cadastre-se</a></p>
 
@@ -66,3 +94,14 @@
 <script src="./JS/mostrarSenha.js"></script>
 <script src="./JS/login.js"></script>
 <script src="./JS/index.js"></script>
+<script>
+    function navegarPeloLogin(operacao = '') {
+        if(operacao == 'continuar') {
+            div_operacoes.style.display = 'none'
+            containerLogin.style.display = 'flex'
+        } else {
+            containerLogin.style.display = 'none'
+            div_operacoes.style.display = 'flex'
+        }
+    }
+</script>

@@ -12,25 +12,120 @@
     </style>
 </head>
 
-<body style="background: url('./assets/imgs/fundo-barris-vinho.jpg'); overflow: hidden; background-size: cover;"
-    onload="listar()">
+<body class="banner" onload="listar()">
     <section class="section fundo-escuro">
-        <header style="width: 100%; background-color: transparent;">
-            <button onclick="escolherTipoCadastro('empresa')">Empresa</button>
+        <header>
             <div class="containerHeader">
                 <a href="./index.html"><img class="logoWynn" src="./assets/imgs/logoWynn.png" alt=""></a>
             </div>
-            <button onclick="escolherTipoCadastro('funcionario')">Funcionário</button>
         </header>
 
         <section class="sectionFormulario">
 
-            <div class="containerFormularioCadastroLogin" id="containerCadastro">
+            <div id="div_operacoes" class="containerFormularioCadastroLogin" style="display: flex;">
 
                 <h1>Cadastro</h1>
                 <hr>
+                <h2>Selecione a operação desejada.</h2>
+
+                <div id="caixa_operacoes">
+                    <button class="operacao bg-img-cover" onclick="escolherTipoCadastro('funcionario')" style="background-image: ;">
+                        Funcionário
+                    </button>
+                    <button class="operacao" onclick="escolherTipoCadastro('empresa')" style="background-image: ;">
+                        Empresa
+                    </button>
+                </div>
+
+                <p>Já tem uma conta? <a href="login.html">Login</a></p>
+
+            </div>
+
+            <div class="containerFormularioCadastroLogin" id="containerCadastroFuncionario" style="display: none;">
+
                 <h2>Seja bem-vindo(a)! <br>
-                    Realize o cadastro para ter acesso aos nossos serviços.</h2>
+                    Realize o seu cadastro para ter acesso aos nossos serviços.</h2>
+
+                <div class="formCampos">
+
+                    <div>
+                        <div class="campo">
+                            <p>Nome:</p>
+                            <input type="text" id="input_nome_funcionario" required>
+                        </div>
+
+                        <div class="campo tamanho-padrao">
+                            <p>Data de Nascimento:</p>
+                            <input type="date" id="input_data_nascimento_funcionario" required>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="campo">
+                            <p>E-mail:</p>
+                            <input type="text" id="input_email_funcionario" required>
+                        </div>
+
+                        <div class="campo tamanho-padrao">
+                            <p>Telefone:</p>
+                            <input type="text" id="input_telefone_funcionario" required>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="campo tamanho-padrao">
+                            <p>Chave de Ativação:</p>
+                            <input type="text" id="input_chave_ativacao_funcionario" required>
+                        </div>
+
+                        <div class="campo">
+                            <p>Senha:</p>
+                            <span>
+                                <input type="password" id="input_senha_cadastro_funcionario" class="senha">
+                                <button onclick="mostrarSenha(this)">
+                                    <img class="showHideSenha" style="width: 3rem;" src="./assets/icons/olho-aberto.png"
+                                        alt="">
+                                </button>
+                            </span>
+                        </div>
+                        <div class="campo">
+                            <p>Confirmar Senha:</p>
+                            <span>
+                                <input type="password" id="input_confirmar_senha_cadastro_funcionario" class="senha"
+                                    required>
+                                <button onclick="mostrarSenha(this)">
+                                    <img class="showHideSenha" style="width: 3rem;" src="./assets/icons/olho-aberto.png"
+                                        alt="">
+                                </button>
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+                <div class="formBotoes">
+                    <button class="btnLogin" id="continuarCadastro" onclick="cadastrarFuncionario()">
+                        Cadastrar
+                    </button>
+
+                    <button class="btnLogin" onclick="escolherTipoCadastro('cancelar')">
+                        Cancelar
+                    </button>
+                </div>
+
+                <p>Já tem uma conta? <a href="login.html">Login</a></p>
+
+                <div id="erroDeCadastro"></div>
+
+            </div>
+
+            <div class="containerFormularioCadastroLogin" id="containerCadastro">
+
+             
+                <h2>Seja bem-vindo(a)! <br>
+                    Realize o cadastro da sua empresa para ter acesso aos nossos serviços.</h2>
 
                 <div class="formCampos">
 
@@ -88,8 +183,15 @@
 
 
 
-                <button class="btnLogin" id="continuarCadastro" onclick="continuarCadastro()">Continuar
-                    Cadastro</button>
+                <div class="formBotoes">
+                    <button class="btnLogin" id="continuarCadastro" onclick="continuarCadastro()">
+                        Continuar Cadastro
+                    </button>
+                    
+                    <button class="btnLogin" onclick="escolherTipoCadastro('cancelar')">
+                        Cancelar
+                    </button>
+                </div>
 
                 <p>Já tem uma conta? <a href="login.html">Login</a></p>
 
@@ -97,9 +199,8 @@
 
             </div>
 
-            <div class="containerFormularioCadastroLogin" id="containerEndereco" style="display: flex;">
-                <h1>Cadastro</h1>
-                <hr>
+            <div class="containerFormularioCadastroLogin" id="containerEndereco">
+
                 <h2> Complete seu cadastro </h2>
                 <div id="erroDeCadastroEndereco"></div>
 
@@ -190,82 +291,6 @@
                 </div>
 
 
-
-
-            </div>
-
-            <div class="containerFormularioCadastroLogin" id="containerCadastroFuncionario" style="display: none;">
-
-                <h1>Cadastro</h1>
-                <hr>
-                <h2>Seja bem-vindo(a)! <br>
-                    Realize o cadastro para ter acesso aos nossos serviços.</h2>
-
-                <div class="formCampos">
-
-                    <div>
-                        <div class="campo">
-                            <p>Nome:</p>
-                            <input type="text" id="input_nome_funcionario" required>
-                        </div>
-
-                        <div class="campo tamanho-padrao">
-                            <p>Data de Nascimento:</p>
-                            <input type="date" id="input_data_nascimento_funcionario" required>
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <div class="campo">
-                            <p>E-mail:</p>
-                            <input type="text" id="input_email_funcionario" required>
-                        </div>
-
-                        <div class="campo tamanho-padrao">
-                            <p>Telefone:</p>
-                            <input type="text" id="input_telefone_funcionario" required>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="campo tamanho-padrao">
-                            <p>Chave de Ativação:</p>
-                            <input type="text" id="input_chave_ativacao_funcionario" required>
-                        </div>
-
-                        <div class="campo">
-                            <p>Senha:</p>
-                            <span>
-                                <input type="password" id="input_senha_cadastro_funcionario" class="senha">
-                                <button onclick="mostrarSenha(this)">
-                                    <img class="showHideSenha" style="width: 3rem;" src="./assets/icons/olho-aberto.png"
-                                        alt="">
-                                </button>
-                            </span>
-                        </div>
-                        <div class="campo">
-                            <p>Confirmar Senha:</p>
-                            <span>
-                                <input type="password" id="input_confirmar_senha_cadastro_funcionario" class="senha"
-                                    required>
-                                <button onclick="mostrarSenha(this)">
-                                    <img class="showHideSenha" style="width: 3rem;" src="./assets/icons/olho-aberto.png"
-                                        alt="">
-                                </button>
-                            </span>
-                        </div>
-
-                    </div>
-                </div>
-
-
-
-                <button class="btnLogin" id="continuarCadastro" onclick="cadastrarFuncionario()">Cadastrar</button>
-
-                <p>Já tem uma conta? <a href="login.html">Login</a></p>
-
-                <div id="erroDeCadastro"></div>
-
             </div>
         </section>
     </section>
@@ -277,17 +302,25 @@
 <script src="./JS/mostrarSenha.js"></script>
 <script src="./JS/cadastro.js"></script>
 <script>
-    function navegarPeloCadastro() {
-        containerCadastro.style.display = 'flex'
-        containerEndereco.style.display = 'none'
-    }
-    function escolherTipoCadastro(tipoCadastro) {
-        if (tipoCadastro == 'empresa') {
+    function escolherTipoCadastro(tipoCadastro = '') {
+        div_operacoes.style.display = 'none'
+
+        if (tipoCadastro == 'cancelar') {
+            div_operacoes.style.display = 'flex'
+
+            containerCadastroFuncionario.style.display = 'none'
+            containerCadastro.style.display = 'none'
+        } else if (tipoCadastro == 'empresa') {
             containerCadastro.style.display = 'flex'
             containerCadastroFuncionario.style.display = 'none'
         } else {
             containerCadastroFuncionario.style.display = 'flex'
             containerCadastro.style.display = 'none'
         }
+    }
+
+    function navegarPeloCadastro() {
+        containerCadastro.style.display = 'flex'
+        containerEndereco.style.display = 'none'
     }
 </script>
