@@ -20,18 +20,15 @@ function buscarPorCnpj(cnpj) {
 
 async function cadastrar(nome, cnpj, email, senha, chaveAtivacao, telefone, autorizacao, cep, logradouro, bairro, cidade, uf, numLog, complemento) {
 
-  if (complemento == '') {
-    complemento = null
-  }
   var instrucaoSql = `INSERT INTO tbEmpresa 
   (nomeEmpresa, cnpjEmpresa, emailEmpresa, senhaEmpresa, chaveAtivacaoEmpresa, telEmpresa, autorizacaoEmpresa) 
   VALUES ('${nome}',  '${cnpj}', '${email}', '${senha}', '${chaveAtivacao}', '${telefone}', ${autorizacao});`;
 
 
-  var resultadoQuery = database.executar(instrucaoSql)
+  var resultadoQuery = await database.executar(instrucaoSql)
 
   var resultadoCadastroEndereco = await cadastrarEndereco(resultadoQuery.insertId, cep, logradouro, bairro, cidade, uf, numLog, complemento)
-  return resultadoQuery.insertId, resultadoCadastroEndereco;
+  return resultadoQuery, resultadoCadastroEndereco;
 }
 
 async function cadastrarEndereco(fkEmpresa, cep, logradouro, bairro, cidade, uf, numLog, complemento) {
