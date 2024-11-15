@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanques</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../JS/index.js"></script>
+</head>
+<body id="banner_tabela">
+        <div id="h-menu" class="hanburger-menu">
+            <div class="menu-icon" onclick="mostrarMenu()">
+                <div id="line-1" class="icon-line icon-line-1"></div>
+                <div id="line-2" class="icon-line icon-line-2"></div>
+                <div id="line-3" class="icon-line icon-line-3"></div>
+            </div>
+            <div class="menu-box">
+                <h2>MENU</h2>
+                <div class="menu-item">Usuário</div>
+                <div class="menu-item">Tanque</div>
+                <div class="menu-item">Config. Temperatura</div>
+                <div class="menu-item">Config. CO2</div>
+                <div class="item-logout">
+                    <a onclick="limparSessao()" style="cursor: pointer;">
+                        <img src="../assets/icons/log-out.png" alt="">
+                        <span>Sair</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <header class="header-dashboard">
+            <img class="logoWynn" src="../assets/imgs/logoWynn.png" alt="">
+        </header>
+    <section id="section_tabela">
+        <div id="caixa_tabela">
+            <div id="titulo_caixa">
+                <h2>Lista de tanques</h2>
+                <hr>
+                <p>Adicione, edite ou remova seus tanques de fermentação</p>
+            </div>
+            <table class="tabela-lista">
+                <thead>
+                    <tr>
+                        <th class="titulo-cabecalho">#</th>
+                        <th class="titulo-cabecalho">Tipo</th>
+                        <th id="cabecalho_status" class="titulo-cabecalho">Status</th>
+                        <th>&nbsp;</th>
+                        <th>&nbsp;</th>
+                        <!-- Haverá ícones nessas duas últimas colunas; não precisa de um título para o cabeçalho -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="celula-numero">1</td>
+                        <td>Tinto</td>
+                        <td class="celula-status ativo"><span >Ativo</span></td>
+                        <td class="tabela-icone"><img src="../assets/icons/pngegg.png" alt="" height="25px"></td>
+                        <td class="tabela-icone"><img src="../assets/icons/pngegg.png" alt="" height="25px"></td>
+                    </tr>
+                    <tr>
+                        <th class="celula-numero">1</td>
+                        <td>Tinto</td>
+                        <td class="celula-status ativo"><span >Ativo</span></td>
+                        <td class="tabela-icone"><img src="../assets/icons/pngegg.png" alt="" height="25px"></td>
+                        <td class="tabela-icone"><img src="../assets/icons/pngegg.png" alt="" height="25px"></td>
+                    </tr>
+                    <tr>
+                        <th class="celula-numero">1</td>
+                        <td>Tinto</td>
+                        <td class="celula-status inativo"><span >Inativo</span></td>
+                        <td class="tabela-icone"><img src="../assets/icons/pngegg.png" alt="" height="25px"></td>
+                        <td class="tabela-icone"><img src="../assets/icons/pngegg.png" alt="" height="25px"></td>
+                    </tr>
+                    <tr>
+                        <th class="celula-numero">1</td>
+                        <td>Tinto</td>
+                        <td class="celula-status ativo"><span >Ativo</span></td>
+                        <td class="tabela-icone"><img src="../assets/icons/pngegg.png" alt="" height="25px"></td>
+                        <td class="tabela-icone"><img src="../assets/icons/pngegg.png" alt="" height="25px"></td>
+                    </tr>
+                    <tr>
+                        <th class="celula-numero">1</td>
+                        <td>Tinto</td>
+                        <td class="celula-status ativo"><span >Ativo</span></td>
+                        <td class="tabela-icone"><img src="../assets/icons/pngegg.png" alt="" height="25px"></td>
+                        <td class="tabela-icone"><img src="../assets/icons/pngegg.png" alt="" height="25px"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</body>
+</html>
