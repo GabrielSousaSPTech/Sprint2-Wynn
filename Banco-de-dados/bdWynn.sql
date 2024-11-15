@@ -3,6 +3,30 @@ drop database dbWynn;
 USE dbWynn;
 
 
+CREATE TABLE tbAdministrador (
+	idAdministrador INT PRIMARY KEY AUTO_INCREMENT,
+    nomeAdministrador VARCHAR(45),
+    emailAdministrador VARCHAR(60),
+    senhaAdministrador VARCHAR(60)
+);
+
+CREATE TABLE tbCategoriaRegistro (
+	idCategoriaRegistro INT PRIMARY KEY AUTO_INCREMENT,
+    nomeCategoria VARCHAR(45)
+);
+
+CREATE TABLE Registro (
+	idRegistro INT PRIMARY KEY AUTO_INCREMENT,
+    fkCategoria INT,
+    fkAdministrador INT,
+    CONSTRAINT fkCategoriaRegistro FOREIGN KEY (fkCategoriaRegistro) REFERENCES categoriaRegistro (idCategoriaRegistro),
+    CONSTRAINT fkCategoriaRegistro FOREIGN KEY (fkCategoriaRegistro) REFERENCES tbAdministrador (idCAdministrador),
+    tituloRegistro VARCHAR(60) NOT NULL,
+    descricaoRegistro VARCHAR (800) NOT NULL,
+    prioridadeRegistro VARCHAR(45),
+    CONSTRAINT chkPrioridade CHECK (prioridadeRegistro IN ('Essencial', 'Importante', 'básico'))
+);
+
 
 CREATE TABLE tbEmpresa (
 	idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
