@@ -179,7 +179,7 @@ header nav li {
 .banner {
     height: 100vh;
 
-    background: url(../assets/imgs/fundo-barris-vinho.jpg) center center;
+    background: url('../assets/imgs/fundo-barris-vinho.jpg') center center;
     background-size: cover;
 }
 
