@@ -1559,20 +1559,34 @@ button.operacao {
     width: 21rem;
     height: 30rem;
 
-    padding: 1rem;
+    padding: .5rem;
     border-radius: 1rem;
 
     display: flex;
     align-items: flex-end;
 
-    font-size: 2rem;
-}
+    font-size: 2.1rem;
+    color: #ffffff;
 
-.bg-img-cover {
-    background-size: cover;
+    box-shadow: inset 0px -20px 19px 8px rgba(0, 0, 0, 0.9)
 }
 
 .formBotoes {
     display: flex;
     gap: 1rem;
+}
+
+#btn_operacao_func {
+    background: url('./../assets/imgs/operacao-maja-petric-vGQ49l9I4EE-unsplash.jpg') center center; 
+    background-size: 200%;
+}
+
+#btn_operacao_empresa {
+    background: url('./../assets/imgs/operacao-pexels-amar-16068126.jpg') left bottom; 
+    background-size: 100%
+}
+
+#btn_operacao_admin {
+    background: url('./../assets/imgs/operacao-kevin-canlas-cFFEeHNZEqw-unsplash.jpg') center center;
+    background-size: 200%;
 }
