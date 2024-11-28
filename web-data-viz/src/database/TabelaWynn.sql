@@ -1,5 +1,6 @@
 create database dbWynn;
-drop database dbWynn;
+
+
 USE dbWynn;
 
 
@@ -110,8 +111,10 @@ CREATE TABLE tbTipoVinho(
 	metricaCO2CriticoMin DECIMAL (4,2),
 	metricaCO2CriticoMax DECIMAL (4,2)
 );
-INSERT INTO tbTipoVinho (nomeVinho, MetricaTemperatura, MetricaCO2) VALUES
-();
+INSERT INTO tbTipoVinho (nomeVinho, metricaTemperaturaPerigoMin, metricaTemperaturaPerigoMax,metricaTemperaturaCriticoMin, metricaTemperaturaCriticoMax,
+metricaCO2PerigoMin,metricaCO2PerigoMax, metricaCO2CriticoMin, metricaCO2CriticoMax) VALUES
+('Branco', 13, 27, 09, 30, 55, 89, 50, 99),
+('Tinto', 13, 27, 09, 30, 10, 70, 07, 80);
 
 CREATE TABLE tbTanque (
 	idTanque INT PRIMARY KEY AUTO_INCREMENT,
@@ -131,27 +134,76 @@ VALUES
 (2, 2, 'ativo'), 
 (3, 2, 'ativo'),
 (3, 2, 'ativo'), 
-(4, 3, 'ativo'), 
-(4, 3, 'ativo'), 
-(5, 4, 'ativo'), 
-(5, 4, 'ativo');
-
-
+(4, 1, 'ativo'), 
+(4, 1, 'ativo'), 
+(5, 2, 'ativo'), 
+(5, 2, 'ativo');
 
 
 CREATE TABLE tbMedida (
 	idMedidaSensor INT PRIMARY KEY AUTO_INCREMENT,
     medidaLM35 DECIMAL(4,2) NOT NULL,
-    mediidaMQ2 DECIMAL (4,2) NOT NULL,
+    medidaMQ2 DECIMAL (4,2) NOT NULL,
     dataHoraSensor DATETIME DEFAULT CURRENT_TIMESTAMP,
     fkTanque INT,
     CONSTRAINT fkMedidaTanque FOREIGN KEY (fkTanque) REFERENCES tbTanque(idTanque)
 );
 
-INSERT INTO tbMedida (fkSensor, medidaSensor, dataHoraSensor) 
-VALUES 
- ();
+INSERT INTO tbMedida (medidaLM35, medidaMQ2, fkTanque) 
+VALUES  (26.7, 50, 1);
+ INSERT INTO tbMedida (medidaLM35, medidaMQ2, fkTanque) 
+VALUES (23.5, 47, 2);
+ INSERT INTO tbMedida (medidaLM35, medidaMQ2, fkTanque) 
+VALUES (27.5, 45, 3);
+ INSERT INTO tbMedida (medidaLM35, medidaMQ2, fkTanque) 
+VALUES (29.5, 61, 4);
+ INSERT INTO tbMedida (medidaLM35, medidaMQ2, fkTanque) 
+VALUES (31, 68, 5);
+ 
+ SELECT * FROM tbTanque;
+SELECT * FROM tbMedida;
 
+SELECT medidaLM35 AS Temperatura, medidaMQ2 as co2 FROM tbMedida WHERE fkTanque = 1  ORDER BY idMedidaSensor DESC LIMIT 1;
+SELECT medidaLM35, hour(dataHoraSensor) FROM tbMedida WHERE fkTanque = 1;
+SELECT medidaMQ2, hour(dataHoraSensor) FROM tbMedida WHERE fkTanque = 1;
+
+SELECT fkTanque, medidaLM35 FROM tbMedida
+	JOIN tbTanque as tanque ON fkTanque = idTanque
+ WHERE tanque.fkEmpresa = 1 GROUP BY fkTanque ORDER BY idMedidaSensor;
+ 
+ (SELECT medidaLM35
+ FROM tbMedida
+	JOIN tbTanque as tanque ON fkTanque = idTanque
+     WHERE tanque.fkEmpresa = 1 AND idMedidaSensor = 
+     (SELECT MAX(idMedidaSensor)
+		FROM tbMedida
+		JOIN tbTanque as tanque ON fkTanque = idTanque
+		WHERE tanque.fkEmpresa = 1));
+
+SELECT idTanque, 
+ (SELECT medidaLM35
+ FROM tbMedida
+	JOIN tbTanque as tanque ON fkTanque = idTanque
+      WHERE idMedidaSensor = (SELECT MAX(idMedidaSensor)
+		FROM tbMedida
+		JOIN tbTanque as tanque ON fkTanque = idTanque
+		WHERE tanque.fkEmpresa = 1
+        GROUP BY tanque.idTanque
+        )) AS medidaLM35 ,
+ medidaMQ2,
+ metrica.metricaTemperaturaPerigoMin AS temperaturaMinPerigo,
+ metrica.metricaTemperaturaPerigoMax AS temperauraPerigoMax,
+ metrica.metricaTemperaturaCriticoMin AS temperaturaCriticoMin,
+ metrica.metricaTemperaturaCriticoMax AS temperaturaCriticoMax,
+ metrica.metricaCO2PerigoMin AS CO2PerigoMin,
+ metrica.metricaCO2PerigoMax AS CO2PerigoMax,
+ metrica.metricaCO2CriticoMin AS CO2CriticoMin,
+ metrica.metricaCO2CriticoMax AS CO2CriticoMax
+ FROM tbTanque
+        JOIN tbMedida ON fkTanque = idTanque
+        JOIN tbTipoVinho AS metrica ON fkTipoVInho =idTipoVinho
+        WHERE fkEmpresa = 1
+        GROUP BY idTanque;
 
 SELECT 
     empresa.idEmpresa, 
@@ -184,3 +236,4 @@ JOIN
     tbMedidaSensor AS medidasensor ON sensor.idSensor = medidasensor.fkSensor
 JOIN 
     tbTipoVinho AS tipovinho ON tanque.fkTipoVinho = tipovinho.idTipoVinho;
+SELECT * FROM tbEmpresa;
