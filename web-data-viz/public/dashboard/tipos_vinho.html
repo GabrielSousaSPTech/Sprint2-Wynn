@@ -8,9 +8,10 @@
     <link rel="stylesheet" href="../css/tabelas.css">
     <script src="../JS/index.js"></script>
     <script src="../JS/tabelas.js"></script>
+    <script src="../JS/tipos_vinho.js"></script>
 </head>
 
-<body id="banner_tabela">
+<body onload="obterDados()" id="banner_tabela">
     <div id="h-menu" class="hanburger-menu">
         <div class="menu-icon" onclick="mostrarMenu()">
             <div id="line-1" class="icon-line icon-line-1"></div>
@@ -56,7 +57,7 @@
                             <th>&nbsp;</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="tbody">
                         <tr>
                             <th class="celula-numero">1</th>
                             <td>Tinto</td>
@@ -169,3 +170,4 @@
 </body>
 
 </html>
+
