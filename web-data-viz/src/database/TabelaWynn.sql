@@ -123,7 +123,11 @@ CREATE TABLE tbTipoVinho(
 	metricaCO2CriticoMin DECIMAL (4,2),
 	metricaCO2CriticoMax DECIMAL (4,2)
 );
--- INSERT INTO tbTipoVinho (nomeVinho, MetricaTemperatura, MetricaCO2) VALUES
+
+INSERT INTO tbTipoVinho VALUES
+	(default ,'Tinto', 20, 30, 10, 40, 30, 80, 20, 90),
+    (default ,'Branco', 12, 18, 6, 22, 35, 85, 25, 95)
+; -- valores exemplo
 
 
 CREATE TABLE tbTanque (
