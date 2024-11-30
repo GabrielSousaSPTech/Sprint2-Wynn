@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanques</title>
+    <link rel="stylesheet" href="../css/tabelas.css">
+    <script src="../JS/index.js"></script>
+    <script src="../JS/tabelas.js"></script>
+</head>
+
+<body id="banner_tabela">
+    <div id="h-menu" class="hanburger-menu">
+        <div class="menu-icon" onclick="mostrarMenu()">
+            <div id="line-1" class="icon-line icon-line-1"></div>
+            <div id="line-2" class="icon-line icon-line-2"></div>
+            <div id="line-3" class="icon-line icon-line-3"></div>
+        </div>
+        <div class="menu-box">
+            <h2>MENU</h2>
+            <div class="menu-item">Usuário</div>
+            <div class="menu-item">Tanque</div>
+            <div class="menu-item">Config. Temperatura</div>
+            <div class="menu-item">Config. CO2</div>
+            <div class="item-logout">
+                <a onclick="limparSessao()" style="cursor: pointer;">
+                    <img src="../assets/icons/log-out.png" alt="">
+                    <span>Sair</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <header class="header-dashboard">
+        <img class="logoWynn" src="../assets/imgs/logoWynn.png" alt="">
+    </header>
+    <section id="section_tabela">
+        <div id="div_janela_tabela" class="janela" style="display: flex;">
+            <section id="titulo_janela">
+                <h2>Tipos de Vinho</h2>
+                <hr>
+                <p>Adicione, edite ou remova seus tipos de vinho.</p>
+            </section>
+
+            <section class="tabela-lista">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="titulo-cabecalho">#</th>
+                            <th class="titulo-cabecalho">Nome</th>
+                            <th class="titulo-cabecalho">Temp. Perigo</th>
+                            <th class="titulo-cabecalho">Temp. Crítica</th>
+                            <th class="titulo-cabecalho"> CO<sub>2</sub> Perigo</th>
+                            <th class="titulo-cabecalho">CO<sub>2</sub> Crítico</th>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th class="celula-numero">1</th>
+                            <td>Tinto</td>
+                            <td>&downarrow;20°C | &uparrow;30°C</td>
+                            <td>&downarrow;10°C | &uparrow;40°C</td>
+                            <td>&downarrow;40% | &uparrow;80%</td>
+                            <td>&downarrow;30% | &uparrow;90%</td>
+                            <td class="tabela-icone">
+                                <button class="botao-tabela" onclick="exibirOcultarMenu('editar', 1)">
+                                    <img src="../assets/icons/icon_gear.png">
+                                </button>
+                            </td>
+                            <td class="tabela-icone">
+                                <button class="botao-tabela">
+                                    <img src="../assets/icons/icon_trashcan.png">
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div>
+                    <button class="botao-tabela novo" onclick="exibirOcultarMenu('adicionar')">
+                        <img src="../assets/icons/icon_add.png">
+                        Adicionar novo tipo
+                    </button>
+                </div>
+            </section>
+
+        </div>
+        <aside id="aside_menu_editar" class="janela menu" style="display: none;">
+            <h2>
+                Configurar métricas do tipo <span id="span_id_tanque">0</span>
+            </h2>
+
+            <form>
+                <div class="campo">
+                    <p>Temperaturas de Perigo:</p>
+                    <div>
+                        <input type="number" id="temp_perigo_min" placeholder="Min.">
+                        <input type="number" id="temp_perigo_max" placeholder="Max.">
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <p>Temperaturas Críticas:</p>
+                    <div>
+                        <input type="number" id="temp_critica_min" placeholder="Min.">
+                        <input type="number" id="temp_critica_max" placeholder="Max.">
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <p>CO<sub>2</sub> Perigo:</p>
+                    <div>
+                        <input type="number" id="co2_perigo_min" placeholder="Min.">
+                        <input type="number" id="co2_perigo_max" placeholder="Max.">
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <p>CO<sub>2</sub> Crítico:</p>
+                    <div>
+                        <input type="number" id="co2_critica_min" placeholder="Min.">
+                        <input type="number" id="co2_critica_max" placeholder="Max.">
+                    </div>
+                </div>
+            </form>
+
+            <div>
+                <button>
+                    Atualizar
+                </button>
+
+                <button onclick="exibirOcultarMenu('editar')">
+                    Voltar
+                </button>
+            </div>
+        </aside>
+
+        <aside id="aside_menu_adicionar" class="janela menu" style="display: none;">
+            <h2>
+                Adicionando tipo de vinho
+            </h2>
+
+            <form>
+                <div class="campo">
+                    <p>Tipo de vinho:</p>
+                    <select id="select_adicionar_tipo_vinho">
+                        <option value="Tinto">Tinto</option>
+                        <option value="Branco">Branco</option>
+                        <option value="Rose">Rose</option>
+                        <option value="Frisante">Frisante</option>
+                    </select>
+                </div>
+
+            </form>
+
+            <div>
+                <button>
+                    Adicionar
+                </button>
+
+                <button onclick="exibirOcultarMenu('adicionar')">
+                    Voltar
+                </button>
+            </div>
+        </aside>
+    </section>
+</body>
+
+</html>
