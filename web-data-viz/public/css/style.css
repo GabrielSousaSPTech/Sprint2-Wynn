@@ -1441,8 +1441,6 @@ canvas {
     width: 30%;
 }
 
-
-
 #camposLogin {
     width: 60%;
 }
@@ -1453,100 +1451,6 @@ canvas {
     display: flex;
     justify-content: space-between;
 }
-
-/* Dashboard - Telas de tabelas */
-
-body#banner_tabela {
-    background-image: url(../assets/imgs/fundo-barris-vinho.jpg);
-    background-size: cover;
-}
-
-section#section_tabela {
-    width: 100%;
-    height: 97vh;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-div#caixa_tabela {
-    width: 90%;
-    max-width: 130rem;
-    padding: 3.5rem;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-
-    font-size: 2.5rem;
-    color: white;
-
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
-div#titulo_caixa {
-    align-self: flex-start;
-}
-
-.tabela-lista {
-    width: 90%;
-    font-size: 2.7rem;
-    border-spacing: 0 1rem;
-}
-
-.tabela-lista th {
-    text-align: left;
-}
-
-.tabela-lista thead th {
-    font-size: 2rem;
-}
-
-.titulo-cabecalho {
-    border-bottom: .1rem solid white;
-}
-
-th#cabecalho_status {
-    width: 8rem;
-    text-align: right;
-}
-
-tbody tr:nth-child(2n) {
-    background-color: rgba(43, 43, 43, 0.356);
-}
-
-.tabela-lista .celula-numero {
-    width: 3.5rem;
-    font-weight: normal;
-}
-
-.celula-status {
-    text-align: right;
-}
-
-.celula-status span {
-    padding: 0 .7rem;
-    border-radius: 1rem;
-}
-
-.celula-status.ativo span {
-    background-color: #631e51;
-}
-
-.celula-status.inativo span {
-    color: lightgrey;
-    background-color: #3b0c2f;
-}
-
-.tabela-icone {
-    width: 1rem;
-    padding-left: 1rem;
-    text-align: right;
-}
-
-/* Fim telas de tabela */
 
 #caixa_operacoes {
     display: flex;

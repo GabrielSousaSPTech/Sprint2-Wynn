@@ -1,0 +1,162 @@
+@import url(dash.css);
+@import url(style.css);
+
+body#banner_tabela {
+    background-image: url(../assets/imgs/fundo-barris-vinho.jpg);
+    background-size: cover;
+}
+
+section#section_tabela {
+    width: 100%;
+    height: 97vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.janela {
+    width: 90%;
+    padding: 3.5rem;
+
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+
+    font-size: 2.5rem;
+    color: white;
+
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+div#janela_tabela {
+    max-width: 130rem;
+}
+
+section#titulo_janela {
+    align-self: flex-start;
+}
+
+.tabela-lista {
+    width: 90%;
+}
+
+.tabela-lista > table {
+    width: 100%;
+    font-size: 2.7rem;
+    border-spacing: 0 1rem;
+}
+
+.tabela-lista th {
+    text-align: left;
+}
+
+.tabela-lista thead th {
+    font-size: 2rem;
+}
+
+.titulo-cabecalho {
+    border-bottom: .1rem solid white;
+}
+
+th#cabecalho_status {
+    width: 8rem;
+    text-align: right;
+}
+
+tbody tr:nth-child(2n) {
+    background-color: rgba(43, 43, 43, 0.356);
+}
+
+.tabela-lista .celula-numero {
+    width: 3.5rem;
+    font-weight: normal;
+}
+
+.celula-status {
+    text-align: right;
+}
+
+.celula-status span {
+    padding: 0 .7rem;
+    border-radius: 1rem;
+}
+
+.celula-status.ativo span {
+    background-color: #631e51;
+}
+
+.celula-status.inativo span {
+    color: lightgrey;
+    background-color: #3b0c2f;
+}
+
+.tabela-icone {
+    width: 1rem;
+
+    padding-left: 1rem;
+    text-align: right;
+}
+
+.botao-tabela {
+    padding: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+
+    background-color: transparent;
+    cursor: pointer;
+
+    text-align: left;
+}
+
+.botao-tabela img {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.botao-tabela.novo {
+    color: #e2e2e2;
+    font-size: 2rem;
+    text-transform: none;
+}
+.botao-tabela.novo > img {
+    width: 2.1rem;
+    height: 2.1rem;
+}
+
+.janela.menu {
+    max-width: 60rem;
+}
+
+form {
+    width: 60%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    gap: 1rem;
+}
+
+.campo {
+    width: 100%;
+}
+
+.campo select {
+    width: 100%;
+    font-size: 2rem;
+}
+
+.janela.menu button {
+    padding: 1rem;
+    margin: 0 .2rem;
+
+    border-radius: .7rem;
+
+    font-size: 2rem;
+}
