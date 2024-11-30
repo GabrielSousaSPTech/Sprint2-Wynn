@@ -198,32 +198,36 @@ SELECT fkTanque, medidaLM35 FROM tbMedida
 		JOIN tbTanque as tanque ON fkTanque = idTanque
 		WHERE tanque.fkEmpresa = 1));
         
-/*
-SELECT idTanque, 
- (SELECT medidaLM35
- FROM tbMedida
-	JOIN tbTanque as tanque ON fkTanque = idTanque
-      WHERE idMedidaSensor = (SELECT MAX(idMedidaSensor)
-		FROM tbMedida
-		JOIN tbTanque as tanque ON fkTanque = idTanque
-		WHERE tanque.fkEmpresa = 1
-        GROUP BY tanque.idTanque
-        )) AS medidaLM35 ,
- medidaMQ2,
- metrica.metricaTemperaturaPerigoMin AS temperaturaMinPerigo,
- metrica.metricaTemperaturaPerigoMax AS temperauraPerigoMax,
- metrica.metricaTemperaturaCriticoMin AS temperaturaCriticoMin,
- metrica.metricaTemperaturaCriticoMax AS temperaturaCriticoMax,
- metrica.metricaCO2PerigoMin AS CO2PerigoMin,
- metrica.metricaCO2PerigoMax AS CO2PerigoMax,
- metrica.metricaCO2CriticoMin AS CO2CriticoMin,
- metrica.metricaCO2CriticoMax AS CO2CriticoMax
+
+SELECT
+	idMedidaSensor,
+	idTanque, 
+	medidaLM35,
+	medidaMQ2,
+	metrica.metricaTemperaturaPerigoMin AS temperaturaMinPerigo,
+	metrica.metricaTemperaturaPerigoMax AS temperauraPerigoMax,
+	metrica.metricaTemperaturaCriticoMin AS temperaturaCriticoMin,
+	metrica.metricaTemperaturaCriticoMax AS temperaturaCriticoMax,
+	metrica.metricaCO2PerigoMin AS CO2PerigoMin,
+	metrica.metricaCO2PerigoMax AS CO2PerigoMax,
+	metrica.metricaCO2CriticoMin AS CO2CriticoMin,
+	metrica.metricaCO2CriticoMax AS CO2CriticoMax
  FROM tbTanque
         JOIN tbMedida ON fkTanque = idTanque
         JOIN tbTipoVinho AS metrica ON fkTipoVInho =idTipoVinho
         WHERE fkEmpresa = 1
-        GROUP BY idTanque;
-*/
+        GROUP BY 
+        idMedidaSensor,
+        idTanque,
+        medidaLM35,
+		medidaMQ2
+        ;
+        
+        SELECT idTanque FROM tbTanque WHERE fkEmpresa = 1;
+        SELECT * FROM tbEmpresa;
+        
+        SELECT * FROM tbMedida;
+
 SELECT 
     empresa.idEmpresa, 
     empresa.nomeEmpresa, 

@@ -2,19 +2,22 @@ var dashboardModel = require("../models/dashboardModel")
 
 function obterDadosKpi(req,res){
     var idTanque = req.params.idTanque
-    dashboardModel.obterDadosKpi(idTanque).then(function (resposta){
+    var limite = req.params.limite
+    dashboardModel.obterDadosKpi(idTanque, limite).then(function (resposta){
+        console.log('NO CONTROLLER '+ resposta.length)
         if(resposta.length>0){
             res.json({
                 Temperatura: resposta[0].Temperatura,
                 co2: resposta[0].co2
             })
         }else {
-            res.status(402).send('Tanque ainda não obteve medições de Temperatura')
+            res.send('Tanque ainda não obteve medições de Temperatura')
         }
     }).catch(function (erro){
         res.status(403).send('Erro ao acessar o banco de dados'+ erro)
     })
 }
+
 
 function obterDadosGraficoTemperatura(req, res){
     var idTanque = req.params.idTanque
@@ -49,9 +52,24 @@ function obterTanque(req, res){
     })
 }
 
+function obterMinMaxTemperatura (req, res){
+    var idTanque = req.params.idTanque
+    dashboardModel.obterMinMaxTemperatura(idTanque).then(function (resposta){
+        if(resposta.length>0){
+            res.json({
+                Temperatura: resposta[0].Temperatura,
+                co2: resposta[0].co2
+            })
+        }else {
+            res.send('Tanque ainda não obteve medições de Temperatura')
+        }
+    })
+}
+
 module.exports = {
     obterDadosKpi,
     obterDadosGraficoTemperatura,
     obterDadosGraficoCO2,
-    obterTanque
+    obterTanque,
+    obterMinMaxTemperatura
 }

@@ -1,6 +1,6 @@
 var database = require("../database/config");
 
-function obterDadosKpi(fkTanque){
+function obterDadosKpi(fkTanque, limite){
     var instrucaoSql = `
         SELECT 
             medidaLM35 AS Temperatura,
@@ -8,10 +8,23 @@ function obterDadosKpi(fkTanque){
         FROM tbMedida 
         WHERE fkTanque = ${fkTanque}
         ORDER BY idMedidaSensor DESC
-        LIMIT 1;
+        LIMIT ${limite};
     `
-
     return database.executar(instrucaoSql)
+}
+
+function obterMinMaxTemperatura(fkTanque){
+    var instrucaoSql = `
+        SELECT 
+            MIN(medidaLM35) AS minima,
+            MAX(medidaMQ2) AS maxima
+            FROM tbMedida 
+            WHERE fkTanque = ${fkTanque};
+            `
+            
+    
+        return database.executar(instrucaoSql)
+
 }
 
 function obterDadosGraficoTemperatura(fkTanque){
@@ -30,10 +43,7 @@ function obterDadosGraficoCO2(fkTanque){
 
 function obterTanque(fkEmpresa){
     var instrucaoSql = `
-        SELECT idTanque, medidaLM35, medidaMQ2 FROM tbTanque
-        JOIN tbMedida ON fkTanque = idTanque
-        WHERE fkEmpresa = ${fkEmpresa}
-        GROUP BY idTanque
+                SELECT idTanque FROM tbTanque WHERE fkEmpresa = ${fkEmpresa};
     `
 
     return database.executar(instrucaoSql)
@@ -43,5 +53,6 @@ module.exports = {
     obterDadosKpi,
     obterDadosGraficoTemperatura,
     obterDadosGraficoCO2,
-    obterTanque
+    obterTanque,
+    obterMinMaxTemperatura
 }
