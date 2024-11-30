@@ -429,6 +429,12 @@ canvas {
     margin: 0 auto;
 }
 
+
+#display_temperatura{
+    font-size: 3.5rem;
+    color: green;
+}
+
 #display_temperatura h3 {
     font-size: 3.5rem;
     /* color: green; */
@@ -504,6 +510,15 @@ canvas {
     border-radius: 5rem;
     display: flex;
     flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.containerTanque {
+    display: flex;
+    width: 50%;
+    height: fit-content;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -545,6 +560,8 @@ canvas {
     justify-content: flex-start;
     align-items: center;
 }
+
+
 
 /* Responsividade */
 @media (max-width: 1689px) {

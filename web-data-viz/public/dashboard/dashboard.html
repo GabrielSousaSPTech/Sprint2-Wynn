@@ -10,16 +10,16 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body onload="validarSessao(); obterTanque(sessionStorage.ID_USUARIO)">
+<body onload="validarSessao(); render(sessionStorage.ID_USUARIO)">
     <div id="container" style="width:500px; position: absolute; background-color: aqua; top: 30%; right: 10px;">
-        <center>
+        <!-- <center>
             <h1>BobIA</h1>
             <textarea id="pergunta" type="text" placeholder="Digite a pergunta..."></textarea>
             <br><br>
             <button onclick="gerarResposta()">Gerar Resposta</button>
             <h3>Resposta da IA:</h3>
             <div id="resposta"></div>
-        </center>
+        </center> -->
     </div>
     <section id="banner-Dashboard">
         <div id="h-menu" class="hanburger-menu">
@@ -70,7 +70,7 @@
 
                             </div>
                         </div>
-
+                        
                         <div id="dashboard_alerta" class="elemento-estreito elemento center formatacao">
                             <h2>STATUS</h2>
                             <p id="status-ok"><span>OK</span></p>
@@ -544,4 +544,12 @@
     }
 
 
+</script>
+<script>
+    function render(idEmpresa){
+        obterKPI(1, 1),
+        obterTanque(idEmpresa)
+
+
+    }
 </script>
