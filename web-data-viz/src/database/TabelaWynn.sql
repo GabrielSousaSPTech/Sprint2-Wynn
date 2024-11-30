@@ -1,6 +1,5 @@
 create database dbWynn;
-
-
+-- drop database dbWynn;
 USE dbWynn;
 
 
@@ -20,8 +19,8 @@ CREATE TABLE Registro (
 	idRegistro INT PRIMARY KEY AUTO_INCREMENT,
     fkCategoria INT,
     fkAdministrador INT,
-    CONSTRAINT fkCategoriaRegistro FOREIGN KEY (fkCategoriaRegistro) REFERENCES categoriaRegistro (idCategoriaRegistro),
-    CONSTRAINT fkCategoriaRegistro FOREIGN KEY (fkCategoriaRegistro) REFERENCES tbAdministrador (idCAdministrador),
+    FOREIGN KEY (fkCategoria) REFERENCES tbCategoriaRegistro (idCategoriaRegistro),
+	FOREIGN KEY (fkAdministrador) REFERENCES tbAdministrador (idAdministrador),
     tituloRegistro VARCHAR(60) NOT NULL,
     descricaoRegistro VARCHAR (800) NOT NULL,
     prioridadeRegistro VARCHAR(45),
@@ -54,15 +53,30 @@ CREATE TABLE Endereco (
     complemento VARCHAR (100)
 );
 
+/*
+CREATE TABLE Endereco (
+	idEndereco INT PRIMARY KEY AUTO_INCREMENT,
+	cep CHAR(9) NOT NULL,
+    logradouro VARCHAR(80),
+    bairro VARCHAR(80),
+    cidade VARCHAR(80),
+    uf CHAR(2),
+    numero VARCHAR(4) NOT NULL,
+    complemento VARCHAR (100)
+);
+
+CREATE TABLE tbEmpresaEndereco (
+fkEmpresa int,
+fkEndereco int,
+PRIMARY KEY (fkEmpresa, fkEndereco), 
+foreign key (fkEmpresa) references tbEmpresa (idEmpresa),
+foreign Key (fkEndereco) references Endereco (idEndereco)
+);
+*/
 
 SELECT * FROM Endereco;
 SELECT * FROM tbEmpresa;
-INSERT INTO tbEmpresa
-      (nomeEmpresa, cnpjEmpresa, emailEmpresa, senhaEmpresa, chaveAtivacaoEmpresa, telEmpresa, autorizacaoEmpresa) 
-		VALUES ('Vinicultura estreladoura',  '00200100100122', 'estreladoura@gmail.com', '123456', 'NME7OQZI', '11233445566', false);
-        SELECT idEmpresa FROM tbEmpresa ORDER BY idEmpresa DESC LIMIT 1 ;
-        SELECT * FROM tbEmpresa;
-        SELECT * FROm Endereco;
+
 INSERT INTO tbEmpresa (nomeEmpresa, cnpjEmpresa, emailEmpresa, senhaEmpresa, chaveAtivacaoEmpresa, telEmpresa, autorizacaoEmpresa) 
 VALUES 
 	('Vinícola Campestre', '98.521.909/0002-70', 'vinicolaCampestre@gmail.com', 123, 'E3DB98JK', '114940028922', false),
@@ -97,8 +111,6 @@ VALUES
 
 
 
-
-
 CREATE TABLE tbTipoVinho(
 	idTipoVinho INT PRIMARY KEY AUTO_INCREMENT,
 	nomeVinho VARCHAR(45),
@@ -111,10 +123,8 @@ CREATE TABLE tbTipoVinho(
 	metricaCO2CriticoMin DECIMAL (4,2),
 	metricaCO2CriticoMax DECIMAL (4,2)
 );
-INSERT INTO tbTipoVinho (nomeVinho, metricaTemperaturaPerigoMin, metricaTemperaturaPerigoMax,metricaTemperaturaCriticoMin, metricaTemperaturaCriticoMax,
-metricaCO2PerigoMin,metricaCO2PerigoMax, metricaCO2CriticoMin, metricaCO2CriticoMax) VALUES
-('Branco', 13, 27, 09, 30, 55, 89, 50, 99),
-('Tinto', 13, 27, 09, 30, 10, 70, 07, 80);
+-- INSERT INTO tbTipoVinho (nomeVinho, MetricaTemperatura, MetricaCO2) VALUES
+
 
 CREATE TABLE tbTanque (
 	idTanque INT PRIMARY KEY AUTO_INCREMENT,
@@ -125,6 +135,24 @@ CREATE TABLE tbTanque (
     CONSTRAINT fkTanque_Empresa FOREIGN KEY (fkEmpresa) REFERENCES tbEmpresa(idEmpresa),
     CONSTRAINT fkTanque_TipoVinho FOREIGN KEY (fkTipoVinho) REFERENCES tbTipoVinho(idTipoVinho)
     );
+
+-- INSERT INTO tbTanque (fkEmpresa, fkTipoVinho, statusTanque) VALUES 
+
+
+CREATE TABLE tbMedida (
+	idMedidaSensor INT PRIMARY KEY AUTO_INCREMENT,
+    medidaLM35 DECIMAL(4,2) NOT NULL,
+    medidaMQ2 DECIMAL (4,2) NOT NULL,
+    dataHoraSensor DATETIME DEFAULT CURRENT_TIMESTAMP,
+    fkTanque INT,
+    CONSTRAINT fkMedidaTanque FOREIGN KEY (fkTanque) REFERENCES tbTanque(idTanque)
+);
+
+INSERT INTO tbTipoVinho (nomeVinho, metricaTemperaturaPerigoMin, metricaTemperaturaPerigoMax,metricaTemperaturaCriticoMin, metricaTemperaturaCriticoMax,
+metricaCO2PerigoMin,metricaCO2PerigoMax, metricaCO2CriticoMin, metricaCO2CriticoMax) VALUES
+('Branco', 13, 27, 09, 30, 55, 89, 50, 99),
+('Tinto', 13, 27, 09, 30, 10, 70, 07, 80);
+
 
 INSERT INTO tbTanque (fkEmpresa, fkTipoVinho, statusTanque) 
 VALUES 
@@ -140,36 +168,26 @@ VALUES
 (5, 2, 'ativo');
 
 
-CREATE TABLE tbMedida (
-	idMedidaSensor INT PRIMARY KEY AUTO_INCREMENT,
-    medidaLM35 DECIMAL(4,2) NOT NULL,
-    medidaMQ2 DECIMAL (4,2) NOT NULL,
-    dataHoraSensor DATETIME DEFAULT CURRENT_TIMESTAMP,
-    fkTanque INT,
-    CONSTRAINT fkMedidaTanque FOREIGN KEY (fkTanque) REFERENCES tbTanque(idTanque)
-);
+select * from tbMedida;
+INSERT INTO tbMedida (medidaLM35, medidaMQ2,dataHoraSensor, fkTanque) VALUES  
+(26.7, 50, now(), 1),
+(25.7, 50, now(), 1),
+(24.7, 50, now(), 1),
+(20.7, 50, now(), 1),
+(25.7, 50, now(), 1),
+(29.7, 50, now(), 1),
+(31.7, 50, now(), 1);
 
-INSERT INTO tbMedida (medidaLM35, medidaMQ2, fkTanque) 
-VALUES  (26.7, 50, 1);
- INSERT INTO tbMedida (medidaLM35, medidaMQ2, fkTanque) 
-VALUES (23.5, 47, 2);
- INSERT INTO tbMedida (medidaLM35, medidaMQ2, fkTanque) 
-VALUES (27.5, 45, 3);
- INSERT INTO tbMedida (medidaLM35, medidaMQ2, fkTanque) 
-VALUES (29.5, 61, 4);
- INSERT INTO tbMedida (medidaLM35, medidaMQ2, fkTanque) 
-VALUES (31, 68, 5);
- 
- SELECT * FROM tbTanque;
-SELECT * FROM tbMedida;
 
-SELECT medidaLM35 AS Temperatura, medidaMQ2 as co2 FROM tbMedida WHERE fkTanque = 1  ORDER BY idMedidaSensor DESC LIMIT 1;
+ SELECT medidaLM35 AS Temperatura, medidaMQ2 as co2 FROM tbMedida WHERE fkTanque = 1  ORDER BY idMedidaSensor DESC LIMIT 1;
 SELECT medidaLM35, hour(dataHoraSensor) FROM tbMedida WHERE fkTanque = 1;
 SELECT medidaMQ2, hour(dataHoraSensor) FROM tbMedida WHERE fkTanque = 1;
 
+/*
 SELECT fkTanque, medidaLM35 FROM tbMedida
 	JOIN tbTanque as tanque ON fkTanque = idTanque
  WHERE tanque.fkEmpresa = 1 GROUP BY fkTanque ORDER BY idMedidaSensor;
+ */
  
  (SELECT medidaLM35
  FROM tbMedida
@@ -179,7 +197,8 @@ SELECT fkTanque, medidaLM35 FROM tbMedida
 		FROM tbMedida
 		JOIN tbTanque as tanque ON fkTanque = idTanque
 		WHERE tanque.fkEmpresa = 1));
-
+        
+/*
 SELECT idTanque, 
  (SELECT medidaLM35
  FROM tbMedida
@@ -204,7 +223,7 @@ SELECT idTanque,
         JOIN tbTipoVinho AS metrica ON fkTipoVInho =idTipoVinho
         WHERE fkEmpresa = 1
         GROUP BY idTanque;
-
+*/
 SELECT 
     empresa.idEmpresa, 
     empresa.nomeEmpresa, 
@@ -237,3 +256,7 @@ JOIN
 JOIN 
     tbTipoVinho AS tipovinho ON tanque.fkTipoVinho = tipovinho.idTipoVinho;
 SELECT * FROM tbEmpresa;
+
+
+
+
