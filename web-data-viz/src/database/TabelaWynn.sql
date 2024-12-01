@@ -129,6 +129,17 @@ INSERT INTO tbTipoVinho VALUES
     (default ,'Branco', 12, 18, 6, 22, 35, 85, 25, 95)
 ; -- valores exemplo
 
+SELECT * FROM tbTipoVinho;
+
+/*
+UPDATE tbTipoVinho
+	SET metricaTemperaturaPerigoMin = ?, metricaTemperaturaPerigoMax = ?,
+			metricaTemperaturaCriticoMin = ?, metricaTemperaturaCriticoMax = ?,
+				metricaCO2PerigoMin = ?, metricaCO2PerigoMax = ?,
+					metricaCO2CriticoMin = ?, metricaCO2CriticoMax = ?
+						WHERE idTipoVinho = ?;
+*/		
+
 
 CREATE TABLE tbTanque (
 	idTanque INT PRIMARY KEY AUTO_INCREMENT,
@@ -152,10 +163,8 @@ CREATE TABLE tbMedida (
     CONSTRAINT fkMedidaTanque FOREIGN KEY (fkTanque) REFERENCES tbTanque(idTanque)
 );
 
-INSERT INTO tbTipoVinho (nomeVinho, metricaTemperaturaPerigoMin, metricaTemperaturaPerigoMax,metricaTemperaturaCriticoMin, metricaTemperaturaCriticoMax,
-metricaCO2PerigoMin,metricaCO2PerigoMax, metricaCO2CriticoMin, metricaCO2CriticoMax) VALUES
-('Branco', 13, 27, 09, 30, 55, 89, 50, 99),
-('Tinto', 13, 27, 09, 30, 10, 70, 07, 80);
+
+
 
 
 INSERT INTO tbTanque (fkEmpresa, fkTipoVinho, statusTanque) 

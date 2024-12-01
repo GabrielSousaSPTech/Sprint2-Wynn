@@ -9,6 +9,17 @@ function obterTiposVinho() {
     return database.executar(instrucaoSql);
 }
 
+function atualizarMetricas () {
+
+    var instrucaoSql = `
+        SELECT * FROM tbTipoVinho;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
-    obterTiposVinho
+    obterTiposVinho,
+    atualizarMetricas
 };
+
