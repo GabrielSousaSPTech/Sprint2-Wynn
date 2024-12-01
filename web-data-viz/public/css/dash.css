@@ -430,7 +430,7 @@ canvas {
 }
 
 
-#display_temperatura{
+#display_temperatura {
     font-size: 3.5rem;
     color: green;
 }
@@ -561,6 +561,9 @@ canvas {
     align-items: center;
 }
 
+.display-none {
+    display: none;
+}
 
 
 /* Responsividade */
