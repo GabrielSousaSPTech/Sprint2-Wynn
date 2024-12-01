@@ -128,3 +128,43 @@ function atualizarMetricas() {
             //   finalizarAguardar();
         });
 }
+
+function adicionarTipoVinho() {
+    var nome = add_nome_tipo.value
+    var tempPerMin = Number(add_temp_perigo_min.value)
+    var tempPerMax = Number(add_temp_perigo_max.value)
+    var tempCritMin = Number(add_temp_critica_min.value)
+    var tempCritMax = Number(add_temp_critica_max.value)
+    var co2PerMin = Number(add_co2_perigo_min.value)
+    var co2PerMax = Number(add_co2_perigo_max.value)
+    var co2CritMin = Number(add_co2_critica_min.value)
+    var co2CritMax = Number(add_co2_critica_max.value)
+
+    fetch("/tipoVinho/cadastrar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            // crie um atributo que recebe o valor recuperado aqui
+            // Agora vá para o arquivo routes/usuario.js
+            nomeServer: nome,
+            tempPerMinServer: tempPerMin,
+            tempPerMaxServer:tempPerMax,
+            tempCritMinServer:tempCritMin,
+            tempCritMaxServer: tempCritMax,
+            co2PerMinServer: co2PerMin,
+            co2PerMaxServer: co2PerMax,
+            co2CritMinServer: co2CritMin,
+            co2CritMaxServer: co2CritMax
+        }),
+    })
+        .then(function (resposta) {
+            console.log(resposta);
+
+        })
+        .catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            //   finalizarAguardar();
+        });
+}

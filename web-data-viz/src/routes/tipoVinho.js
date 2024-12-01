@@ -11,4 +11,8 @@ router.put("/atualizar", function (req, res) {
     tipoVinhoController.atualizarMetricas(req, res);
 })
 
+router.post("/cadastrar", function (req, res) {
+    tipoVinhoController.adicionarTipoVinho(req, res);
+})
+
 module.exports = router;

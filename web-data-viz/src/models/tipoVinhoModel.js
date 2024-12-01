@@ -1,7 +1,7 @@
 var database = require("../database/config")
 
 function obterTiposVinho() {
-    
+
     var instrucaoSql = `
         SELECT * FROM tbTipoVinho;
     `;
@@ -9,10 +9,10 @@ function obterTiposVinho() {
     return database.executar(instrucaoSql);
 }
 
-function atualizarMetricas (
-    idTipoVinho, tempPerMin, tempPerMax, tempCritMin, tempCritMax, 
+function atualizarMetricas(
+    idTipoVinho, tempPerMin, tempPerMax, tempCritMin, tempCritMax,
     co2PerMin, co2PerMax, co2CritMin, co2CritMax
-    ) {
+) {
 
     var instrucaoSql = `
         UPDATE tbTipoVinho
@@ -26,8 +26,21 @@ function atualizarMetricas (
     return database.executar(instrucaoSql);
 }
 
+function adicionarTipoVinho(
+    nome, tempPerMin, tempPerMax, tempCritMin, tempCritMax,
+    co2PerMin, co2PerMax, co2CritMin, co2CritMax
+) {
+    var instrucaoSql = `
+        INSERT INTO tbTipoVinho VALUES
+	        (default, '${nome}', ${tempPerMin}, ${tempPerMax}, ${tempCritMin}, ${tempCritMax}, ${co2PerMin}, ${co2PerMax}, ${co2CritMin}, ${co2CritMax});
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     obterTiposVinho,
-    atualizarMetricas
+    atualizarMetricas,
+    adicionarTipoVinho
 };
 

@@ -145,19 +145,44 @@
 
             <form>
                 <div class="campo">
-                    <p>Tipo de vinho:</p>
-                    <select id="select_adicionar_tipo_vinho">
-                        <option value="Tinto">Tinto</option>
-                        <option value="Branco">Branco</option>
-                        <option value="Rose">Rose</option>
-                        <option value="Frisante">Frisante</option>
-                    </select>
+                    <p>Nome:</p>
+                    <input id="add_nome_tipo">
+                </div>
+                <div class="campo">
+                    <p>Temperaturas de Perigo:</p>
+                    <div>
+                        <div>&downarrow;<input type="number" id="add_temp_perigo_min" placeholder="Min. (em °C)"></div>
+                        <div>&uparrow;<input type="number" id="add_temp_perigo_max" placeholder="Max. (em °C)"></div>
+                    </div>
                 </div>
 
+                <div class="campo">
+                    <p>Temperaturas Críticas:</p>
+                    <div>
+                        <div>&downarrow;<input type="number" id="add_temp_critica_min" placeholder="Min. (em °C)"></div>
+                        <div>&uparrow;<input type="number" id="add_temp_critica_max" placeholder="Max. (em °C)"></div>
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <p>CO<sub>2</sub> Perigo:</p>
+                    <div>
+                        <div>&downarrow;<input type="number" id="add_co2_perigo_min" placeholder="Min. (em %)"></div>
+                        <div>&uparrow;<input type="number" id="add_co2_perigo_max" placeholder="Max. (em %)"></div>
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <p>CO<sub>2</sub> Crítico:</p>
+                    <div>
+                        <div>&downarrow;<input type="number" id="add_co2_critica_min" placeholder="Min. (em %)"></div>
+                        <div>&uparrow;<input type="number" id="add_co2_critica_max" placeholder="Max. (em %)"></div>
+                    </div>
+                </div>
             </form>
 
             <div>
-                <button>
+                <button onclick="adicionarTipoVinho()">
                     Adicionar
                 </button>
 
