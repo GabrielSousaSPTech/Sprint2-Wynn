@@ -3,9 +3,9 @@ var database = require("../database/config");
 function buscarAquariosPorEmpresa(empresaId) {
 
   var instrucaoSql = `SELECT
-                        idTanque,
-                          nomeVinho,
-                          fkEmpresa
+                        idTanque as id,
+                          nomeVinho as descricao,
+                          fkEmpresa as fk_empresa
                       FROM
                           tbTanque
                       JOIN

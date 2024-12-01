@@ -4,7 +4,7 @@ function buscarUltimasMedidas(idAquario, limite_linhas) {
 
     var instrucaoSql = `SELECT
                             medidaLM35 as temperatura,
-                            medidaMQ2 as co2,
+                            medidaMQ2 as umidade,
                             DATE_FORMAT(dataHoraSensor,'%H:%i:%s') as momento_grafico
                         FROM
                             tbTanque
@@ -29,9 +29,9 @@ function buscarMedidasEmTempoReal(idAquario) {
 
     var instrucaoSql = `SELECT 
                             medidaLM35 as temperatura,
-                            medidaMQ2 as co2,
+                            medidaMQ2 as umidade,
                             dataHoraSensor as momento_grafico, 
-                            fkTanque 
+                            fkTanque as fk_aquario
                         FROM
                             tbTanque
                         JOIN

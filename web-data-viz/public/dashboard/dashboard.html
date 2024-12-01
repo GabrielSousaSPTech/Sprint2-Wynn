@@ -1,131 +1,191 @@
 <!DOCTYPE html>
-<html lang="PT-BR">
+<html lang="pt-br">
 
 <head>
+    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DashBoard</title>
-    <link rel="stylesheet" href="../css/dash.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <title>AquaTech | Dashboards</title>
+
+
+    <link rel="stylesheet" href="../css/dasboard/dashboards.css">
+    <!-- <link rel="stylesheet" href="./../css/estilo.css" /> -->
+    <script src="../js/sessao.js"></script>
+    <script src="./../js/alerta.js"></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- scripts do Chart.js - 2022-1 -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.1.0/dist/chartjs-plugin-annotation.min.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.1.0/dist/chartjs-plugin-annotation.min.js"></script>
+
+    <!--FONT AWESOME-->
+    <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/dasboard/styleDashboard.css">
+    <!--  <link rel="stylesheet" href="../css/dash.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 
-<body onload="validarSessao()">
-    <div id="container" style="width:500px; position: absolute; background-color: aqua; top: 30%; right: 10px;">
-        <!-- <center>
-            <h1>BobIA</h1>
-            <textarea id="pergunta" type="text" placeholder="Digite a pergunta..."></textarea>
-            <br><br>
-            <button onclick="gerarResposta()">Gerar Resposta</button>
-            <h3>Resposta da IA:</h3>
-            <div id="resposta"></div>
-        </center> -->
-    </div>
-    <section id="banner-Dashboard">
-        <div id="h-menu" class="hanburger-menu">
-            <div class="menu-icon" onclick="mostrarMenu()">
-                <div id="line-1" class="icon-line icon-line-1"></div>
-                <div id="line-2" class="icon-line icon-line-2"></div>
-                <div id="line-3" class="icon-line icon-line-3"></div>
+<!-- <body onload=" atualizarFeed()"> -->
+
+<body onload=" atualizarFeed()"></body>>
+
+<!-- 
+    <div class="janela">
+        <div class="header-left">
+            <h1>AquaTech</h1>
+
+            <div class="hello">
+                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
             </div>
-            <div class="menu-box">
-                <h2>MENU</h2>
-                <div class="menu-item">Usuário</div>
-                <div class="menu-item"><a href="tanque.html">Tanque</a></div>
-                <div class="menu-item">Config. Temperatura</div>
-                <div class="menu-item">Config. CO2</div>
-                <div class="item-logout">
-                    <a onclick="limparSessao()" style="cursor: pointer;">
-                        <img src="../assets/icon/log-out.png" alt="">
-                        <span>Sair</span>
-                    </a>
-                </div>
+
+            <div class="btn-nav-white">
+                <a href="./cards.html">
+                    <h3>Aquários</h3>
+                </a>
             </div>
-        </div>
-        <header class="header-dashboard">
-            <img class="logoWynn" src="../assets/imgs/logoWynn.png" alt="">
-        </header>
-        <div class="container-dashboard">
-            <div class="dashboard fundo-escuro">
-                <div class="titulo-dashboard">
-                    <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
-                </div>
 
-                <div class="itens_dashboard">
-                    <div class="listaTanques btns-dash" id="btnTanque">
-                    </div>
+            <div class="btn-nav">
 
-                    <div class="linha-dashboard">
-                        <div class="elemento-estreito elemento center formatacao">
-                            <p style="text-align: center">
-                                CO2 (%)
-                            </p>
-                            <div id="display_CO2">
-                                <canvas id="grafico_co2" class="center"></canvas>
-                            </div>
-                        </div>
-                        <div class="elemento-estreito elemento center formatacao">
-                            <p style="text-align: center;">Temperatura</p>
-
-                            <div id="display_temperaturaMin"></div>
-                            <div id="display_temperatura"></div>
-                            <div id="display_temperaturaMax"></div>
-                        </div>
-
-                        <div id="dashboard_alerta" class="elemento-estreito elemento center formatacao">
-                            <h2>STATUS</h2>
-                            <p id="status-ok"><span>OK</span></p>
-                            <h2 id="status-h2">TIPO-TINTO</h2>
-                        </div>
-
-                        <div class="elemento-estreito elemento center formatacao">
-                            <h2 id="tempo-fermentacao-h2">TEMPO DE FERMENTAÇÃO</h2>
-                            <p id="tempo-fermentacao">
-                                <span>30</span>h<span>|23</span>h<span>|18</span>h<span>|30</span>h
-                            </p>
-                        </div>
-                        <div class="elemento-grafico elemento">
-                            <h2 class="titulo_grafico">Temperatura</h2>
-                            <div id="graficos"></div>
-                        </div>
-
-
-                        <div class="elemento-grafico elemento">
-                            <h2 class="titulo_grafico">co2</h2>
-                            <div id="graficos2"></div>
-                        </div>
-                    </div>
-                    <div class="listaAvisos">
-                        <div id="alerta">
-                        </div>
-                    </div>
-                </div>
+                <h3>Gráficos</h3>
 
             </div>
 
+            <div class="btn-nav-white">
+                <a href="./mural.html">
+                    <h3>Mural de Avisos</h3>
+                </a>
+            </div>
 
+            <div class="btn-logout" onclick="limparSessao()">
+                <h3>Sair</h3>
+            </div>
 
         </div>
+ -->
 
-    </section>
+<!--     <div class="dash">
+            <div id="alerta">
+            </div>
+
+            <div class="btns-dash" id="btnAquario"> -->
+<!-- O gráfico é chamado de acordo com o id (fk_aquario) do banco  -->
+<!--           </div>
+            <div id="graficos">
+            </div>
+        </div> -->
+
+<!-- HTML para plotar o resultado da chamada da IA -->
+
+<!-- <div id="container" style="width:500px; position: absolute; background-color: aqua; top: 30%; right: 10px;">
+    <center>
+        <h1>BobIA</h1>
+        <textarea id="pergunta" type="text" placeholder="Digite a pergunta..."></textarea>
+        <br><br>
+        <button onclick="gerarResposta()">Gerar Resposta</button>
+        <h3>Resposta da IA:</h3>
+        <div id="resposta"></div>
+    </center>
+</div>
+ -->
+
+<section id="banner-Dashboard">
+    <div id="h-menu" class="hanburger-menu">
+        <div class="menu-icon" onclick="mostrarMenu()">
+            <div id="line-1" class="icon-line icon-line-1"></div>
+            <div id="line-2" class="icon-line icon-line-2"></div>
+            <div id="line-3" class="icon-line icon-line-3"></div>
+        </div>
+        <div class="menu-box">
+            <h2>MENU</h2>
+            <div class="menu-item">Usuário</div>
+            <div class="menu-item">Tanque</div>
+            <div class="menu-item">Config. Temperatura</div>
+            <div class="menu-item">Config. CO2</div>
+            <div class="item-logout">
+                <a onclick="limparSessao()" style="cursor: pointer;">
+                    <img src="../assets/icon/log-out.png" alt="">
+                    <span>Sair</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <header class="header-dashboard">
+        <img class="logoWynn" src="../assets/imgs/logoWynn.png" alt="">
+    </header>
+    <div class="container-dashboard">
+        <div class="dashboard fundo-escuro">
+            <div class="titulo-dashboard">
+                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+            </div>
+
+            <div class="itens_dashboard">
+                <div class="listaTanques btns-dash" id="btnAquario">
+                </div>
+
+                <div class="linha-dashboard">
+                    <div class="elemento-estreito elemento center formatacao">
+                        <p style="text-align: center">
+                            CO2 (%)
+                        </p>
+                        <div id="display_CO2">
+                            <canvas id="grafico_co2" class="center"></canvas>
+                        </div>
+                    </div>
+                    <div class="elemento-estreito elemento center formatacao">
+                        <p style="text-align: center;">Temperatura</p>
+                        <div id="display_temperatura">
+
+                        </div>
+                    </div>
+
+                    <div id="dashboard_alerta" class="elemento-estreito elemento center formatacao">
+                        <h2>STATUS</h2>
+                        <p id="status-ok"><span>OK</span></p>
+                        <h2 id="status-h2">TIPO-TINTO</h2>
+                    </div>
+
+                    <div class="elemento-estreito elemento center formatacao">
+                        <h2 id="tempo-fermentacao-h2">TEMPO DE FERMENTAÇÃO</h2>
+                        <p id="tempo-fermentacao">
+                            <span>30</span>h<span>|23</span>h<span>|18</span>h<span>|30</span>h
+                        </p>
+                    </div>
+                    <div class="elemento-grafico elemento">
+                        <h2 class="titulo_grafico">Temperatura</h2>
+                        <div id="graficosA"></div>
+                    </div>
+
+
+                    <div class="elemento-grafico elemento">
+                        <h2 class="titulo_grafico">co2</h2>
+                        <div id="graficosB"></div>
+                    </div>
+                </div>
+                <div class="listaAvisos">
+                    <div id="alerta">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
 
     </div>
+
+</section>
+
+</div>
 </body>
 
 </html>
 
-<script src="./dashboard.js"></script>
-<script defer>
-    render(sessionStorage.ID_USUARIO)
-    function render(idEmpresa) {
-        obterKPI(1, 1)
-        // obterTanque(idEmpresa)
-
-
-    }
-</script>
-<script src="../JS/sessao.js"></script>
 <script>
 
     // H-Menu
@@ -158,94 +218,106 @@
     function exibirAquariosDoUsuario() {
         var aquarios = JSON.parse(sessionStorage.AQUARIOS);
         aquarios.forEach(item => {
-            document.getElementById("btnTanque").innerHTML += `
-                <div class="btn-tanque">
-                    <button class="iconeTanque" onclick="exibirAquario(${item.idTanque}); obterKPI(${item.idTanque}, 1)" id="btnAquario${item.idTanque}">
-                        <img src="../assets/icons/fermentacao.png" alt="" class="">
-                        Tanque ${item.idTanque}
-                    </button>
+            document.getElementById("btnAquario").innerHTML += `
+            <div class="btn-tanque">
+                <!-- <img src="../assets/icon/fermentacao (ok).png" alt="" class="btn-icon">
+                <button class="btn-chart" onclick="exibirAquario(${item.id})" id="btnAquario${item.id}">${item.descricao}</button> -->
+
+                
+                <button class="btn-chart" onclick="exibirAquario(${item.id})" id="btnAquario${item.id}"><img src="../assets/icon/fermentacao (ok).png" alt="" class="btn-icon">${item.descricao} ${item.id}</button>
+            </div>
+            `
+            /* 
+                        document.getElementById("display_temperatura").innerHTML += `
+                        <div id="temperatura${item.id}" class="display-none">
+                                        <h3>
+                                            <span id="temperatura_maxima" class="maxima_temperatura">30,2°<i
+                                                    class="fa-solid fa-arrow-up"></i></span>
+                                        </h3>
+                                        <h3>28,3°</h3>
+                                        <h3>
+                                            <span id="temperatura_minima" class="minima_temperatura">25,3°<i
+                                                    class="fa-solid fa-arrow-down"></i></span>
+                                        </h3>
+                        </div>
+                        ` */
+
+            document.getElementById("graficosA").innerHTML += `
+                <div id="graficoA${item.id}" class="display-none">
+                    
+                    <h3 class="tituloGraficos">
+                        <span id="tituloAquario${item.id}">${item.descricao}</span>
+                    </h3> 
+                   
+                    <div class="graph">
+                        <canvas id="myChartCanvasA${item.id}"></canvas>
+                    </div>
+                    
+                    <div class="label-captura">
+                        <p id="avisoCaptura${item.id}" style="color: white"></p>
+                    </div> 
+                  
                 </div>
-                `
+            `
 
-            
-
-            document.getElementById("graficos").innerHTML += `
-                    <div id="grafico${item.idTanque}" class="display-none">
-                        
-                        <h3 class="tituloGraficos">
-                            <span id="tituloAquario${item.idTanque}">${item.nomeVinho}</span>
-                        </h3> 
-                       
-                        <div class="graph">
-                            <canvas id="chartTemperatura${item.idTanque}"></canvas>
-                        </div>
-                        
-                        <div class="label-captura">
-                            <p id="avisoCaptura${item.idTanque}" style="color: white"></p>
-                        </div> 
-                      
+            document.getElementById("graficosB").innerHTML += `
+                <div id="graficoB${item.id}" class="display-none">
+                    
+                    <h3 class="tituloGraficos">
+                        <span id="tituloAquario${item.id}">${item.descricao}</span>
+                    </h3> 
+                   
+                    <div class="graph">
+                        <canvas id="myChartCanvasB${item.id}"></canvas>
                     </div>
-                `
+                    
+                    <div class="label-captura">
+                        <p id="avisoCaptura${item.id}" style="color: white"></p>
+                    </div> 
+                  
+                </div>
+            `
 
-            document.getElementById("graficos2").innerHTML += `
-                    <div id="grafico2${item.idTanque}" class="display-none">
-                        
-                        <h3 class="tituloGraficos">
-                            <span id="tituloAquario${item.idTanque}">${item.nomeVinho}</span>
-                        </h3> 
-                       
-                        <div class="graph">
-                            <canvas id="myChartCanvas2${item.idTanque}"></canvas>
-                        </div>
-                        
-                        <div class="label-captura">
-                            <p id="avisoCaptura${item.idTanque}" style="color: white"></p>
-                        </div> 
-                      
-                    </div>
-                `
-
-            obterDadosGrafico(item.idTanque)
+            obterDadosGrafico(item.id)
         });
 
         if (aquarios.length > 0) {
-            exibirAquario(aquarios[0].idTanque)
+            exibirAquario(aquarios[0].id)
         }
     }
 
     function alterarTitulo(idAquario) {
         var tituloAquario = document.getElementById(`tituloAquario${idAquario}`)
-        var descricao = JSON.parse(sessionStorage.AQUARIOS).find(item => item.idTanque == idAquario).nomeVinho;
+        var descricao = JSON.parse(sessionStorage.AQUARIOS).find(item => item.id == idAquario).descricao;
         tituloAquario.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>" + descricao + "</span>"
     }
 
     function exibirAquario(idAquario) {
-        console.log('ID DOS GRAFICOS '+idAquario )
         let todosOsGraficos = JSON.parse(sessionStorage.AQUARIOS);
 
         for (i = 0; i < todosOsGraficos.length; i++) {
             // exibindo - ou não - o gráfico
-            if (todosOsGraficos[i].idTanque != idAquario) {
-                let elementoAtual = document.getElementById(`grafico${todosOsGraficos[i].idTanque}`)
+            if (todosOsGraficos[i].id != idAquario) {
+                let elementoAtual = document.getElementById(`graficoA${todosOsGraficos[i].id}`)
                 if (elementoAtual.classList.contains("display-block")) {
                     elementoAtual.classList.remove("display-block")
                 }
                 elementoAtual.classList.add("display-none")
 
-                let elementoAtual2 = document.getElementById(`grafico2${todosOsGraficos[i].idTanque}`)
+                let elementoAtual2 = document.getElementById(`graficoB${todosOsGraficos[i].id}`)
                 if (elementoAtual2.classList.contains("display-block")) {
                     elementoAtual2.classList.remove("display-block")
                 }
                 elementoAtual2.classList.add("display-none")
 
-                // let elementoAtual3 = document.getElementById(`temperatura${todosOsGraficos[i].idTanque}`)
-                // if (elementoAtual3.classList.contains("display-block")) {
-                //     elementoAtual3.classList.remove("display-block")
-                // }
-                // elementoAtual3.classList.add("display-none")
+                /* let elementoAtual3 = document.getElementById(`temperatura${todosOsGraficos[i].id}`)
+                if (elementoAtual3.classList.contains("display-block")) {
+                    elementoAtual3.classList.remove("display-block")
+                }
+                elementoAtual3.classList.add("display-none") */
 
                 // alterando estilo do botão
-                let btnAtual = document.getElementById(`btnAquario${todosOsGraficos[i].idTanque}`)
+                let btnAtual = document.getElementById(`btnAquario${todosOsGraficos[i].id}`)
                 if (btnAtual.classList.contains("btn-pink")) {
                     btnAtual.classList.remove("btn-pink")
                 }
@@ -254,17 +326,17 @@
         }
 
         // exibindo - ou não - o gráfico
-        let graficoExibir = document.getElementById(`grafico${idAquario}`)
+        let graficoExibir = document.getElementById(`graficoA${idAquario}`)
         graficoExibir.classList.remove("display-none")
         graficoExibir.classList.add("display-block")
 
-        let graficoExibir2 = document.getElementById(`grafico2${idAquario}`)
+        let graficoExibir2 = document.getElementById(`graficoB${idAquario}`)
         graficoExibir2.classList.remove("display-none")
         graficoExibir2.classList.add("display-block")
 
-        // let temperaturaExibir = document.getElementById(`temperatura${idAquario}`)
-        // temperaturaExibir.classList.remove("display-none")
-        // temperaturaExibir.classList.add("display-block")
+        /*  let temperaturaExibir = document.getElementById(`temperatura${idAquario}`)
+         temperaturaExibir.classList.remove("display-none")
+         temperaturaExibir.classList.add("display-block") */
 
         // alterando estilo do botão
         let btnExibir = document.getElementById(`btnAquario${idAquario}`)
@@ -284,7 +356,7 @@
     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
     //     Para ajustar o "select", ajuste o comando sql em src/models
     function obterDadosGrafico(idAquario) {
-        console.log(idAquario)
+
         alterarTitulo(idAquario)
 
         if (proximaAtualizacao != undefined) {
@@ -292,18 +364,16 @@
         }
 
         fetch(`/medidas/ultimas/${idAquario}`, { cache: 'no-store' }).then(function (response) {
-            if (response.status == 201) {
-                
+            if (response.ok) {
                 response.json().then(function (resposta) {
-                        
-                        resposta.reverse();    
-                        console.log(resposta)
-                        plotarGrafico(resposta, idAquario);
-                        
-                    });
-                
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+
+                    plotarGrafico(resposta, idAquario);
+
+                });
             } else {
-                console.error(' Não teve dados');
+                console.error('Nenhum dado encontrado ou erro na API');
             }
         })
             .catch(function (error) {
@@ -315,36 +385,36 @@
     // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
     // A função *plotarGrafico* também invoca a função *atualizarGrafico*
     function plotarGrafico(resposta, idAquario) {
-        console.log(resposta)
-       
+
+        console.log('iniciando plotagem do gráfico...');
 
         // Criando estrutura para plotar gráfico - labels
         let labels = [];
 
         // Criando estrutura para plotar gráfico - dados
-        let dadosTemperatura = {
+        let dadosUmidade = {
             labels: labels,
             datasets: [{
-                label: 'Temperatura',
+                label: 'Umidade',
                 data: [],
                 fill: false,
                 borderColor: 'rgb(75, 192, 192)',
                 tension: 0.1
             }/* ,
-                {
-                    label: 'Temperatura',
-                    data: [],
-                    fill: false,
-                    borderColor: 'rgb(199, 52, 52)',
-                    tension: 0.1
-                } */]
+            {
+                label: 'Temperatura',
+                data: [],
+                fill: false,
+                borderColor: 'rgb(199, 52, 52)',
+                tension: 0.1
+            } */]
         };
 
-        let dadosCO2 = {
+        let dadosTemperatura = {
             labels: labels,
             datasets: [
                 {
-                    label: 'CO2',
+                    label: 'Temperatura',
                     data: [],
                     fill: false,
                     borderColor: 'rgb(199, 52, 52)',
@@ -360,8 +430,8 @@
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
             labels.push(registro.momento_grafico);
+            dadosUmidade.datasets[0].data.push(registro.umidade);
             dadosTemperatura.datasets[0].data.push(registro.temperatura);
-            dadosCO2.datasets[0].data.push(registro.co2);
         }
 
         console.log('----------------------------------------------')
@@ -369,14 +439,14 @@
         console.log('Labels:')
         console.log(labels)
         console.log('Dados:')
-        console.log(dadosCO2.datasets)
+        console.log(dadosUmidade.datasets)
         console.log(dadosTemperatura.datasets)
         console.log('----------------------------------------------')
 
         // Criando estrutura para plotar gráfico - config
         const config = {
             type: 'line',
-            data: dadosCO2,
+            data: dadosUmidade,
             options: {
                 plugins: {
                     annotation: {
@@ -391,12 +461,12 @@
                         }
                     }
                 }/* ,
-                    scales: {
-                        y: {
-                            suggestedMin: 0,
-                            suggestedMax: 100
-                        }
-                    } */
+                scales: {
+                    y: {
+                        suggestedMin: 0,
+                        suggestedMax: 100
+                    }
+                } */
             }
         };
 
@@ -438,30 +508,30 @@
                         }
                     }
                 }/* ,
-                    scales: {
-                        y: {
-                            suggestedMin: 0,
-                            suggestedMax: 100
-                        }
-                    } */
+                scales: {
+                    y: {
+                        suggestedMin: 0,
+                        suggestedMax: 100
+                    }
+                } */
             }
         };
 
         // Adicionando gráfico criado em div na tela
         let myChart = new Chart(
-            document.getElementById(`chartTemperatura${idAquario}`),
-            configTemperatura
+            document.getElementById(`myChartCanvasA${idAquario}`),
+            config
         );
-       
-        //   setTimeout(() => atualizarGrafico(idAquario, dadosUmidade, myChart), 2000);
+
+        setTimeout(() => atualizarGrafico(idAquario, dadosUmidade, myChart), 2000);
 
         let myChart2 = new Chart(
-            document.getElementById(`myChartCanvas2${idAquario}`),
-            config
+            document.getElementById(`myChartCanvasB${idAquario}`),
+            configTemperatura,
 
         );
-        
-        // setTimeout(() => atualizarGrafico(idAquario, dadosTemperatura, myChart2), 2000);
+
+        setTimeout(() => atualizarGrafico(idAquario, dadosTemperatura, myChart2), 2000);
     }
 
 
@@ -503,10 +573,10 @@
                         dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
 
                         dados.datasets[0].data.shift();  // apagar o primeiro de umidade
-                        dados.datasets[0].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de umidade
+                        dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
 
                         dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
-                        dados.datasets[1].data.push(novoRegistro[0].co2); // incluir uma nova medida de temperatura
+                        dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
 
                         myChart.update();
                     }
@@ -546,4 +616,3 @@
 
 
 </script>
-
