@@ -177,6 +177,10 @@ VALUES
 (5, 2, 'ativo'), 
 (5, 2, 'ativo');
 
+INSERT INTO tbTanque (fkEmpresa, fkTipoVinho, statusTanque) 
+VALUES 
+(1, 2, 'ativo');
+
 select
 	idTanque as id,
     nomeVinho as tipo,

@@ -516,10 +516,11 @@ canvas {
     height: 64rem;
     background-color: rgba(0, 0, 0, 0.7);
     border-radius: 5rem;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center; 
+    align-items: center; 
+
 }
 
 .containerTanque {
@@ -534,13 +535,16 @@ canvas {
 .iconeTanque {
     padding: .2rem;
     border-radius: .5rem;
-    width: 8rem;
+    width: 50%;
     height: 8rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 0 1rem;
+    background-color: transparent;
+    border: none;
+    color: #fff;
 }
 
 .iconeTanque p {

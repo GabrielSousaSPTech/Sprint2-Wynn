@@ -150,11 +150,14 @@
         aquarios.forEach(item => {
             document.getElementById("btnTanque").innerHTML += `
                 <div class="btn-tanque">
-                    <!-- <img src="../assets/icon/fermentacao (ok).png" alt="" class="btn-icon">
-                    <button class="btn-chart" onclick="exibirAquario(${item.idTanque})" id="btnAquario${item.idTanque}">${item.nomeVinho}</button> -->
+                     
+                    
     
                     
-                    <button class="btn-chart" onclick="exibirAquario(${item.idTanque})" id="btnAquario${item.idTanque}"><img src="../assets/icon/fermentacao (ok).png" alt="" class="btn-icon">${item.nomeVinho}</button>
+                    <button class="iconeTanque" onclick="exibirAquario(${item.idTanque})" id="btnAquario${item.idTanque}">
+                        <img src="../assets/icons/fermentacao.png" alt="" class="">
+                        ${item.nomeVinho}
+                    </button>
                 </div>
                 `
 
@@ -286,7 +289,7 @@
     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
     //     Para ajustar o "select", ajuste o comando sql em src/models
     function obterDadosGrafico(idAquario) {
-
+        console.log(idAquario)
         alterarTitulo(idAquario)
 
         if (proximaAtualizacao != undefined) {
@@ -294,18 +297,17 @@
         }
 
         fetch(`/medidas/ultimas/${idAquario}`, { cache: 'no-store' }).then(function (response) {
-            if (response.ok) {
-                console.log("Esse é o response: " + response)
+            if (response.status == 201) {
+                
                 response.json().then(function (resposta) {
-                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                    console.log(resposta)
-                    resposta.reverse();
-
-                    plotarGrafico(resposta, idAquario);
-
-                });
+                        
+                        resposta.reverse();    
+                        plotarGrafico(resposta, idAquario);
+                        
+                    });
+                
             } else {
-                console.error('Nenhum dado encontrado ou erro na API');
+                console.error(' Não teve dados');
             }
         })
             .catch(function (error) {
@@ -318,7 +320,7 @@
     // A função *plotarGrafico* também invoca a função *atualizarGrafico*
     function plotarGrafico(resposta, idAquario) {
 
-        console.log('iniciando plotagem do gráfico...');
+       
 
         // Criando estrutura para plotar gráfico - labels
         let labels = [];
