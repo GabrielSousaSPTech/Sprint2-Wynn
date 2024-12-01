@@ -55,14 +55,7 @@ function obterTanque(req, res){
 function obterMinMaxTemperatura (req, res){
     var idTanque = req.params.idTanque
     dashboardModel.obterMinMaxTemperatura(idTanque).then(function (resposta){
-        if(resposta.length>0){
-            res.json({
-                Temperatura: resposta[0].Temperatura,
-                co2: resposta[0].co2
-            })
-        }else {
-            res.send('Tanque ainda não obteve medições de Temperatura')
-        }
+        res.status(201).json(resposta)
     })
 }
 

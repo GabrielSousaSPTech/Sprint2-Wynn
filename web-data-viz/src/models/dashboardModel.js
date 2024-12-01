@@ -13,11 +13,23 @@ function obterDadosKpi(fkTanque, limite){
     return database.executar(instrucaoSql)
 }
 
+function obterTempoFermentacao(fkTanque){
+    var instrucaoSql = `
+        SELECT 
+           dataHoraSensor
+        FROM tbMedida 
+        WHERE fkTanque = ${fkTanque}
+        ORDER BY idMedidaSensor
+        LIMIT ${limite};
+    `
+    return database.executar(instrucaoSql)
+}
+
 function obterMinMaxTemperatura(fkTanque){
     var instrucaoSql = `
         SELECT 
             MIN(medidaLM35) AS minima,
-            MAX(medidaMQ2) AS maxima
+            MAX(medidaLM35) AS maxima
             FROM tbMedida 
             WHERE fkTanque = ${fkTanque};
             `
@@ -54,5 +66,6 @@ module.exports = {
     obterDadosGraficoTemperatura,
     obterDadosGraficoCO2,
     obterTanque,
-    obterMinMaxTemperatura
+    obterMinMaxTemperatura,
+    obterTempoFermentacao
 }
