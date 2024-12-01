@@ -3,6 +3,7 @@ function obterDados() {
         if (resposta.ok) {
             resposta.json().then(function (res) {
                 exibirLista(res)
+                localStorage.dados = JSON.stringify(res)
                 console.log(res)
             }).catch(function () {
             })
@@ -42,7 +43,7 @@ function exibirLista(dadosVinho) {
                     <td>&downarrow;${co2PerigoMin}% | &uparrow;${co2PerigoMax}%</td>
                     <td>&downarrow;${co2CritMin}% | &uparrow;${co2CritMax}%</td>
                     <td class="tabela-icone">
-                        <button class="botao-tabela" onclick="exibirOcultarMenu('editar', ${idTipo})">
+                        <button class="botao-tabela" onclick="exibirOcultarMenu('editar', ${idTipo - 1})">
                             <img src="../assets/icons/icon_gear.png">
                         </button>
                         </td>
@@ -56,6 +57,39 @@ function exibirLista(dadosVinho) {
     }
 }
 
+var atualizacaoIdTipoVinho = 0
+
+
+function exibirOcultarMenu(nome = '', idTanque = undefined) {
+    div_janela_tabela.style.display = div_janela_tabela.style.display == 'flex' ? 'none' : 'flex'
+    
+
+    const menu = document.getElementById(`aside_menu_${nome}`)
+    menu.style.display = menu.style.display  == 'none' ? 'flex' : 'none'
+
+    if(idTanque != undefined) {
+        var listaTipoVinhos = JSON.parse(localStorage.dados)
+        var tipoVinhoAtual = listaTipoVinhos[idTanque]
+        var idTipoVinhoAtual = tipoVinhoAtual.idTipoVinho
+        atualizacaoIdTipoVinho = idTipoVinhoAtual 
+        
+
+        span_id_tanque.innerText = idTipoVinhoAtual
+        
+        temp_perigo_min.value = tipoVinhoAtual.metricaTemperaturaPerigoMin
+        temp_perigo_max.value = tipoVinhoAtual.metricaTemperaturaPerigoMax
+        temp_critica_min.value = tipoVinhoAtual.metricaTemperaturaCriticoMin
+        temp_critica_max.value = tipoVinhoAtual.metricaTemperaturaCriticoMax
+        co2_perigo_min.value = tipoVinhoAtual.metricaCO2PerigoMin
+        co2_perigo_max.value = tipoVinhoAtual.metricaCO2PerigoMax
+        co2_critica_min.value = tipoVinhoAtual.metricaCO2CriticoMin
+        co2_critica_max.value = tipoVinhoAtual.metricaCO2CriticoMax
+        
+    } else {
+        obterDados()
+    }
+}
+
 function atualizarMetricas() {
     var tempPerMin = Number(temp_perigo_min.value)
     var tempPerMax = Number(temp_perigo_max.value)
@@ -65,7 +99,7 @@ function atualizarMetricas() {
     var co2PerMax = Number(co2_perigo_max.value)
     var co2CritMin = Number(co2_critica_min.value)
     var co2CritMax = Number(co2_critica_max.value)
-    
+
     fetch("/tipoVinho/atualizar", {
         method: "PUT",
         headers: {
@@ -74,7 +108,7 @@ function atualizarMetricas() {
         body: JSON.stringify({
             // crie um atributo que recebe o valor recuperado aqui
             // Agora vá para o arquivo routes/usuario.js
-            idTipoVinhoServer: 1,
+            idTipoVinhoServer: atualizacaoIdTipoVinho,
             tempPerMinServer: tempPerMin,
             tempPerMaxServer:tempPerMax,
             tempCritMinServer:tempCritMin,
