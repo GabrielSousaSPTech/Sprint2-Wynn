@@ -8,9 +8,10 @@
     <link rel="stylesheet" href="../css/dash.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.1.0/dist/chartjs-plugin-annotation.min.js"></script>
 </head>
 
-<body onload="/* validarSessao(); render(sessionStorage.ID_USUARIO) */">
+<body onload="validarSessao()">
     <div id="container" style="width:500px; position: absolute; background-color: aqua; top: 30%; right: 10px;">
         <!-- <center>
             <h1>BobIA</h1>
@@ -114,7 +115,16 @@
 
 </html>
 
-<!-- <script src="./dashboard.js"></script> -->
+<script src="./dashboard.js"></script>
+<script defer>
+    render(sessionStorage.ID_USUARIO)
+    function render(idEmpresa) {
+        obterKPI(1, 1)
+        // obterTanque(idEmpresa)
+
+
+    }
+</script>
 <script src="../JS/sessao.js"></script>
 <script>
 
@@ -150,30 +160,14 @@
         aquarios.forEach(item => {
             document.getElementById("btnTanque").innerHTML += `
                 <div class="btn-tanque">
-                     
-                    
-    
-                    
-                    <button class="iconeTanque" onclick="exibirAquario(${item.idTanque})" id="btnAquario${item.idTanque}">
+                    <button class="iconeTanque" onclick="exibirAquario(${item.idTanque}); obterKPI(${item.idTanque}, 1)" id="btnAquario${item.idTanque}">
                         <img src="../assets/icons/fermentacao.png" alt="" class="">
-                        ${item.nomeVinho}
+                        Tanque ${item.idTanque}
                     </button>
                 </div>
                 `
 
-            document.getElementById("display_temperatura").innerHTML += `
-                <div id="temperatura${item.idTanque}" class="display-none">
-                                <h3>
-                                    <span id="temperatura_maxima" class="maxima_temperatura">30,2°<i
-                                            class="fa-solid fa-arrow-up"></i></span>
-                                </h3>
-                                <h3>28,3°</h3>
-                                <h3>
-                                    <span id="temperatura_minima" class="minima_temperatura">25,3°<i
-                                            class="fa-solid fa-arrow-down"></i></span>
-                                </h3>
-                </div>
-                `
+            
 
             document.getElementById("graficos").innerHTML += `
                     <div id="grafico${item.idTanque}" class="display-none">
@@ -183,7 +177,7 @@
                         </h3> 
                        
                         <div class="graph">
-                            <canvas id="myChartCanvas${item.idTanque}"></canvas>
+                            <canvas id="chartTemperatura${item.idTanque}"></canvas>
                         </div>
                         
                         <div class="label-captura">
@@ -226,6 +220,7 @@
     }
 
     function exibirAquario(idAquario) {
+        console.log('ID DOS GRAFICOS '+idAquario )
         let todosOsGraficos = JSON.parse(sessionStorage.AQUARIOS);
 
         for (i = 0; i < todosOsGraficos.length; i++) {
@@ -243,11 +238,11 @@
                 }
                 elementoAtual2.classList.add("display-none")
 
-                let elementoAtual3 = document.getElementById(`temperatura${todosOsGraficos[i].idTanque}`)
-                if (elementoAtual3.classList.contains("display-block")) {
-                    elementoAtual3.classList.remove("display-block")
-                }
-                elementoAtual3.classList.add("display-none")
+                // let elementoAtual3 = document.getElementById(`temperatura${todosOsGraficos[i].idTanque}`)
+                // if (elementoAtual3.classList.contains("display-block")) {
+                //     elementoAtual3.classList.remove("display-block")
+                // }
+                // elementoAtual3.classList.add("display-none")
 
                 // alterando estilo do botão
                 let btnAtual = document.getElementById(`btnAquario${todosOsGraficos[i].idTanque}`)
@@ -267,9 +262,9 @@
         graficoExibir2.classList.remove("display-none")
         graficoExibir2.classList.add("display-block")
 
-        let temperaturaExibir = document.getElementById(`temperatura${idAquario}`)
-        temperaturaExibir.classList.remove("display-none")
-        temperaturaExibir.classList.add("display-block")
+        // let temperaturaExibir = document.getElementById(`temperatura${idAquario}`)
+        // temperaturaExibir.classList.remove("display-none")
+        // temperaturaExibir.classList.add("display-block")
 
         // alterando estilo do botão
         let btnExibir = document.getElementById(`btnAquario${idAquario}`)
@@ -302,6 +297,7 @@
                 response.json().then(function (resposta) {
                         
                         resposta.reverse();    
+                        console.log(resposta)
                         plotarGrafico(resposta, idAquario);
                         
                     });
@@ -319,7 +315,7 @@
     // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
     // A função *plotarGrafico* também invoca a função *atualizarGrafico*
     function plotarGrafico(resposta, idAquario) {
-
+        console.log(resposta)
        
 
         // Criando estrutura para plotar gráfico - labels
@@ -453,19 +449,19 @@
 
         // Adicionando gráfico criado em div na tela
         let myChart = new Chart(
-            document.getElementById(`myChartCanvas${idAquario}`),
+            document.getElementById(`chartTemperatura${idAquario}`),
             configTemperatura
         );
-        console.log(myChart)
-        /*  setTimeout(() => atualizarGrafico(idAquario, dadosUmidade, myChart), 2000); */
+       
+        //   setTimeout(() => atualizarGrafico(idAquario, dadosUmidade, myChart), 2000);
 
         let myChart2 = new Chart(
             document.getElementById(`myChartCanvas2${idAquario}`),
             config
 
         );
-        console.log(myChart2)
-        /*  setTimeout(() => atualizarGrafico(idAquario, dadosTemperatura, myChart2), 2000); */
+        
+        // setTimeout(() => atualizarGrafico(idAquario, dadosTemperatura, myChart2), 2000);
     }
 
 
@@ -550,11 +546,4 @@
 
 
 </script>
-<script>
-    function render(idEmpresa) {
-        obterKPI(1, 1),
-            obterTanque(idEmpresa)
 
-
-    }
-</script>

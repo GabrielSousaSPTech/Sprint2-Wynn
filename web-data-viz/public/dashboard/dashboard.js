@@ -1,27 +1,28 @@
-function obterTanque(idEmpresa){
-    fetch(`/dashboard/obterTanque/${idEmpresa}`, {cache: 'no-store'}).then(function (resposta){
-        if(resposta.ok){
-            resposta.json().then(function (res){
-                plotarTanque(res)
-            })
-        }
-    })
-}
+// function obterTanque(idEmpresa){
+//     fetch(`/dashboard/obterTanque/${idEmpresa}`, {cache: 'no-store'}).then(function (resposta){
+//         if(resposta.ok){
+//             resposta.json().then(function (res){
+//                 plotarTanque(res)
+//             })
+//         }
+//     })
+// }
 
-function plotarTanque(resposta){
-    const containerTanque = document.getElementById('btnTanque')
+// function plotarTanque(resposta){
+//     const containerTanque = document.getElementById('btnTanque')
 
-    resposta.forEach(function (item) {
-        containerTanque.innerHTML += `
+//     resposta.forEach(function (item) {
+//         containerTanque.innerHTML += `
             
-            <div class = "containerTanque" onclick = "obterKPI(${item.idTanque})">
-                <img class="iconeTanque"  src="../assets/icons/fermentacao (ok).png"/>
-                Tanque ${item.idTanque}</div>
-        `
-    });
-}
+//             <div class = "containerTanque" onclick = "obterKPI(${item.idTanque})">
+//                 <img class="iconeTanque"  src="../assets/icons/fermentacao (ok).png"/>
+//                 Tanque ${item.idTanque}</div>
+//         `
+//     });
+// }
 
 function obterKPI(idTanque, limite){
+    console.log("EI TO CHEGANDO AQUI COM O ID "+idTanque)
     display_temperatura.innerText = ''
                 grafico_co2.innerText = ' '
 
