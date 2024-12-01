@@ -9,10 +9,18 @@ function obterTiposVinho() {
     return database.executar(instrucaoSql);
 }
 
-function atualizarMetricas () {
+function atualizarMetricas (
+    idTipoVinho, tempPerMin, tempPerMax, tempCritMin, tempCritMax, 
+    co2PerMin, co2PerMax, co2CritMin, co2CritMax
+    ) {
 
     var instrucaoSql = `
-        SELECT * FROM tbTipoVinho;
+        UPDATE tbTipoVinho
+	        SET metricaTemperaturaPerigoMin = ${tempPerMin}, metricaTemperaturaPerigoMax = ${tempPerMax},
+			        metricaTemperaturaCriticoMin = ${tempCritMin}, metricaTemperaturaCriticoMax = ${tempCritMax},
+				        metricaCO2PerigoMin = ${co2PerMin}, metricaCO2PerigoMax = ${co2PerMax},
+					        metricaCO2CriticoMin = ${co2CritMin}, metricaCO2CriticoMax = ${co2CritMax}
+						     WHERE idTipoVinho = ${idTipoVinho};
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

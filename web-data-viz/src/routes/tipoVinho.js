@@ -7,4 +7,8 @@ router.get("/listar", function (req, res) {
     tipoVinhoController.obterTiposVinho(req, res);
 })
 
+router.put("/atualizar", function (req, res) {
+    tipoVinhoController.atualizarMetricas(req, res);
+})
+
 module.exports = router;
