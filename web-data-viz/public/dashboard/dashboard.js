@@ -24,6 +24,18 @@ function plotarTanque(resposta){
 function obterKPI(idTanque, limite){
     display_temperatura.innerText = ''
                 grafico_co2.innerText = ' '
+
+    fetch(`/dashboard/obterMinMaxTemperatura/${idTanque}`).then(function(resposta){
+        if(resposta.ok){
+            resposta.json().then(function (res){
+                console.log(res)
+                display_temperaturaMin.innerText = res[0].minima
+                display_temperaturaMax.innerText = res[0].maxima
+                
+            })
+        }
+    })
+
     fetch(`/dashboard/obterKPI/${idTanque}/${limite}`).then(function(resposta){
         if(resposta.ok){
             resposta.json().then(function (res){

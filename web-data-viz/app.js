@@ -23,6 +23,7 @@ var aquariosRouter = require("./src/routes/aquarios");
 var empresasRouter = require("./src/routes/empresas");
 var dashboardROuter = require('./src/routes/dashboard')
 var tipoVinhoRouter = require('./src/routes/tipoVinho')
+var tanqueRouter = require('./src/routes/tanque')
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -38,6 +39,7 @@ app.use("/aquarios", aquariosRouter);
 app.use("/empresas", empresasRouter);
 app.use("/dashboard", dashboardROuter);
 app.use("/tipoVinho", tipoVinhoRouter)
+app.use("/tanque", tanqueRouter)
 
 //BobIA
 const { GoogleGenerativeAI } = require("@google/generative-ai");

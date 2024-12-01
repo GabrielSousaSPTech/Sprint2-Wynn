@@ -430,9 +430,17 @@ canvas {
 }
 
 
-#display_temperatura{
+#display_temperatura {
     font-size: 3.5rem;
     color: green;
+}
+#display_temperaturaMin{
+    font-size: 2rem;
+    color: rgb(0, 83, 128);
+}
+#display_temperaturaMax{
+    font-size: 2rem;
+    color: red;
 }
 
 #display_temperatura h3 {
@@ -561,6 +569,9 @@ canvas {
     align-items: center;
 }
 
+.display-none {
+    display: none;
+}
 
 
 /* Responsividade */

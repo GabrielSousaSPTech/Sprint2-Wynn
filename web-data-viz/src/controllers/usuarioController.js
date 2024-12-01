@@ -1,5 +1,5 @@
 
-                            // ANALISAR A NECESSIDADE DO ''usuarioController.js'' PARA O NOSSO PROJETO
+// ANALISAR A NECESSIDADE DO ''usuarioController.js'' PARA O NOSSO PROJETO
 
 var usuarioModel = require("../models/usuarioModel");
 var aquarioModel = require("../models/aquarioModel");
@@ -20,21 +20,26 @@ function autenticar(req, res) {
                     console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
                     console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
 
+
                     if (resultadoAutenticar.length == 1) {
                         console.log("RESPOSTA DO BD" + resultadoAutenticar[0].idEmpresa);
 
-                        
-                                if (resultadoAutenticar.length > 0) {
+
+                        aquarioModel.buscarAquariosPorEmpresa(resultadoAutenticar[0].idEmpresa)
+                            .then((resultadoAquarios) => {
+                                if (resultadoAquarios.length > 0) {
                                     res.json({
                                         id: resultadoAutenticar[0].idEmpresa,
                                         email: resultadoAutenticar[0].emailEmpresa,
                                         nome: resultadoAutenticar[0].nomeEmpresa,
                                         senha: resultadoAutenticar[0].senhaEmpresa,
+                                        aquarios: resultadoAquarios
                                     });
                                 } else {
                                     res.status(204).json({ aquarios: [] });
                                 }
-                            
+                            })
+
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
                     } else {
@@ -72,7 +77,7 @@ function cadastrar(req, res) {
         res.status(400).send("Sua empresa a vincular está incorreto!");
     } else {
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, email, senha,fkEmpresa, dataNascimento, telefone)
+        usuarioModel.cadastrar(nome, email, senha, fkEmpresa, dataNascimento, telefone)
             .then(
                 function (resultado) {
                     res.json(resultado);

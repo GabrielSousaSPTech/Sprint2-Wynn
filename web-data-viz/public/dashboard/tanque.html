@@ -8,9 +8,10 @@
     <link rel="stylesheet" href="../css/tabelas.css">
     <script src="../JS/index.js"></script>
     <script src="../JS/tabelas.js"></script>
+    <script src="../JS/tanques.js"></script>
 </head>
 
-<body id="banner_tabela">
+<body id="banner_tabela" onload="obterDados()">
     <div id="h-menu" class="hanburger-menu">
         <div class="menu-icon" onclick="mostrarMenu()">
             <div id="line-1" class="icon-line icon-line-1"></div>
@@ -53,7 +54,7 @@
                             <th>&nbsp;</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="tbody_lista">
                         <tr>
                             <th class="celula-numero">1</th>
                             <td>Tinto</td>

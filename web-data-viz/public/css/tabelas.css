@@ -147,7 +147,14 @@ form {
     width: 100%;
 }
 
-.campo select {
+.campo div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .7rem;
+}
+
+.campo select, .campo input {
     width: 100%;
     font-size: 2rem;
 }

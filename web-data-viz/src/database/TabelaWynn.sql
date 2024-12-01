@@ -151,9 +151,6 @@ CREATE TABLE tbTanque (
     CONSTRAINT fkTanque_TipoVinho FOREIGN KEY (fkTipoVinho) REFERENCES tbTipoVinho(idTipoVinho)
     );
 
--- INSERT INTO tbTanque (fkEmpresa, fkTipoVinho, statusTanque) VALUES 
-
-
 CREATE TABLE tbMedida (
 	idMedidaSensor INT PRIMARY KEY AUTO_INCREMENT,
     medidaLM35 DECIMAL(4,2) NOT NULL,
@@ -179,6 +176,14 @@ VALUES
 (4, 1, 'ativo'), 
 (5, 2, 'ativo'), 
 (5, 2, 'ativo');
+
+select
+	idTanque as id,
+    nomeVinho as tipo,
+    statusTanque as atv
+		from tbTanque
+        join tbTipoVinho on fkTipoVinho = idTipoVinho
+        where fkEmpresa = 1;
 
 
 select * from tbMedida;
