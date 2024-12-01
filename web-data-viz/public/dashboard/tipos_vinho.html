@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tanques</title>
+    <title>Tipos de Vinho</title>
     <link rel="stylesheet" href="../css/tabelas.css">
     <script src="../JS/index.js"></script>
     <script src="../JS/tabelas.js"></script>
@@ -97,32 +97,32 @@
                 <div class="campo">
                     <p>Temperaturas de Perigo:</p>
                     <div>
-                        <input type="number" id="temp_perigo_min" placeholder="Min.">
-                        <input type="number" id="temp_perigo_max" placeholder="Max.">
+                        <div>&downarrow;<input type="number" id="temp_perigo_min" placeholder="Min. (em °C)"></div>
+                        <div>&uparrow;<input type="number" id="temp_perigo_max" placeholder="Max. (em °C)"></div>
                     </div>
                 </div>
 
                 <div class="campo">
                     <p>Temperaturas Críticas:</p>
                     <div>
-                        <input type="number" id="temp_critica_min" placeholder="Min.">
-                        <input type="number" id="temp_critica_max" placeholder="Max.">
+                        <div>&downarrow;<input type="number" id="temp_critica_min" placeholder="Min. (em °C)"></div>
+                        <div>&uparrow;<input type="number" id="temp_critica_max" placeholder="Max. (em °C)"></div>
                     </div>
                 </div>
 
                 <div class="campo">
                     <p>CO<sub>2</sub> Perigo:</p>
                     <div>
-                        <input type="number" id="co2_perigo_min" placeholder="Min.">
-                        <input type="number" id="co2_perigo_max" placeholder="Max.">
+                        <div>&downarrow;<input type="number" id="co2_perigo_min" placeholder="Min. (em %)"></div>
+                        <div>&uparrow;<input type="number" id="co2_perigo_max" placeholder="Max. (em %)"></div>
                     </div>
                 </div>
 
                 <div class="campo">
                     <p>CO<sub>2</sub> Crítico:</p>
                     <div>
-                        <input type="number" id="co2_critica_min" placeholder="Min.">
-                        <input type="number" id="co2_critica_max" placeholder="Max.">
+                        <div>&downarrow;<input type="number" id="co2_critica_min" placeholder="Min. (em %)"></div>
+                        <div>&uparrow;<input type="number" id="co2_critica_max" placeholder="Max. (em %)"></div>
                     </div>
                 </div>
             </form>
@@ -140,7 +140,7 @@
 
         <aside id="aside_menu_adicionar" class="janela menu" style="display: none;">
             <h2>
-                Adicionando tipo de vinho
+                Adicionando novo tipo de vinho
             </h2>
 
             <form>
