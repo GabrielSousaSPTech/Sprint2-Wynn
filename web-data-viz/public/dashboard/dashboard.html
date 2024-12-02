@@ -453,8 +453,8 @@
                         annotations: {
                             line1: {
                                 type: 'line',
-                                yMin: 60,
-                                yMax: 60,
+                                yMin: resposta[0].CO2PerigoMin,
+                                yMax: resposta[0].CO2PerigoMin,
                                 borderColor: 'rgb(255, 99, 132)',
                                 borderWidth: 2,
                             }
@@ -479,29 +479,29 @@
                         annotations: {
                             line1: {
                                 type: 'line',
-                                yMin: 26,
-                                yMax: 26,
+                                yMin: resposta[0].temperauraPerigoMax,
+                                yMax: resposta[0].temperauraPerigoMax,
                                 borderColor: 'rgb(238, 157, 5)',
                                 borderWidth: 4,
                             },
                             line2: {
                                 type: 'line',
-                                yMin: 30,
-                                yMax: 30,
+                                yMin: resposta[0].temperaturaCriticoMax,
+                                yMax: resposta[0].temperaturaCriticoMax,
                                 borderColor: 'rgb(255, 99, 132)',
                                 borderWidth: 4,
                             },
                             line3: {
                                 type: 'line',
-                                yMin: 20,
-                                yMax: 20,
+                                yMin: resposta[0].temperaturaMinPerigo,
+                                yMax: resposta[0].temperaturaMinPerigo,
                                 borderColor: 'rgb(13, 176, 252)',
                                 borderWidth: 4,
                             },
                             line5: {
                                 type: 'line',
-                                yMin: 16,
-                                yMax: 16,
+                                yMin: resposta[0].temperaturaCriticoMin,
+                                yMax: resposta[0].temperaturaCriticoMin,
                                 borderColor: 'rgb(1, 107, 156)',
                                 borderWidth: 4,
                             }

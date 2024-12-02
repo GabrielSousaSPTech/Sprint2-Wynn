@@ -5,7 +5,13 @@ function buscarUltimasMedidas(idAquario, limite_linhas) {
     var instrucaoSql = `SELECT
                             medidaLM35 as temperatura,
                             medidaMQ2 as umidade,
-                            DATE_FORMAT(dataHoraSensor,'%H:%i:%s') as momento_grafico
+                            DATE_FORMAT(dataHoraSensor,'%H:%i:%s') as momento_grafico,
+                            metricaTemperaturaPerigoMin AS temperaturaMinPerigo,
+                            metricaTemperaturaPerigoMax AS temperauraPerigoMax,
+                            metricaTemperaturaCriticoMin AS temperaturaCriticoMin,
+                            metricaTemperaturaCriticoMax AS temperaturaCriticoMax,
+                            metricaCO2PerigoMin AS CO2PerigoMin,
+                            metricaCO2CriticoMin AS CO2CriticoMin
                         FROM
                             tbTanque
                         JOIN
