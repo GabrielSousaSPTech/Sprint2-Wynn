@@ -38,9 +38,19 @@ function adicionarTipoVinho(
     return database.executar(instrucaoSql);
 }
 
+function deletarVinho(idTipo) {
+    var instrucaoSql = `
+        DELETE FROM tbTipoVinho 
+            WHERE idTipoVinho = ${idTipo}
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     obterTiposVinho,
     atualizarMetricas,
-    adicionarTipoVinho
+    adicionarTipoVinho,
+    deletarVinho
 };
 

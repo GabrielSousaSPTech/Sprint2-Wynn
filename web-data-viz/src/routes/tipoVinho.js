@@ -15,4 +15,7 @@ router.post("/cadastrar", function (req, res) {
     tipoVinhoController.adicionarTipoVinho(req, res);
 })
 
+router.delete("/deletar/:idTipo", function (req, res) {
+    tipoVinhoController.deletarVinho(req, res);
+});
 module.exports = router;
