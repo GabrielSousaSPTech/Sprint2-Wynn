@@ -37,7 +37,13 @@ function buscarMedidasEmTempoReal(idAquario) {
                             medidaLM35 as temperatura,
                             medidaMQ2 as umidade,
                             DATE_FORMAT(dataHoraSensor,'%H:%i:%s') as momento_grafico, 
-                            fkTanque as fk_aquario
+                            fkTanque as fk_aquario,
+                            metricaTemperaturaPerigoMin AS temperaturaMinPerigo,
+                            metricaTemperaturaPerigoMax AS temperauraPerigoMax,
+                            metricaTemperaturaCriticoMin AS temperaturaCriticoMin,
+                            metricaTemperaturaCriticoMax AS temperaturaCriticoMax,
+                            metricaCO2PerigoMin AS CO2PerigoMin,
+                            metricaCO2CriticoMin AS CO2CriticoMin
                         FROM
                             tbTanque
                         JOIN

@@ -1,7 +1,7 @@
 var alertas = [];
 
 
-                                      // ANALISAR A NECESSIDADE DO ''alerta.js'' PARA O NOSSO PROJETO
+// ANALISAR A NECESSIDADE DO ''alerta.js'' PARA O NOSSO PROJETO
 
 
 function obterdados(idAquario) {
@@ -25,16 +25,16 @@ function obterdados(idAquario) {
 }
 
 function alertar(resposta, idAquario) {
-    var temp = resposta[0].temperatura;
+    var temp = Number(resposta[0].temperatura);
 
     var grauDeAviso = '';
 
     var limites = {
-        muito_quente: 23,
-        quente: 22,
-        ideal: 20,
-        frio: 10,
-        muito_frio: 5
+        muito_quente: Number(resposta[0].temperaturaCriticoMax),
+        quente: Number(resposta[0].temperauraPerigoMax),
+        /* ideal: resposta[0], */
+        frio: Number(resposta[0].temperaturaMinPerigo),
+        muito_frio: Number(resposta[0].temperaturaCriticoMin)
     };
 
     var classe_temperatura = 'cor-alerta';
