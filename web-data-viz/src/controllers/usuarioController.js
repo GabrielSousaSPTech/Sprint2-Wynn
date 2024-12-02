@@ -7,6 +7,7 @@ var aquarioModel = require("../models/aquarioModel");
 function autenticar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
+    var operacao = req.body.operacaoServer
 
     if (email == undefined) {
         res.status(400).send("Seu email está incorreto!");
@@ -14,37 +15,48 @@ function autenticar(req, res) {
         res.status(400).send("Sua senha está incorreto!");
     } else {
 
-        usuarioModel.autenticar(email, senha)
+        usuarioModel.autenticar(operacao, email, senha)
             .then(
                 function (resultadoAutenticar) {
                     console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
                     console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
 
+                    if (operacao != 'Administrador') {
 
-                    if (resultadoAutenticar.length == 1) {
-                        console.log("RESPOSTA DO BD" + resultadoAutenticar[0].idEmpresa);
+                        if (resultadoAutenticar.length == 1) {
+
+                            const idEmpresa = operacao == 'Empresa' ? resultadoAutenticar[0].id : resultadoAutenticar[0].fkEmpresa
 
 
-                        aquarioModel.buscarAquariosPorEmpresa(resultadoAutenticar[0].idEmpresa)
-                            .then((resultadoAquarios) => {
-                                if (resultadoAquarios.length > 0) {
-                                    res.json({
-                                        id: resultadoAutenticar[0].idEmpresa,
-                                        email: resultadoAutenticar[0].emailEmpresa,
-                                        nome: resultadoAutenticar[0].nomeEmpresa,
-                                        senha: resultadoAutenticar[0].senhaEmpresa,
-                                        aquarios: resultadoAquarios
-                                    });
-                                } else {
-                                    res.status(204).json({ aquarios: [] });
-                                }
-                            })
+                            aquarioModel.buscarAquariosPorEmpresa(idEmpresa)
+                                .then((resultadoAquarios) => {
+                                    if (resultadoAquarios.length > 0) {
+                                        res.json({
+                                            id: resultadoAutenticar[0].id,
+                                            email: resultadoAutenticar[0].email,
+                                            nome: resultadoAutenticar[0].nome,
+                                            aquarios: resultadoAquarios
+                                        });
+                                    } else {
+                                        res.status(204).json({ aquarios: [] });
+                                    }
+                                })
 
-                    } else if (resultadoAutenticar.length == 0) {
-                        res.status(403).send("Email e/ou senha inválido(s)");
+                        } else if (resultadoAutenticar.length == 0) {
+                            res.status(403).send("Email e/ou senha inválido(s)");
+                        } else {
+                            res.status(403).send("Mais de um usuário com o mesmo login e senha!");
+                        }
+
                     } else {
-                        res.status(403).send("Mais de um usuário com o mesmo login e senha!");
+                        res.json({
+                            id: resultadoAutenticar[0].id,
+                            email: resultadoAutenticar[0].email,
+                            nome: resultadoAutenticar[0].nome
+                        })
                     }
+
+
                 }
             ).catch(
                 function (erro) {

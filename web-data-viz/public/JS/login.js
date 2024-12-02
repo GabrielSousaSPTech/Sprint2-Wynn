@@ -16,6 +16,8 @@ function checarCredenciais() {
     if (isEmail) {
 
         if (verificacaoEmail && verificacaoSenha) {
+            console.log(operacaoLogin)
+
             fetch("/usuarios/autenticar", {
                 method: "POST",
                 headers: {
@@ -23,7 +25,8 @@ function checarCredenciais() {
                 },
                 body: JSON.stringify({
                     emailServer: email,
-                    senhaServer: senha
+                    senhaServer: senha,
+                    operacaoServer: operacaoLogin
                 })
             }).then(function (resposta) {
                 console.log("ESTOU NO THEN DO entrar()! " + resposta.data)
@@ -34,15 +37,22 @@ function checarCredenciais() {
                     resposta.json().then(json => {
                         console.log(json);
                         console.log(JSON.stringify(json));
-                        sessionStorage.EMAIL_USUARIO = json.email;
-                        sessionStorage.NOME_USUARIO = json.nome;
+                        
                         sessionStorage.ID_USUARIO = json.id;
-                        sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+                        sessionStorage.NOME_USUARIO = json.nome;
+                        sessionStorage.EMAIL_USUARIO = json.email;
+
+                        if(operacaoLogin != 'Administrador') {
+                            sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+                        }
 
 
                         setTimeout(function () {
-
-                            window.location = "./dashboard/dashboard.html";
+                            if(operacaoLogin != 'Administrador') {
+                                window.location = "./dashboard/dashboard.html";
+                            } else {
+                                window.location = "./dashboard/bobia.html"
+                            }
                         }, 1000); // apenas para exibir o loading
 
                     });

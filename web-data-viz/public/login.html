@@ -29,13 +29,13 @@
                 <h2>Selecione a operação desejada.</h2>
 
                 <div id="caixa_operacoes">
-                    <button id="btn_operacao_func" class="operacao" onclick="navegarPeloLogin('continuar')">
+                    <button id="btn_operacao_func" class="operacao" onclick="navegarPeloLogin('Funcionario')">
                         Funcionário
                     </button>
-                    <button id="btn_operacao_empresa" class="operacao" onclick="navegarPeloLogin('continuar')">
+                    <button id="btn_operacao_empresa" class="operacao" onclick="navegarPeloLogin('Empresa')">
                         Empresa
                     </button>
-                    <button id="btn_operacao_admin" class="operacao" onclick="navegarPeloLogin('continuar')">
+                    <button id="btn_operacao_admin" class="operacao" onclick="navegarPeloLogin('Administrador')">
                         Administrador
                     </button>
                 </div>
@@ -95,13 +95,16 @@
 <script src="./JS/login.js"></script>
 <script src="./JS/index.js"></script>
 <script>
-    function navegarPeloLogin(operacao = '') {
-        if(operacao == 'continuar') {
-            div_operacoes.style.display = 'none'
-            containerLogin.style.display = 'flex'
+    operacaoLogin = undefined
+
+    function navegarPeloLogin(operacaoEscolhida = '') {
+        div_operacoes.style.display = div_operacoes.style.display == 'flex' ? 'none' : 'flex'
+        containerLogin.style.display = containerLogin.style.display == 'none' ? 'flex' : 'none'
+
+        if (operacaoEscolhida != '') {
+            operacaoLogin = operacaoEscolhida
         } else {
-            containerLogin.style.display = 'none'
-            div_operacoes.style.display = 'flex'
+            operacaoLogin = undefined
         }
     }
 </script>
