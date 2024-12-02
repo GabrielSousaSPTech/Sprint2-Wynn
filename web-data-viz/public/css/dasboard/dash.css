@@ -430,15 +430,26 @@ canvas {
 }
 
 
-#display_temperatura {
+#display_temperatura,
+#grafico_co2 {
     font-size: 3.5rem;
     color: green;
 }
-#display_temperaturaMin{
+
+#grafico_co2 {
+    text-align: center;
+    justify-content: center;
+    height: 100%;
+}
+
+#display_temperaturaMin {
+
     font-size: 2rem;
     color: rgb(0, 83, 128);
 }
-#display_temperaturaMax{
+
+#display_temperaturaMax {
+    margin-top: 3rem;
     font-size: 2rem;
     color: red;
 }
@@ -518,8 +529,8 @@ canvas {
     border-radius: 5rem;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    justify-items: center; 
-    align-items: center; 
+    justify-items: center;
+    align-items: center;
 
 }
 

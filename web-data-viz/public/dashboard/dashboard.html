@@ -10,7 +10,8 @@
 
 
     <link rel="stylesheet" href="../css/dasboard/dashboards.css">
-    <!-- <link rel="stylesheet" href="./../css/estilo.css" /> -->
+    <link rel="stylesheet" href="../css/dasboard/dash.css">
+
     <script src="../js/sessao.js"></script>
     <script src="./../js/alerta.js"></script>
 
@@ -33,7 +34,7 @@
 
 <!-- <body onload=" atualizarFeed()"> -->
 
-<body onload=" atualizarFeed()"></body>>
+<body onload="atualizarFeed()"></body>>
 
 <!-- 
     <div class="janela">
@@ -134,14 +135,19 @@
                             CO2 (%)
                         </p>
                         <div id="display_CO2">
-                            <canvas id="grafico_co2" class="center"></canvas>
+                            <div id="grafico_co2" class="center"></div>
                         </div>
                     </div>
                     <div class="elemento-estreito elemento center formatacao">
                         <p style="text-align: center;">Temperatura</p>
-                        <div id="display_temperatura">
-
+                        <div id="display_temperaturaMax">
                         </div>
+
+                        <div id="display_temperatura">
+                        </div>
+                        <div id="display_temperaturaMin">
+                        </div>
+
                     </div>
 
                     <div id="dashboard_alerta" class="elemento-estreito elemento center formatacao">
@@ -157,13 +163,13 @@
                         </p>
                     </div>
                     <div class="elemento-grafico elemento">
-                        <h2 class="titulo_grafico">Temperatura</h2>
+
                         <div id="graficosA"></div>
                     </div>
 
 
                     <div class="elemento-grafico elemento">
-                        <h2 class="titulo_grafico">co2</h2>
+
                         <div id="graficosB"></div>
                     </div>
                 </div>
@@ -185,6 +191,9 @@
 </body>
 
 </html>
+
+
+<script src="./dashboard.js"></script>
 
 <script>
 
@@ -211,6 +220,8 @@
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
 
+
+
     let proximaAtualizacao;
 
     window.onload = exibirAquariosDoUsuario();
@@ -220,27 +231,10 @@
         aquarios.forEach(item => {
             document.getElementById("btnAquario").innerHTML += `
             <div class="btn-tanque">
-                <!-- <img src="../assets/icon/fermentacao (ok).png" alt="" class="btn-icon">
-                <button class="btn-chart" onclick="exibirAquario(${item.id})" id="btnAquario${item.id}">${item.descricao}</button> -->
-
                 
-                <button class="btn-chart" onclick="exibirAquario(${item.id})" id="btnAquario${item.id}"><img src="../assets/icon/fermentacao (ok).png" alt="" class="btn-icon">${item.descricao} ${item.id}</button>
+                <button class="btn-chart" onclick="exibirAquario(${item.id}); obterKPI(${item.id}, 1)" id="btnAquario${item.id}"><img src="../assets/icon/fermentacao (ok).png" alt="" class="btn-icon">${item.descricao} ${item.id}</button>
             </div>
             `
-            /* 
-                        document.getElementById("display_temperatura").innerHTML += `
-                        <div id="temperatura${item.id}" class="display-none">
-                                        <h3>
-                                            <span id="temperatura_maxima" class="maxima_temperatura">30,2°<i
-                                                    class="fa-solid fa-arrow-up"></i></span>
-                                        </h3>
-                                        <h3>28,3°</h3>
-                                        <h3>
-                                            <span id="temperatura_minima" class="minima_temperatura">25,3°<i
-                                                    class="fa-solid fa-arrow-down"></i></span>
-                                        </h3>
-                        </div>
-                        ` */
 
             document.getElementById("graficosA").innerHTML += `
                 <div id="graficoA${item.id}" class="display-none">
@@ -309,12 +303,6 @@
                     elementoAtual2.classList.remove("display-block")
                 }
                 elementoAtual2.classList.add("display-none")
-
-                /* let elementoAtual3 = document.getElementById(`temperatura${todosOsGraficos[i].id}`)
-                if (elementoAtual3.classList.contains("display-block")) {
-                    elementoAtual3.classList.remove("display-block")
-                }
-                elementoAtual3.classList.add("display-none") */
 
                 // alterando estilo do botão
                 let btnAtual = document.getElementById(`btnAquario${todosOsGraficos[i].id}`)
@@ -395,7 +383,7 @@
         let dadosUmidade = {
             labels: labels,
             datasets: [{
-                label: 'Umidade',
+                label: 'Nivel de CO2',
                 data: [],
                 fill: false,
                 borderColor: 'rgb(75, 192, 192)',
@@ -414,7 +402,7 @@
             labels: labels,
             datasets: [
                 {
-                    label: 'Temperatura',
+                    label: 'Temperatura em Celcius',
                     data: [],
                     fill: false,
                     borderColor: 'rgb(199, 52, 52)',
@@ -449,6 +437,10 @@
             data: dadosUmidade,
             options: {
                 plugins: {
+                    title: {
+                        display: true,
+                        text: `CO2`
+                    },
                     annotation: {
                         annotations: {
                             line1: {
@@ -476,6 +468,10 @@
             data: dadosTemperatura,
             options: {
                 plugins: {
+                    title: {
+                        display: true,
+                        text: `Temperatura`
+                    },
                     annotation: {
                         annotations: {
                             line1: {
@@ -738,5 +734,6 @@
         document.getElementById('resposta').innerText = data.resultado;
     }
 
+    obterKPI(1, 1);
 
 </script>
