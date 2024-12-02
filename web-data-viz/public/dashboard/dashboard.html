@@ -457,6 +457,7 @@
                                 yMax: resposta[0].CO2PerigoMin,
                                 borderColor: 'rgb(255, 99, 132)',
                                 borderWidth: 2,
+                                borderDash: [5, 5]
                             }
                         }
                     }
@@ -483,6 +484,7 @@
                                 yMax: resposta[0].temperauraPerigoMax,
                                 borderColor: 'rgb(238, 157, 5)',
                                 borderWidth: 4,
+                                borderDash: [5, 5]
                             },
                             line2: {
                                 type: 'line',
@@ -490,6 +492,7 @@
                                 yMax: resposta[0].temperaturaCriticoMax,
                                 borderColor: 'rgb(255, 99, 132)',
                                 borderWidth: 4,
+                                borderDash: [5, 5]
                             },
                             line3: {
                                 type: 'line',
@@ -497,6 +500,7 @@
                                 yMax: resposta[0].temperaturaMinPerigo,
                                 borderColor: 'rgb(13, 176, 252)',
                                 borderWidth: 4,
+                                borderDash: [5, 5]
                             },
                             line5: {
                                 type: 'line',
@@ -504,6 +508,7 @@
                                 yMax: resposta[0].temperaturaCriticoMin,
                                 borderColor: 'rgb(1, 107, 156)',
                                 borderWidth: 4,
+                                borderDash: [5, 5]
                             }
                         }
                     }
@@ -587,7 +592,7 @@
                     }
 
                     // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dadosUmidade, dadosTemperatura, myChart, myChart2));
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dadosUmidade, dadosTemperatura, myChart, myChart2), 2000);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
