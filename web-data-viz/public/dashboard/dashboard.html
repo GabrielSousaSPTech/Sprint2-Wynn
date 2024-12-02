@@ -523,7 +523,7 @@
             config
         );
 
-        setTimeout(() => atualizarGraficoCO2(idAquario, dadosUmidade, myChart), 2000);
+        /*  setTimeout(() => atualizarGraficoCO2(idAquario, dadosUmidade, myChart), 2000); */
 
         let myChart2 = new Chart(
             document.getElementById(`myChartCanvasB${idAquario}`),
@@ -531,7 +531,7 @@
 
         );
 
-        setTimeout(() => atualizarGraficoTemperatura(idAquario, dadosTemperatura, myChart2), 2000);
+        setTimeout(() => atualizarGrafico(idAquario, dadosUmidade, dadosTemperatura, myChart, myChart2), 2000);
     }
 
 
@@ -540,6 +540,67 @@
 
     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
     //     Para ajustar o "select", ajuste o comando sql em src/models
+
+    function atualizarGrafico(idAquario, dadosUmidade, dadosTemperatura, myChart, myChart2) {
+
+
+
+        fetch(`/medidas/tempo-real/${idAquario}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
+
+                    obterdados(idAquario);
+                    // alertar(novoRegistro, idAquario);
+                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                    console.log(`Dados atuais do gráfico:`);
+                    console.log(dadosUmidade, dadosTemperatura);
+
+                    let avisoCaptura = document.getElementById(`avisoCaptura${idAquario}`)
+                    avisoCaptura.innerHTML = ""
+
+                    console.log(`Tanque${idAquario}: Novo Registro = ${novoRegistro[0].momento_grafico}; Ultimo Registro = ${dadosTemperatura.labels[dadosTemperatura.labels.length - 1]}`)
+                    if (novoRegistro[0].momento_grafico == dadosTemperatura.labels[dadosTemperatura.labels.length - 1]) {
+                        console.log("---------------------------------------------------------------")
+                        console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                        avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+                        console.log("Horário do novo dado capturado:")
+                        console.log(novoRegistro[0].momento_grafico)
+                        console.log("Horário do último dado capturado:")
+                        console.log(dadosTemperatura.labels[dadosTemperatura.labels.length - 1])
+                        console.log("---------------------------------------------------------------")
+                    } else {
+                        // tirando e colocando valores no gráfico
+                        dadosUmidade.labels.shift(); // apagar o primeiro
+                        dadosUmidade.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
+                        dadosTemperatura.labels.shift(); // apagar o primeiro
+                        dadosTemperatura.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
+
+                        dadosUmidade.datasets[0].data.shift();  // apagar o primeiro de umidade
+                        dadosUmidade.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
+                        console.log("Novo registro de co2: " + novoRegistro[0].umidade)
+
+                        dadosTemperatura.datasets[0].data.shift();  // apagar o primeiro de temperatura
+                        dadosTemperatura.datasets[0].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+                        console.log("Novo registro de Temperatura: " + novoRegistro[0].temperatura)
+                        myChart.update();
+                        myChart2.update();
+                    }
+
+                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dadosUmidade, dadosTemperatura, myChart, myChart2));
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacao = setTimeout(() => atualizarGraficoCO2(idAquario, dadosUmidade, dadosTemperatura, myChart, myChart2), 2000);
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+    }
+
     function atualizarGraficoCO2(idAquario, dados, myChart) {
 
 
@@ -583,12 +644,12 @@
                     }
 
                     // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
+                    proximaAtualizacao = setTimeout(() => atualizarGraficoCO2(idAquario, dados, myChart), 2000);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
+                proximaAtualizacao = setTimeout(() => atualizarGraficoCO2(idAquario, dados, myChart), 2000);
             }
         })
             .catch(function (error) {
@@ -640,12 +701,12 @@
                     }
 
                     // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
+                    proximaAtualizacao = setTimeout(() => atualizarGraficoTemperatura(idAquario, dados, myChart), 2000);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
+                proximaAtualizacao = setTimeout(() => atualizarGraficoTemperatura(idAquario, dados, myChart), 2000);
             }
         })
             .catch(function (error) {

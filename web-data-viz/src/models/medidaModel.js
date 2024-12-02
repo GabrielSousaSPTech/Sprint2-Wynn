@@ -36,7 +36,7 @@ function buscarMedidasEmTempoReal(idAquario) {
     var instrucaoSql = `SELECT 
                             medidaLM35 as temperatura,
                             medidaMQ2 as umidade,
-                            dataHoraSensor as momento_grafico, 
+                            DATE_FORMAT(dataHoraSensor,'%H:%i:%s') as momento_grafico, 
                             fkTanque as fk_aquario
                         FROM
                             tbTanque
