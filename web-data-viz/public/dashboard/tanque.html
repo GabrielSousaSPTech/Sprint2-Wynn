@@ -6,10 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tanques</title>
     <link rel="stylesheet" href="../css/tabelas.css">
-
 </head>
 
-<body id="banner_tabela" onload="obterDados()">
+<body id="banner_tabela" onload="obterVinhos() , obterTanques()">
     <div id="h-menu" class="hanburger-menu">
         <div class="menu-icon" onclick="mostrarMenu()">
             <div id="line-1" class="icon-line icon-line-1"></div>
@@ -87,7 +86,7 @@
             <form>
                 <div class="campo">
                     <p>Tipo de vinho:</p>
-                    <select id="select_editar_tipo_vinho">
+                    <select name="select_tipo_vinho" id="select_editar_tipo_vinho">
                         <option value="1">Tinto</option>
                         <option value="2">Branco</option>
                     </select>
@@ -107,7 +106,7 @@
                     Atualizar
                 </button>
 
-                <button onclick="exibirOcultarMenu('editar')">
+                <button onclick="exibirOcultarMenu('editar', true)">
                     Voltar
                 </button>
             </div>
@@ -115,13 +114,13 @@
 
         <aside id="aside_menu_adicionar" class="janela menu" style="display: none;">
             <h2>
-                Adicionando tanque
+                Adicionando novo tanque
             </h2>
 
             <form>
                 <div class="campo">
                     <p>Tipo de vinho:</p>
-                    <select id="select_adicionar_tipo_vinho">
+                    <select name="select_tipo_vinho" id="select_adicionar_tipo_vinho">
                         <option value="1">Tinto</option>
                         <option value="2">Branco</option>
                     </select>
@@ -137,11 +136,11 @@
             </form>
 
             <div>
-                <button>
+                <button onclick="adicionarTanque()">
                     Adicionar
                 </button>
 
-                <button onclick="exibirOcultarMenu('adicionar')">
+                <button onclick="exibirOcultarMenu('adicionar', true)">
                     Voltar
                 </button>
             </div>
@@ -149,8 +148,6 @@
     </section>
 </body>
 <script src="../JS/sidebar.js"></script>
-<script src="../JS/index.js"></script>
-<script src="../JS/tabelas.js"></script>
 <script src="../JS/tanques.js"></script>
 <script src="../JS/sessao.js"></script>
 
