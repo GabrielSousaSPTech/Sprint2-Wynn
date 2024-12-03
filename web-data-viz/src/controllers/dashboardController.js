@@ -59,10 +59,18 @@ function obterMinMaxTemperatura (req, res){
     })
 }
 
+function obterComecoFermentacao(req, res){
+    var idTanque = req.params.idTanque
+    dashboardModel.obterComecoFermentacao(idTanque).then(function (resposta){
+        res.status(201).json(resposta)
+    })
+}
+
 module.exports = {
     obterDadosKpi,
     obterDadosGraficoTemperatura,
     obterDadosGraficoCO2,
     obterTanque,
-    obterMinMaxTemperatura
+    obterMinMaxTemperatura,
+    obterComecoFermentacao
 }

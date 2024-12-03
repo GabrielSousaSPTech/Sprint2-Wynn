@@ -23,5 +23,8 @@ router.get('/obterMinMaxTemperatura/:idTanque', function(req, res){
 router.get('/obterTanque/:fkEmpresa', function (req, res){
     dashboardController.obterTanque(req, res);
 })
+router.get('/obterComecoFermentacao/:idTanque', function (req, res){
+    dashboardController.obterComecoFermentacao(req, res);
+})
 
 module.exports = router

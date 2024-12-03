@@ -51,9 +51,9 @@ function checarCredenciais() {
                             if(operacaoLogin != 'Administrador') {
                                 window.location = "./dashboard/dashboard.html";
                             } else {
-                                window.location = "./dashboard/bobia.html"
+                                window.location = "./administrador/bobia.html"
                             }
-                        }, 1000); // apenas para exibir o loading
+                        }, 1000); 
 
                     });
 

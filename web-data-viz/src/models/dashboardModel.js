@@ -61,11 +61,25 @@ function obterTanque(fkEmpresa){
     return database.executar(instrucaoSql)
 }
 
+function obterComecoFermentacao(fkTanque){
+    var instrucaoSql = `
+    SELECT 
+        dataHoraSensor
+    FROM tbMedida 
+    WHERE fkTanque = ${fkTanque}
+    ORDER BY idMedidaSensor 
+    LIMIT 1;
+`
+
+return database.executar(instrucaoSql)
+}
+
 module.exports = {
     obterDadosKpi,
     obterDadosGraficoTemperatura,
     obterDadosGraficoCO2,
     obterTanque,
     obterMinMaxTemperatura,
-    obterTempoFermentacao
+    obterTempoFermentacao,
+    obterComecoFermentacao
 }

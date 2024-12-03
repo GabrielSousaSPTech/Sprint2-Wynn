@@ -1,7 +1,6 @@
 
 
 function obterKPI(idTanque, limite) {
-
     fetch(`/dashboard/obterMinMaxTemperatura/${idTanque}`).then(function (resposta) {
         if (resposta.ok) {
             resposta.json().then(function (res) {

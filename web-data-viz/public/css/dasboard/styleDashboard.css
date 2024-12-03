@@ -1129,9 +1129,9 @@ canvas {
 }
 
 #tempo-fermentacao {
-    font-size: 1.6rem;
+    font-size: 3rem;
     text-align: center;
-    color: black;
+    color: darkred;
     margin: 1.5rem 0;
 }
 

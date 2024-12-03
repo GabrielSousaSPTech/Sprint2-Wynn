@@ -104,10 +104,9 @@
         </div>
         <div class="menu-box">
             <h2>MENU</h2>
-            <div class="menu-item">Usuário</div>
-            <div class="menu-item">Tanque</div>
-            <div class="menu-item">Config. Temperatura</div>
-            <div class="menu-item">Config. CO2</div>
+            <a href="./dashboard.html"><div class="menu-item">Dashboard</div></a>
+            <a href="./tanque.html"><div class="menu-item">Tanque</div></a>
+            <a href="./tipos_vinho.html"><div class="menu-item">Métrica</div></a>
             <div class="item-logout">
                 <a onclick="limparSessao()" style="cursor: pointer;">
                     <img src="../assets/icon/log-out.png" alt="">
@@ -159,7 +158,7 @@
                     <div class="elemento-estreito elemento center formatacao">
                         <h2 id="tempo-fermentacao-h2">TEMPO DE FERMENTAÇÃO</h2>
                         <p id="tempo-fermentacao">
-                            <span>30</span>h<span>|23</span>h<span>|18</span>h<span>|30</span>h
+                            
                         </p>
                     </div>
                     <div class="elemento-grafico elemento">
@@ -194,28 +193,11 @@
 
 
 <script src="./dashboard.js"></script>
-
+<script src="./timer.js"></script>
+<script src="../JS/sidebar.js"></script>
 <script>
 
-    // H-Menu
-    const hamburgerMenu = document.getElementById('h-menu');
-    const line1 = document.getElementById('line-1');
-    const line2 = document.getElementById('line-2');
-    const line3 = document.getElementById('line-3');
-
-    function mostrarMenu() {
-        if (hamburgerMenu.classList.contains('change-menu')) {
-            hamburgerMenu.classList.remove('change-menu');
-            line1.classList.remove('change-menu');
-            line2.classList.remove('change-menu');
-            line3.classList.remove('change-menu');
-        } else {
-            hamburgerMenu.classList.add('change-menu');
-            line1.classList.add('change-menu');
-            line2.classList.add('change-menu');
-            line3.classList.add('change-menu');
-        }
-    }
+   
 
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
@@ -228,11 +210,15 @@
 
     function exibirAquariosDoUsuario() {
         var aquarios = JSON.parse(sessionStorage.AQUARIOS);
+        obterKPI(aquarios[0].id, 1);
+        
+            exibirTemporizador(aquarios[0].id)
+        
         aquarios.forEach(item => {
             document.getElementById("btnAquario").innerHTML += `
             <div class="btn-tanque">
                 
-                <button class="btn-chart" onclick="exibirAquario(${item.id}); obterKPI(${item.id}, 1)" id="btnAquario${item.id}"><img src="../assets/icon/fermentacao (ok).png" alt="" class="btn-icon">${item.descricao} ${item.id}</button>
+                <button class="btn-chart" onclick="exibirAquario(${item.id}); obterKPI(${item.id}, 1); exibirTemporizador(${item.id})" id="btnAquario${item.id}"><img src="../assets/icon/fermentacao (ok).png" alt="" class="btn-icon">${item.descricao} ${item.id}</button>
             </div>
             `
 
@@ -271,10 +257,13 @@
                   
                 </div>
             `
-
+            
             obterDadosGrafico(item.id)
+            
+            
+            
         });
-
+        
         if (aquarios.length > 0) {
             exibirAquario(aquarios[0].id)
         }
@@ -295,12 +284,14 @@
                 let elementoAtual = document.getElementById(`graficoA${todosOsGraficos[i].id}`)
                 if (elementoAtual.classList.contains("display-block")) {
                     elementoAtual.classList.remove("display-block")
+                  
                 }
                 elementoAtual.classList.add("display-none")
-
+                
                 let elementoAtual2 = document.getElementById(`graficoB${todosOsGraficos[i].id}`)
                 if (elementoAtual2.classList.contains("display-block")) {
                     elementoAtual2.classList.remove("display-block")
+                  
                 }
                 elementoAtual2.classList.add("display-none")
 
@@ -310,6 +301,7 @@
                     btnAtual.classList.remove("btn-pink")
                 }
                 btnAtual.classList.add("btn-white")
+                
             }
         }
 
@@ -344,7 +336,7 @@
     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
     //     Para ajustar o "select", ajuste o comando sql em src/models
     function obterDadosGrafico(idAquario) {
-
+        
         alterarTitulo(idAquario)
 
         if (proximaAtualizacao != undefined) {
@@ -356,9 +348,7 @@
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     resposta.reverse();
-
                     plotarGrafico(resposta, idAquario);
-
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
@@ -543,6 +533,7 @@
     //     Para ajustar o "select", ajuste o comando sql em src/models
 
     function atualizarGrafico(idAquario, dadosUmidade, dadosTemperatura, myChart, myChart2) {
+       
 
 
 
@@ -588,12 +579,12 @@
                     }
 
                     // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dadosUmidade, dadosTemperatura, myChart, myChart2), 2000);
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dadosUmidade, dadosTemperatura, myChart, myChart2), 1000);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGraficoCO2(idAquario, dadosUmidade, dadosTemperatura, myChart, myChart2), 2000);
+                proximaAtualizacao = setTimeout(() => atualizarGraficoCO2(idAquario, dadosUmidade, dadosTemperatura, myChart, myChart2), 1000);
             }
         })
             .catch(function (error) {
@@ -734,6 +725,6 @@
         document.getElementById('resposta').innerText = data.resultado;
     }
 
-    obterKPI(1, 1);
+    
 
 </script>
