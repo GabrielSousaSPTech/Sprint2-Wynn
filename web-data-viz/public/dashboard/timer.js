@@ -29,8 +29,16 @@ function medirTempoFermentacao(dataComecoFermentacao) {
     const restoSegundos = segundos % 60;
     const restoHoras = horas % 24;
 
+    function formatarTempo(horas, minutos, segundos) {
+        const horasFormatadas = horas.toString().padStart(2, '0');
+        const minutosFormatados = minutos.toString().padStart(2, '0');
+        const segundosFormatados = segundos.toString().padStart(2, '0');
+        return `${horasFormatadas}:${minutosFormatados}:${segundosFormatados}`;
+    }
 
-    document.getElementById('tempo-fermentacao').innerText = `${dias > 0 ? dias` Dias` : ''}  ${restoHoras}:${restoMinutos}:${restoSegundos}S`;
+
+    /*  document.getElementById('tempo-fermentacao').innerText = `${dias > 0 ? dias + " Dias" : ''}  ${restoHoras}:${restoMinutos}:${restoSegundos}S`; */
+    document.getElementById('tempo-fermentacao').innerText = formatarTempo(horas, restoMinutos, restoSegundos);
 }
 
 var temporizador
