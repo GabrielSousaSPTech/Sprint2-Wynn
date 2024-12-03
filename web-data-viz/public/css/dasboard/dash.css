@@ -109,7 +109,7 @@ header nav li {
 #banner {
     height: 100vh;
 
-    background: scroll url(../assets/imgs/fundo-barris-vinho.jpg) center center no-repeat;
+    background: scroll url(./imgs/fundo-barris-vinho.jpg) center center no-repeat;
     background-size: cover;
 
     font-family: Forum;

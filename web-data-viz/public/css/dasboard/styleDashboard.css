@@ -903,7 +903,7 @@ footer p {
 
 #banner-Dashboard {
     min-height: 102vh;
-    background: scroll url(../assets/imgs/fundo-barris-vinho.jpg) center center no-repeat;
+    background: scroll url(../dasboard/imgs/fundo-barris-vinho.jpg) center center no-repeat;
     background-size: cover;
     font-family: Forum;
     color: white;

@@ -32,7 +32,7 @@ function alertar(resposta, idAquario) {
     var limites = {
         muito_quente: Number(resposta[0].temperaturaCriticoMax),
         quente: Number(resposta[0].temperauraPerigoMax),
-        /* ideal: resposta[0], */
+        ideal: resposta[0],
         frio: Number(resposta[0].temperaturaMinPerigo),
         muito_frio: Number(resposta[0].temperaturaCriticoMin)
     };
@@ -53,6 +53,9 @@ function alertar(resposta, idAquario) {
     }
     else if (temp < limites.quente && temp > limites.frio) {
         classe_temperatura = 'cor-alerta ideal';
+        grauDeAviso = 'ideal';
+        grauDeAvisoCor = 'cor-alerta alerta-ideal';
+        exibirAlerta(temp, idAquario, grauDeAviso, grauDeAvisoCor)
         removerAlerta(idAquario);
     }
     else if (temp <= limites.frio && temp > limites.muito_frio) {
@@ -108,6 +111,35 @@ function exibirCards() {
 
 function transformarEmDiv({ idAquario, temp, grauDeAviso, grauDeAvisoCor }) {
 
+    var icone = "fermentacao_ok.png";
+    var status = "OK";
+    var corStatus = "verde";
+    if (grauDeAviso == "perigo quente") {
+        icone = "fermentacao_critico.png";
+        status = "PERIGO";
+        corStatus = "vermelho";
+    } else if (grauDeAviso == "alerta quente") {
+        icone = "fermentacao_acima.png";
+        status = "ATENÇÃO";
+        corStatus = "amarelo";
+    } else if (grauDeAviso == "alerta frio") {
+        icone = "fermentacao_abaixo.png";
+        status = "ATENÇÃO";
+        corStatus = "amarelo"
+    } else if (grauDeAviso == "perigo frio") {
+        icone = "fermentacao_congelado.png";
+        status = "PERIGO";
+        corStatus = "vermelho";
+    }
+
+    const divStatus = document.getElementById(`alerta-status${idAquario}`);
+    divStatus.innerHTML = `
+                            <h2>STATUS</h2>
+                            <p><span class="span-alerta alerta-${corStatus}">${status}</span></p>
+    `
+    const imagem = document.getElementById(`icone${idAquario}`);
+    imagem.src = `../css/dasboard/imgs/${icone}`;
+
     var descricao = JSON.parse(sessionStorage.AQUARIOS).find(item => item.id == idAquario).descricao;
     return `
     <div class="mensagem-alarme">
@@ -116,7 +148,6 @@ function transformarEmDiv({ idAquario, temp, grauDeAviso, grauDeAvisoCor }) {
             <h3>${descricao} ${idAquario} está em estado de ${grauDeAviso}!</h3>
             <small>Temperatura capturada: ${temp}°C.</small>   
         </div>
-        <div class="alarme-sino"></div>
     </div>
     `;
 }

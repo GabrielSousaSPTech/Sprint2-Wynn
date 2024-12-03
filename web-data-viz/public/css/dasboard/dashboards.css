@@ -267,6 +267,31 @@ body {
   /* padding: 0 30% 0 30%; */
 }
 
+.mensagem-alarme {
+  width: 20rem;
+  background-color: rgba(255, 255, 255, 0.4);
+  margin: 1rem 0;
+  font-size: 1.2rem;
+  border: solid .3rem white;
+  padding: 1rem .5rem;
+}
+
+.span-alerta {
+  font-size: 6rem;
+}
+
+.alerta-verde {
+  color: green;
+}
+
+.alerta-amarelo {
+  color: rgb(221, 183, 13);
+}
+
+.alerta-vermelho {
+  color: red;
+}
+
 .graph {
   width: 100%;
 
@@ -284,28 +309,35 @@ body {
   justify-content: space-between;
   align-items: center;
   width: 10rem;
-  height: 12rem;
+
+
+
 }
 
 .btn-icon {
   width: 8rem;
+
 }
 
 .btn-chart {
   font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   border: 0;
   width: 8rem;
-  height: 3rem;
   color: #ffff;
   border: solid .2rem white;
-  margin: 5px;
-  border-radius: 3px;
-  cursor: pointer
+  margin: .5rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: .8rem 0;
 }
 
 .btn-pink {
   color: white;
-  background-color: #e6005a;
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 .btn-white {
