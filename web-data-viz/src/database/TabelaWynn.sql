@@ -55,7 +55,7 @@ SELECT * FROM tbEnderecoEmpresa;
 
 INSERT INTO tbEmpresa (nomeEmpresa, cnpjEmpresa, emailEmpresa, senhaEmpresa, chaveAtivacaoEmpresa, telEmpresa, autorizacaoEmpresa) 
 VALUES 
-	('Vinícola Campestre', '98.521.909/0002-70', 'vinicolaCampestre@gmail.com', 'Urubu@100!', 'E3DB98JK', '114940028922', false);
+	('Vinícola Campestre', '98.521.909/0002-70', 'vinicolaCampestre@gmail.com', MD5('Urubu@100!'), 'E3DB98JK', '114940028922', false);
  
 
 CREATE TABLE tbFuncionario (
@@ -72,7 +72,7 @@ CREATE TABLE tbFuncionario (
 
 INSERT INTO tbFuncionario (nomeFuncionario, fkEmpresa, dataNascFuncionario, foneFuncionario, emailFuncionario, senhaFuncionario, cargoFuncionario) 
 VALUES 
-('Macari Marcelino', 1, '1985-05-15', '11956789012', 'macari.marcelino@gmail.com', '1234', 'Gerente');
+('Macari Marcelino', 1, '1985-05-15', '11956789012', 'macari.marcelino@gmail.com', MD5('Adsa#2024'), 'Gerente');
 
 
 
@@ -146,31 +146,31 @@ INSERT INTO tbMedida (medidaLM35, medidaMQ2,dataHoraSensor, fkTanque) VALUES
 select * from tbMedida;
 INSERT INTO tbMedida (medidaLM35, medidaMQ2,dataHoraSensor, fkTanque) VALUES  
 (22.7, 50, now(), 2),
-(25.7, 50, now(), 2),
-(20.7, 60, now(), 2),
-(30.7, 50, now(), 2),
-(28.7, 70, now(), 2),
-(29.7, 50, now(), 2),
-(25.7, 50, now(), 2);
+(21.7, 50, now(), 2),
+(18.7, 60, now(), 2),
+(19.7, 50, now(), 2),
+(20.7, 70, now(), 2),
+(21.7, 50, now(), 2),
+(23.7, 50, now(), 2);
 
 select * from tbMedida;
 INSERT INTO tbMedida (medidaLM35, medidaMQ2,dataHoraSensor, fkTanque) VALUES  
 (10.7, 50, now(), 3),
-(25.7, 50, now(), 3),
-(20.7, 60, now(), 3),
-(30.7, 50, now(), 3),
-(20.7, 70, now(), 3),
-(29.7, 50, now(), 3),
-(35, 50, now(), 3);
+(11.7, 50, now(), 3),
+(13.7, 60, now(), 3),
+(12.7, 50, now(), 3),
+(15.7, 70, now(), 3),
+(17.7, 50, now(), 3),
+(21.8, 50, now(), 3);
 
 INSERT INTO tbMedida (medidaLM35, medidaMQ2, dataHoraSensor, fkTanque) VALUES  
-(15.3, 40, now(), 4),
-(22.5, 55, now(), 4),
-(19.2, 60, now(), 4),
-(19.2, 60, now(), 4),
-(30.8, 45, now(), 4),
-(30.8, 45, now(), 4),
-(25.0, 50, now(), 4);
+(13.3, 40, now(), 4),
+(12.5, 55, now(), 4),
+(14.2, 60, now(), 4),
+(16.2, 60, now(), 4),
+(15.8, 45, now(), 4),
+(17.8, 45, now(), 4),
+(18.0, 50, now(), 4);
 
 
 
