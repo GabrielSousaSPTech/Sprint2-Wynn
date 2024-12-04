@@ -230,16 +230,12 @@
             document.getElementById("graficosA").innerHTML += `
                 <div id="graficoA${item.id}" class="display-none">
                     
-                    <h3 class="tituloGraficos">
-                        <span id="tituloAquario${item.id}">${item.descricao}</span>
-                    </h3> 
-                   
                     <div class="graph">
                         <canvas id="myChartCanvasA${item.id}"></canvas>
                     </div>
                     
                     <div class="label-captura">
-                        <p id="avisoCaptura${item.id}" style="color: white"></p>
+                        <p id="avisoCaptura${item.id}" class="aviso-captura"></p>
                     </div> 
                   
                 </div>
@@ -247,17 +243,13 @@
 
             document.getElementById("graficosB").innerHTML += `
                 <div id="graficoB${item.id}" class="display-none">
-                    
-                    <h3 class="tituloGraficos">
-                        <span id="tituloAquario${item.id}">${item.descricao}</span>
-                    </h3> 
                    
                     <div class="graph">
                         <canvas id="myChartCanvasB${item.id}"></canvas>
                     </div>
                     
                     <div class="label-captura">
-                        <p id="avisoCaptura${item.id}" style="color: white"></p>
+                        <p id="avisoCapturaB${item.id}" class="aviso-captura"></p>
                     </div> 
                   
                 </div>
@@ -358,7 +350,7 @@
     //     Para ajustar o "select", ajuste o comando sql em src/models
     function obterDadosGrafico(idAquario) {
 
-        alterarTitulo(idAquario)
+        //alterarTitulo(idAquario)
 
         if (proximaAtualizacao != undefined) {
             clearTimeout(proximaAtualizacao);
@@ -569,13 +561,16 @@
                     console.log(dadosUmidade, dadosTemperatura);
 
                     let avisoCaptura = document.getElementById(`avisoCaptura${idAquario}`)
-                    avisoCaptura.innerHTML = ""
+                    avisoCaptura.innerHTML = "";
+                    let avisoCapturaB = document.getElementById(`avisoCapturaB${idAquario}`)
+                    avisoCapturaB.innerHTML = "";
 
                     console.log(`Tanque${idAquario}: Novo Registro = ${novoRegistro[0].momento_grafico}; Ultimo Registro = ${dadosTemperatura.labels[dadosTemperatura.labels.length - 1]}`)
                     if (novoRegistro[0].momento_grafico == dadosTemperatura.labels[dadosTemperatura.labels.length - 1]) {
                         console.log("---------------------------------------------------------------")
                         console.log("Como não há dados novos para captura, o gráfico não atualizará.")
                         avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+                        avisoCapturaB.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
                         console.log("Horário do novo dado capturado:")
                         console.log(novoRegistro[0].momento_grafico)
                         console.log("Horário do último dado capturado:")
