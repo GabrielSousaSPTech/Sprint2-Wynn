@@ -7,4 +7,8 @@ router.get("/listar/:idEmpresa", function (req, res) {
     tanqueController.obterTanquesEmpresa(req, res);
 })
 
+router.post("/adicionar", function(req, res) {
+    tanqueController.adicionarTanque(req, res)
+})
+
 module.exports = router;
