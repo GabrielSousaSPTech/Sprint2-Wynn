@@ -1,5 +1,5 @@
 function obterVinhos() {
-    fetch('/tipoVinho/listar').then(function (resposta) {
+    fetch(`/tipoVinho/listar/${sessionStorage.ID_USUARIO}`).then(function (resposta) {
         if (resposta.ok) {
             resposta.json().then(function (res) {
                 preencherSelectTipos(res)
