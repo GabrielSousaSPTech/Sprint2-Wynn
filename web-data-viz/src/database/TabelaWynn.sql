@@ -10,7 +10,7 @@ CREATE TABLE tbAdministrador (
 );
 
 insert into tbAdministrador (nomeAdministrador, emailAdministrador, senhaAdministrador) value
-('Andrei Scafi', 'andrei@gmail.com', '123456A!');
+('Andrei Scafi', 'andrei@gmail.com', MD5('123456A!'));
 
 
 CREATE TABLE tbEmpresa (
