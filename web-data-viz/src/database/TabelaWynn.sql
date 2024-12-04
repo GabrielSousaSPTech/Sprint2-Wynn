@@ -10,6 +10,9 @@ CREATE TABLE tbAdministrador (
     senhaAdministrador VARCHAR(60)
 );
 
+insert into tbAdministrador (nomeAdministrador, emailAdministrador, senhaAdministrador) value
+('Andrei Scafi', 'andrei@gmail.com', '123456A!');
+
 CREATE TABLE tbCategoriaRegistro (
 	idCategoriaRegistro INT PRIMARY KEY AUTO_INCREMENT,
     nomeCategoria VARCHAR(45)
@@ -74,24 +77,11 @@ foreign Key (fkEndereco) references Endereco (idEndereco)
 );
 */
 
-SELECT * FROM Endereco;
-SELECT * FROM tbEmpresa;
 
 INSERT INTO tbEmpresa (nomeEmpresa, cnpjEmpresa, emailEmpresa, senhaEmpresa, chaveAtivacaoEmpresa, telEmpresa, autorizacaoEmpresa) 
 VALUES 
-	('Vinícola Campestre', '98.521.909/0002-70', 'vinicolaCampestre@gmail.com', 123, 'E3DB98JK', '114940028922', false),
-	('Vinícola Abreu Garcia', '10.327.131/0001-31', 'abreuGarcia@gmail.com', 123,'E4DB98JK', '114988888888', false),
-	('Vinícola Aurora', '88.777.134/0001-19', 'auroraVinhos@gmail.com', 123,'E5DB98JK', '114972222222', false),
-	('Vinícola Salton', '88.110.431/0001-02', 'saltonVinhos@outlook.com', 123,'E6DB98JK', '114977777777', false),
-	('Vinícola Miolo', '89.627.234/0001-56', 'mioloVinhos@outlook.com', 123,'E7DB98JK', '114966666666', false);
+	('Vinícola Campestre', '98.521.909/0002-70', 'vinicolaCampestre@gmail.com', 'Urubu@100!', 'E3DB98JK', '114940028922', false);
  
-
-
--- ('95205000', 'BR-116 KM 30', 'Bairro Passo da Porteira', 'Vacaria', 'RS', '1410', default), 
--- ('88580000', 'Fazenda Nova Dela Costa', 'Alto Travessão', 'Campo Belo do Sul', 'SC', default, 'Sem número'), 
--- ('95700000', 'Rua Olavo Bilac', 'Centro', 'Bento Gonçalves', 'RS', '500', default),
--- ('95180000', 'Estrada Salton', 'Tuiuty', 'Bento Gonçalves', 'RS', '1500', default),
--- ('95700000', 'RS-444 KM 21', 'Vale dos Vinhedos', 'Bento Gonçalves', 'RS', default, 'Sem número');
 
 CREATE TABLE tbFuncionario (
 	idFuncionario INT PRIMARY KEY AUTO_INCREMENT,
@@ -114,35 +104,22 @@ VALUES
 CREATE TABLE tbTipoVinho(
 	idTipoVinho INT PRIMARY KEY AUTO_INCREMENT,
 	nomeVinho VARCHAR(45),
+    metricaTemperaturaCriticoMin DECIMAL (4,2),
 	metricaTemperaturaPerigoMin DECIMAL (4,2),
 	metricaTemperaturaPerigoMax DECIMAL (4,2),
-	metricaTemperaturaCriticoMin DECIMAL (4,2),
-	metricaTemperaturaCriticoMax DECIMAL (4,2),
-	metricaCO2PerigoMin DECIMAL (4,2),
-	metricaCO2PerigoMax DECIMAL (4,2),
-	metricaCO2CriticoMin DECIMAL (4,2),
-	metricaCO2CriticoMax DECIMAL (4,2)
+	metricaTemperaturaCriticoMax DECIMAL (4,2)
 );
 
 INSERT INTO tbTipoVinho VALUES
-	(default ,'Tinto', 20, 30, 10, 40, 30, 80, 20, 90),
-    (default ,'Branco', 12, 18, 6, 22, 35, 85, 25, 95)
-; -- valores exemplo
-
-SELECT * FROM tbTipoVinho;
-
-/*
-UPDATE tbTipoVinho
-	SET metricaTemperaturaPerigoMin = ?, metricaTemperaturaPerigoMax = ?,
-			metricaTemperaturaCriticoMin = ?, metricaTemperaturaCriticoMax = ?,
-				metricaCO2PerigoMin = ?, metricaCO2PerigoMax = ?,
-					metricaCO2CriticoMin = ?, metricaCO2CriticoMax = ?
-						WHERE idTipoVinho = ?;
-*/		
+	(default ,'Tinto', 16, 20, 30, 34),
+    (default ,'Branco', 8, 12, 22, 26),
+    (default ,'Rose', 6, 10, 20, 24),
+    (default ,'Frisanste', 8, 12, 18, 22); 
 
 
 CREATE TABLE tbTanque (
 	idTanque INT PRIMARY KEY AUTO_INCREMENT,
+    nomeTanque varchar(8),
 	fkEmpresa INT NOT NULL,
     fkTipoVinho INT NOT NULL,
     statusTanque VARCHAR(45),
@@ -150,6 +127,9 @@ CREATE TABLE tbTanque (
     CONSTRAINT fkTanque_Empresa FOREIGN KEY (fkEmpresa) REFERENCES tbEmpresa(idEmpresa),
     CONSTRAINT fkTanque_TipoVinho FOREIGN KEY (fkTipoVinho) REFERENCES tbTipoVinho(idTipoVinho)
     );
+    
+-- INSERT INTO tbTanque (fkEmpresa, fkTipoVinho, statusTanque) VALUES 
+
 
 CREATE TABLE tbMedida (
 	idMedidaSensor INT PRIMARY KEY AUTO_INCREMENT,
@@ -161,36 +141,16 @@ CREATE TABLE tbMedida (
 );
 
 
-
-
-
-INSERT INTO tbTanque (fkEmpresa, fkTipoVinho, statusTanque) 
+INSERT INTO tbTanque (nomeTanque,fkEmpresa, fkTipoVinho, statusTanque) 
 VALUES 
-(1, 1, 'ativo'), 
-(1, 1, 'ativo'), 
-(2, 1, 'ativo'), 
-(2, 2, 'ativo'), 
-(3, 2, 'ativo'),
-(3, 2, 'ativo'), 
-(4, 1, 'ativo'), 
-(4, 1, 'ativo'), 
-(5, 2, 'ativo'), 
-(5, 2, 'ativo');
-
-INSERT INTO tbTanque (fkEmpresa, fkTipoVinho, statusTanque) 
-VALUES 
-(1, 2, 'ativo');
-
-select
-	idTanque as id,
-    nomeVinho as tipo,
-    statusTanque as atv
-		from tbTanque
-        join tbTipoVinho on fkTipoVinho = idTipoVinho
-        where fkEmpresa = 1;
+('TINTO-1',1, 1, 'ativo'), 
+('BRANCO-1',1, 2, 'ativo'),
+('ROSE-1',1, 3, 'ativo'), 
+('FRIS-1',1, 4, 'ativo')  
+;
 
 
-select * from tbMedida;
+
 INSERT INTO tbMedida (medidaLM35, medidaMQ2,dataHoraSensor, fkTanque) VALUES  
 (26.7, 50, now(), 1),
 (25.7, 50, now(), 1),
@@ -199,6 +159,41 @@ INSERT INTO tbMedida (medidaLM35, medidaMQ2,dataHoraSensor, fkTanque) VALUES
 (25.7, 50, now(), 1),
 (29.7, 50, now(), 1),
 (31.7, 50, now(), 1);
+
+INSERT INTO tbMedida (medidaLM35, medidaMQ2,dataHoraSensor, fkTanque) VALUES  
+(15, 50, now(), 1);
+
+
+
+select * from tbMedida;
+INSERT INTO tbMedida (medidaLM35, medidaMQ2,dataHoraSensor, fkTanque) VALUES  
+(22.7, 50, now(), 2),
+(25.7, 50, now(), 2),
+(20.7, 60, now(), 2),
+(30.7, 50, now(), 2),
+(28.7, 70, now(), 2),
+(29.7, 50, now(), 2),
+(25.7, 50, now(), 2);
+
+select * from tbMedida;
+INSERT INTO tbMedida (medidaLM35, medidaMQ2,dataHoraSensor, fkTanque) VALUES  
+(10.7, 50, now(), 3),
+(25.7, 50, now(), 3),
+(20.7, 60, now(), 3),
+(30.7, 50, now(), 3),
+(20.7, 70, now(), 3),
+(29.7, 50, now(), 3),
+(35, 50, now(), 3);
+
+INSERT INTO tbMedida (medidaLM35, medidaMQ2, dataHoraSensor, fkTanque) VALUES  
+(15.3, 40, now(), 4),
+(22.5, 55, now(), 4),
+(19.2, 60, now(), 4),
+(19.2, 60, now(), 4),
+(30.8, 45, now(), 4),
+(30.8, 45, now(), 4),
+(25.0, 50, now(), 4);
+
 
 
  SELECT medidaLM35 AS Temperatura, medidaMQ2 as co2 FROM tbMedida WHERE fkTanque = 1  ORDER BY idMedidaSensor DESC LIMIT 1;
@@ -283,6 +278,66 @@ JOIN
     tbTipoVinho AS tipovinho ON tanque.fkTipoVinho = tipovinho.idTipoVinho;
 SELECT * FROM tbEmpresa;
 
+SELECT
+	idEmpresa,
+	idTanque,
+    fkTipoVinho,
+    nomeVinho,
+	metricaTemperaturaPerigoMin AS temperaturaMinPerigo,
+	metricaTemperaturaPerigoMax AS temperauraPerigoMax,
+	metricaTemperaturaCriticoMin AS temperaturaCriticoMin,
+	metricaTemperaturaCriticoMax AS temperaturaCriticoMax,
+	metricaCO2PerigoMin AS CO2PerigoMin,
+	metricaCO2PerigoMax AS CO2PerigoMax,
+	metricaCO2CriticoMin AS CO2CriticoMin,
+	metricaCO2CriticoMax AS CO2CriticoMax
+FROM
+    tbTanque
+JOIN
+	tbEmpresa
+    on fkEmpresa = idEmpresa
+JOIN
+	tbTipoVinho
+    on fkTipoVinho = idTipoVinho
+where
+	fkEmpresa = 1;
+    
+SELECT
+	idTanque,
+    nomeVinho,
+    fkEmpresa
+FROM
+    tbTanque
+JOIN
+	tbEmpresa
+    on fkEmpresa = idEmpresa
+JOIN
+	tbTipoVinho
+    on fkTipoVinho = idTipoVinho
+where
+	fkEmpresa = 1;
 
-
-
+SELECT
+	medidaLM35 as temperatura,
+	medidaMQ2 as co2,
+    dataHoraSensor as momento_grafico,
+	metricaTemperaturaPerigoMin AS temperaturaMinPerigo,
+	metricaTemperaturaPerigoMax AS temperauraPerigoMax,
+	metricaTemperaturaCriticoMin AS temperaturaCriticoMin,
+	metricaTemperaturaCriticoMax AS temperaturaCriticoMax,
+	metricaCO2PerigoMin AS CO2PerigoMin,
+	metricaCO2CriticoMin AS CO2CriticoMin
+FROM
+    tbTanque
+JOIN
+	tbEmpresa
+    on fkEmpresa = idEmpresa
+JOIN
+	tbTipoVinho
+    on fkTipoVinho = idTipoVinho
+JOIN
+	tbMedida
+    on fkTanque = idTanque
+where
+	idTanque = 13
+ORDER BY idMedidaSensor DESC LIMIT 7;
