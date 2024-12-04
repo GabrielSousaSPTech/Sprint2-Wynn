@@ -104,13 +104,13 @@
         </div>
         <div class="menu-box">
             <h2>MENU</h2>
-            <a href="./dashboard.html">
+            <a href="./dashboard.html" name="a_botao_menu">
                 <div class="menu-item">Dashboard</div>
             </a>
-            <a href="./tanque.html">
+            <a href="./tanque.html" name="a_botao_menu">
                 <div class="menu-item">Tanque</div>
             </a>
-            <a href="./tipos_vinho.html">
+            <a href="./tipos_vinho.html" name="a_botao_menu">
                 <div class="menu-item">Métrica</div>
             </a>
             <div class="item-logout">
@@ -212,8 +212,17 @@
 
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
+    if(sessionStorage.FUNCIONARIO) {
+        desabilitarBotoes()
+    }
 
+    function desabilitarBotoes () {
+        const botoesMenu = document.getElementsByName('a_botao_menu')
 
+        botoesMenu.forEach(botao => {
+            botao.style.display = 'none'
+        });
+    }
 
     let proximaAtualizacao;
 
