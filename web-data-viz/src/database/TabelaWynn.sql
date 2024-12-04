@@ -2,7 +2,6 @@ create database dbWynn;
 -- drop database dbWynn;
 USE dbWynn;
 
-
 CREATE TABLE tbAdministrador (
 	idAdministrador INT PRIMARY KEY AUTO_INCREMENT,
     nomeAdministrador VARCHAR(45),
@@ -102,7 +101,10 @@ VALUES
 
 
 CREATE TABLE tbTipoVinho(
-	idTipoVinho INT PRIMARY KEY AUTO_INCREMENT,
+	idTipoVinho INT AUTO_INCREMENT,
+    fkEmpresa INT,
+    CONSTRAINT fkVinho_Empresa FOREIGN KEY (fkEmpresa) REFERENCES tbEmpresa(idEmpresa),
+	CONSTRAINT pkComposta PRIMARY KEY (idTipoVinho, fkEmpresa),
 	nomeVinho VARCHAR(45),
     metricaTemperaturaCriticoMin DECIMAL (4,2),
 	metricaTemperaturaPerigoMin DECIMAL (4,2),
@@ -111,10 +113,10 @@ CREATE TABLE tbTipoVinho(
 );
 
 INSERT INTO tbTipoVinho VALUES
-	(default ,'Tinto', 16, 20, 30, 34),
-    (default ,'Branco', 8, 12, 22, 26),
-    (default ,'Rose', 6, 10, 20, 24),
-    (default ,'Frisanste', 8, 12, 18, 22); 
+	(default, 1, 'Tinto', 16, 20, 30, 34),
+    (default, 1, 'Branco', 8, 12, 22, 26),
+    (default, 1, 'Rose', 6, 10, 20, 24),
+    (default, 1, 'Frisante', 8, 12, 18, 22); 
 
 
 CREATE TABLE tbTanque (

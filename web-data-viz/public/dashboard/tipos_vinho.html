@@ -50,8 +50,6 @@
                             <th class="titulo-cabecalho">Nome</th>
                             <th class="titulo-cabecalho">Temp. Perigo</th>
                             <th class="titulo-cabecalho">Temp. Crítica</th>
-                            <th class="titulo-cabecalho"> CO<sub>2</sub> Perigo</th>
-                            <th class="titulo-cabecalho">CO<sub>2</sub> Crítico</th>
                             <th>&nbsp;</th>
                             <th>&nbsp;</th>
                         </tr>
@@ -62,8 +60,6 @@
                             <td>Tinto</td>
                             <td>&downarrow;20°C | &uparrow;30°C</td>
                             <td>&downarrow;10°C | &uparrow;40°C</td>
-                            <td>&downarrow;40% | &uparrow;80%</td>
-                            <td>&downarrow;30% | &uparrow;90%</td>
                             <td class="tabela-icone">
                                 <button class="botao-tabela" onclick="exibirOcultarMenu('editar', 1)">
                                     <img src="../assets/icons/icon_gear.png">
@@ -87,12 +83,18 @@
             </section>
 
         </div>
+
         <aside id="aside_menu_editar" class="janela menu" style="display: none;">
             <h2>
-                Configurar métricas do tipo <span id="span_id_tanque">0</span>
+                Atualizar métricas do tipo <span id="span_id_vinho_editar">0</span>
             </h2>
 
             <form>
+                <div class="campo">
+                    <p>Nome:</p>
+                    <input id="nome_tipo">
+                </div>
+
                 <div class="campo">
                     <p>Temperaturas de Perigo:</p>
                     <div>
@@ -108,22 +110,6 @@
                         <div>&uparrow;<input type="number" id="temp_critica_max" placeholder="Max. (em °C)"></div>
                     </div>
                 </div>
-
-                <div class="campo">
-                    <p>CO<sub>2</sub> Perigo:</p>
-                    <div>
-                        <div>&downarrow;<input type="number" id="co2_perigo_min" placeholder="Min. (em %)"></div>
-                        <div>&uparrow;<input type="number" id="co2_perigo_max" placeholder="Max. (em %)"></div>
-                    </div>
-                </div>
-
-                <div class="campo">
-                    <p>CO<sub>2</sub> Crítico:</p>
-                    <div>
-                        <div>&downarrow;<input type="number" id="co2_critica_min" placeholder="Min. (em %)"></div>
-                        <div>&uparrow;<input type="number" id="co2_critica_max" placeholder="Max. (em %)"></div>
-                    </div>
-                </div>
             </form>
 
             <div>
@@ -133,6 +119,21 @@
 
                 <button onclick="exibirOcultarMenu('editar')">
                     Voltar
+                </button>
+            </div>
+        </aside>
+
+        <aside id="aside_menu_excluir" class="janela menu" style="display: none;">
+            <h2>Excluindo o vinho <span id="span_id_vinho_excluir">0</span></h2>
+            <p>Tem certeza que deseja excluir?</p>
+
+            <div>
+                <button onclick="deletarVinho()">
+                    Sim
+                </button>
+                
+                <button onclick="exibirOcultarMenu('excluir', true)">
+                    Não
                 </button>
             </div>
         </aside>
@@ -160,22 +161,6 @@
                     <div>
                         <div>&downarrow;<input type="number" id="add_temp_critica_min" placeholder="Min. (em °C)"></div>
                         <div>&uparrow;<input type="number" id="add_temp_critica_max" placeholder="Max. (em °C)"></div>
-                    </div>
-                </div>
-
-                <div class="campo">
-                    <p>CO<sub>2</sub> Perigo:</p>
-                    <div>
-                        <div>&downarrow;<input type="number" id="add_co2_perigo_min" placeholder="Min. (em %)"></div>
-                        <div>&uparrow;<input type="number" id="add_co2_perigo_max" placeholder="Max. (em %)"></div>
-                    </div>
-                </div>
-
-                <div class="campo">
-                    <p>CO<sub>2</sub> Crítico:</p>
-                    <div>
-                        <div>&downarrow;<input type="number" id="add_co2_critica_min" placeholder="Min. (em %)"></div>
-                        <div>&uparrow;<input type="number" id="add_co2_critica_max" placeholder="Max. (em %)"></div>
                     </div>
                 </div>
             </form>
