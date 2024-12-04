@@ -5,17 +5,17 @@ function buscarAquariosPorEmpresa(empresaId) {
   var instrucaoSql = `SELECT
                         idTanque as id,
                           nomeTanque as descricao,
-                          fkEmpresa as fk_empresa
+                          tbTanque.fkEmpresa as fk_empresa
                       FROM
                           tbTanque
                       JOIN
                         tbEmpresa
-                          on fkEmpresa = idEmpresa
+                          on tbTanque.fkEmpresa = idEmpresa
                       JOIN
                         tbTipoVinho
                           on fkTipoVinho = idTipoVinho
                       where
-                        fkEmpresa = ${empresaId} and statusTanque = 'ativo'`;
+                        tbTanque.fkEmpresa = ${empresaId} and statusTanque = 'ativo'`;
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);

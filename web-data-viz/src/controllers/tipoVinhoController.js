@@ -1,7 +1,9 @@
 var tipoVinhoModel = require("../models/tipoVinhoModel")
 
 function obterTiposVinho(req, res) {
-    tipoVinhoModel.obterTiposVinho().then(function (resposta) {
+    const idEmpresa = req.params.idEmpresa
+
+    tipoVinhoModel.obterTiposVinho(idEmpresa).then(function (resposta) {
         console.log(resposta)
         console.log('NO CONTROLLER ' + resposta.length)
         if (resposta.length > 0) {
@@ -16,19 +18,15 @@ function obterTiposVinho(req, res) {
 }
 
 function atualizarMetricas(req, res) {
-    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    var idTipoVinho = req.body.idTipoVinhoServer;
-    var tempPerMin = req.body.tempPerMinServer;
-    var tempPerMax = req.body.tempPerMaxServer;
-    var tempCritMin = req.body.tempCritMinServer;
-    var tempCritMax = req.body.tempCritMaxServer;
-    var co2PerMin = req.body.co2PerMinServer;
-    var co2PerMax = req.body.co2PerMaxServer;
-    var co2CritMin = req.body.co2CritMinServer;
-    var co2CritMax = req.body.co2CritMaxServer;
+    const idVinho = req.body.idVinho;
+    const nome = req.body.nome
+    const tempPerMin = req.body.tempPerMin;
+    const tempPerMax = req.body.tempPerMax;
+    const tempCritMin = req.body.tempCritMin;
+    const tempCritMax = req.body.tempCritMax;
 
     // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-    tipoVinhoModel.atualizarMetricas(idTipoVinho, tempPerMin, tempPerMax, tempCritMin, tempCritMax, co2PerMin, co2PerMax, co2CritMin, co2CritMax)
+    tipoVinhoModel.atualizarMetricas(idVinho, nome, tempPerMin, tempPerMax, tempCritMin, tempCritMax)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -46,19 +44,15 @@ function atualizarMetricas(req, res) {
 }
 
 function adicionarTipoVinho(req, res) {
-    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    var nome = req.body.nomeServer;
-    var tempPerMin = req.body.tempPerMinServer;
-    var tempPerMax = req.body.tempPerMaxServer;
-    var tempCritMin = req.body.tempCritMinServer;
-    var tempCritMax = req.body.tempCritMaxServer;
-    var co2PerMin = req.body.co2PerMinServer;
-    var co2PerMax = req.body.co2PerMaxServer;
-    var co2CritMin = req.body.co2CritMinServer;
-    var co2CritMax = req.body.co2CritMaxServer;
+    const idEmpresa = req.body.idEmpresa
+    const nome = req.body.nome;
+    const tempPerMin = req.body.tempPerMin;
+    const tempPerMax = req.body.tempPerMax;
+    const tempCritMin = req.body.tempCritMin;
+    const tempCritMax = req.body.tempCritMax;
 
     // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-    tipoVinhoModel.adicionarTipoVinho(nome, tempPerMin, tempPerMax, tempCritMin, tempCritMax, co2PerMin, co2PerMax, co2CritMin, co2CritMax)
+    tipoVinhoModel.adicionarTipoVinho(idEmpresa, nome, tempPerMin, tempPerMax, tempCritMin, tempCritMax)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -76,7 +70,8 @@ function adicionarTipoVinho(req, res) {
 }
 
 function deletarVinho(req, res) {
-    var idTipo = req.params.idTipo
+    const idTipo = req.params.idTipo
+
     tipoVinhoModel.deletarVinho(idTipo).then(function (resposta) {
         console.log(resposta)
         res(resposta)

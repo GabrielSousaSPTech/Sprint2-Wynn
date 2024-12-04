@@ -3,7 +3,7 @@ var router = express.Router();
 
 var tipoVinhoController = require("../controllers/tipoVinhoController");
 
-router.get("/listar", function (req, res) {
+router.get("/listar/:idEmpresa", function (req, res) {
     tipoVinhoController.obterTiposVinho(req, res);
 })
 

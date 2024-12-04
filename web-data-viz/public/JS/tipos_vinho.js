@@ -1,9 +1,9 @@
 function obterDados() {
-    fetch(`/tipoVinho/listar`).then(function (resposta) {
+    fetch(`/tipoVinho/listar/${sessionStorage.ID_USUARIO}`).then(function (resposta) {
         if (resposta.ok) {
             resposta.json().then(function (res) {
                 exibirLista(res)
-                localStorage.dados = JSON.stringify(res)
+                localStorage.vinhos = JSON.stringify(res)
                 console.log(res)
             }).catch(function () {
             })
@@ -15,24 +15,21 @@ function obterDados() {
 
 function exibirLista(dadosVinho) {
     tbody.innerHTML = ""
-    console.log(dadosVinho)
+
     var posLocalStorage = -1
 
     for (var json = 0;
         json < dadosVinho.length;
         json++
     ) {
-        var jsonAtual = dadosVinho[json]
-        var idTipo = jsonAtual.idTipoVinho
-        var nome = jsonAtual.nomeVinho
-        var tempPerigoMin = parseInt(jsonAtual.metricaTemperaturaPerigoMin)
-        var tempPerigoMax = parseInt(jsonAtual.metricaTemperaturaPerigoMax)
-        var tempCritMin = parseInt(jsonAtual.metricaTemperaturaCriticoMin)
-        var tempCritMax = parseInt(jsonAtual.metricaTemperaturaCriticoMax)
-        var co2PerigoMin = parseInt(jsonAtual.metricaCO2PerigoMin)
-        var co2PerigoMax = parseInt(jsonAtual.metricaCO2PerigoMax)
-        var co2CritMin = parseInt(jsonAtual.metricaCO2CriticoMin)
-        var co2CritMax = parseInt(jsonAtual.metricaCO2CriticoMax)
+        const jsonAtual = dadosVinho[json]
+
+        const idTipo = jsonAtual.idTipoVinho
+        const nome = jsonAtual.nomeVinho
+        const tempPerigoMin = parseInt(jsonAtual.metricaTemperaturaPerigoMin)
+        const tempPerigoMax = parseInt(jsonAtual.metricaTemperaturaPerigoMax)
+        const tempCritMin = parseInt(jsonAtual.metricaTemperaturaCriticoMin)
+        const tempCritMax = parseInt(jsonAtual.metricaTemperaturaCriticoMax)
 
         posLocalStorage++
 
@@ -42,15 +39,13 @@ function exibirLista(dadosVinho) {
                     <td>${nome}</td>
                     <td>&downarrow;${tempPerigoMin}°C | &uparrow;${tempPerigoMax}°C</td>
                     <td>&downarrow;${tempCritMin}°C | &uparrow;${tempCritMax}°C</td>
-                    <td>&downarrow;${co2PerigoMin}% | &uparrow;${co2PerigoMax}%</td>
-                    <td>&downarrow;${co2CritMin}% | &uparrow;${co2CritMax}%</td>
                     <td class="tabela-icone">
-                        <button class="botao-tabela" onclick="exibirOcultarMenu('editar', ${posLocalStorage})">
+                        <button class="botao-tabela" onclick="exibirOcultarMenu('editar', false, ${posLocalStorage})">
                             <img src="../assets/icons/icon_gear.png">
                         </button>
                         </td>
                     <td class="tabela-icone">
-                        <button onclick="deletarVinho(${idTipo})" class="botao-tabela">
+                        <button class="botao-tabela" onclick="exibirOcultarMenu('excluir', false, ${posLocalStorage})">
                             <img src="../assets/icons/icon_trashcan.png">
                         </button>
                     </td>
@@ -59,48 +54,44 @@ function exibirLista(dadosVinho) {
     }
 }
 
-var atualizacaoIdTipoVinho = 0
+var idVinhoEditar = undefined
 
-
-function exibirOcultarMenu(nome = '', idTanque = undefined) {
+function exibirOcultarMenu(nomeMenu = '', voltar = false, pos = -1) {
     div_janela_tabela.style.display = div_janela_tabela.style.display == 'flex' ? 'none' : 'flex'
 
-
-    const menu = document.getElementById(`aside_menu_${nome}`)
+    const menu = document.getElementById(`aside_menu_${nomeMenu}`)
     menu.style.display = menu.style.display == 'none' ? 'flex' : 'none'
 
-    if (idTanque != undefined) {
-        var listaTipoVinhos = JSON.parse(localStorage.dados)
-        var tipoVinhoAtual = listaTipoVinhos[idTanque]
-        var idTipoVinhoAtual = tipoVinhoAtual.idTipoVinho
-        atualizacaoIdTipoVinho = idTipoVinhoAtual
+    if (!voltar) {
+        if (pos != -1 && (nomeMenu == 'editar' || nomeMenu == 'excluir')) {
+            const vinhoSelecionado = JSON.parse(localStorage.vinhos)[pos]
+     
+            const idSelecionado = vinhoSelecionado.idTipoVinho
+            idVinhoEditar = idSelecionado
 
+            const spanId = document.getElementById(`span_id_vinho_${nomeMenu}`)
+            spanId.innerText = idSelecionado
 
-        span_id_tanque.innerText = idTipoVinhoAtual
-
-        temp_perigo_min.value = tipoVinhoAtual.metricaTemperaturaPerigoMin
-        temp_perigo_max.value = tipoVinhoAtual.metricaTemperaturaPerigoMax
-        temp_critica_min.value = tipoVinhoAtual.metricaTemperaturaCriticoMin
-        temp_critica_max.value = tipoVinhoAtual.metricaTemperaturaCriticoMax
-        co2_perigo_min.value = tipoVinhoAtual.metricaCO2PerigoMin
-        co2_perigo_max.value = tipoVinhoAtual.metricaCO2PerigoMax
-        co2_critica_min.value = tipoVinhoAtual.metricaCO2CriticoMin
-        co2_critica_max.value = tipoVinhoAtual.metricaCO2CriticoMax
-
+            if (nomeMenu == 'editar') {
+                nome_tipo.value = vinhoSelecionado.nomeVinho
+                temp_perigo_min.value = vinhoSelecionado.metricaTemperaturaPerigoMin
+                temp_perigo_max.value = vinhoSelecionado.metricaTemperaturaPerigoMax
+                temp_critica_min.value = vinhoSelecionado.metricaTemperaturaCriticoMin
+                temp_critica_max.value = vinhoSelecionado.metricaTemperaturaCriticoMax
+            }
+        }
     } else {
+        editarTipoVinho = undefined
         obterDados()
     }
 }
 
 function atualizarMetricas() {
-    var tempPerMin = Number(temp_perigo_min.value)
-    var tempPerMax = Number(temp_perigo_max.value)
-    var tempCritMin = Number(temp_critica_min.value)
-    var tempCritMax = Number(temp_critica_max.value)
-    var co2PerMin = Number(co2_perigo_min.value)
-    var co2PerMax = Number(co2_perigo_max.value)
-    var co2CritMin = Number(co2_critica_min.value)
-    var co2CritMax = Number(co2_critica_max.value)
+    const nome = nome_tipo.value
+    const tempPerMin = Number(temp_perigo_min.value)
+    const tempPerMax = Number(temp_perigo_max.value)
+    const tempCritMin = Number(temp_critica_min.value)
+    const tempCritMax = Number(temp_critica_max.value)
 
     fetch("/tipoVinho/atualizar", {
         method: "PUT",
@@ -108,39 +99,29 @@ function atualizarMetricas() {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            // crie um atributo que recebe o valor recuperado aqui
-            // Agora vá para o arquivo routes/usuario.js
-            idTipoVinhoServer: atualizacaoIdTipoVinho,
-            tempPerMinServer: tempPerMin,
-            tempPerMaxServer: tempPerMax,
-            tempCritMinServer: tempCritMin,
-            tempCritMaxServer: tempCritMax,
-            co2PerMinServer: co2PerMin,
-            co2PerMaxServer: co2PerMax,
-            co2CritMinServer: co2CritMin,
-            co2CritMaxServer: co2CritMax
-        }),
+            idVinho: idVinhoEditar,
+            nome: nome,
+            tempPerMin: tempPerMin,
+            tempPerMax: tempPerMax,
+            tempCritMin: tempCritMin,
+            tempCritMax: tempCritMax
+        })
     })
         .then(function (resposta) {
-            console.log(resposta);
-
-        })
-        .catch(function (resposta) {
+            if(resposta.ok) {
+                alert('Vinho atualizado com sucesso')
+            }
+        }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
-            //   finalizarAguardar();
         });
 }
 
 function adicionarTipoVinho() {
-    var nome = add_nome_tipo.value
-    var tempPerMin = Number(add_temp_perigo_min.value)
-    var tempPerMax = Number(add_temp_perigo_max.value)
-    var tempCritMin = Number(add_temp_critica_min.value)
-    var tempCritMax = Number(add_temp_critica_max.value)
-    var co2PerMin = Number(add_co2_perigo_min.value)
-    var co2PerMax = Number(add_co2_perigo_max.value)
-    var co2CritMin = Number(add_co2_critica_min.value)
-    var co2CritMax = Number(add_co2_critica_max.value)
+    const nome = add_nome_tipo.value
+    const tempPerMin = Number(add_temp_perigo_min.value)
+    const tempPerMax = Number(add_temp_perigo_max.value)
+    const tempCritMin = Number(add_temp_critica_min.value)
+    const tempCritMax = Number(add_temp_critica_max.value)
 
     fetch("/tipoVinho/cadastrar", {
         method: "POST",
@@ -148,17 +129,12 @@ function adicionarTipoVinho() {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            // crie um atributo que recebe o valor recuperado aqui
-            // Agora vá para o arquivo routes/usuario.js
-            nomeServer: nome,
-            tempPerMinServer: tempPerMin,
-            tempPerMaxServer: tempPerMax,
-            tempCritMinServer: tempCritMin,
-            tempCritMaxServer: tempCritMax,
-            co2PerMinServer: co2PerMin,
-            co2PerMaxServer: co2PerMax,
-            co2CritMinServer: co2CritMin,
-            co2CritMaxServer: co2CritMax
+            idEmpresa: sessionStorage.ID_USUARIO,
+            nome: nome,
+            tempPerMin: tempPerMin,
+            tempPerMax: tempPerMax,
+            tempCritMin: tempCritMin,
+            tempCritMax: tempCritMax
         }),
     })
         .then(function (resposta) {
@@ -171,8 +147,8 @@ function adicionarTipoVinho() {
         });
 }
 
-function deletarVinho(idTipo) {
-    fetch(`/tipoVinho/deletar/${idTipo}`, {
+function deletarVinho() {
+    fetch(`/tipoVinho/deletar/${idVinhoEditar}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json"
@@ -184,8 +160,8 @@ function deletarVinho(idTipo) {
         console.log('Erro ao exibir kpi ' + erro)
     })
 
-    setTimeout(function() {
+    setTimeout(function () {
         obterDados()
-    }, 1000)  
+    }, 1000)
 
 }

@@ -1,47 +1,37 @@
 var database = require("../database/config")
 
-function obterTiposVinho() {
+function obterTiposVinho(idEmpresa) {
 
     var instrucaoSql = `
-        SELECT * FROM tbTipoVinho;
+        SELECT * FROM tbTipoVinho
+            WHERE fkEmpresa = ${idEmpresa}
+                order by idTipoVinho;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
 function atualizarMetricas(
-    idTipoVinho, tempPerMin, tempPerMax, tempCritMin, tempCritMax,
-    co2PerMin, co2PerMax, co2CritMin, co2CritMax
+    idVinho, nome, tempPerMin, tempPerMax, tempCritMin, tempCritMax
 ) {
 
     var instrucaoSql = `
         UPDATE tbTipoVinho
-	        SET metricaTemperaturaPerigoMin = ${tempPerMin}, metricaTemperaturaPerigoMax = ${tempPerMax},
-			        metricaTemperaturaCriticoMin = ${tempCritMin}, metricaTemperaturaCriticoMax = ${tempCritMax},
-				        metricaCO2PerigoMin = ${co2PerMin}, metricaCO2PerigoMax = ${co2PerMax},
-					        metricaCO2CriticoMin = ${co2CritMin}, metricaCO2CriticoMax = ${co2CritMax}
-						     WHERE idTipoVinho = ${idTipoVinho};
+	        SET nomeVinho = '${nome}', 
+            metricaTemperaturaPerigoMin = ${tempPerMin}, metricaTemperaturaPerigoMax = ${tempPerMax},
+			metricaTemperaturaCriticoMin = ${tempCritMin}, metricaTemperaturaCriticoMax = ${tempCritMax}
+				WHERE idTipoVinho = ${idVinho};
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
 function adicionarTipoVinho(
-    nome, tempPerMin, tempPerMax, tempCritMin, tempCritMax,
-    co2PerMin, co2PerMax, co2CritMin, co2CritMax
+    idEmpresa, nome, tempPerMin, tempPerMax, tempCritMin, tempCritMax
 ) {
     var instrucaoSql = `
-        INSERT INTO tbTipoVinho (nomeVinho, 
-        metricaTemperaturaPerigoMin, 
-        metricaTemperaturaPerigoMax, 
-        metricaTemperaturaCriticoMin, 
-        metricaTemperaturaCriticoMax, 
-        metricaCO2PerigoMin, 
-        metricaCO2PerigoMax, 
-        metricaCO2CriticoMin, 
-        metricaCO2CriticoMax) 
-        VALUES
-	        ('${nome}', ${tempPerMin}, ${tempPerMax}, ${tempCritMin}, ${tempCritMax}, ${co2PerMin}, ${co2PerMax}, ${co2CritMin}, ${co2CritMax})`;
+        INSERT INTO tbTipoVinho VALUE
+	        (default, ${idEmpresa}, '${nome}', ${tempPerMin}, ${tempPerMax}, ${tempCritMin}, ${tempCritMax})`;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }

@@ -9,9 +9,7 @@ function buscarUltimasMedidas(idAquario, limite_linhas) {
                             metricaTemperaturaPerigoMin AS temperaturaMinPerigo,
                             metricaTemperaturaPerigoMax AS temperauraPerigoMax,
                             metricaTemperaturaCriticoMin AS temperaturaCriticoMin,
-                            metricaTemperaturaCriticoMax AS temperaturaCriticoMax,
-                            metricaCO2PerigoMin AS CO2PerigoMin,
-                            metricaCO2CriticoMin AS CO2CriticoMin
+                            metricaTemperaturaCriticoMax AS temperaturaCriticoMax
                         FROM
                             tbTanque
                         JOIN
@@ -41,9 +39,7 @@ function buscarMedidasEmTempoReal(idAquario) {
                             metricaTemperaturaPerigoMin AS temperaturaMinPerigo,
                             metricaTemperaturaPerigoMax AS temperauraPerigoMax,
                             metricaTemperaturaCriticoMin AS temperaturaCriticoMin,
-                            metricaTemperaturaCriticoMax AS temperaturaCriticoMax,
-                            metricaCO2PerigoMin AS CO2PerigoMin,
-                            metricaCO2CriticoMin AS CO2CriticoMin
+                            metricaTemperaturaCriticoMax AS temperaturaCriticoMax
                         FROM
                             tbTanque
                         JOIN
