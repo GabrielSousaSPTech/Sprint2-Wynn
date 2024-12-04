@@ -31,9 +31,17 @@ function adicionarTipoVinho(
     co2PerMin, co2PerMax, co2CritMin, co2CritMax
 ) {
     var instrucaoSql = `
-        INSERT INTO tbTipoVinho VALUES
-	        (default, '${nome}', ${tempPerMin}, ${tempPerMax}, ${tempCritMin}, ${tempCritMax}, ${co2PerMin}, ${co2PerMax}, ${co2CritMin}, ${co2CritMax});
-    `;
+        INSERT INTO tbTipoVinho (nomeVinho, 
+        metricaTemperaturaPerigoMin, 
+        metricaTemperaturaPerigoMax, 
+        metricaTemperaturaCriticoMin, 
+        metricaTemperaturaCriticoMax, 
+        metricaCO2PerigoMin, 
+        metricaCO2PerigoMax, 
+        metricaCO2CriticoMin, 
+        metricaCO2CriticoMax) 
+        VALUES
+	        ('${nome}', ${tempPerMin}, ${tempPerMax}, ${tempCritMin}, ${tempCritMax}, ${co2PerMin}, ${co2PerMax}, ${co2CritMin}, ${co2CritMax})`;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }

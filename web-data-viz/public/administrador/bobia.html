@@ -4,25 +4,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/dasboard/styleDashboard.css">
+    <link rel="stylesheet" href="bobia.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <script defer src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" href="../css/dasboard/dash.css"> -->
     <title>BobIA</title>
 </head>
 
 <body onload="validarSessao()">
-    <div id="container"
-        style="width:100%; height:100%;; position: absolute; background-color: aqua; top: 30%; right: 10px;">
-        <center>
-            <h1>BobIA</h1>
-            <textarea id="pergunta" type="text" placeholder="Digite a pergunta..."></textarea>
-            <br><br>
-            <button onclick="gerarResposta()">Gerar Resposta</button>
+    
+    <header class="header-dashboard">
+        <img class="logoWynn" src="../assets/imgs/logoWynn.png" alt="">
+        <a onclick="limparSessao()" style="cursor: pointer;">
+            <img src="../assets/icons/log-out.png" class="iconLogout" alt="">
+            <span>Sair</span>
+        </a>
+    </header>
+<section class="sessaoIA">
+    <div class="containerDados">
+        <h1 class="titulo">Olá, <span id="nome_usuario"> </span></h1>
+    </div>
+
+    <img src="../assets/icons/bob_camisa.png" onclick="interagirIA()" class="iconBobIA show" id="btnIA" >
+    
+    <div id="containerBobIa" class="bobIA">
+        <div class="headerBobIa">
+            <div class="boxIconHeader">
+                <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+                    <img src="../assets/icons/bob_camisa.png"  class="iconHeader">
+                    <h1>BobIA</h1>
+                </div>
+                <i class="fa-regular fa-circle-xmark fa-3x " onclick="interagirIA()"></i>
+            </div>
+            
+        </div>
+        <div class="boxIA">
+            
+            
             <h3>Resposta da IA:</h3>
             <div id="resposta"></div>
-        </center>
+            <div class="formularioIA">
+                <textarea id="pergunta" type="text" placeholder="Digite a pergunta..." cols="50" rows="5"></textarea>
+                
+                <button id="gerarResposta" onclick="gerarResposta()">Gerar Resposta</button>
+            </div>
+        </div>
+        
     </div>
+    
+</section>
+    
+    
 </body>
 
 </html>
 <script>
+    nome_usuario.innerText += sessionStorage.NOME_USUARIO
+    function interagirIA(){
+        const containerIA =  document.getElementById('containerBobIa');
+        const btnIA = document.getElementById('btnIA')
+        
+            containerIA.classList.toggle('show')
+            btnIA.classList.toggle('show')
+
+        btnIA.style.display = displayBotao
+    }
+
     async function gerarResposta() {
         const pergunta = document.getElementById('pergunta').value;
 
@@ -42,3 +90,4 @@
 
 </script>
 <script src="../JS/sessao.js"></script>
+<script src="../JS/sidebar.js"></script>
