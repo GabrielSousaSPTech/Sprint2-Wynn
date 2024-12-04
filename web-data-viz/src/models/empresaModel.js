@@ -22,7 +22,7 @@ async function cadastrar(nome, cnpj, email, senha, chaveAtivacao, telefone, auto
 
   var instrucaoSql = `INSERT INTO tbEmpresa 
   (nomeEmpresa, cnpjEmpresa, emailEmpresa, senhaEmpresa, chaveAtivacaoEmpresa, telEmpresa, autorizacaoEmpresa) 
-  VALUES ('${nome}',  '${cnpj}', '${email}', '${senha}', '${chaveAtivacao}', '${telefone}', ${autorizacao});`;
+  VALUES ('${nome}',  '${cnpj}', '${email}', MD5('${senha}'), '${chaveAtivacao}', '${telefone}', ${autorizacao});`;
 
 
   var resultadoQuery = await database.executar(instrucaoSql)
