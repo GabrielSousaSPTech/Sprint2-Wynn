@@ -60,19 +60,12 @@ const serial = async (
 
         // insere os dados no banco de dados (se habilitado)
         if (HABILITAR_OPERACAO_INSERIR) {
-            const idSensor = [2, 1]
-
 
             // este insert irá inserir os dados na tabela "medida"
-
-            for (i = 0; i < idSensor.length; i++) {
-
-                const medidaSensor = parseFloat(valores[i])
-                await poolBancoDados.execute(
-                    'INSERT INTO tbMedidaSensor (fkSensor, medidaSensor) VALUES (?, ?)',
-                    [idSensor[i], medidaSensor]
-                );
-            }
+            await poolBancoDados.execute(
+                'INSERT INTO tbMedida (medidaMQ2, medidaLM35,fkTanque) VALUES (?, ?, 1)',
+                [parseFloat(valoresSensorMQ2), parseFloat(valoresSensorLM35)]
+            );
             console.log("valores inseridos no banco: ", sensorMQ2 + ", " + sensorLM35);
 
         }
