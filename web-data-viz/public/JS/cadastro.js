@@ -69,14 +69,15 @@ function cadastrarEmpresa() {
   const bairro = input_bairro.value;
   const cidade = input_cidade.value;
   const uf = select_uf.value;
-  const empresaAutorizada = false
+  const empresaAutorizada = true
+  const tipoEndereco = select_tipo_endereco.value
   var fraseDeSaida = ''
   var isEmail = false
 
   const chaveAtivacao = criarChaveAtivacao()
 
 
-  if (camposPreenchidos([nomeEmpresa, cnpjEmpresa, emailEmpresa, senhaEmpresa, confirmarSenha, cep, logradouro, numLogradouro, complemento, bairro, cidade, uf, empresaAutorizada, chaveAtivacao, telefoneEmpresa])) {
+  if (camposPreenchidos([nomeEmpresa, cnpjEmpresa, emailEmpresa, senhaEmpresa, confirmarSenha, cep, logradouro, numLogradouro, complemento, bairro, cidade, uf, empresaAutorizada, chaveAtivacao, telefoneEmpresa, tipoEndereco])) {
     var cepFormatado = cep.replace('-', '');
 
     if (cepFormatado.length == 8) {
@@ -101,7 +102,8 @@ function cadastrarEmpresa() {
           ufEmpresaServer: uf,
           numLogradouroEmpresaServer: numLogradouro,
           complementoEmpresaServer: complemento,
-          autorizacaoEmpresaServer: empresaAutorizada
+          autorizacaoEmpresaServer: empresaAutorizada,
+          tipoEnderecoServer: tipoEndereco
         }),
       })
     } else {

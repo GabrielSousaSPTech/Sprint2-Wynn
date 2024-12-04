@@ -18,7 +18,7 @@ function buscarPorCnpj(cnpj) {
   return database.executar(instrucaoSql);
 }
 
-async function cadastrar(nome, cnpj, email, senha, chaveAtivacao, telefone, autorizacao, cep, logradouro, bairro, cidade, uf, numLog, complemento) {
+async function cadastrar(nome, cnpj, email, senha, chaveAtivacao, telefone, autorizacao, cep, logradouro, bairro, cidade, uf, numLog, complemento, tipoEndereco) {
 
   var instrucaoSql = `INSERT INTO tbEmpresa 
   (nomeEmpresa, cnpjEmpresa, emailEmpresa, senhaEmpresa, chaveAtivacaoEmpresa, telEmpresa, autorizacaoEmpresa) 
@@ -27,15 +27,23 @@ async function cadastrar(nome, cnpj, email, senha, chaveAtivacao, telefone, auto
 
   var resultadoQuery = await database.executar(instrucaoSql)
 
-  var resultadoCadastroEndereco = await cadastrarEndereco(resultadoQuery.insertId, cep, logradouro, bairro, cidade, uf, numLog, complemento)
-  return resultadoQuery, resultadoCadastroEndereco;
+  var resultadoCadastroEndereco = await cadastrarEndereco(cep, logradouro, bairro, cidade, uf, numLog, complemento)
+
+  var resultadoAssociativaEnderecoEmpresa = await cadastrarEnderecoEmpresa(resultadoQuery.insertId, resultadoCadastroEndereco.insertId, tipoEndereco)
+  return resultadoQuery, resultadoCadastroEndereco, resultadoAssociativaEnderecoEmpresa;
 }
 
-async function cadastrarEndereco(fkEmpresa, cep, logradouro, bairro, cidade, uf, numLog, complemento) {
-  var instrucaoSql = `INSERT Endereco (fkEmpresa, cep, logradouro, bairro, cidade, uf, numero, complemento)
-                      VALUES ('${fkEmpresa}', '${cep}', '${logradouro}', '${bairro}', '${cidade}', '${uf}', '${numLog}', '${complemento}')`
+async function cadastrarEndereco(cep, logradouro, bairro, cidade, uf, numLog, complemento) {
+  var instrucaoSql = `INSERT Endereco (cep, logradouro, bairro, cidade, uf, numero, complemento)
+                      VALUES ('${cep}', '${logradouro}', '${bairro}', '${cidade}', '${uf}', '${numLog}', '${complemento}')`
+  return database.executar(instrucaoSql)
+}
+
+async function cadastrarEnderecoEmpresa(fkEmpresa, fkEndereco, tipoEndereco){
+  var instrucaoSql = `INSERT INTO tbEnderecoEmpresa(fkEmpresa, fkEndereco, tipoEndereco) VALUES
+    (${fkEmpresa}, ${fkEndereco}, '${tipoEndereco}')`
 
   return database.executar(instrucaoSql)
 }
 
-module.exports = { buscarPorCnpj, buscarPorId, cadastrar, listar };
+module.exports = { buscarPorCnpj, buscarPorId, cadastrar, listar, cadastrarEnderecoEmpresa };

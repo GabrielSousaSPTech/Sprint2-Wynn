@@ -13,23 +13,6 @@ CREATE TABLE tbAdministrador (
 insert into tbAdministrador (nomeAdministrador, emailAdministrador, senhaAdministrador) value
 ('Andrei Scafi', 'andrei@gmail.com', '123456A!');
 
-CREATE TABLE tbCategoriaRegistro (
-	idCategoriaRegistro INT PRIMARY KEY AUTO_INCREMENT,
-    nomeCategoria VARCHAR(45)
-);
-
-CREATE TABLE Registro (
-	idRegistro INT PRIMARY KEY AUTO_INCREMENT,
-    fkCategoria INT,
-    fkAdministrador INT,
-    FOREIGN KEY (fkCategoria) REFERENCES tbCategoriaRegistro (idCategoriaRegistro),
-	FOREIGN KEY (fkAdministrador) REFERENCES tbAdministrador (idAdministrador),
-    tituloRegistro VARCHAR(60) NOT NULL,
-    descricaoRegistro VARCHAR (800) NOT NULL,
-    prioridadeRegistro VARCHAR(45),
-    CONSTRAINT chkPrioridade CHECK (prioridadeRegistro IN ('Essencial', 'Importante', 'básico'))
-);
-
 
 CREATE TABLE tbEmpresa (
 	idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
@@ -42,21 +25,8 @@ CREATE TABLE tbEmpresa (
     autorizacaoEmpresa BOOLEAN NOT NULL
 );
 
-CREATE TABLE Endereco (
-	idEndereco INT AUTO_INCREMENT,
-    fkEmpresa INT,
-    CONSTRAINT pkEndereco PRIMARY KEY (idEndereco, fkEmpresa),
-    CONSTRAINT fkEnderecoEmpresa FOREIGN KEY (fkEmpresa) REFERENCES tbEmpresa (idEmpresa),
-	cep CHAR(9) NOT NULL,
-    logradouro VARCHAR(80),
-    bairro VARCHAR(80),
-    cidade VARCHAR(80),
-    uf CHAR(2),
-    numero VARCHAR(4) NOT NULL,
-    complemento VARCHAR (100)
-);
 
-/*
+
 CREATE TABLE Endereco (
 	idEndereco INT PRIMARY KEY AUTO_INCREMENT,
 	cep CHAR(9) NOT NULL,
@@ -68,14 +38,17 @@ CREATE TABLE Endereco (
     complemento VARCHAR (100)
 );
 
-CREATE TABLE tbEmpresaEndereco (
-fkEmpresa int,
-fkEndereco int,
-PRIMARY KEY (fkEmpresa, fkEndereco), 
-foreign key (fkEmpresa) references tbEmpresa (idEmpresa),
-foreign Key (fkEndereco) references Endereco (idEndereco)
+CREATE TABLE tbEnderecoEmpresa (
+	idEmpresa INT,
+    fkEmpresa INT,
+    fkEndereco INT,
+    PRIMARY KEY (idEmpresa, fkEmpresa, fkEndereco),
+    tipoEndereco VARCHAR(45),
+    CONSTRAINT chk_tipo_endereco CHECK (tipoEndereco IN('Escritório', 'Vinícola')),
+    CONSTRAINT fkEmpresa FOREIGN KEY (fkEmpresa) REFERENCES tbEmpresa (idEmpresa),
+    CONSTRAINT fkEndereco FOREIGN KEY (fkEndereco) REFERENCES Endereco (idEndereco)
 );
-*/
+
 
 
 INSERT INTO tbEmpresa (nomeEmpresa, cnpjEmpresa, emailEmpresa, senhaEmpresa, chaveAtivacaoEmpresa, telEmpresa, autorizacaoEmpresa) 

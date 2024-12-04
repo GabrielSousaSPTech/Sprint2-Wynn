@@ -37,8 +37,9 @@ function cadastrar(req, res) {
   var numLogEmpresa = req.body.numLogradouroEmpresaServer
   var complementoEmpresa = req.body.complementoEmpresaServer
   var autorizacaoEmpresa = req.body.autorizacaoEmpresaServer
+  var tipoEndereco = req.body.tipoEnderecoServer
 
-  empresaModel.cadastrar(nomeEmpresa, cnpjEmpresa, emailEmpresa, senhaEmpresa, chaveAtivacaoEmpresa, telefoneEmpresa, autorizacaoEmpresa, cepEmpresa, logEmpresa, bairroEmpresa, cidadeEmpresa, ufEmpresa, numLogEmpresa, complementoEmpresa)
+  empresaModel.cadastrar(nomeEmpresa, cnpjEmpresa, emailEmpresa, senhaEmpresa, chaveAtivacaoEmpresa, telefoneEmpresa, autorizacaoEmpresa, cepEmpresa, logEmpresa, bairroEmpresa, cidadeEmpresa, ufEmpresa, numLogEmpresa, complementoEmpresa, tipoEndereco)
     .then(
       function (resultado) {
         res.json(resultado);
