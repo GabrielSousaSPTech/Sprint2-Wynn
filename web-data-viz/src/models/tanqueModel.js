@@ -5,12 +5,13 @@ function obterTanquesEmpresa(idEmpresa) {
     const instrucaoSql = `
         select
             idTanque as id,
+            nomeTanque as nome,
             nomeVinho as tipo,
             fkTipoVinho as fk,
             statusTanque as atv
                 from tbTanque
                 join tbTipoVinho on fkTipoVinho = idTipoVinho
-                    where fkEmpresa = 1
+                    where fkEmpresa = ${idEmpresa}
                     order by idTanque;
     `;
 
@@ -18,10 +19,10 @@ function obterTanquesEmpresa(idEmpresa) {
     return database.executar(instrucaoSql);
 }
 
-function adicionarTanque(idEmpresa, idVinho, status) {
+function adicionarTanque(nome, idEmpresa, idVinho, status) {
     const instrucaoSql = `
-        INSERT INTO tbTanque (fkEmpresa, fkTipoVinho, statusTanque) VALUE 
-            (${idEmpresa}, ${idVinho}, '${status}');
+        INSERT INTO tbTanque (nomeTanque ,fkEmpresa, fkTipoVinho, statusTanque) VALUE 
+            ('${nome}', ${idEmpresa}, ${idVinho}, '${status}');
     `
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);

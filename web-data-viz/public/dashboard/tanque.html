@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/tabelas.css">
 </head>
 
-<body id="banner_tabela" onload="obterVinhos() , obterTanques()">
+<body id="banner_tabela" onload="obterVinhos(), obterTanques()">
     <div id="h-menu" class="hanburger-menu">
         <div class="menu-icon" onclick="mostrarMenu()">
             <div id="line-1" class="icon-line icon-line-1"></div>
@@ -44,6 +44,7 @@
                     <thead>
                         <tr>
                             <th class="titulo-cabecalho">#</th>
+                            <th class="titulo-cabecalho">Nome</th>
                             <th class="titulo-cabecalho">Tipo</th>
                             <th id="cabecalho_status" class="titulo-cabecalho">Status</th>
                             <th>&nbsp;</th>
@@ -53,6 +54,7 @@
                     <tbody id="tbody_lista">
                         <tr>
                             <th class="celula-numero">1</th>
+                            <td class="celula-nome">T-TINTO-1</td>
                             <td>Tinto</td>
                             <td class="celula-status ativo"><span>Ativo</span></td>
                             <td class="tabela-icone">
@@ -84,6 +86,11 @@
             </h2>
 
             <form>
+                <div class="campo">
+                    <p>Nome do tanque:</p>
+                    <input id="input_editar_nome_tanque" maxlength="8" placeholder="(Max. 8 caracteres)">
+                </div>
+
                 <div class="campo">
                     <p>Tipo de vinho:</p>
                     <select name="select_tipo_vinho" id="select_editar_tipo_vinho">
@@ -118,6 +125,11 @@
             </h2>
 
             <form>
+                <div class="campo">
+                    <p>Nome do tanque:</p>
+                    <input id="input_adicionar_nome_tanque" placeholder="(Max. 8 caracteres)">
+                </div>
+
                 <div class="campo">
                     <p>Tipo de vinho:</p>
                     <select name="select_tipo_vinho" id="select_adicionar_tipo_vinho">

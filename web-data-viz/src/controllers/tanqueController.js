@@ -17,12 +17,13 @@ function obterTanquesEmpresa(req,res){
 }
 
 function adicionarTanque(req, res) {
+    const nomeTanque = req.body.nomeTanque
     const idEmpresa = req.body.idEmpresa
     const idVinho = req.body.idVinho
     const status = req.body.status
 
-    tanqueModel.adicionarTanque(idEmpresa, idVinho, status).then(function () {
-        res.status(200)
+    tanqueModel.adicionarTanque(nomeTanque, idEmpresa, idVinho, status).then(function () {
+        res.status(200).send('show')
     }).catch(function (erro) {
         console.log(erro)
         res.status(403).send('Erro ao acessar o banco de dados ' + erro)

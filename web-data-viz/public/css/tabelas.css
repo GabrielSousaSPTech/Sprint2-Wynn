@@ -70,8 +70,12 @@ tbody tr:nth-child(2n) {
 }
 
 .tabela-lista .celula-numero {
-    width: 3.5rem;
+    width: 6rem;
     font-weight: normal;
+}
+
+.celula-nome {
+    width: 20rem;
 }
 
 .celula-status {
@@ -145,6 +149,8 @@ form {
 
 .campo {
     width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .campo div {
@@ -155,7 +161,6 @@ form {
 }
 
 .campo select, .campo input {
-    width: 100%;
     font-size: 2rem;
 }
 

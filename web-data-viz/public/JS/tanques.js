@@ -1,5 +1,5 @@
 function obterVinhos() {
-    fetch(`/tipoVinho/listar`).then(function (resposta) {
+    fetch('/tipoVinho/listar').then(function (resposta) {
         if (resposta.ok) {
             resposta.json().then(function (res) {
                 preencherSelectTipos(res)
@@ -47,6 +47,7 @@ function listarTanques(dados) {
 
     dados.forEach(tanque => {
         const id = tanque.id
+        const nome = tanque.nome
         const tipo = tanque.tipo
         const status = tanque.atv
 
@@ -55,6 +56,7 @@ function listarTanques(dados) {
         tbody_lista.innerHTML += `
             <tr>
                 <th class="celula-numero">${id}</th>
+                <td class="celula-nome">${nome}</td>
                 <td>${tipo}</td>
                 <td class="celula-status ${status}"><span>${statusFormatado}</span></td>
                 <td class="tabela-icone">
@@ -98,6 +100,7 @@ function exibirOcultarMenu(nomeMenu = '', voltar = false, pos = undefined) {
 }
 
 function adicionarTanque() {
+    const nome = input_adicionar_nome_tanque.value
     const idVinho = select_adicionar_tipo_vinho.value
     const atvTanque = select_adicionar_atividade.value
 
@@ -107,6 +110,7 @@ function adicionarTanque() {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
+            nomeTanque: nome,
             idEmpresa: sessionStorage.ID_USUARIO,
             idVinho: idVinho,
             status: atvTanque
@@ -115,7 +119,22 @@ function adicionarTanque() {
         console.log(resposta)
 
         if (resposta.ok) {
-            alert('Tanque adicionado com sucesso.')
+            atualizarTanquesSessao()
+        }
+    }).catch(function (erro) {
+        console.log(erro)
+    })
+}
+
+function atualizarTanquesSessao() {
+    fetch(`/aquarios/listar/${sessionStorage.ID_USUARIO}`).then(function (resposta) {
+        if (resposta.ok) {
+            resposta.json().then(function (res) {
+                sessionStorage.AQUARIOS = JSON.stringify(res)
+                alert('Tanque adicionado com sucesso.')
+            }).catch(function (err) {
+                console.log(err)
+            })
         }
     }).catch(function (erro) {
         console.log(erro)
