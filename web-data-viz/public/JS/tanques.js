@@ -44,6 +44,7 @@ function obterTanques() {
 
 function listarTanques(dados) {
     tbody_lista.innerHTML = ''
+    var posLocalStorage = -1
 
     dados.forEach(tanque => {
         const id = tanque.id
@@ -53,6 +54,8 @@ function listarTanques(dados) {
 
         const statusFormatado = status.charAt(0).toUpperCase() + status.slice(1)
 
+        posLocalStorage++
+
         tbody_lista.innerHTML += `
             <tr>
                 <th class="celula-numero">${id}</th>
@@ -60,7 +63,7 @@ function listarTanques(dados) {
                 <td>${tipo}</td>
                 <td class="celula-status ${status}"><span>${statusFormatado}</span></td>
                 <td class="tabela-icone">
-                    <button class="botao-tabela" onclick="exibirOcultarMenu('editar', false, ${id - 1})">
+                    <button class="botao-tabela" onclick="exibirOcultarMenu('editar', false, ${posLocalStorage})">
                         <img src="../assets/icons/icon_gear.png">
                     </button>
                 </td>
@@ -83,13 +86,14 @@ function exibirOcultarMenu(nomeMenu = '', voltar = false, pos = undefined) {
     menu.style.display = menu.style.display == 'none' ? 'flex' : 'none'
 
     if (pos != undefined && nomeMenu == 'editar') {
-        const tanqueSelecionado = localStorage.tanques[pos]
+        const tanqueSelecionado = JSON.parse(localStorage.tanques)[pos]
         const idSelecionado = tanqueSelecionado.id
 
         idTanqueEditar = idSelecionado
 
         span_id_tanque.innerText = idSelecionado
-        select_editar_tipo_vinho.value = tanqueSelecionado.fkTipo
+        input_editar_nome_tanque.value = tanqueSelecionado.nome
+        select_editar_tipo_vinho.value = tanqueSelecionado.fk
         select_editar_atividade.value = tanqueSelecionado.atv
     }
 
@@ -99,9 +103,39 @@ function exibirOcultarMenu(nomeMenu = '', voltar = false, pos = undefined) {
     }
 }
 
+function atualizarTanque() {
+    const nome = input_editar_nome_tanque.value
+    const idVinho = Number(select_editar_tipo_vinho.value)
+    const atvTanque = select_editar_atividade.value
+
+
+    fetch('/tanque/atualizar', {
+        method: 'PUT',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            idTanque: idTanqueEditar,
+            nome: nome,
+            idVinho: idVinho,
+            status: atvTanque
+        })
+    }).then(function (resposta) {
+        if (resposta.ok) {
+            if (atvTanque == 'ativo') {
+                atualizarTanquesSessao()
+            } else {
+                alert('Tanque atualizado com sucesso')
+            }
+        }
+    }).catch(function (erro) {
+        console.log(erro)
+    })
+}
+
 function adicionarTanque() {
     const nome = input_adicionar_nome_tanque.value
-    const idVinho = select_adicionar_tipo_vinho.value
+    const idVinho = Number(select_adicionar_tipo_vinho.value)
     const atvTanque = select_adicionar_atividade.value
 
     fetch('/tanque/adicionar', {
@@ -131,7 +165,14 @@ function atualizarTanquesSessao() {
         if (resposta.ok) {
             resposta.json().then(function (res) {
                 sessionStorage.AQUARIOS = JSON.stringify(res)
-                alert('Tanque adicionado com sucesso.')
+
+                var operacao = 'adicionado'
+
+                if(idTanqueEditar != undefined) {
+                    operacao = 'atualizado'
+                }
+
+                alert(`Tanque ${operacao} com sucesso.`)
             }).catch(function (err) {
                 console.log(err)
             })

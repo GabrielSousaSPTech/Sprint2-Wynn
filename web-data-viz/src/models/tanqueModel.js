@@ -19,6 +19,19 @@ function obterTanquesEmpresa(idEmpresa) {
     return database.executar(instrucaoSql);
 }
 
+function atualizarTanque(idTanque, nome, idVinho, status) {
+    const instrucaoSql = `
+        update tbTanque
+            set nomeTanque = '${nome}',
+            fkTipoVinho = ${idVinho},
+            statusTanque = '${status}'
+                where idTanque = ${idTanque};
+    `
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 function adicionarTanque(nome, idEmpresa, idVinho, status) {
     const instrucaoSql = `
         INSERT INTO tbTanque (nomeTanque ,fkEmpresa, fkTipoVinho, statusTanque) VALUE 
@@ -31,5 +44,6 @@ function adicionarTanque(nome, idEmpresa, idVinho, status) {
 
 module.exports = {
     obterTanquesEmpresa,
+    atualizarTanque,
     adicionarTanque
 };
