@@ -15,7 +15,7 @@ function buscarAquariosPorEmpresa(empresaId) {
                         tbTipoVinho
                           on fkTipoVinho = idTipoVinho
                       where
-                        fkEmpresa = ${empresaId}`;
+                        fkEmpresa = ${empresaId} and statusTanque = 'ativo'`;
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
