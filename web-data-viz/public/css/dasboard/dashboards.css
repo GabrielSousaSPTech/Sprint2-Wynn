@@ -168,7 +168,8 @@ body {
 }
 
 .perigo-frio {
-  background-color: #5c6bc0;
+  /* background-color: #5c6bc0; */
+  background-color: #ff7043;
 }
 
 .perigo-quente {
@@ -176,7 +177,8 @@ body {
 }
 
 .alerta-frio {
-  background-color: #42a5f5;
+  /* background-color: #42a5f5; */
+  background-color: #ffee58;
 }
 
 .alerta-quente {

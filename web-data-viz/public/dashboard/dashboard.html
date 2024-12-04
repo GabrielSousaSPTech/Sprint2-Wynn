@@ -129,6 +129,8 @@
             <div class="titulo-dashboard">
                 <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
             </div>
+            <div id="lista_tanquesID" class="lista_tanques">
+            </div>
 
             <div class="itens_dashboard">
                 <div class="listaTanques btns-dash" id="btnAquario">
@@ -144,7 +146,7 @@
 
                     </div>
                     <div class="elemento-estreito elemento center formatacao">
-                        <h2 style="text-align: center;">Temperatura</h2>
+                        <h2 style="text-align: center;">TEMPERATURA</h2>
                         <div class="mostrar_temperatura">
                             <div id="display_temperaturaMax">
                             </div>
@@ -267,6 +269,12 @@
                     </div>
                 `
 
+            document.getElementById("lista_tanquesID").innerHTML += `
+                              
+                <div id="tanque_atual${item.id}" class="display-none">TANQUE: ${item.descricao}</div>
+         
+                   `
+
             obterDadosGrafico(item.id)
 
 
@@ -311,6 +319,13 @@
                 }
                 elementoAtual3.classList.add("display-none")
 
+                let elementoAtual4 = document.getElementById(`tanque_atual${todosOsGraficos[i].id}`)
+                if (elementoAtual4.classList.contains("display-block")) {
+                    elementoAtual4.classList.remove("display-block")
+
+                }
+                elementoAtual4.classList.add("display-none")
+
                 // alterando estilo do botão
                 let btnAtual = document.getElementById(`btnAquario${todosOsGraficos[i].id}`)
                 if (btnAtual.classList.contains("btn-pink")) {
@@ -333,6 +348,10 @@
         let statusExibir = document.getElementById(`alerta-status${idAquario}`)
         statusExibir.classList.remove("display-none")
         statusExibir.classList.add("display-block")
+
+        let tanqueExibir = document.getElementById(`tanque_atual${idAquario}`)
+        tanqueExibir.classList.remove("display-none")
+        tanqueExibir.classList.add("display-block")
 
         // alterando estilo do botão
         let btnExibir = document.getElementById(`btnAquario${idAquario}`)

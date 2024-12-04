@@ -940,9 +940,25 @@ footer p {
     height: 10%;
     font-size: 2rem;
     font-weight: bolder;
-    margin: 3rem auto;
+    margin: 1.5rem auto;
     display: flex;
     justify-content: center;
+}
+
+.lista_tanques {
+    height: 4rem;
+    width: 26rem;
+    font-size: 2rem;
+    font-weight: bolder;
+    margin: 1.5rem auto;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    color: black;
+    font-family: monospace;
+    text-align: center;
+    display: flex;
+    align-items: center;
 }
 
 .itens_dashboard {

@@ -123,11 +123,11 @@ function transformarEmDiv({ idAquario, temp, grauDeAviso, grauDeAvisoCor }) {
         status = "ATENÇÃO";
         corStatus = "amarelo";
     } else if (grauDeAviso == "alerta frio") {
-        icone = "fermentacao_abaixo.png";
+        icone = "fermentacao_acima.png";
         status = "ATENÇÃO";
         corStatus = "amarelo"
     } else if (grauDeAviso == "perigo frio") {
-        icone = "fermentacao_congelado.png";
+        icone = "fermentacao_critico.png";
         status = "PERIGO";
         corStatus = "vermelho";
     }
