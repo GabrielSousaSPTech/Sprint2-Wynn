@@ -418,10 +418,7 @@ header nav li {
     width: 100%;
 }
 
-#display_grafico_co2 {
-    height: 90%;
-    width: 100%;
-}
+#display_grafico_co2 {}
 
 canvas {
     height: 100%;
@@ -438,20 +435,19 @@ canvas {
 
 #grafico_co2 {
     text-align: center;
-    justify-content: center;
-    height: 100%;
+    margin: 1.5rem 0;
 }
 
 #display_temperaturaMin {
-
-    font-size: 2rem;
+    margin-left: 1rem;
+    font-size: 1.6rem;
     color: rgb(0, 83, 128);
 }
 
 #display_temperaturaMax {
-    margin-top: 3rem;
-    font-size: 2rem;
+    font-size: 1.6rem;
     color: red;
+    margin-right: 1rem;
 }
 
 #display_temperatura h3 {
@@ -460,18 +456,24 @@ canvas {
 }
 
 .minima_temperatura {
-    font-size: 1.6rem;
+    font-size: 1rem;
     color: blue;
 }
 
 .maxima_temperatura {
-    font-size: 1.6rem;
+    font-size: 1rem;
     color: red;
 }
 
+.mostrar_temperatura {
+    display: flex;
+    align-items: center;
+    margin: 1.5rem 0;
+}
+
 #display_CO2 {
-    height: 80%;
-    width: 100%;
+    margin: 1.5rem 0;
+    height: 4rem;
 }
 
 #h2tanque {
@@ -518,8 +520,8 @@ canvas {
 
 
 #status-ok span {
-    font-size: 10rem;
-    color: green;
+    font-size: 3.5rem;
+    color: darkred;
 }
 
 .listaTanques {

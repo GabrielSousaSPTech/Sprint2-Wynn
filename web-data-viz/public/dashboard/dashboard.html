@@ -34,7 +34,7 @@
 
 <!-- <body onload=" atualizarFeed()"> -->
 
-<body onload="atualizarFeed()"></body>>
+<body onload="atualizarFeed()"></body>
 
 <!-- 
     <div class="janela">
@@ -136,21 +136,23 @@
 
                 <div class="linha-dashboard">
                     <div class="elemento-estreito elemento center formatacao">
-                        <p style="text-align: center">
+                        <h2 style="text-align: center">
                             CO2 (%)
-                        </p>
-                        <div id="display_CO2">
-                            <div id="grafico_co2" class="center"></div>
-                        </div>
+                        </h2>
+
+                        <div id="grafico_co2" class="center"></div>
+
                     </div>
                     <div class="elemento-estreito elemento center formatacao">
-                        <p style="text-align: center;">Temperatura</p>
-                        <div id="display_temperaturaMax">
-                        </div>
+                        <h2 style="text-align: center;">Temperatura</h2>
+                        <div class="mostrar_temperatura">
+                            <div id="display_temperaturaMax">
+                            </div>
 
-                        <div id="display_temperatura">
-                        </div>
-                        <div id="display_temperaturaMin">
+                            <div id="display_temperatura">
+                            </div>
+                            <div id="display_temperaturaMin">
+                            </div>
                         </div>
 
                     </div>
@@ -196,7 +198,8 @@
 </body>
 
 </html>
-
+<script data-jsd-embedded data-key="462d26a8-5f6d-4498-a3d3-1cd3a9336de1"
+    data-base-url="https://jsd-widget.atlassian.com" src="https://jsd-widget.atlassian.com/assets/embed.js"></script>
 
 <script src="./dashboard.js"></script>
 <script src="./timer.js"></script>
@@ -258,7 +261,7 @@
                         
                      <div id="alerta-status${item.id}" class="display-none">
                                 <h2>STATUS</h2>
-                                <p><span class="span-alerta alerta-verde">OK</span></p>
+                                <p class="p-alerta"><span class="span-alerta">Tanque Inativo</span></p>
                             </div>
                       
                     </div>
@@ -435,6 +438,8 @@
         console.log('----------------------------------------------')
 
         // Criando estrutura para plotar gráfico - config
+        const remToPx = rem => rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
+
         const config = {
             type: 'line',
             data: dadosUmidade,
@@ -444,18 +449,27 @@
                         display: true,
                         text: `CO2`
                     },
-                    annotation: {
-                        annotations: {
-                            line1: {
-                                type: 'line',
-                                yMin: resposta[0].CO2PerigoMin,
-                                yMax: resposta[0].CO2PerigoMin,
-                                borderColor: 'rgb(255, 99, 132)',
-                                borderWidth: 2,
-                                borderDash: [5, 5]
+                    legend: {
+                        labels: {
+                            font: {
+                                size: remToPx(1.1)
                             }
                         }
-                    }
+                    },
+                    responsive: true,
+                    maintainAspectRatio: true
+                    /*    annotation: {
+                           annotations: {
+                               line1: {
+                                   type: 'line',
+                                   yMin: resposta[0].CO2PerigoMin,
+                                   yMax: resposta[0].CO2PerigoMin,
+                                   borderColor: 'rgb(255, 99, 132)',
+                                   borderWidth: 2,
+                                   borderDash: [5, 5]
+                               }
+                           }
+                       } */
                 }/* ,
                 scales: {
                     y: {
@@ -475,6 +489,15 @@
                         display: true,
                         text: `Temperatura`
                     },
+                    legend: {
+                        labels: {
+                            font: {
+                                size: remToPx(1.1)
+                            }
+                        }
+                    },
+                    responsive: true,
+                    maintainAspectRatio: true,
                     annotation: {
                         annotations: {
                             line1: {

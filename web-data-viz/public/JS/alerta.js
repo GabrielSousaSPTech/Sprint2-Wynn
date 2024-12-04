@@ -135,7 +135,7 @@ function transformarEmDiv({ idAquario, temp, grauDeAviso, grauDeAvisoCor }) {
     const divStatus = document.getElementById(`alerta-status${idAquario}`);
     divStatus.innerHTML = `
                             <h2>STATUS</h2>
-                            <p><span class="span-alerta alerta-${corStatus}">${status}</span></p>
+                            <p class="p-alerta"><span class="span-alerta alerta-${corStatus}">${status}</span></p>
     `
     const imagem = document.getElementById(`icone${idAquario}`);
     imagem.src = `../css/dasboard/imgs/${icone}`;
@@ -145,7 +145,7 @@ function transformarEmDiv({ idAquario, temp, grauDeAviso, grauDeAvisoCor }) {
     <div class="mensagem-alarme">
         <div class="informacao">
             <div class="${grauDeAvisoCor}">&#12644;</div> 
-            <i class="fa-solid fa-triangle-exclamation"></i><h3>${descricao} está em estado de ${grauDeAviso}!</h3>
+            <h3><i class="fa-solid fa-triangle-exclamation"></i> ${descricao} - ${grauDeAviso}!</h3>
             <small>Temperatura capturada: ${temp}°C.</small>   
         </div>
     </div>

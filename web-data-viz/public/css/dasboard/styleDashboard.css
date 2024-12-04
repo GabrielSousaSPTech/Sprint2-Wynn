@@ -34,7 +34,7 @@
 
     main article div.container div#imagem {
         height: 37.5rem;
-        margin-top: 2rem;
+        /*  margin-top: 2rem; */
 
         order: -1;
     }
@@ -322,7 +322,7 @@ main article #imagem {
 }
 
 main article hr {
-    margin-top: 6rem;
+    /* margin-top: 6rem; */
 
     padding: 0.5px;
     color: black;
@@ -378,7 +378,7 @@ section#missao .card p {
 }
 
 main section hr {
-    margin-top: 8rem;
+    /* margin-top: 8rem; */
 }
 
 aside#contato,
@@ -902,7 +902,7 @@ footer p {
 }
 
 #banner-Dashboard {
-    min-height: 102vh;
+    min-height: 100vh;
     background: scroll url(../dasboard/imgs/fundo-barris-vinho.jpg) center center no-repeat;
     background-size: cover;
     font-family: Forum;
@@ -1012,6 +1012,7 @@ footer p {
     flex-direction: column;
     font-family: monospace;
     text-align: center;
+    justify-content: center;
 }
 
 .formatacao p {
@@ -1023,7 +1024,7 @@ footer p {
 
 .formatacao h2 {
     color: black;
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: bolder;
     margin-top: 1rem;
 }
@@ -1073,10 +1074,12 @@ footer p {
 }
 
 canvas {
-    height: 100%;
-    width: 100%;
+    height: 95%;
+    width: 95%;
     margin: 0 auto;
 }
+
+
 
 #display_temperatura h3 {
     font-size: 3.5rem;
@@ -1196,6 +1199,25 @@ canvas {
 }
 
 /* Responsividade */
+@Media (max-width: 1800px) {
+
+    .listaTanques,
+    .listaAvisos {
+        width: 100rem;
+        height: 20rem;
+        margin: 2rem 0;
+    }
+
+    #alerta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        height: 100%;
+        gap: 1rem;
+        padding: 0 2rem;
+    }
+}
+
 @media (max-width: 1689px) {
     .elemento-largo-grande {
         height: 44rem;
@@ -1205,19 +1227,38 @@ canvas {
 }
 
 @media (max-width: 1015px) {
+    html {
+        font-size: 50%
+    }
+
+    button {
+        font-size: 1.4rem;
+    }
+
+
     .elemento-largo-grande {
         height: 28rem;
         width: 62.5rem;
     }
 
-    #dashboard_alerta {
-        order: -1;
+    .listaTanques,
+    .listaAvisos {
+        width: 65rem;
+        height: 30rem;
     }
 
 }
 
-@media (max-width: 538px) {
-    .elemento-estreito {
+@media (max-width: 730px) {
+    html {
+        font-size: 45%
+    }
+
+    button {
+        font-size: 1rem;
+    }
+
+    /*     .elemento-estreito {
         height: 26rem;
         width: 29rem;
         font-size: 5rem;
@@ -1230,12 +1271,16 @@ canvas {
 
     .caixa-input-radio {
         width: 90%;
-    }
+    } */
 
 }
 
-@media (max-width: 522px) {
-    .elemento-estreito {
+@media (max-width: 680px) {
+    html {
+        font-size: 40%
+    }
+
+    /*     .elemento-estreito {
         height: 26rem;
         width: 28rem;
         font-size: 5rem;
@@ -1245,11 +1290,15 @@ canvas {
         height: 26rem;
         width: 28rem;
     }
-
+ */
 }
 
-@media (max-width: 505px) {
-    .elemento-estreito {
+@media (max-width: 555px) {
+    html {
+        font-size: 35%
+    }
+
+    /*     .elemento-estreito {
         height: 26rem;
         width: 27rem;
         font-size: 5rem;
@@ -1258,27 +1307,24 @@ canvas {
     .elemento-duplo-caixa {
         height: 26rem;
         width: 27rem;
-    }
+    } */
 
 }
 
 @media (max-width: 500px) {
-    .elemento-estreito {
-        height: 28rem;
-        width: 29rem;
-        font-size: 5rem;
-    }
-
-    .elemento-duplo-caixa {
-        height: 28rem;
-        width: 29rem;
+    html {
+        font-size: 30%
     }
 
 }
 
-@media (max-width: 430px) {
+@media (max-width: 440px) {
 
-    .elemento-estreito {
+    html {
+        font-size: 25%
+    }
+
+    /*     .elemento-estreito {
         height: 28rem;
         width: 28rem;
         margin: 0 0.5rem 3rem;
@@ -1289,13 +1335,13 @@ canvas {
         width: 28rem;
         margin: 0 0.5rem 3rem;
     }
-
+ */
 }
 
 
 @media (max-width: 404px) {
 
-    .elemento-estreito {
+    /*     .elemento-estreito {
         height: 28rem;
         width: 27rem;
     }
@@ -1303,13 +1349,16 @@ canvas {
     .elemento-duplo-caixa {
         height: 28rem;
         width: 27rem;
-    }
+    } */
 
 }
 
-@media (max-width: 377px) {
+@media (max-width: 370px) {
+    html {
+        font-size: 22%
+    }
 
-    .elemento-estreito {
+    /*     .elemento-estreito {
         height: 28rem;
         width: 25rem;
     }
@@ -1317,13 +1366,13 @@ canvas {
     .elemento-duplo-caixa {
         height: 28rem;
         width: 26rem;
-    }
+    } */
 
 }
 
 @media (max-width: 363px) {
 
-    .elemento-estreito {
+    /*     .elemento-estreito {
         height: 30rem;
         width: 24rem;
     }
@@ -1331,7 +1380,7 @@ canvas {
     .elemento-duplo-caixa {
         height: 30rem;
         width: 24rem;
-    }
+    } */
 
 }
 
