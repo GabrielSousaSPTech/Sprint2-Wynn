@@ -16,6 +16,7 @@ function obterDados() {
 function exibirLista(dadosVinho) {
     tbody.innerHTML = ""
     console.log(dadosVinho)
+    var posLocalStorage = -1
 
     for (var json = 0;
         json < dadosVinho.length;
@@ -33,6 +34,7 @@ function exibirLista(dadosVinho) {
         var co2CritMin = parseInt(jsonAtual.metricaCO2CriticoMin)
         var co2CritMax = parseInt(jsonAtual.metricaCO2CriticoMax)
 
+        posLocalStorage++
 
         tbody.innerHTML += `
             <tr>
@@ -43,7 +45,7 @@ function exibirLista(dadosVinho) {
                     <td>&downarrow;${co2PerigoMin}% | &uparrow;${co2PerigoMax}%</td>
                     <td>&downarrow;${co2CritMin}% | &uparrow;${co2CritMax}%</td>
                     <td class="tabela-icone">
-                        <button class="botao-tabela" onclick="exibirOcultarMenu('editar', ${idTipo - 1})">
+                        <button class="botao-tabela" onclick="exibirOcultarMenu('editar', ${posLocalStorage})">
                             <img src="../assets/icons/icon_gear.png">
                         </button>
                         </td>
@@ -184,6 +186,6 @@ function deletarVinho(idTipo) {
 
     setTimeout(function() {
         obterDados()
-    }, 200)  
+    }, 1000)  
 
 }

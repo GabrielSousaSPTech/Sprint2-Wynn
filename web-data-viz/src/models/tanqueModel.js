@@ -32,6 +32,16 @@ function atualizarTanque(idTanque, nome, idVinho, status) {
     return database.executar(instrucaoSql);
 }
 
+function excluirTanque(id) {
+    const instrucaoSql = `
+        delete from tbTanque
+            where idTanque = ${id};
+    `
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 function adicionarTanque(nome, idEmpresa, idVinho, status) {
     const instrucaoSql = `
         INSERT INTO tbTanque (nomeTanque ,fkEmpresa, fkTipoVinho, statusTanque) VALUE 
@@ -45,5 +55,6 @@ function adicionarTanque(nome, idEmpresa, idVinho, status) {
 module.exports = {
     obterTanquesEmpresa,
     atualizarTanque,
+    excluirTanque,
     adicionarTanque
 };

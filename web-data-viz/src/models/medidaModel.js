@@ -62,7 +62,18 @@ function buscarMedidasEmTempoReal(idAquario) {
     return database.executar(instrucaoSql);
 }
 
+function deletarMedidasTanque(idTanque) {
+    var instrucaoSql = `
+        DELETE FROM tbMedida
+            WHERE fkTanque = ${idTanque};
+    `
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     buscarUltimasMedidas,
-    buscarMedidasEmTempoReal
+    buscarMedidasEmTempoReal,
+    deletarMedidasTanque
 }

@@ -68,7 +68,7 @@ function listarTanques(dados) {
                     </button>
                 </td>
                 <td class="tabela-icone">
-                    <button class="botao-tabela">
+                    <button class="botao-tabela" onclick="exibirOcultarMenu('excluir', false, ${posLocalStorage})">
                         <img src="../assets/icons/icon_trashcan.png">
                     </button>
                 </td>
@@ -79,31 +79,40 @@ function listarTanques(dados) {
 
 var idTanqueEditar = undefined
 
-function exibirOcultarMenu(nomeMenu = '', voltar = false, pos = undefined) {
+function exibirOcultarMenu(nomeMenu = '', voltar = false, pos = -1) {
     div_janela_tabela.style.display = div_janela_tabela.style.display == 'flex' ? 'none' : 'flex'
 
     const menu = document.getElementById(`aside_menu_${nomeMenu}`)
     menu.style.display = menu.style.display == 'none' ? 'flex' : 'none'
 
-    if (pos != undefined && nomeMenu == 'editar') {
-        const tanqueSelecionado = JSON.parse(localStorage.tanques)[pos]
-        const idSelecionado = tanqueSelecionado.id
-
-        idTanqueEditar = idSelecionado
-
-        span_id_tanque.innerText = idSelecionado
-        input_editar_nome_tanque.value = tanqueSelecionado.nome
-        select_editar_tipo_vinho.value = tanqueSelecionado.fk
-        select_editar_atividade.value = tanqueSelecionado.atv
-    }
-
-    if (voltar) {
+    if (!voltar) {
+        if (pos != -1 && (nomeMenu == 'editar' || nomeMenu == 'excluir')) {
+            const tanqueSelecionado = JSON.parse(localStorage.tanques)[pos]
+            const idSelecionado = tanqueSelecionado.id
+    
+            idTanqueEditar = idSelecionado
+    
+            const spanId = document.getElementById(`span_id_tanque_${nomeMenu}`)
+            spanId.innerText = idSelecionado
+    
+            if (nomeMenu == 'editar') {
+                input_editar_nome_tanque.value = tanqueSelecionado.nome
+                select_editar_tipo_vinho.value = tanqueSelecionado.fk
+                select_editar_atividade.value = tanqueSelecionado.atv
+            }
+        }
+    } else {
         idTanqueEditar = undefined
         obterTanques()
     }
 }
 
+
+var operacao = ''
+
 function atualizarTanque() {
+    operacao = 'atualizado'
+
     const nome = input_editar_nome_tanque.value
     const idVinho = Number(select_editar_tipo_vinho.value)
     const atvTanque = select_editar_atividade.value
@@ -133,7 +142,33 @@ function atualizarTanque() {
     })
 }
 
+function excluirTanque() {
+    operacao = 'excluído'
+
+    fetch(`/tanque/excluir/${idTanqueEditar}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(function (resposta) {
+        console.log(resposta)
+
+        if (resposta.ok) {
+            atualizarTanquesSessao()
+            obterTanques()
+        }
+    }).catch(function (erro) {
+        console.log('Erro ao exibir kpi ' + erro)
+    })
+
+    setTimeout(function () {
+        exibirOcultarMenu('excluir', true)
+    }, 1000)
+}
+
 function adicionarTanque() {
+    operacao = 'adicionado'
+
     const nome = input_adicionar_nome_tanque.value
     const idVinho = Number(select_adicionar_tipo_vinho.value)
     const atvTanque = select_adicionar_atividade.value
@@ -165,12 +200,6 @@ function atualizarTanquesSessao() {
         if (resposta.ok) {
             resposta.json().then(function (res) {
                 sessionStorage.AQUARIOS = JSON.stringify(res)
-
-                var operacao = 'adicionado'
-
-                if(idTanqueEditar != undefined) {
-                    operacao = 'atualizado'
-                }
 
                 alert(`Tanque ${operacao} com sucesso.`)
             }).catch(function (err) {

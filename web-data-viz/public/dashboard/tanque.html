@@ -80,9 +80,10 @@
             </section>
 
         </div>
+
         <aside id="aside_menu_editar" class="janela menu" style="display: none;">
             <h2>
-                Editando o tanque <span id="span_id_tanque">0</span>
+                Editando o tanque <span id="span_id_tanque_editar">0</span>
             </h2>
 
             <form>
@@ -118,6 +119,20 @@
                 </button>
             </div>
         </aside>
+
+        <aside id="aside_menu_excluir" class="janela menu" style="display: none;">
+            <h2>Excluindo tanque <span id="span_id_tanque_excluir">0</span></h2>
+            <p>Tem certeza que deseja excluir o tanque?</p>
+
+            <div>
+                <button onclick="excluirTanque()">
+                    Sim
+                </button>
+                <button onclick="exibirOcultarMenu('excluir', true)">
+                    Não
+                </button>
+                        </aside>
+            </div>
 
         <aside id="aside_menu_adicionar" class="janela menu" style="display: none;">
             <h2>

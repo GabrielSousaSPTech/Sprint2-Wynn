@@ -11,6 +11,10 @@ router.put("/atualizar", function (req, res) {
     tanqueController.atualizarTanque(req, res)
 })
 
+router.delete("/excluir/:id", function(req, res) {
+    tanqueController.excluirTanque(req, res)
+})
+
 router.post("/adicionar", function (req, res) {
     tanqueController.adicionarTanque(req, res)
 })
