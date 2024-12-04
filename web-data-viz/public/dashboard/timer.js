@@ -49,8 +49,8 @@ function exibirTemporizador(idTanque) {
     }
     temporizador = setInterval(() => {
         obterComecoFermentacao(idTanque)
-        console.log(idTanque)
-        console.log('ta ativo? ' + temporizador)
+        obterKPI(idTanque, 1);
+
     }, 1000)
 
 }
