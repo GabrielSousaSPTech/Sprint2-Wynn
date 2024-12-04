@@ -219,7 +219,7 @@
 
     function exibirAquariosDoUsuario() {
         var aquarios = JSON.parse(sessionStorage.AQUARIOS);
-        obterKPI(aquarios[0].id, 1);
+
 
         exibirTemporizador(aquarios[0].id)
 
@@ -577,6 +577,7 @@
             if (response.ok) {
                 response.json().then(function (novoRegistro) {
 
+
                     obterdados(idAquario);
                     // alertar(novoRegistro, idAquario);
                     console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
@@ -618,12 +619,13 @@
                     }
 
                     // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dadosUmidade, dadosTemperatura, myChart, myChart2), 2000);
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dadosUmidade, dadosTemperatura, myChart, myChart2), 3000);
+
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGraficoCO2(idAquario, dadosUmidade, dadosTemperatura, myChart, myChart2), 2000);
+                proximaAtualizacao = setTimeout(() => atualizarGraficoCO2(idAquario, dadosUmidade, dadosTemperatura, myChart, myChart2), 3000);
             }
         })
             .catch(function (error) {
