@@ -48,6 +48,9 @@ CREATE TABLE tbEnderecoEmpresa (
     CONSTRAINT fkEndereco FOREIGN KEY (fkEndereco) REFERENCES Endereco (idEndereco)
 );
 
+SELECT * FROM tbEmpresa;
+SELECT * FROM Endereco;
+SELECT * FROM tbEnderecoEmpresa;
 
 
 INSERT INTO tbEmpresa (nomeEmpresa, cnpjEmpresa, emailEmpresa, senhaEmpresa, chaveAtivacaoEmpresa, telEmpresa, autorizacaoEmpresa) 
