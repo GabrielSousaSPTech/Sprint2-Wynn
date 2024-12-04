@@ -4,7 +4,7 @@ function buscarAquariosPorEmpresa(empresaId) {
 
   var instrucaoSql = `SELECT
                         idTanque as id,
-                          nomeVinho as descricao,
+                          nomeTanque as descricao,
                           fkEmpresa as fk_empresa
                       FROM
                           tbTanque

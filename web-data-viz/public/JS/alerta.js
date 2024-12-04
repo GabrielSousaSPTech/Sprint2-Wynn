@@ -145,7 +145,7 @@ function transformarEmDiv({ idAquario, temp, grauDeAviso, grauDeAvisoCor }) {
     <div class="mensagem-alarme">
         <div class="informacao">
             <div class="${grauDeAvisoCor}">&#12644;</div> 
-            <i class="fa-solid fa-triangle-exclamation"></i><h3>${descricao} ${idAquario} está em estado de ${grauDeAviso}!</h3>
+            <i class="fa-solid fa-triangle-exclamation"></i><h3>${descricao} está em estado de ${grauDeAviso}!</h3>
             <small>Temperatura capturada: ${temp}°C.</small>   
         </div>
     </div>
