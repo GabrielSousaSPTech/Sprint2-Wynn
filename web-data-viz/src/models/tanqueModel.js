@@ -9,9 +9,9 @@ function obterTanquesEmpresa(idEmpresa) {
             nomeVinho as tipo,
             fkTipoVinho as fk,
             statusTanque as atv
-                from tbTanque
+                from tbTanque as t
                 join tbTipoVinho on fkTipoVinho = idTipoVinho
-                    where fkEmpresa = ${idEmpresa}
+                    where t.fkEmpresa = ${idEmpresa}
                     order by idTanque;
     `;
 
