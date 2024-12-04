@@ -74,7 +74,7 @@ function deletarVinho(req, res) {
 
     tipoVinhoModel.deletarVinho(idTipo).then(function (resposta) {
         console.log(resposta)
-        res(resposta)
+        res.status(204).json(resposta)
     }).catch(function (erro) {
         res.status(403).send('Erro ao acessar o banco de dados' + erro)
     })

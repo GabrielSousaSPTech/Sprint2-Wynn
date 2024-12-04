@@ -140,6 +140,10 @@ function atualizarTanque() {
     }).catch(function (erro) {
         console.log(erro)
     })
+
+    setTimeout(() => {
+        exibirOcultarMenu('editar', true)
+    }, 1000)
 }
 
 function excluirTanque() {
@@ -193,6 +197,10 @@ function adicionarTanque() {
     }).catch(function (erro) {
         console.log(erro)
     })
+
+    setTimeout(() => {
+        exibirOcultarMenu('adicionar', true)
+    }, 1000)
 }
 
 function atualizarTanquesSessao() {

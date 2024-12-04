@@ -212,7 +212,7 @@
 
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
-    if(sessionStorage.FUNCIONARIO == true) {
+    if(JSON.parse(sessionStorage.FUNCIONARIO)) {
         desabilitarBotoes()
     }
 
