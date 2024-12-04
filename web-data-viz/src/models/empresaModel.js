@@ -49,7 +49,7 @@ async function cadastrarEnderecoEmpresa(fkEmpresa, fkEndereco, tipoEndereco){
   
   var id = 1
   var ultimoId = await obterUltimoIdInserido(fkEmpresa, fkEndereco)
-    if(ultimoId[0] != []){
+    if(ultimoId.length>0){
         id = Number(ultimoId[0].idEnderecoEmpresa)+1
     }
 
