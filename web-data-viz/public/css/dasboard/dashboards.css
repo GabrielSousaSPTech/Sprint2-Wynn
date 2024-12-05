@@ -278,7 +278,7 @@ body {
 }
 
 .informacao h3 {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   margin: .5rem 0;
 }
 
@@ -291,8 +291,8 @@ small {
 }
 
 .span-alerta {
-  font-size: 3rem;
-
+  font-size: 3.5rem;
+  margin: 2rem 0;
   color: darkred;
 }
 

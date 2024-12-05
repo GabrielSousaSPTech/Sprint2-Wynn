@@ -429,23 +429,23 @@ canvas {
 
 #display_temperatura,
 #grafico_co2 {
-    font-size: 3.5rem;
+    font-size: 5rem;
     color: green;
 }
 
 #grafico_co2 {
     text-align: center;
-    margin: 1.5rem 0;
+    margin: 2rem 0;
 }
 
 #display_temperaturaMin {
     margin-left: 1rem;
-    font-size: 1.6rem;
+    font-size: 2.2rem;
     color: rgb(0, 83, 128);
 }
 
 #display_temperaturaMax {
-    font-size: 1.6rem;
+    font-size: 2.2rem;
     color: red;
     margin-right: 1rem;
 }
@@ -468,7 +468,7 @@ canvas {
 .mostrar_temperatura {
     display: flex;
     align-items: center;
-    margin: 1.5rem 0;
+    margin: 2rem 0;
 }
 
 #display_CO2 {
@@ -510,11 +510,11 @@ canvas {
     font-size: 5rem;
     text-align: center;
     color: darkred;
-    margin: 1.5rem 0;
+    margin: 2rem 0;
 }
 
 #tempo-fermentacao span {
-    font-size: 3.5rem;
+    font-size: 5rem;
     color: darkred;
 }
 

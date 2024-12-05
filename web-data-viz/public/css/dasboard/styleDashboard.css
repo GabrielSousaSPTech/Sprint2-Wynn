@@ -1057,8 +1057,15 @@ footer p {
     width: 30rem;
     font-weight: bolder;
     margin: 0 1rem 3rem;
-    padding: 2rem;
+    padding: 3rem 2rem 2rem;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.elemento-estreito h2 {
+    font-size: 2rem;
 }
 
 .elemento-grafico {

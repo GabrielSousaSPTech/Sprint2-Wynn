@@ -41,13 +41,13 @@ function alertar(resposta, idAquario) {
 
     if (temp >= limites.muito_quente) {
         classe_temperatura = 'cor-alerta perigo-quente';
-        grauDeAviso = 'perigo quente'
+        grauDeAviso = 'crítico quente'
         grauDeAvisoCor = 'cor-alerta perigo-quente'
         exibirAlerta(temp, idAquario, grauDeAviso, grauDeAvisoCor)
     }
     else if (temp < limites.muito_quente && temp >= limites.quente) {
         classe_temperatura = 'cor-alerta alerta-quente';
-        grauDeAviso = 'alerta quente'
+        grauDeAviso = 'atenção quente'
         grauDeAvisoCor = 'cor-alerta alerta-quente'
         exibirAlerta(temp, idAquario, grauDeAviso, grauDeAvisoCor)
     }
@@ -60,13 +60,13 @@ function alertar(resposta, idAquario) {
     }
     else if (temp <= limites.frio && temp > limites.muito_frio) {
         classe_temperatura = 'cor-alerta alerta-frio';
-        grauDeAviso = 'alerta frio'
+        grauDeAviso = 'atenção frio'
         grauDeAvisoCor = 'cor-alerta alerta-frio'
         exibirAlerta(temp, idAquario, grauDeAviso, grauDeAvisoCor)
     }
     else if (temp <= limites.muito_frio) {
         classe_temperatura = 'cor-alerta perigo-frio';
-        grauDeAviso = 'perigo frio'
+        grauDeAviso = 'crítico frio'
         grauDeAvisoCor = 'cor-alerta perigo-frio'
         exibirAlerta(temp, idAquario, grauDeAviso, grauDeAvisoCor)
     }
@@ -114,21 +114,21 @@ function transformarEmDiv({ idAquario, temp, grauDeAviso, grauDeAvisoCor }) {
     var icone = "fermentacao_ok.png";
     var status = "OK";
     var corStatus = "verde";
-    if (grauDeAviso == "perigo quente") {
+    if (grauDeAviso == "crítico quente") {
         icone = "fermentacao_critico.png";
-        status = "PERIGO";
+        status = "CRÍTICO";
         corStatus = "vermelho";
-    } else if (grauDeAviso == "alerta quente") {
+    } else if (grauDeAviso == "atenção quente") {
         icone = "fermentacao_acima.png";
         status = "ATENÇÃO";
         corStatus = "amarelo";
-    } else if (grauDeAviso == "alerta frio") {
+    } else if (grauDeAviso == "atenção frio") {
         icone = "fermentacao_acima.png";
         status = "ATENÇÃO";
         corStatus = "amarelo"
-    } else if (grauDeAviso == "perigo frio") {
+    } else if (grauDeAviso == "crítico frio") {
         icone = "fermentacao_critico.png";
-        status = "PERIGO";
+        status = "CRÍTICO";
         corStatus = "vermelho";
     }
 
