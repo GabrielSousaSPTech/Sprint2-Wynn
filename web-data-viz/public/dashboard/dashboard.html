@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" href="../css/dasboard/dashboards.css">
     <link rel="stylesheet" href="../css/dasboard/dash.css">
+    <link rel="stylesheet" href="../css/dasboard/styleDashboard.css">
 
     <script src="../JS/sessao.js"></script>
     <script src="./../JS/alerta.js"></script>
@@ -27,7 +28,6 @@
 
     <!--FONT AWESOME-->
     <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../css/dasboard/styleDashboard.css">
     <!--  <link rel="stylesheet" href="../css/dash.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
@@ -104,13 +104,13 @@
         </div>
         <div class="menu-box">
             <h2>MENU</h2>
-            <a href="./dashboard.html">
+            <a href="./dashboard.html" name="a_botao_menu">
                 <div class="menu-item">Dashboard</div>
             </a>
-            <a href="./tanque.html">
+            <a href="./tanque.html" name="a_botao_menu">
                 <div class="menu-item">Tanque</div>
             </a>
-            <a href="./tipos_vinho.html">
+            <a href="./tipos_vinho.html" name="a_botao_menu">
                 <div class="menu-item">Métrica</div>
             </a>
             <div class="item-logout">
@@ -212,8 +212,17 @@
 
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
+    if(JSON.parse(sessionStorage.FUNCIONARIO)) {
+        desabilitarBotoes()
+    }
 
+    function desabilitarBotoes () {
+        const botoesMenu = document.getElementsByName('a_botao_menu')
 
+        botoesMenu.forEach(botao => {
+            botao.style.display = 'none'
+        });
+    }
 
     let proximaAtualizacao;
 

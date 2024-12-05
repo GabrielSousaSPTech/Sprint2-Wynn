@@ -1175,12 +1175,15 @@ canvas {
 .listaTanques {
     width: 24rem;
     height: 64rem;
+    box-sizing: border-box;
+    padding: 4rem 0;
     background-color: rgba(0, 0, 0, 0.7);
     border-radius: 5rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    align-content: flex-start;
 }
 
 .iconeTanque {

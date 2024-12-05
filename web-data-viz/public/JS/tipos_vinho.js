@@ -65,7 +65,7 @@ function exibirOcultarMenu(nomeMenu = '', voltar = false, pos = -1) {
     if (!voltar) {
         if (pos != -1 && (nomeMenu == 'editar' || nomeMenu == 'excluir')) {
             const vinhoSelecionado = JSON.parse(localStorage.vinhos)[pos]
-     
+
             const idSelecionado = vinhoSelecionado.idTipoVinho
             idVinhoEditar = idSelecionado
 
@@ -108,12 +108,16 @@ function atualizarMetricas() {
         })
     })
         .then(function (resposta) {
-            if(resposta.ok) {
+            if (resposta.ok) {
                 alert('Vinho atualizado com sucesso')
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
         });
+
+    setTimeout(function () {
+        exibirOcultarMenu('editar', true)
+    }, 1000)
 }
 
 function adicionarTipoVinho() {
@@ -138,13 +142,17 @@ function adicionarTipoVinho() {
         }),
     })
         .then(function (resposta) {
-            console.log(resposta);
-
+            if (resposta.ok) {
+                alert('Vinho cadastrado com sucesso')
+            }
         })
         .catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
-            //   finalizarAguardar();
         });
+
+    setTimeout(() => {
+        exibirOcultarMenu('adicionar', true)
+    }, 1000)
 }
 
 function deletarVinho() {
@@ -154,14 +162,14 @@ function deletarVinho() {
             "Content-Type": "application/json"
         }
     }).then(function (resposta) {
-        console.log(resposta)
-        alert("Tipo deletado")
+        if (resposta.ok) {
+            alert("Tipo deletado")
+        }
     }).catch(function (erro) {
         console.log('Erro ao exibir kpi ' + erro)
     })
 
     setTimeout(function () {
-        obterDados()
+        exibirOcultarMenu('excluir', true)
     }, 1000)
-
 }

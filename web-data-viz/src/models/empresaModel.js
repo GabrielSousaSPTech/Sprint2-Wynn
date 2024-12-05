@@ -22,7 +22,7 @@ async function cadastrar(nome, cnpj, email, senha, chaveAtivacao, telefone, auto
 
   var instrucaoSql = `INSERT INTO tbEmpresa 
   (nomeEmpresa, cnpjEmpresa, emailEmpresa, senhaEmpresa, chaveAtivacaoEmpresa, telEmpresa, autorizacaoEmpresa) 
-  VALUES ('${nome}',  '${cnpj}', '${email}', '${senha}', '${chaveAtivacao}', '${telefone}', ${autorizacao});`;
+  VALUES ('${nome}',  '${cnpj}', '${email}', MD5('${senha}'), '${chaveAtivacao}', '${telefone}', ${autorizacao});`;
 
 
   var resultadoQuery = await database.executar(instrucaoSql)
@@ -39,9 +39,22 @@ async function cadastrarEndereco(cep, logradouro, bairro, cidade, uf, numLog, co
   return database.executar(instrucaoSql)
 }
 
+async function obterUltimoIdInserido(fkEmpresa, fkEndereco){
+  var selecionarId = `SELECT idEnderecoEmpresa FROM tbEnderecoEmpresa WHERE fkEmpresa = ${fkEmpresa} AND fkEndereco = ${fkEndereco} ORDER BY idEnderecoEmpresa DESC LIMIT 1`
+  return database.executar(selecionarId)
+}
+
 async function cadastrarEnderecoEmpresa(fkEmpresa, fkEndereco, tipoEndereco){
-  var instrucaoSql = `INSERT INTO tbEnderecoEmpresa(fkEmpresa, fkEndereco, tipoEndereco) VALUES
-    (${fkEmpresa}, ${fkEndereco}, '${tipoEndereco}')`
+
+  
+  var id = 1
+  var ultimoId = await obterUltimoIdInserido(fkEmpresa, fkEndereco)
+    if(ultimoId.length>0){
+        id = Number(ultimoId[0].idEnderecoEmpresa)+1
+    }
+
+  var instrucaoSql = `INSERT INTO tbEnderecoEmpresa(idEnderecoEmpresa, fkEmpresa, fkEndereco, tipoEndereco) VALUES
+    (${id}, ${fkEmpresa}, ${fkEndereco}, '${tipoEndereco}')`
 
   return database.executar(instrucaoSql)
 }

@@ -46,6 +46,11 @@ function checarCredenciais() {
                             sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
                         }
 
+                        sessionStorage.FUNCIONARIO = false
+                        if(json.operacao == 'Funcionario') {
+                            sessionStorage.FUNCIONARIO = true
+                        }
+
 
                         setTimeout(function () {
                             if(operacaoLogin != 'Administrador') {
