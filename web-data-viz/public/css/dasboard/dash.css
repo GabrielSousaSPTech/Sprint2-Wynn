@@ -439,12 +439,20 @@ canvas {
 }
 
 #display_temperaturaMin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin-left: 1rem;
     font-size: 2.2rem;
     color: rgb(0, 83, 128);
 }
 
 #display_temperaturaMax {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     font-size: 2.2rem;
     color: red;
     margin-right: 1rem;
@@ -468,6 +476,7 @@ canvas {
 .mostrar_temperatura {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     margin: 2rem 0;
 }
 
