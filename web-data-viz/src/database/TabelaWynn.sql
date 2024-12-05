@@ -319,3 +319,31 @@ JOIN
 where
 	idTanque = 13
 ORDER BY idMedidaSensor DESC LIMIT 7;
+
+INSERT INTO tbMedida (medidaLM35, medidaMQ2,dataHoraSensor, fkTanque) VALUES  
+(12.7, 70, now(), 2),
+(14.7, 50, now(), 2),
+(13.7, 60, now(), 2),
+(13.2, 50, now(), 2),
+(12.7, 70, now(), 2),
+(11.7, 60, now(), 2),
+(10.3, 45, now(), 2);
+
+select * from tbMedida;
+INSERT INTO tbMedida (medidaLM35, medidaMQ2,dataHoraSensor, fkTanque) VALUES  
+(10.7, 50, now(), 3),
+(12.7, 60, now(), 3),
+(12.5, 65.2, now(), 3),
+(15.7, 67.4, now(), 3),
+(16.7, 70.3, now(), 3),
+(22.7, 75.4, now(), 3),
+(25, 80.2, now(), 3);
+
+INSERT INTO tbMedida (medidaLM35, medidaMQ2, dataHoraSensor, fkTanque) VALUES  
+(15.3, 80, now(), 4),
+(14.5, 85, now(), 4),
+(16.2, 80, now(), 4),
+(15.2, 85, now(), 4),
+(14.8, 95, now(), 4),
+(16.8, 95, now(), 4),
+(15.0, 96, now(), 4);
