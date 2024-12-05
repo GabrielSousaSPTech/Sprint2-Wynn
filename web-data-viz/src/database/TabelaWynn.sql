@@ -321,6 +321,15 @@ where
 ORDER BY idMedidaSensor DESC LIMIT 7;
 
 INSERT INTO tbMedida (medidaLM35, medidaMQ2,dataHoraSensor, fkTanque) VALUES  
+(26.7, 80.2, now(), 1),
+(25.7, 76.3, now(), 1),
+(24.7, 75.4, now(), 1),
+(20.7, 70.2, now(), 1),
+(25.7, 74.3, now(), 1),
+(29.7, 95.1, now(), 1),
+(25.7, 72.2, now(), 1);
+
+INSERT INTO tbMedida (medidaLM35, medidaMQ2,dataHoraSensor, fkTanque) VALUES  
 (12.7, 70, now(), 2),
 (14.7, 50, now(), 2),
 (13.7, 60, now(), 2),
